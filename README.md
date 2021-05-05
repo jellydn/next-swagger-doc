@@ -71,11 +71,16 @@ export default handler;
 
 ![https://gyazo.com/0bcf45f0e15778a5cb851b40526324f3.gif](https://gyazo.com/0bcf45f0e15778a5cb851b40526324f3.gif)
 
-## Run tests
+## Run example app
 
 ```sh
-yarn test
+gh repo clone jellydn/next-swagger-doc
+cd example
+yarn install
+yarn dev
 ```
+
+![example-screenshot.png](example-screenshot.png)
 
 ## Author
 

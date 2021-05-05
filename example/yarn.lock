@@ -1657,10 +1657,8 @@ native-url@0.3.4:
   dependencies:
     querystring "^0.2.0"
 
-next-swagger-doc@latest:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.1.1.tgz#de385dc7b873a88b9b701952ac05d5eab53276ae"
-  integrity sha512-gpePyRzFdIHj8adg9D2owQeL1cl7wmTTpDxuvXuK+72Cl1jQuBxbQ3UelwVoVPyUvzoFhR2jCo7d+zL+53LTtA==
+"next-swagger-doc@file:..":
+  version "0.1.2"
   dependencies:
     swagger-jsdoc "^6.1.0"
 

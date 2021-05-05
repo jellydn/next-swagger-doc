@@ -1,6 +1,6 @@
 # Welcome to next-swagger-doc 👋
 
-![Version](https://img.shields.io/badge/version-0.1.1-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.1.3-blue.svg?cacheSeconds=2592000)
 ![Prerequisite](https://img.shields.io/badge/node-%3E%3D10-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](http://next-swagger-doc.productsway.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
@@ -29,7 +29,39 @@ This package reads your JSDoc-annotated source code on [NextJS API route](https:
 yarn install next-swagger-doc
 ```
 
-## Usage
+## Usage #1: Create an single API document
+
+```sh
+yarn add next-swagger-doc swagger-ui-react
+```
+
+```typescript
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+
+import { createSwaggerSpec } from 'next-swagger-doc';
+import SwaggerUI from 'swagger-ui-react';
+import 'swagger-ui-react/swagger-ui.css';
+
+const ApiDoc = ({ spec }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  return <SwaggerUI spec={spec} />;
+};
+
+export const getStaticProps: GetStaticProps = async ctx => {
+  const spec: Record<string, any> = createSwaggerSpec({
+    title: 'NextJS Swagger',
+    version: '0.1.0',
+  });
+  return {
+    props: {
+      spec,
+    },
+  };
+};
+
+export default ApiDoc;
+```
+
+## Usage #2: Use NextJS API route for create Swagger JSON spec
 
 - Step 1: Create an api route on nextjs, e.g: pages/doc.ts
 
@@ -80,7 +112,8 @@ yarn install
 yarn dev
 ```
 
-![example-screenshot.png](example-screenshot.png)
+Then open http://localhost:3000/api-doc or http://localhost:3000/ on your browser
+![./example-screenshot.png](./example-screenshot.png)
 
 ## Author
 

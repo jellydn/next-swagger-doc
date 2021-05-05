@@ -1,6 +1,6 @@
 # Welcome to next-swagger-doc 👋
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.1.1-blue.svg?cacheSeconds=2592000)
 ![Prerequisite](https://img.shields.io/badge/node-%3E%3D10-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](http://next-swagger-doc.productsway.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
@@ -15,6 +15,13 @@
 ## Prerequisites
 
 - nextjs >= 9
+
+## Motivation
+
+This package reads your JSDoc-annotated source code on [NextJS API route](https://nextjs.org/docs/api-routes/api-middlewares) and generates an OpenAPI (Swagger) specification.
+
+[nextjs](https://nextjs.org) +
+[swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc/blob/v6/docs/README.md) = [next-swagger-doc](https://github.com/jellydn/next-swagger-doc)
 
 ## Install
 

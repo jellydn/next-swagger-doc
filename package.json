@@ -48,15 +48,15 @@
     }
   ],
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^4.10.2",
-    "@types/swagger-jsdoc": "^6.0.0",
-    "husky": "^6.0.0",
-    "next": "^10.2.0",
-    "size-limit": "^4.10.2",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.2.0",
-    "typedoc": "^0.20.36",
-    "typescript": "^4.2.4"
+    "@size-limit/preset-small-lib": "4.10.2",
+    "@types/swagger-jsdoc": "6.0.0",
+    "husky": "6.0.0",
+    "next": "10.2.0",
+    "size-limit": "4.10.2",
+    "tsdx": "0.14.1",
+    "tslib": "2.2.0",
+    "typedoc": "0.20.36",
+    "typescript": "4.2.4"
   },
   "dependencies": {
     "swagger-jsdoc": "^6.1.0"

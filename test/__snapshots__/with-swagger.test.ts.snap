@@ -15,19 +15,3 @@ Object {
   },
 }
 `;
-
-exports[`withSwagger should create swagger json 1`] = `
-Object {
-  "apis": Array [
-    "/Users/huynhducdung/Projects/next-swagger-doc/pages/api/*.js",
-    "/Users/huynhducdung/Projects/next-swagger-doc/pages/api/*.ts",
-  ],
-  "definition": Object {
-    "info": Object {
-      "title": "NextJS Swagger",
-      "version": "0.1.0",
-    },
-    "openapi": "3.0.0",
-  },
-}
-`;

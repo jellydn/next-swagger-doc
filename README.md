@@ -61,6 +61,8 @@ export const getStaticProps: GetStaticProps = async ctx => {
 export default ApiDoc;
 ```
 
+![https://gyazo.com/af250bab0d07f931c596ebc8c955ae2e.gif](https://gyazo.com/af250bab0d07f931c596ebc8c955ae2e.gif)
+
 ## Usage #2: Use NextJS API route for create Swagger JSON spec
 
 - Step 1: Create an api route on nextjs, e.g: pages/doc.ts

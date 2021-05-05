@@ -19,14 +19,10 @@
 ## Install
 
 ```sh
-yarn install
+yarn install next-swagger-doc
 ```
 
 ## Usage
-
-```sh
-yarn add next-swagger-doc
-```
 
 - Step 1: Create an api route on nextjs, e.g: pages/doc.ts
 

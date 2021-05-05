@@ -1,9 +1,9 @@
-import { prepareSwaggerOptions } from '../src/with-swagger';
+import { createSwaggerSpec } from '../src/with-swagger';
 
 describe('withSwagger', () => {
   it('should create default swagger json option', () => {
     expect(
-      prepareSwaggerOptions({
+      createSwaggerSpec({
         title: 'NextJS Swagger',
         version: '0.1.0',
       })

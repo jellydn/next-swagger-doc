@@ -10,7 +10,15 @@ type SwaggerOptions = {
   version: string;
 };
 
-export function prepareSwaggerOptions({
+/**
+ * Create swagger JSON
+ * @param options.openApiVersion Open API version {3.0.0}
+ * @param options.apiFolder NextJS API folder {pages/api}
+ * @param options.title Title
+ * @param options.version Version
+ * @returns Swagger JSON Spec
+ */
+export function createSwaggerSpec({
   openApiVersion = '3.0.0',
   apiFolder = 'pages/api',
   title,
@@ -29,22 +37,32 @@ export function prepareSwaggerOptions({
     apis: [`${apiDirectory}/*.js`, `${apiDirectory}/*.ts`], // files containing annotations as above
   };
 
-  return options;
+  return swaggerJsdoc(options);
 }
 
 /**
  * withSwagger middleware
  * @param options.openApiVersion Open API version {3.0.0}
- * @param options.apiFolder NextJS API folder {/pages/api}
+ * @param options.apiFolder NextJS API folder {pages/api}
  * @param options.title Title
  * @param options.version Version
  * @returns
  */
-export function withSwagger(options: SwaggerOptions) {
+export function withSwagger({
+  openApiVersion = '3.0.0',
+  apiFolder = 'pages/api',
+  title,
+  version,
+}: SwaggerOptions) {
   return () => {
     return (_req: NextApiRequest, res: NextApiResponse) => {
       try {
-        const swaggerSpec = swaggerJsdoc(prepareSwaggerOptions(options));
+        const swaggerSpec = createSwaggerSpec({
+          openApiVersion,
+          apiFolder,
+          title,
+          version,
+        });
         res.status(200).send(swaggerSpec);
       } catch (error) {
         res.status(400).send(error);

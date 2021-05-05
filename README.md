@@ -10,7 +10,7 @@
 
 ### 🏠 [Homepage](https://github.com/jellydn/next-swagger-doc)
 
-### ✨ [Demo](http://next-swagger-doc-demo.productsway.com/)
+### ✨ [Demo](https://next-swagger-doc-demo.productsway.com/api-doc)
 
 ## Prerequisites
 

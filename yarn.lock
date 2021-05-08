@@ -1345,7 +1345,7 @@
     webpack "^4.44.1"
     webpack-bundle-analyzer "^4.4.0"
 
-"@skypack/package-check@^0.2.2":
+"@skypack/package-check@0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@skypack/package-check/-/package-check-0.2.2.tgz#92e1cb1864e7ed9aef9076f92a45fc285a0abef3"
   integrity sha512-T4Wyi9lUuz0a1C2OHuzqZ0aFOCI0AmaGTb2LP9sHgWdoHXlB3JU02gfBpa0Y081G/gFsJYpQ/R0iCJRzF/nknw==
@@ -9185,10 +9185,8 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

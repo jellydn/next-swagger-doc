@@ -8,7 +8,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -35,8 +35,22 @@
     "trailingComma": "es5"
   },
   "name": "next-swagger-doc",
+  "keywords": [
+    "next-swagger",
+    "next-swagger-doc",
+    "nextjs",
+    "swagger"
+  ],
   "author": "Huynh Duc Dung",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jellydn/next-swagger-doc"
+  },
   "module": "dist/next-swagger-doc.esm.js",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/next-swagger-doc.esm.js"
+  },
   "size-limit": [
     {
       "path": "dist/next-swagger-doc.cjs.production.min.js",
@@ -49,6 +63,7 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "4.10.2",
+    "@skypack/package-check": "^0.2.2",
     "@types/swagger-jsdoc": "6.0.0",
     "husky": "6.0.0",
     "next": "10.2.0",

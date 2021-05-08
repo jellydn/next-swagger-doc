@@ -1,6 +1,6 @@
 # Welcome to next-swagger-doc 👋
 
-![Version](https://img.shields.io/badge/version-0.1.3-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-0.1.5-blue.svg?cacheSeconds=2592000)
 ![Prerequisite](https://img.shields.io/badge/node-%3E%3D10-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](http://next-swagger-doc.productsway.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
@@ -8,7 +8,7 @@
 
 > Generate Swagger JSON API from NextJS Api Routes
 
-### 🏠 [Homepage](https://github.com/jellydn/next-swagger-doc)
+## 🏠 [Homepage](https://github.com/jellydn/next-swagger-doc)
 
 ### ✨ [Demo](https://next-swagger-doc-demo.productsway.com/api-doc)
 

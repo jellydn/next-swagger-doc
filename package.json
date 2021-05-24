@@ -62,7 +62,7 @@
     }
   ],
   "devDependencies": {
-    "@size-limit/preset-small-lib": "4.10.2",
+    "@size-limit/preset-small-lib": "4.11.0",
     "@skypack/package-check": "0.2.2",
     "@types/swagger-jsdoc": "6.0.0",
     "husky": "6.0.0",

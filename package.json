@@ -66,7 +66,7 @@
     "@skypack/package-check": "0.2.2",
     "@types/swagger-jsdoc": "6.0.0",
     "husky": "6.0.0",
-    "next": "10.2.0",
+    "next": "10.2.2",
     "size-limit": "4.10.2",
     "tsdx": "0.14.1",
     "tslib": "2.2.0",

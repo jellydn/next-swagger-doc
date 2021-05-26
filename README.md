@@ -1,6 +1,7 @@
 # Welcome to next-swagger-doc 👋
 
-![Version](https://img.shields.io/badge/version-0.1.5-blue.svg?cacheSeconds=2592000)
+[![Version](https://img.shields.io/npm/v/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
+[![Downloads/week](https://img.shields.io/npm/dw/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
 ![Prerequisite](https://img.shields.io/badge/node-%3E%3D10-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](http://next-swagger-doc.productsway.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)

@@ -17,6 +17,14 @@ type SwaggerOptions = {
  * @param options.title Title
  * @param options.version Version
  * @returns Swagger JSON Spec
+ *
+ * @example
+ * createSwaggerSpec({
+ *  openApiVersion: '3.0.0',
+ *  apiFolder:  'pages/api',
+ *  title: 'Demo Api',
+ *  version: '1.0',
+ * })
  */
 export function createSwaggerSpec({
   openApiVersion = '3.0.0',
@@ -36,9 +44,9 @@ export function createSwaggerSpec({
       },
     },
     apis: [
-      `${apiDirectory}/*.js`,
-      `${apiDirectory}/*.ts`,
-      `${buildApiDirectory}/*.js`,
+      `${apiDirectory}/**/*.js`,
+      `${apiDirectory}/**/*.ts`,
+      `${buildApiDirectory}/**/*.js`,
     ], // files containing annotations as above
   };
 
@@ -52,6 +60,14 @@ export function createSwaggerSpec({
  * @param options.title Title
  * @param options.version Version
  * @returns
+ *
+ * @example
+ * createSwaggerSpec({
+ *  openApiVersion: '3.0.0',
+ *  apiFolder:  'pages/api',
+ *  title: 'Demo Api',
+ *  version: '1.0',
+ * })
  */
 export function withSwagger({
   openApiVersion = '3.0.0',

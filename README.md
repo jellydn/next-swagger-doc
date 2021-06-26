@@ -75,6 +75,7 @@ const swaggerHandler = withSwagger({
   openApiVersion: '3.0.0',
   title: 'Next Swagger API Example',
   version: '0.1.0',
+  apiFolder: 'pages/api',
 });
 export default swaggerHandler();
 ```

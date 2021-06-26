@@ -25,6 +25,7 @@ export function createSwaggerSpec({
   version,
 }: SwaggerOptions) {
   const apiDirectory = join(process.cwd(), apiFolder);
+  const buildApiDirectory = join(process.cwd(), '.next/server', apiFolder);
 
   const options = {
     definition: {
@@ -34,7 +35,11 @@ export function createSwaggerSpec({
         version,
       },
     },
-    apis: [`${apiDirectory}/*.js`, `${apiDirectory}/*.ts`], // files containing annotations as above
+    apis: [
+      `${apiDirectory}/*.js`,
+      `${apiDirectory}/*.ts`,
+      `${buildApiDirectory}/*.js`,
+    ], // files containing annotations as above
   };
 
   return swaggerJsdoc(options);

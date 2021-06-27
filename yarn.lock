@@ -1301,25 +1301,25 @@
   dependencies:
     type-detect "4.0.8"
 
-"@size-limit/file@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-5.0.0.tgz#29986ad7bac6208e289a38d5ae8007e60135f371"
-  integrity sha512-699vC9SlQWwJKtAurF9oE20gsfGhZnIiaw5YOZHkM6v6jb+qfns2Kdh63r/WPGJMcyc8J74pZvRt+CK8vLwlJg==
+"@size-limit/file@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-5.0.1.tgz#8cf5a550a88fe5972db31e65cfd0b040485fd141"
+  integrity sha512-BgbGFdFwijuR6tZRlmUoN3UzOIN+dt+28hzsYKjTl1LOn4zUJjTWgTCye11Qygj5L6+MkDZOA1ppEm4ZfjPgmQ==
   dependencies:
     semver "7.3.5"
 
-"@size-limit/preset-small-lib@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-5.0.0.tgz#5a69263c3e19ed6745a0388869229d8f5dfd1ed1"
-  integrity sha512-cwkEK6zETTVYzNrTxVbTahlj29N4Yh/l0Q7UNmOJj1fxjVU9GQT0c/Nw/ed9A9p7NeMG5IM/JYiX0dfhBOvKvA==
+"@size-limit/preset-small-lib@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-5.0.1.tgz#1a53bfe62fd3ff4f4793146cc110a00086173588"
+  integrity sha512-pscQMfUIiTQQ1VzsjNt+O70tr6NPVSK5UThdzWpAxikUF04ABQandQvhAFrOymGjx4CKcLva6ZGPibZ6uKL9RQ==
   dependencies:
-    "@size-limit/file" "5.0.0"
-    "@size-limit/webpack" "5.0.0"
+    "@size-limit/file" "5.0.1"
+    "@size-limit/webpack" "5.0.1"
 
-"@size-limit/webpack@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-5.0.0.tgz#bf62fecff81e008a8390c64bae667ba55f932785"
-  integrity sha512-lwlMxX2XZ/2DNLsb7bpxBRVl/1WgowzZ8bi9WIj1ywVEJEtG1f7q2WLVYMzMtIG312HHJ80pCZfZAwd+Hq32aQ==
+"@size-limit/webpack@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-5.0.1.tgz#029495f5227efec22ffe3c36e3b7f23d2d2a0c22"
+  integrity sha512-dG/H0GRc4P5Dc3KRjaQBq7EfGiOqGDw/eTBdkzvd2VnELl7DFcgoC1hULu9Y0XL50Ha+dGQ1AtNKWsZ3dacH/Q==
   dependencies:
     css-loader "^5.2.6"
     escape-string-regexp "^4.0.0"

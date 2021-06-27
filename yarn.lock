@@ -2719,11 +2719,6 @@ color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
-color-support@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/color-support/-/color-support-1.1.3.tgz#93834379a1cc9a0c61f82f52f0d04322251bd5a2"
-  integrity sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==
-
 colord@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/colord/-/colord-2.0.0.tgz#f8c19f2526b7dc5b22d6e57ef102f03a2a43a3d8"
@@ -5849,13 +5844,12 @@ merge2@^1.3.0:
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
 
-mico-spinner@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/mico-spinner/-/mico-spinner-1.0.0.tgz#3ec7a3a5343019db1d97812bfdfc802ee8c277f8"
-  integrity sha512-tQ1ros/rb3N3nC5kRgk+AMcBMJAEpBRKASSOGQeq9WyIfSoe6eq464OuNTA/NjYUpz4fca4qqMEpR7nqVXLHVQ==
+mico-spinner@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/mico-spinner/-/mico-spinner-1.1.1.tgz#b904cf4dc1ae247d9bff24b969d8bcbb08371f5d"
+  integrity sha512-b9F3Qx9l6fO141+FbR9hqRUJ15p4bGVsqgXiO/noxxXZmN+hYZVCuWd4LEubadrVkw0eIYAJDXWo0ZYGoLrmfg==
   dependencies:
-    ansi-colors "^4.1.1"
-    color-support "^1.1.3"
+    colorette "^1.2.2"
 
 micromatch@4.x, micromatch@^4.0.2:
   version "4.0.4"
@@ -7806,10 +7800,10 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-size-limit@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-5.0.0.tgz#eea703ccde7b37199880e8dcf17b2f313c2da17a"
-  integrity sha512-4d3tjcMF2OVWbM4JMxZGgQJXC7Z7veZrMWIog8N6DPhSDOhqRoiXDcPM5zY9uM9EvIgHqrdf9xgNKb0eFS0D6g==
+size-limit@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-5.0.1.tgz#9aedea30bfb7cea17e78d86bc19c61d3df53b91e"
+  integrity sha512-FZwVay5fCdatHoZU1lGyvVK3KrI4puMKbU1UoLLhEaMjQBxPuovuF+eJIDzmJN+xZRk3thuG7yS77DhuWF4fEQ==
   dependencies:
     bytes-iec "^3.1.1"
     chokidar "^3.5.2"
@@ -7817,7 +7811,7 @@ size-limit@5.0.0:
     colorette "^1.2.2"
     globby "^11.0.4"
     lilconfig "^2.0.3"
-    mico-spinner "1.0.0"
+    mico-spinner "^1.1.1"
 
 slash@^3.0.0:
   version "3.0.0"

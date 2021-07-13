@@ -127,6 +127,10 @@ Then open http://localhost:3000/api-doc or http://localhost:3000/ on your browse
 - Twitter: [@jellydn](https://twitter.com/jellydn)
 - Github: [@jellydn](https://github.com/jellydn)
 
+## Stargazers
+
+[![Stargazers repo roster for @jellydn/next-swagger-doc](https://reporoster.com/stars/jellydn/next-swagger-doc)](https://github.com/jellydn/next-swagger-doc/stargazers)
+
 ## Show your support
 
 Give a ⭐️ if this project helped you!

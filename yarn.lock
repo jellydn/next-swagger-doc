@@ -2729,6 +2729,11 @@ colorette@^1.2.2:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
+colorette@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.3.0.tgz#ff45d2f0edb244069d3b772adeb04fed38d0a0af"
+  integrity sha512-ecORCqbSFP7Wm8Y6lyqMJjexBQqXSF7SSeaTyGGphogUjBlFP9m9o08wy86HL2uB7fMTxtOUzLMk7ogKcxMg1w==
+
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
@@ -5844,10 +5849,10 @@ merge2@^1.3.0:
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
   integrity sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==
 
-mico-spinner@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/mico-spinner/-/mico-spinner-1.2.1.tgz#653f8b0d075729d383c58664e1c4bd929b740b68"
-  integrity sha512-Ub+oCJ7B223Hqj08iAXHWm7aPIe7QvYTbsMFSDVhMdZCAfByvOdpXJY6ahPQHMRqKmTNQYa0m9xDiHua6HIBXQ==
+mico-spinner@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/mico-spinner/-/mico-spinner-1.2.2.tgz#0f00cbf45c81b58fbd7d0a7bb2dea8546867d413"
+  integrity sha512-jIsOIIk5xa+TmZJU2mPVTEk1AC7aKnrj8UJR58cTiK8msNWYvPuQxPx0ojNbtVOut/TjTgGkVLrEt1jsrceYfA==
   dependencies:
     colorette "^1.2.2"
 
@@ -7807,18 +7812,18 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-size-limit@5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-5.0.2.tgz#eb049815c3de2fe40cf29c67506a89a7bbd891f1"
-  integrity sha512-BI9xdyRmwTULjLxI1ARSh6kj69LNBCI2+IPqlXo6OX2/TlPFjA6foJvuWdu9yNsi1se/ZqtB7gh5Z33dIfMUjQ==
+size-limit@5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-5.0.3.tgz#de4d4e9366274bd7987673ae76d51af02f57089b"
+  integrity sha512-522c33FTs09sDCN3SUjtxF3Jg361O8Xm1Rh9MUuGGVwY7XGvroE/vL20+//qGltUprGzYQONBbzy9TTdOJWgbw==
   dependencies:
     bytes-iec "^3.1.1"
     chokidar "^3.5.2"
     ci-job-number "^1.2.2"
-    colorette "^1.2.2"
+    colorette "^1.3.0"
     globby "^11.0.4"
     lilconfig "^2.0.3"
-    mico-spinner "^1.2.1"
+    mico-spinner "^1.2.2"
 
 slash@^3.0.0:
   version "3.0.0"

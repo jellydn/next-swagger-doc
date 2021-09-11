@@ -36,6 +36,8 @@ yarn install next-swagger-doc
 yarn add next-swagger-doc swagger-ui-react
 ```
 
+- Create an live swagger page, e.g: `pages/api-doc.ts`
+
 ```typescript
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
@@ -64,9 +66,9 @@ export default ApiDoc;
 
 ![https://gyazo.com/af250bab0d07f931c596ebc8c955ae2e.gif](https://gyazo.com/af250bab0d07f931c596ebc8c955ae2e.gif)
 
-## Usage #2: Use NextJS API route for create Swagger JSON spec
+## Usage #2: Use NextJS API route to create Swagger JSON spec
 
-- Step 1: Create an api route on nextjs, e.g: pages/doc.ts
+- Step 1: Create an api route on nextjs, e.g: `pages/api/doc.ts`
 
 ```typescript
 import { withSwagger } from 'next-swagger-doc';
@@ -80,7 +82,7 @@ const swaggerHandler = withSwagger({
 export default swaggerHandler();
 ```
 
-- Step 2: Add JSdoc on API
+- Step 2: Add JSdoc to any NextJS API routes, for example: `pages/api/hello.ts`
 
 ```typescript
 import { NextApiRequest, NextApiResponse } from 'next';

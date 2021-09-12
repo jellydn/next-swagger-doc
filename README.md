@@ -155,7 +155,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://productsway.com/"><img src="https://avatars.githubusercontent.com/u/870029?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dung Duc Huynh (Kaka)</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=jellydn" title="Code">💻</a></td>
+    <td align="center"><a href="https://productsway.com/"><img src="https://avatars.githubusercontent.com/u/870029?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dung Duc Huynh (Kaka)</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=jellydn" title="Code">💻</a> <a href="https://github.com/jellydn/next-swagger-doc/commits?author=jellydn" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/tmirkovic"><img src="https://avatars.githubusercontent.com/u/6806116?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tmirkovic</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=tmirkovic" title="Documentation">📖</a></td>
   </tr>
 </table>

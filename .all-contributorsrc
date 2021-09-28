@@ -28,6 +28,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "holloway",
+      "name": "Matthew Holloway",
+      "avatar_url": "https://avatars.githubusercontent.com/u/620580?v=4",
+      "profile": "http://holloway.co.nz/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

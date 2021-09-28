@@ -1356,31 +1356,31 @@
   dependencies:
     type-detect "4.0.8"
 
-"@size-limit/file@5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-5.0.4.tgz#d3bb30214218376db12c6fbc93498bcde1a65939"
-  integrity sha512-NXWk7fkI304TazIzG2d7co2X+XB52pHPr0CEXoj52Dx1olXcQqbx+6cg6im0FzhL91iCp1eAjhfeOq8h5D4B/Q==
+"@size-limit/file@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-5.0.5.tgz#fc62708e626e2f154412f65d618937d8a2b081ef"
+  integrity sha512-lnrQYRmTt0QzV08R9M61q0+EM7Jkcp1qZ/+BG01OOFA0rZtfHt9aKCdvoSEoMrIxK44A9lWHRmyNVnKKDfKbWA==
   dependencies:
     semver "7.3.5"
 
-"@size-limit/preset-small-lib@5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-5.0.4.tgz#5eb19889df8cd9a78a48369dfe2cc9b7e2dc8da6"
-  integrity sha512-2DRnZUte+WThsE/Lzu3uR7RkmzK/tJcgl2rCIsrfDQ4Kn23uesXVD2y19nWHzpEc4H62bxS13SmkTi84o5mBiQ==
+"@size-limit/preset-small-lib@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-5.0.5.tgz#0f5eac605f1d3f1b7129a215a2abe11ff47c3cc3"
+  integrity sha512-BHZwlSEaxHPqOOienQpgoH+ueWYryXiusFpNKRj1Jmyv6/rlOxww1nTCljNhh9+hOKOsahqGbvl43cr8o7NQiQ==
   dependencies:
-    "@size-limit/file" "5.0.4"
-    "@size-limit/webpack" "5.0.4"
+    "@size-limit/file" "5.0.5"
+    "@size-limit/webpack" "5.0.5"
 
-"@size-limit/webpack@5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-5.0.4.tgz#1d3d3d802064aa132b35fc4b55984ef694ff928b"
-  integrity sha512-wFJ90kwJ60AAZ3Ln4Egc6Tbpl7AcibGJKawHp41HpV2TeJT4IQOsgYXj/QOnVzz75+MKX/aZVa6OIlyWR7KORw==
+"@size-limit/webpack@5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-5.0.5.tgz#368eb926087120b43592aa97cc69e6bca3c7575c"
+  integrity sha512-caLXPNj1iRNeBRoycKTLMLRlLTCjIv80VmBTCag5QZMuNNu4g0weoxjnU7Jbf5YneTuXuEhKSjpc95rB4Biq7Q==
   dependencies:
     css-loader "^5.2.6"
     escape-string-regexp "^4.0.0"
     file-loader "^6.2.0"
     mkdirp "^1.0.4"
-    nanoid "^3.1.25"
+    nanoid "^3.1.28"
     optimize-css-assets-webpack-plugin "^6.0.1"
     pnp-webpack-plugin "^1.7.0"
     style-loader "^2.0.0"
@@ -6104,10 +6104,10 @@ nanoid@^3.1.23:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
   integrity sha512-FiB0kzdP0FFVGDKlRLEQ1BgDzU87dy5NnzjeW9YZNt+/c3+q82EQDUwniSAUxp/F0gFNI1ZhKU1FqYsMuqZVnw==
 
-nanoid@^3.1.25:
-  version "3.1.25"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.25.tgz#09ca32747c0e543f0e1814b7d3793477f9c8e152"
-  integrity sha512-rdwtIXaXCLFAQbnfqDRnI6jaRHp9fTcYBjtFKE8eezcZ7LuLjhUaQGNeMXf1HmRoCH32CLz6XwX0TtxEOS/A3Q==
+nanoid@^3.1.28:
+  version "3.1.28"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.28.tgz#3c01bac14cb6c5680569014cc65a2f26424c6bd4"
+  integrity sha512-gSu9VZ2HtmoKYe/lmyPFES5nknFrHa+/DT9muUFWFMi6Jh9E1I7bkvlQ8xxf1Kos9pi9o8lBnIOkatMhKX/YUw==
 
 nanomatch@^1.2.9:
   version "1.2.13"

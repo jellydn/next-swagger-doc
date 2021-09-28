@@ -68,7 +68,7 @@
     "all-contributors-cli": "6.20.0",
     "husky": "7.0.2",
     "next": "11.1.2",
-    "size-limit": "5.0.4",
+    "size-limit": "5.0.5",
     "tsdx": "0.14.1",
     "tslib": "2.3.1",
     "typedoc": "0.22.4",

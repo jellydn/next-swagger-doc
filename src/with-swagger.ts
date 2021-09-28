@@ -46,6 +46,7 @@ export function createSwaggerSpec({
     apis: [
       `${apiDirectory}/**/*.js`,
       `${apiDirectory}/**/*.ts`,
+      `${apiDirectory}/**/*.tsx`,
       `${buildApiDirectory}/**/*.js`,
     ], // files containing annotations as above
   };

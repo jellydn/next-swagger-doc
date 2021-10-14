@@ -1356,27 +1356,27 @@
   dependencies:
     type-detect "4.0.8"
 
-"@size-limit/file@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-6.0.2.tgz#7a7e4555a732ccd4db84d12a0f04dacf6564bd67"
-  integrity sha512-LXK2oP5PHI7wJjswnTTPyXKXxAr/E7FVcx2p8I/ObZyO6qdJgr8ctI/cRIFptv4N3RTJOSCd6XqX1U5SpAesZw==
+"@size-limit/file@6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-6.0.3.tgz#8cae76a17e6061416353ea75799b45e8fc565191"
+  integrity sha512-OfDrkJBB7OAWtnedz6jpmL1pjlha1MpgtvYwUSP2442qB96nwMN5Ig78XR3ldPj2cbxq1FVoNnc2vfWMi40vQA==
   dependencies:
     semver "7.3.5"
 
-"@size-limit/preset-small-lib@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-6.0.2.tgz#b8ec5dd227f736766b3fe0aa27b5e2e7e157cd74"
-  integrity sha512-a8N94NPd+6aaYac/tTcff2w7toPYKlJsgGnv6ftM2RdV9R/fL9KHHoI+LykyRIb1XH15H6TPgfJlzbrgUCwWvw==
+"@size-limit/preset-small-lib@6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-6.0.3.tgz#30c37000c61ac9bbb8e848a7ff43221f19d60942"
+  integrity sha512-HvHgrLp5sNEWfw3js6oBWty2dQyDf2SDhehDGJuQRL+8IVRFQcx0XLkqiHAdMrCNvDmfRPfvLkcp5wcxpjgbrw==
   dependencies:
-    "@size-limit/file" "6.0.2"
-    "@size-limit/webpack" "6.0.2"
+    "@size-limit/file" "6.0.3"
+    "@size-limit/webpack" "6.0.3"
 
-"@size-limit/webpack@6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-6.0.2.tgz#af7b14be6dbb166932c42776fcba6618a96d6aa7"
-  integrity sha512-+cKuFBkNLsPq8e0AgMy+mLvpdbuSuDLZyvJgvL+EgE7N+wbiw+Bn/uCuBGlJTPsp3j21R0A3prva6/0WxFMVnA==
+"@size-limit/webpack@6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-6.0.3.tgz#43002b1ac8b72ea0ea91f80968a9306ac5bb2aa4"
+  integrity sha512-4LI3SpkL0YbOIJsE7+t0LdPgqMeRDDwk1LELHHyk1b67tIjQ9wfnehI0BPT4LYiT23vN7Tg1TN0ofjwuRCLdbA==
   dependencies:
-    "@statoscope/webpack-plugin" "^5.13.0"
+    "@statoscope/webpack-plugin" "^5.13.1"
     css-loader "^6.4.0"
     css-minimizer-webpack-plugin "^3.0.2"
     escape-string-regexp "^4.0.0"
@@ -1424,15 +1424,15 @@
     "@statoscope/helpers" "5.9.0"
     gzip-size "^6.0.0"
 
-"@statoscope/stats-extension-custom-reports@5.12.1":
-  version "5.12.1"
-  resolved "https://registry.yarnpkg.com/@statoscope/stats-extension-custom-reports/-/stats-extension-custom-reports-5.12.1.tgz#ea7b79a10f234c4b2add7de1b357cb56c141787d"
-  integrity sha512-cK8vRdMNvB4ZoNvnDEj7zJR8V5vO9+n/kBp9lpSu1Tunbgosx1LPpcPYA9WBSZF/53mHgR26JGkld0mKzA4P2w==
+"@statoscope/stats-extension-custom-reports@5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/stats-extension-custom-reports/-/stats-extension-custom-reports-5.13.1.tgz#3581cd92d33e963741fac370cc7a87dca26baac9"
+  integrity sha512-xSgE4K56Zd6ILYpN7ohdkKiDlL4fshW9yeMl4QbCnUg6pp41OWDBFhE8WmKJlgifyj4hdR7El/PPhElRIkBdMA==
   dependencies:
     "@statoscope/extensions" "5.7.1"
     "@statoscope/helpers" "5.9.0"
     "@statoscope/stats" "5.7.0"
-    "@statoscope/types" "5.12.1"
+    "@statoscope/types" "5.13.1"
 
 "@statoscope/stats-extension-package-info@5.9.0":
   version "5.9.0"
@@ -1441,91 +1441,91 @@
   dependencies:
     "@statoscope/helpers" "5.9.0"
 
-"@statoscope/stats-extension-stats-validation-result@5.12.1":
-  version "5.12.1"
-  resolved "https://registry.yarnpkg.com/@statoscope/stats-extension-stats-validation-result/-/stats-extension-stats-validation-result-5.12.1.tgz#1d8fd4fdaad3808514020bc85fb0899061751a6e"
-  integrity sha512-qw3hH1Dcoy0AXl45cLO6vAkInWlBSshEFHzKCBsAAoUi2x0jASUxowfG1i/JNVJLfJoP/+EbZ2HzBp+QkN2CJA==
+"@statoscope/stats-extension-stats-validation-result@5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/stats-extension-stats-validation-result/-/stats-extension-stats-validation-result-5.13.1.tgz#66ca90045fc99356130bd25b1671ae30ad517f34"
+  integrity sha512-EXX64Tnu/uXuk9ELWHtL6hXp6SJcfJB6UQ+Kp7LJ9ca46s3HE/IRkK/qYH4+HA8rMsLVykyCEDtPLXhL++I+0w==
   dependencies:
     "@statoscope/extensions" "5.7.1"
     "@statoscope/helpers" "5.9.0"
     "@statoscope/stats" "5.7.0"
-    "@statoscope/types" "5.12.1"
+    "@statoscope/types" "5.13.1"
 
 "@statoscope/stats@5.7.0":
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/@statoscope/stats/-/stats-5.7.0.tgz#7fb0ffac1005d30f5583031ea7dcf9fdc6203944"
   integrity sha512-flRpCqfiUCbmpALu8AYQGnYfQIijZO+bF06sgIZqDiyj12HivmVfnhoTRy3PgbzwiQjv4j0ldnQA19Pi+CFWkQ==
 
-"@statoscope/types@5.12.1":
-  version "5.12.1"
-  resolved "https://registry.yarnpkg.com/@statoscope/types/-/types-5.12.1.tgz#ec899f8d75757d70e990f048dee9100608ff1fd6"
-  integrity sha512-c6dD7l8ysigPaPEbSak/jkMdUPzSEBr5p9NKkD7Ndq73Pr5OowrCpCOAdbf0lhYaFugnmSuc9YQYZbbCU8DI3g==
+"@statoscope/types@5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/types/-/types-5.13.1.tgz#e40394a6a4a2ccf407ce8f51fe99d8e08ea4ebcc"
+  integrity sha512-Nf2jwss/L2v7H/vJXTiFYb/nT8iTOzIdiHtHWVUVAf3HYCcnQmRocFNpKzJvoQLHE+h7cb8NRgc85JiLSQ3ynQ==
   dependencies:
     "@statoscope/stats" "5.7.0"
 
-"@statoscope/webpack-model@5.13.0":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@statoscope/webpack-model/-/webpack-model-5.13.0.tgz#622568eaf156fd5a90c8ece9e00fd3dbf4d52b9b"
-  integrity sha512-RHi6dq6hIc2Ntlp6SflN+v4D/tKPtZic2CmSvXsbmqzRluEWSiJirYUAoomT5cQROl//3gOo8bBuCGOruXJc4w==
+"@statoscope/webpack-model@5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/webpack-model/-/webpack-model-5.13.1.tgz#94cb8ad46c8d385c391199963e324473d81fbfe3"
+  integrity sha512-CJsl8BkT1mq8Mql1j15aIYsQlji9CQ16BWcdAyFynJars/Jih1zXY7blOgVKB06+bNSAR1Iwcxts90BCsIXSaQ==
   dependencies:
     "@statoscope/extensions" "5.7.1"
     "@statoscope/helpers" "5.9.0"
     "@statoscope/stats" "5.7.0"
     "@statoscope/stats-extension-compressed" "5.9.0"
-    "@statoscope/stats-extension-custom-reports" "5.12.1"
+    "@statoscope/stats-extension-custom-reports" "5.13.1"
     "@statoscope/stats-extension-package-info" "5.9.0"
-    "@statoscope/stats-extension-stats-validation-result" "5.12.1"
-    "@statoscope/types" "5.12.1"
+    "@statoscope/stats-extension-stats-validation-result" "5.13.1"
+    "@statoscope/types" "5.13.1"
     "@types/md5" "^2.3.0"
     "@types/webpack" "^5.0.0"
     ajv "^8.6.3"
     md5 "^2.3.0"
 
-"@statoscope/webpack-plugin@^5.13.0":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@statoscope/webpack-plugin/-/webpack-plugin-5.13.0.tgz#41cbd64fbacccb6735e0bbd5cfac36f47d4ce655"
-  integrity sha512-05duOPXIsC7AykQjVJIHTmEHy+X/SVBXZfxDgjc18QKzLCvvuL5qGds2tVfRn+yR3I3Zm313tMr6sDoXVejNBg==
+"@statoscope/webpack-plugin@^5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/webpack-plugin/-/webpack-plugin-5.13.1.tgz#abe174c6a6d858c34d9e790ad4bab98e4e2fe0ca"
+  integrity sha512-hsSlaS08YnJ3BPklnJ9wyoQPnSa1Q78N0uAnYkmOzrT3qAdq3KAPO5TlqNLqUmMXp/Hn3z7Fkh3Mi5sPuRSAfw==
   dependencies:
     "@discoveryjs/json-ext" "^0.5.5"
     "@statoscope/report-writer" "5.9.0"
     "@statoscope/stats" "5.7.0"
     "@statoscope/stats-extension-compressed" "5.9.0"
-    "@statoscope/stats-extension-custom-reports" "5.12.1"
-    "@statoscope/types" "5.12.1"
-    "@statoscope/webpack-model" "5.13.0"
-    "@statoscope/webpack-stats-extension-compressed" "5.13.0"
-    "@statoscope/webpack-stats-extension-package-info" "5.13.0"
-    "@statoscope/webpack-ui" "5.13.0"
+    "@statoscope/stats-extension-custom-reports" "5.13.1"
+    "@statoscope/types" "5.13.1"
+    "@statoscope/webpack-model" "5.13.1"
+    "@statoscope/webpack-stats-extension-compressed" "5.13.1"
+    "@statoscope/webpack-stats-extension-package-info" "5.13.1"
+    "@statoscope/webpack-ui" "5.13.1"
     "@types/node" "^12.20.15"
     "@types/webpack" "^5.0.0"
     open "^8.2.1"
 
-"@statoscope/webpack-stats-extension-compressed@5.13.0":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@statoscope/webpack-stats-extension-compressed/-/webpack-stats-extension-compressed-5.13.0.tgz#803a327c2b380f188b942de4ded79c730c14983e"
-  integrity sha512-FKHLkNzvWGr0ZvwZnPd+Jw94TrrAD1FHzd3EbqqL5vwM/03HnwipmdexYXghYuzsq73WRC5yz/fTlT1hLiFESw==
+"@statoscope/webpack-stats-extension-compressed@5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/webpack-stats-extension-compressed/-/webpack-stats-extension-compressed-5.13.1.tgz#01d8a8088ab7a7e86aea7ed509fd3b5d8345901e"
+  integrity sha512-MNpyw8K1nN13zvVoqJaB985J69Wyp6t9lUZzGluEtWFdpN25dRBStKnJ1agdr0t12F2/+sEpe/UJs26F5q7f1Q==
   dependencies:
     "@statoscope/stats" "5.7.0"
     "@statoscope/stats-extension-compressed" "5.9.0"
-    "@statoscope/webpack-model" "5.13.0"
+    "@statoscope/webpack-model" "5.13.1"
     "@types/webpack" "^5.0.0"
 
-"@statoscope/webpack-stats-extension-package-info@5.13.0":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@statoscope/webpack-stats-extension-package-info/-/webpack-stats-extension-package-info-5.13.0.tgz#a72f4b8745cafcd263a7fcbe14478d6a49540fc2"
-  integrity sha512-Rk7CgvoW2MZwpWBjStussQ8WmpMCldrYxEvZ4fLfNGo9RIlM3Qz1FSJwEli4Emhgygb34OBxOdcPB2yTq5xOLQ==
+"@statoscope/webpack-stats-extension-package-info@5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/webpack-stats-extension-package-info/-/webpack-stats-extension-package-info-5.13.1.tgz#90ccae6177e101fe668d38fcad17151150b983bf"
+  integrity sha512-Jzpi2vvO+pCMbDeuSOji3BfRS4ResVL6qgFEV++julTkXBHS6XE9vHHpxa0h5q4B1O6Z3cks1qBLNQlAHfr+9g==
   dependencies:
     "@statoscope/stats" "5.7.0"
     "@statoscope/stats-extension-package-info" "5.9.0"
-    "@statoscope/webpack-model" "5.13.0"
+    "@statoscope/webpack-model" "5.13.1"
     "@types/webpack" "^5.0.0"
 
-"@statoscope/webpack-ui@5.13.0":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@statoscope/webpack-ui/-/webpack-ui-5.13.0.tgz#5bbae3844ae88758394905e2a90c41df8d5f566e"
-  integrity sha512-8qlZypE4b4qigNYnOmsQyWt0gr2jjsLsU7DtJy72ys+TJEPkgEAwe0rHrgj3Dk4ZB2BbQy46D7IOayedZ1y9nA==
+"@statoscope/webpack-ui@5.13.1":
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/@statoscope/webpack-ui/-/webpack-ui-5.13.1.tgz#0d3062f259191a002d9f5bd962e7d27a5c8804b3"
+  integrity sha512-0btcun/+w1MuNLua+9xfbbJTJWI/a+Ss3emuVLICBUbwJgp9zDb2z8XR/mLPWYhS7XZ4n3X3SQPDduThtj6l4w==
   dependencies:
-    "@statoscope/types" "5.12.1"
+    "@statoscope/types" "5.13.1"
     highcharts "^9.2.2"
 
 "@trysound/sax@0.1.1":

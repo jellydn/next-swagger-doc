@@ -3531,10 +3531,10 @@ swagger-parser@10.0.2:
   dependencies:
     "@apidevtools/swagger-parser" "10.0.2"
 
-swagger-ui-react@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-4.0.0.tgz#f8969f56db30c3fff798bad4f6460c6f0c59e2ed"
-  integrity sha512-1CWEWBj8GxNE9h4LwzKRzSDSfQWDfI02Lp98o/X6kTJ+2N8btR6u1owCiJARq3Ht9G29DWVNGzAnVx4zrYttHg==
+swagger-ui-react@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-4.0.1.tgz#c95d4fad0fb3f7e8f8b449eaaceebbd21f9e5213"
+  integrity sha512-854dt4CzmxUR9PeTTk+DmRa9tJw+3izE3o4FGnmIsUXyEB3nShGXMKDZ12defLoHzxkz2TwKxtKPfjmd0hjwng==
   dependencies:
     "@babel/runtime-corejs3" "^7.14.7"
     "@braintree/sanitize-url" "^5.0.2"

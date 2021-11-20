@@ -1372,28 +1372,28 @@
   dependencies:
     type-detect "4.0.8"
 
-"@size-limit/esbuild@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/esbuild/-/esbuild-7.0.1.tgz#aa4ea8d4ff1ebaca549c2621bdc695a5b0b01b28"
-  integrity sha512-tdr6J2pcboz2ejjcrSVwc+BvJ9iAUY8FnNw1trREvnHSWgt7F6GOXAW4ctaNfk0BNuJA8yTlWLkq0u7F0ew3SA==
+"@size-limit/esbuild@7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@size-limit/esbuild/-/esbuild-7.0.3.tgz#5ceb2d18348ceda82365f6a800c67bb293bd0825"
+  integrity sha512-pqtB5wQkbFHxHo43Xjyj3XVqnl56LHKpycWKmNWhDShkF94ucCdfZJwHDMIzL6f0OUjRxd9QkA8Jv11pFzUD/Q==
   dependencies:
     esbuild "^0.13.14"
     nanoid "^3.1.30"
 
-"@size-limit/file@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-7.0.1.tgz#7759139ad510f6cf6f9dd6c131054cbf2a867bcf"
-  integrity sha512-u4aabD80yQkvI0yXET7ndZiA026/C1jwtjTU+WKOk781omH8LA2yGAKYEIAEzR6KeY9gy6hyk7wNEnMBvJo0Mg==
+"@size-limit/file@7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-7.0.3.tgz#a9ba258b8d386f557384a025c4f06f404a3035ba"
+  integrity sha512-jizDZduAQ71KoraRWkj6ZSHPPo8SQ/KO4z1hZBl1ZujxwF7R6NLWKghNUtIQHsXpqyZWbK3VV39lOLx7qHuLjg==
   dependencies:
     semver "7.3.5"
 
-"@size-limit/preset-small-lib@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-7.0.1.tgz#8ce2904b3eba7ed56f31cfa1c7cca9d6701efbbb"
-  integrity sha512-i2ef+3nGfhlV6tqaGWg5xSr19h7iX1QvmJZa0VnE/dy5jpkmilsA9tmagjxHy2axYfaNnvps72wAmrVPJgDSHQ==
+"@size-limit/preset-small-lib@7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-7.0.3.tgz#2f9409e69d0d89f059b0b841e34bad972be47ddc"
+  integrity sha512-UuA8ICz3BYWxbhJah8U5KxOUhA97AJbsNITp+Scy9aUXzbu2SqrsDTRmPU9ULCo3j4VgF53TBHXY4sdKC2adpw==
   dependencies:
-    "@size-limit/esbuild" "7.0.1"
-    "@size-limit/file" "7.0.1"
+    "@size-limit/esbuild" "7.0.3"
+    "@size-limit/file" "7.0.3"
 
 "@skypack/package-check@0.2.2":
   version "0.2.2"

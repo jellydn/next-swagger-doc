@@ -31,7 +31,7 @@ This package reads your JSDoc-annotated source code on [NextJS API route](https:
 ## Install
 
 ```sh
-yarn install next-swagger-doc
+yarn add next-swagger-doc
 ```
 
 ## Usage #1: Create an single API document

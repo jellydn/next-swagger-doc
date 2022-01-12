@@ -67,7 +67,7 @@
     "@types/swagger-jsdoc": "6.0.1",
     "all-contributors-cli": "6.20.0",
     "husky": "7.0.4",
-    "next": "12.0.7",
+    "next": "12.0.8",
     "size-limit": "7.0.5",
     "tsdx": "0.14.1",
     "tslib": "2.3.1",

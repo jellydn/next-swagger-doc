@@ -40,7 +40,7 @@ yarn add next-swagger-doc
 yarn add next-swagger-doc swagger-ui-react
 ```
 
-- Create an live swagger page, e.g: `pages/api-doc.ts`
+- Create an live swagger page, e.g: `pages/api-doc.tsx`
 
 ```typescript
 import { GetStaticProps, InferGetStaticPropsType } from 'next';

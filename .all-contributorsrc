@@ -37,6 +37,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "leventemihaly",
+      "name": "leventemihaly",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11655496?v=4",
+      "profile": "https://github.com/leventemihaly",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7

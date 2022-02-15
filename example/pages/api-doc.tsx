@@ -10,8 +10,12 @@ const ApiDoc = ({ spec }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export const getStaticProps: GetStaticProps = async ctx => {
   const spec: Record<string, any> = createSwaggerSpec({
-    title: 'NextJS Swagger',
-    version: '0.1.0',
+    definition: {
+      info: {
+        title: 'NextJS Swagger',
+        version: '0.1.0',
+      },
+    },
   });
   return {
     props: {

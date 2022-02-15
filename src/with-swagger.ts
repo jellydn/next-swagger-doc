@@ -1,13 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { join } from 'path';
 
-import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 
-type SwaggerOptions = {
-  openApiVersion?: string;
+type SwaggerOptions = Options & {
   apiFolder?: string;
-  title: string;
-  version: string;
+};
+
+const defaultOptions: SwaggerOptions = {
+  apiFolder: 'pages/api',
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Demo Api',
+      version: '1.0',
+    },
+  },
 };
 
 /**
@@ -17,32 +25,16 @@ type SwaggerOptions = {
  * @param options.title Title
  * @param options.version Version
  * @returns Swagger JSON Spec
- *
- * @example
- * createSwaggerSpec({
- *  openApiVersion: '3.0.0',
- *  apiFolder:  'pages/api',
- *  title: 'Demo Api',
- *  version: '1.0',
- * })
  */
 export function createSwaggerSpec({
-  openApiVersion = '3.0.0',
   apiFolder = 'pages/api',
-  title,
-  version,
-}: SwaggerOptions) {
+  ...swaggerOptions
+}: SwaggerOptions = defaultOptions) {
   const apiDirectory = join(process.cwd(), apiFolder);
   const buildApiDirectory = join(process.cwd(), '.next/server', apiFolder);
 
-  const options = {
-    definition: {
-      openapi: openApiVersion,
-      info: {
-        title,
-        version,
-      },
-    },
+  const options: Options = {
+    ...swaggerOptions,
     apis: [
       `${apiDirectory}/**/*.js`,
       `${apiDirectory}/**/*.ts`,
@@ -61,29 +53,17 @@ export function createSwaggerSpec({
  * @param options.title Title
  * @param options.version Version
  * @returns
- *
- * @example
- * createSwaggerSpec({
- *  openApiVersion: '3.0.0',
- *  apiFolder:  'pages/api',
- *  title: 'Demo Api',
- *  version: '1.0',
- * })
  */
 export function withSwagger({
-  openApiVersion = '3.0.0',
   apiFolder = 'pages/api',
-  title,
-  version,
-}: SwaggerOptions) {
+  ...swaggerOptions
+}: SwaggerOptions = defaultOptions) {
   return () => {
     return (_req: NextApiRequest, res: NextApiResponse) => {
       try {
         const swaggerSpec = createSwaggerSpec({
-          openApiVersion,
           apiFolder,
-          title,
-          version,
+          ...swaggerOptions,
         });
         res.status(200).send(swaggerSpec);
       } catch (error) {

@@ -1,7 +1,9 @@
 # Welcome to next-swagger-doc 👋
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Version](https://img.shields.io/npm/v/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
@@ -55,8 +57,13 @@ const ApiDoc = ({ spec }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export const getStaticProps: GetStaticProps = async ctx => {
   const spec: Record<string, any> = createSwaggerSpec({
-    title: 'NextJS Swagger',
-    version: '0.1.0',
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'NextJS Swagger',
+        version: '0.1.0',
+      },
+    },
   });
   return {
     props: {
@@ -78,9 +85,13 @@ export default ApiDoc;
 import { withSwagger } from 'next-swagger-doc';
 
 const swaggerHandler = withSwagger({
-  openApiVersion: '3.0.0',
-  title: 'Next Swagger API Example',
-  version: '0.1.0',
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'NextJS Swagger',
+      version: '0.1.0',
+    },
+  },
   apiFolder: 'pages/api',
 });
 export default swaggerHandler();

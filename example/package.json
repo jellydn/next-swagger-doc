@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "isarray": "2.0.5",
-    "next": "12.0.10",
+    "next": "12.1.0",
     "next-swagger-doc": "0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -21,7 +21,7 @@
     "@types/react-dom": "17.0.11",
     "@types/swagger-jsdoc": "6.0.1",
     "eslint": "8.9.0",
-    "eslint-config-next": "12.0.10",
+    "eslint-config-next": "12.1.0",
     "typescript": "4.5.5"
   }
 }

@@ -2288,10 +2288,10 @@ swagger-parser@10.0.2:
   dependencies:
     "@apidevtools/swagger-parser" "10.0.2"
 
-swagger-ui-react@4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-4.5.2.tgz#0724a822a0201138e5edc090c0c9e83b27a2bf64"
-  integrity sha512-XDkBmnkjrdKdMQT6ckbztwsXJGreeb4fS+ljCTuOTw3cB36n7Yn4aFgDRPwH7TO7Sy6UPkmXmPGw5UHuYD+vIQ==
+swagger-ui-react@4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/swagger-ui-react/-/swagger-ui-react-4.6.1.tgz#25d0dc380f73fcba00df214f50adc940910f480c"
+  integrity sha512-NIVzdzzaHnoG6NxK15A0wpd7TiGPpcK4BBh5mgLq6/hCrytjpeQZrkSM1Yf0p1fD7+rkvKcI+b33w/6RCLt3yw==
   dependencies:
     "@babel/runtime-corejs3" "^7.16.8"
     "@braintree/sanitize-url" "^5.0.2"
@@ -2321,7 +2321,7 @@ swagger-ui-react@4.5.2:
     serialize-error "^8.1.0"
     sha.js "^2.4.11"
     swagger-client "^3.18.4"
-    url-parse "^1.5.6"
+    url-parse "^1.5.8"
     xml "=1.0.1"
     xml-but-prettier "^1.0.1"
     zenscroll "^4.0.2"
@@ -2414,10 +2414,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-url-parse@^1.5.6:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.8.tgz#3f8090e4d6f80053eb861ec496049849f700337e"
-  integrity sha512-9JZ5zDrn9wJoOy/t+rH00HHejbU8dq9VsOYVu272TYDrCiyVAgHKUSpPh3ruZIpv8PMVR+NXLZvfRPJv8xAcQw==
+url-parse@^1.5.8:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.10.tgz#9d3c2f736c1d75dd3bd2be507dcc111f1e2ea9c1"
+  integrity sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"

@@ -1,9 +1,7 @@
 # Welcome to next-swagger-doc 👋
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Version](https://img.shields.io/npm/v/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
@@ -167,6 +165,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/tmirkovic"><img src="https://avatars.githubusercontent.com/u/6806116?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tmirkovic</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=tmirkovic" title="Documentation">📖</a></td>
     <td align="center"><a href="http://holloway.co.nz/"><img src="https://avatars.githubusercontent.com/u/620580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matthew Holloway</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=holloway" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/leventemihaly"><img src="https://avatars.githubusercontent.com/u/11655496?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leventemihaly</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=leventemihaly" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/pahrizal"><img src="https://avatars.githubusercontent.com/u/36581242?v=4?s=100" width="100px;" alt=""/><br /><sub><b>PAHRIZAL MA'RUP</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=pahrizal" title="Code">💻</a></td>
   </tr>
 </table>
 

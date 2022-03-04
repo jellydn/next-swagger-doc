@@ -55,6 +55,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ariskk",
+      "name": "Aris",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4972825?v=4",
+      "profile": "https://ariskk.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7

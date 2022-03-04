@@ -1,9 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import { OrganizationItem } from "../../models/organization";
 
 /**
  * @swagger
- * /api/org:
+ * /api/organization:
  *   get:
  *     tags: [Organization]
  *     responses:
@@ -17,14 +18,23 @@ import type { NextApiRequest, NextApiResponse } from "next";
  *                 type: object
  *                 $ref: '#/components/schemas/Organization'
  */
-interface OrgResponse{
-    message: string
-}
+
 const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<OrgResponse>
+  _req: NextApiRequest,
+  res: NextApiResponse<OrganizationItem[]>
 ) => {
-  res.status(200).json({message: "Organization"});
+  res.status(200).json(
+    [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "company": "Products Way",
+        "name": "IT Man Channel",
+        "parent": "Dung Huynh",
+        "createdAt": new Date().toUTCString(),
+        "updatedAt": new Date().toUTCString(),
+      }
+    ]
+  );
 };
 
 export default handler;

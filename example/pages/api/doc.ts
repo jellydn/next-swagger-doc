@@ -8,5 +8,6 @@ const swaggerHandler = withSwagger({
       version: '0.1.0',
     },
   },
+  schemaFolders: ['models'],
 });
 export default swaggerHandler();

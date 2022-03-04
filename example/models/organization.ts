@@ -8,9 +8,9 @@
  *        id:
  *          type: string
  *          format: uuid
- *        kode:
+ *        company:
  *          type: string
- *        nama:
+ *        name:
  *          type: string
  *        parent:
  *          type: string
@@ -22,4 +22,11 @@
  *          format: date-time
  */
 
-export default {};
+export interface OrganizationItem {
+  id: string;
+  company: string;
+  name: string;
+  parent: string;
+  createdAt: string;
+  updatedAt: string;
+}

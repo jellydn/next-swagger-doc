@@ -8,7 +8,7 @@ const ApiDoc = ({ spec }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return <SwaggerUI spec={spec} />;
 };
 
-export const getStaticProps: GetStaticProps = async ctx => {
+export const getStaticProps: GetStaticProps = async () => {
   const spec: Record<string, any> = createSwaggerSpec({
     definition: {
       info: {
@@ -16,6 +16,7 @@ export const getStaticProps: GetStaticProps = async ctx => {
         version: '0.1.0',
       },
     },
+    schemaFolders: ['models'],
   });
   return {
     props: {

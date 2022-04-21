@@ -3,8 +3,8 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
     "start": "next start"
   },
   "dependencies": {
@@ -13,11 +13,11 @@
     "next-swagger-doc": "latest",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "swagger-ui-react": "4.8.1"
+    "swagger-ui-react": "latest"
   },
   "devDependencies": {
     "@types/node": "16.11.27",
-    "@types/react": "18.0.1",
+    "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
     "@types/swagger-jsdoc": "6.0.1",
     "eslint": "8.13.0",

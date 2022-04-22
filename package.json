@@ -15,68 +15,68 @@
   "author": "Huynh Duc Dung",
   "type": "module",
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/next-swagger-doc.esm.js"
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
   },
-  "main": "dist/index.js",
-  "module": "dist/next-swagger-doc.esm.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "analyze": "size-limit --why",
-    "build": "tsdx build",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "start": "tsdx watch",
-    "test": "tsdx test",
+    "build": "tsup",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint src/**/*.ts",
+    "prepare": "husky install && tsup",
+    "start": "tsup --watch",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
     "vercel-build": "npx typedoc src/index.ts"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{js,css,md}": "prettier --write",
+    "package.json": "sort-package-json"
   },
   "dependencies": {
-    "isarray": "^2.0.5",
-    "swagger-jsdoc": "^6.2.1"
+    "isarray": "2.0.5",
+    "swagger-jsdoc": "6.2.1"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "7.0.8",
     "@skypack/package-check": "0.2.2",
+    "@trivago/prettier-plugin-sort-imports": "3.2.0",
     "@types/swagger-jsdoc": "6.0.1",
+    "@typescript-eslint/eslint-plugin": "5.20.0",
+    "@typescript-eslint/parser": "5.20.0",
+    "@vitest/ui": "^0.9.4",
     "all-contributors-cli": "6.20.0",
+    "c8": "7.11.2",
+    "eslint": "8.13.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.29.4",
     "husky": "7.0.4",
+    "lint-staged": "12.4.0",
     "next": "12.1.5",
+    "prettier": "2.6.2",
     "size-limit": "7.0.8",
-    "tsdx": "0.14.1",
-    "tslib": "2.3.1",
+    "sort-package-json": "1.55.0",
+    "tslib": "2.4.0",
+    "tsup": "5.12.6",
     "typedoc": "0.22.15",
-    "typescript": "4.6.3"
+    "typescript": "4.6.3",
+    "vite": "2.9.5",
+    "vitest": "0.9.4"
   },
   "peerDependencies": {
     "next": ">=9"
   },
   "engines": {
     "node": ">=12"
-  },
-  "size-limit": [
-    {
-      "path": "dist/next-swagger-doc.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/next-swagger-doc.esm.js",
-      "limit": "10 KB"
-    }
-  ]
+  }
 }

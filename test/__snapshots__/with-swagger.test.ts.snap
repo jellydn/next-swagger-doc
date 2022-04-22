@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`withSwagger should create default swagger json option 1`] = `
-Object {
-  "components": Object {},
-  "info": Object {
+exports[`withSwagger > should create default swagger json option 1`] = `
+{
+  "components": {},
+  "info": {
     "title": "NextJS Swagger",
     "version": "0.1.0",
   },
   "openapi": "3.0.0",
-  "paths": Object {},
-  "tags": Array [],
+  "paths": {},
+  "tags": [],
 }
 `;

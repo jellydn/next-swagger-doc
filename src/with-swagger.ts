@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { join } from 'path';
-
 import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 
 type SwaggerOptions = Options & {
@@ -37,14 +36,16 @@ export function createSwaggerSpec({
   const scanFolders = [apiFolder, ...schemaFolders];
 
   const options: Options = {
-    apis: scanFolders.flatMap(apiFolder => {
-      const buildApiDirectory = join(process.cwd(), '.next/server', apiFolder);
-      const apiDirectory = join(process.cwd(), apiFolder);
+    apis: scanFolders.flatMap((folder) => {
+      const buildApiDirectory = join(process.cwd(), '.next/server', folder);
+      const apiDirectory = join(process.cwd(), folder);
+      const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'swagger.yaml'];
       return [
-        `${apiDirectory}/**/*.js`,
-        `${apiDirectory}/**/*.ts`,
-        `${apiDirectory}/**/*.tsx`,
-        `${buildApiDirectory}/**/*.js`,
+        ...fileTypes.map((fileType) => `${apiDirectory}/**/*.${fileType}`),
+        // only scan build directory for *.swagger.yaml and *.js files
+        ...['js', 'swagger.yaml'].map(
+          (fileType) => `${buildApiDirectory}/**/*.${fileType}`,
+        ),
       ];
     }), // files containing annotations as above
     ...swaggerOptions,
@@ -67,18 +68,16 @@ export function withSwagger({
   schemaFolders = [],
   ...swaggerOptions
 }: SwaggerOptions = defaultOptions) {
-  return () => {
-    return (_req: NextApiRequest, res: NextApiResponse) => {
-      try {
-        const swaggerSpec = createSwaggerSpec({
-          apiFolder,
-          schemaFolders,
-          ...swaggerOptions,
-        });
-        res.status(200).send(swaggerSpec);
-      } catch (error) {
-        res.status(400).send(error);
-      }
-    };
+  return () => (_req: NextApiRequest, res: NextApiResponse) => {
+    try {
+      const swaggerSpec = createSwaggerSpec({
+        apiFolder,
+        schemaFolders,
+        ...swaggerOptions,
+      });
+      res.status(200).send(swaggerSpec);
+    } catch (error) {
+      res.status(400).send(error);
+    }
   };
 }

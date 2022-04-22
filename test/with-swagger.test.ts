@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { createSwaggerSpec } from '../src/with-swagger';
 
 describe('withSwagger', () => {
@@ -11,7 +13,7 @@ describe('withSwagger', () => {
             version: '0.1.0',
           },
         },
-      })
+      }),
     ).toMatchSnapshot();
   });
 });

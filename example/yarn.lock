@@ -2253,7 +2253,7 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-swagger-doc@^0.3.0:
+next-swagger-doc@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.0.tgz#e60a398c53182c4f57150c0c7dcbb4c798b55a3d"
   integrity sha512-D2FselrRzJWj1sxnbPODGHwM/2bVI5Dix9RvkY/J2BmO5FywRqzhbfz09xyq2Rp/CokTQfzthAWoITmcUc6hww==

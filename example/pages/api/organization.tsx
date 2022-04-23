@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
-import { OrganizationItem } from "../../models/organization";
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+import { Organization } from '../../models/organization';
 
 /**
  * @swagger
@@ -21,20 +22,17 @@ import { OrganizationItem } from "../../models/organization";
 
 const handler = async (
   _req: NextApiRequest,
-  res: NextApiResponse<OrganizationItem[]>
+  res: NextApiResponse<Organization[]>,
 ) => {
-  res.status(200).json(
-    [
-      {
-        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "company": "Products Way",
-        "name": "IT Man Channel",
-        "parent": "Dung Huynh",
-        "createdAt": new Date().toUTCString(),
-        "updatedAt": new Date().toUTCString(),
-      }
-    ]
-  );
+  res.status(200).json([
+    {
+      id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+      name: 'IT Man Channel',
+      parent: 'Dung Huynh',
+      createdAt: new Date().toUTCString(),
+      updatedAt: new Date().toUTCString(),
+    },
+  ]);
 };
 
 export default handler;

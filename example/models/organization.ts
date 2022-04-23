@@ -9,7 +9,7 @@
  *          type: string
  *          format: uuid
  *        company:
- *          type: string
+ *          $ref: '#/components/schemas/Company'
  *        name:
  *          type: string
  *        parent:
@@ -21,12 +21,13 @@
  *          type: string
  *          format: date-time
  */
+import { Company } from './company';
 
-export interface OrganizationItem {
+export interface Organization {
   id: string;
-  company: string;
+  company?: Company;
   name: string;
-  parent: string;
+  parent?: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
 }

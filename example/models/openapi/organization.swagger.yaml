@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: Converted from organization.swagger.yaml with typeconv
+  version: '1'
+  x-id: organization.swagger.yaml
+  x-comment: >-
+    Generated from models/organization.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Organization:
+      properties:
+        id:
+          title: Organization.id
+          type: string
+        company:
+          $ref: '#/components/schemas/Company'
+          title: Organization.company
+        name:
+          title: Organization.name
+          type: string
+        parent:
+          title: Organization.parent
+          type: string
+        createdAt:
+          title: Organization.createdAt
+          type: string
+        updatedAt:
+          title: Organization.updatedAt
+          type: string
+      required:
+        - id
+        - name
+        - createdAt
+      additionalProperties: false
+      title: Organization
+      type: object

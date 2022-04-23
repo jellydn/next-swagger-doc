@@ -31,8 +31,7 @@
     "lint": "eslint src/**/*.ts",
     "prepare": "husky install && tsup",
     "start": "tsup --watch",
-    "test": "vitest",
-    "test:run": "vitest run",
+    "test": "vitest run",
     "test:ui": "vitest --ui",
     "vercel-build": "npx typedoc src/index.ts"
   },
@@ -54,7 +53,7 @@
     "@vitest/ui": "0.9.4",
     "all-contributors-cli": "6.20.0",
     "c8": "7.11.2",
-    "eslint": "8.13.0",
+    "eslint": "8.14.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.5.1",

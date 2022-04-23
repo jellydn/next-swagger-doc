@@ -2253,10 +2253,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-swagger-doc@0.2.2-0:
-  version "0.2.2-0"
-  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.2.2-0.tgz#167ac2da112c1afb0544ff5beb68c14cf267c40d"
-  integrity sha512-GJsEwtgfwCSkx4K6CKVeZ1nHg7HGv7HCyjc+aihTyIe4v9IK8N8D7Y24XcERKFzdpRJw7pwgXjBBdIrrtQcMig==
+next-swagger-doc@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.0.tgz#e60a398c53182c4f57150c0c7dcbb4c798b55a3d"
+  integrity sha512-D2FselrRzJWj1sxnbPODGHwM/2bVI5Dix9RvkY/J2BmO5FywRqzhbfz09xyq2Rp/CokTQfzthAWoITmcUc6hww==
   dependencies:
     isarray "2.0.5"
     swagger-jsdoc "6.2.1"

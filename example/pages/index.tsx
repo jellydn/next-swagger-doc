@@ -6,7 +6,7 @@ const SwaggerUI = dynamic<{ url: string }>(import('swagger-ui-react'), {
   ssr: false,
 });
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <Head>

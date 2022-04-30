@@ -9,11 +9,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@stoplight/elements": "7.5.18",
+    "@xstyled/styled-components": "^3.6.0",
+    "@xstyled/system": "^3.6.0",
     "isarray": "2.0.5",
     "next": "12.1.5",
-    "next-swagger-doc": "0.3.0",
+    "next-swagger-doc": "*",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "styled-components": "^5.3.5",
     "swagger-ui-react": "latest"
   },
   "devDependencies": {

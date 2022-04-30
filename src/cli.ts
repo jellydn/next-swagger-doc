@@ -1,7 +1,7 @@
 import { cli } from 'cleye';
 import { readFileSync, writeFileSync } from 'fs';
 
-import { createSwaggerSpec } from '../src';
+import { createSwaggerSpec } from './swagger';
 
 // Parse argv
 const argv = cli({

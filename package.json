@@ -21,21 +21,22 @@
   },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "bin": {
-    "next-swagger-doc-cli": "bin/cli.cjs"
+    "next-swagger-doc-cli": "dist/cli.js"
   },
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "pkgroll",
     "coverage": "vitest run --coverage",
-    "format": "prettier --write '{src,cli,test}/**/*.ts'",
-    "lint": "eslint {src,cli,test}/**/*.ts --fix",
-    "prepare": "husky install && tsup",
-    "start": "tsup --watch",
+    "format": "prettier --write '{src,test}/**/*.ts'",
+    "lint": "eslint {src,test}/**/*.ts --fix",
+    "prepare": "husky install && pkgroll",
+    "start": "pkgroll --watch",
     "test": "vitest run",
     "test:ui": "vitest --ui",
     "vercel-build": "npx typedoc src/index.ts"
@@ -68,11 +69,11 @@
     "husky": "7.0.4",
     "lint-staged": "12.4.1",
     "next": "12.1.5",
+    "pkgroll": "1.1.3",
     "prettier": "2.6.2",
     "size-limit": "7.0.8",
     "sort-package-json": "1.55.0",
     "tslib": "2.4.0",
-    "tsup": "5.12.6",
     "typedoc": "0.22.15",
     "typescript": "4.6.4",
     "vite": "2.9.6",

@@ -4119,7 +4119,7 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-next-swagger-doc@^0.3.2:
+next-swagger-doc@0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.2.tgz#a0de05a5b69d46c334314778c3fc616adddc7a79"
   integrity sha512-1CHdYB+CeYXwjAE0C39u00m1Of1ZlyKu/SY/hXjBJw0qnu3f2DziwmuI6+eMj2nrgBEA0OoqF9Bd+VxVYhJ1ag==

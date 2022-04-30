@@ -4111,10 +4111,10 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-next-swagger-doc@*:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.0.tgz#e60a398c53182c4f57150c0c7dcbb4c798b55a3d"
-  integrity sha512-D2FselrRzJWj1sxnbPODGHwM/2bVI5Dix9RvkY/J2BmO5FywRqzhbfz09xyq2Rp/CokTQfzthAWoITmcUc6hww==
+next-swagger-doc@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.1.tgz#d4712b686b85f12f5e3104a3af8308f0dfbefbe4"
+  integrity sha512-572tcu6PMl5D1i0W7k5kKaHdj8W74dXZZKXO9QbBNw8IZxfot7nuxVro7rhzCyT+xYcq+x47W0N2Ej6/cLx8bA==
   dependencies:
     isarray "2.0.5"
     swagger-jsdoc "6.2.1"

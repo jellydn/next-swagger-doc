@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { createSwaggerSpec } from '../src/with-swagger';
+import { createSwaggerSpec } from '../src';
 
 describe('withSwagger', () => {
   it('should create default swagger json option', () => {

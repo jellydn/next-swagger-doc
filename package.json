@@ -29,7 +29,8 @@
   "scripts": {
     "build": "tsup",
     "coverage": "vitest run --coverage",
-    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write 'src/**/*.ts'",
+    "lint": "eslint src/**/*.ts --fix",
     "prepare": "husky install && tsup",
     "start": "tsup --watch",
     "test": "vitest run",
@@ -38,7 +39,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
-    "*.{js,css,md}": "prettier --write",
+    "*.{js,ts,tsx,css,md}": "prettier --write",
     "package.json": "sort-package-json"
   },
   "dependencies": {

@@ -1,7 +1,9 @@
 # Welcome to next-swagger-doc 👋
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Version](https://img.shields.io/npm/v/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
@@ -44,25 +46,29 @@ yarn add next-swagger-doc swagger-ui-react
 
 ```typescript
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-
 import { createSwaggerSpec } from 'next-swagger-doc';
-import SwaggerUI from 'swagger-ui-react';
+import dynamic from 'next/dynamic';
 import 'swagger-ui-react/swagger-ui.css';
 
-const ApiDoc = ({ spec }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <SwaggerUI spec={spec} />;
-};
+const SwaggerUI = dynamic<{
+  spec: any;
+}>(import('swagger-ui-react'), { ssr: false });
 
-export const getStaticProps: GetStaticProps = async ctx => {
+function ApiDoc({ spec }: InferGetStaticPropsType<typeof getStaticProps>) {
+  return <SwaggerUI spec={spec} />;
+}
+
+export const getStaticProps: GetStaticProps = async () => {
   const spec: Record<string, any> = createSwaggerSpec({
     definition: {
       openapi: '3.0.0',
       info: {
-        title: 'NextJS Swagger',
-        version: '0.1.0',
+        title: 'Next Swagger API Example',
+        version: '1.0',
       },
     },
   });
+
   return {
     props: {
       spec,

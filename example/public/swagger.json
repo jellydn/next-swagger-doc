@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Next Swagger API Example",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/hello": {
+      "get": {
+        "description": "Returns the hello world",
+        "responses": {
+          "200": {
+            "description": "hello world"
+          }
+        }
+      }
+    },
+    "/api/organization": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "responses": {
+          "200": {
+            "description": "Organization",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Organization"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "openapi": {
+      "0": "3",
+      "1": ".",
+      "2": "0",
+      "3": ".",
+      "4": "0"
+    },
+    "info": {
+      "title": "Converted from people.swagger.yaml with typeconv",
+      "version": "1",
+      "x-id": "people.swagger.yaml",
+      "x-comment": "Generated from models/people.ts by core-types-json-schema (https://github.com/grantila/core-types-json-schema) on behalf of typeconv (https://github.com/grantila/typeconv)"
+    }
+  },
+  "components": {
+    "schemas": {
+      "Company": {
+        "properties": {
+          "id": {
+            "title": "Company.id",
+            "type": "string"
+          },
+          "name": {
+            "title": "Company.name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false,
+        "title": "Company",
+        "type": "object"
+      },
+      "Organization": {
+        "properties": {
+          "id": {
+            "title": "Organization.id",
+            "type": "string",
+            "format": "uuid"
+          },
+          "company": {
+            "$ref": "#/components/schemas/Company",
+            "title": "Organization.company"
+          },
+          "name": {
+            "title": "Organization.name",
+            "type": "string"
+          },
+          "parent": {
+            "title": "Organization.parent",
+            "type": "string"
+          },
+          "createdAt": {
+            "title": "Organization.createdAt",
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "title": "Organization.updatedAt",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "createdAt"
+        ],
+        "additionalProperties": false,
+        "title": "Organization",
+        "type": "object"
+      },
+      "People": {
+        "properties": {
+          "id": {
+            "title": "People.id",
+            "type": "string"
+          },
+          "name": {
+            "title": "People.name",
+            "type": "string"
+          },
+          "phone": {
+            "title": "People.phone",
+            "type": "string"
+          },
+          "address": {
+            "title": "People.address",
+            "type": "string"
+          },
+          "age": {
+            "title": "People.age",
+            "type": "number"
+          },
+          "company": {
+            "$ref": "#/components/schemas/Company",
+            "title": "People.company"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false,
+        "title": "People",
+        "type": "object"
+      }
+    }
+  },
+  "tags": []
+}

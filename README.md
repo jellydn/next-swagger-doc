@@ -128,6 +128,30 @@ export default handler;
 
 ![https://gyazo.com/0bcf45f0e15778a5cb851b40526324f3.gif](https://gyazo.com/0bcf45f0e15778a5cb851b40526324f3.gif)
 
+## Usage 3: Generate Swagger file from CLI
+
+- Step 1: create a JSON config file as `next-swagger-doc.json`
+
+```json
+{
+  "apiFolder": "pages/api",
+  "schemaFolders": ["models"],
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Next Swagger API Example",
+      "version": "1.0"
+    }
+  }
+}
+```
+
+- Step 2: run cli for generating swagger file
+
+```sh
+yarn next-swagger-doc-cli next-swagger-doc.json
+```
+
 ## Run example app
 
 ```sh

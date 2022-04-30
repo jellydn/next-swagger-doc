@@ -22,6 +22,9 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "bin": {
+    "next-swagger-doc-cli": "bin/cli.cjs"
+  },
   "files": [
     "dist",
     "src"
@@ -29,8 +32,8 @@
   "scripts": {
     "build": "tsup",
     "coverage": "vitest run --coverage",
-    "format": "prettier --write 'src/**/*.ts'",
-    "lint": "eslint src/**/*.ts --fix",
+    "format": "prettier --write '{src,cli,test}/**/*.ts'",
+    "lint": "eslint {src,cli,test}/**/*.ts --fix",
     "prepare": "husky install && tsup",
     "start": "tsup --watch",
     "test": "vitest run",
@@ -43,6 +46,7 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
+    "cleye": "1.2.0",
     "isarray": "2.0.5",
     "swagger-jsdoc": "6.2.1"
   },

@@ -56,7 +56,6 @@ export function createSwaggerSpec({
     apis, // files containing annotations as above
     ...swaggerOptions,
   };
-
   const spec = swaggerJsdoc(options);
 
   return spec;

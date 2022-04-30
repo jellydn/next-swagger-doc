@@ -1,0 +1,13 @@
+{
+  "apiFolder": "pages/api",
+  "schemaFolders": [
+    "models"
+  ],
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Next Swagger API Example",
+      "version": "1.0"
+    }
+  }
+}

@@ -21,4 +21,12 @@ export default defineConfig([
     legacyOutput: true,
     outDir: 'dist/minified',
   },
+  {
+    name: 'cli',
+    entry: ['cli/index.ts'],
+    splitting: false,
+    sourcemap: true,
+    clean: true,
+    outDir: 'dist/cli',
+  },
 ]);

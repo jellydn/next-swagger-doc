@@ -5,6 +5,7 @@ import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 type SwaggerOptions = Options & {
   apiFolder?: string;
   schemaFolders?: string[];
+  outputFile?: string;
 };
 
 const defaultOptions: SwaggerOptions = {
@@ -34,24 +35,31 @@ export function createSwaggerSpec({
   ...swaggerOptions
 }: SwaggerOptions = defaultOptions) {
   const scanFolders = [apiFolder, ...schemaFolders];
-
+  const apis = scanFolders.flatMap((folder) => {
+    const buildApiDirectory = join(process.cwd(), '.next/server', folder);
+    const apiDirectory = join(process.cwd(), folder);
+    const publicDirectory = join(process.cwd(), 'public');
+    const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'json', 'swagger.yaml'];
+    return [
+      ...fileTypes.map((fileType) => `${apiDirectory}/**/*.${fileType}`),
+      // only scan build directory for *.swagger.yaml and *.js files
+      ...['js', 'swagger.yaml', 'json'].map(
+        (fileType) => `${buildApiDirectory}/**/*.${fileType}`,
+      ),
+      // support load static files from public directory
+      ...['swagger.yaml', 'json'].map(
+        (fileType) => `${publicDirectory}/**/*.${fileType}`,
+      ),
+    ];
+  });
   const options: Options = {
-    apis: scanFolders.flatMap((folder) => {
-      const buildApiDirectory = join(process.cwd(), '.next/server', folder);
-      const apiDirectory = join(process.cwd(), folder);
-      const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'swagger.yaml'];
-      return [
-        ...fileTypes.map((fileType) => `${apiDirectory}/**/*.${fileType}`),
-        // only scan build directory for *.swagger.yaml and *.js files
-        ...['js', 'swagger.yaml'].map(
-          (fileType) => `${buildApiDirectory}/**/*.${fileType}`,
-        ),
-      ];
-    }), // files containing annotations as above
+    apis, // files containing annotations as above
     ...swaggerOptions,
   };
 
-  return swaggerJsdoc(options);
+  const spec = swaggerJsdoc(options);
+
+  return spec;
 }
 
 /**

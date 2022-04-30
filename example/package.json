@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "postbuild": "cpy 'models/**/*.swagger.yaml' public/openapi --flat",
     "dev": "next dev",
     "openapi:yaml": "typeconv -f ts -t oapi --oapi-format yaml --output-extension 'swagger.yaml' --output-directory 'models/openapi' 'models/*.ts'",
     "start": "next start"
@@ -27,6 +28,7 @@
     "@types/react-dom": "18.0.3",
     "@types/swagger-jsdoc": "6.0.1",
     "@typescript-eslint/eslint-plugin": "5.21.0",
+    "cpy-cli": "^4.1.0",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "prettier": "2.6.2",

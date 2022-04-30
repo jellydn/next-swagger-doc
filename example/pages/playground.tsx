@@ -48,7 +48,7 @@ export default function Playground() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <APIDocumentUI
-          apiDescriptionUrl="/api/doc"
+          apiDescriptionUrl="/swagger.json"
           layout="sidebar"
           router="hash"
         />

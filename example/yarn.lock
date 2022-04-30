@@ -4163,10 +4163,10 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-next-swagger-doc@0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.4.tgz#6f4e23f23af3ed14e223285809be4a29f61cea7c"
-  integrity sha512-HhMzSlcos+MmvxEE09qgTz7QI5sYIQ1LRNSKcQ306k7UTiADtOB+UK/b5nRqr5Le3rxsP1fF8LfA+RHRbdUqhg==
+next-swagger-doc@0.3.4-0:
+  version "0.3.4-0"
+  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.4-0.tgz#59b14b900c108b2725d14e87207906f28f8f1e05"
+  integrity sha512-Ta+GCGOrwVETTs20VZDhu8iqYXZSJkgjA23lTkNWi30TOg0GiNIbaO4WaTRtNcG1UQW/xm5wd5FdXv5mPRtciQ==
   dependencies:
     cleye "1.2.0"
     isarray "2.0.5"

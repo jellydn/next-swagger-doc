@@ -1750,6 +1750,14 @@ clean-stack@^4.0.0:
   dependencies:
     escape-string-regexp "5.0.0"
 
+cleye@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/cleye/-/cleye-1.2.0.tgz#ab6479ad1364e959bc87746579bbe556496d9761"
+  integrity sha512-91phRUNIHDJz+DDKsJQP5t0a82/PGaxpzbhbU+l6qJFRd35u0f0SCpovxWtWhYe6QGfypuj5E4e7k0U7/DRHtw==
+  dependencies:
+    terminal-columns "^1.4.1"
+    type-flag "^2.1.0"
+
 clipboard@^2.0.0:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.8.tgz#ffc6c103dd2967a83005f3f61976aa4655a4cdba"
@@ -4111,11 +4119,12 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-next-swagger-doc@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.1.tgz#d4712b686b85f12f5e3104a3af8308f0dfbefbe4"
-  integrity sha512-572tcu6PMl5D1i0W7k5kKaHdj8W74dXZZKXO9QbBNw8IZxfot7nuxVro7rhzCyT+xYcq+x47W0N2Ej6/cLx8bA==
+next-swagger-doc@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.2.tgz#a0de05a5b69d46c334314778c3fc616adddc7a79"
+  integrity sha512-1CHdYB+CeYXwjAE0C39u00m1Of1ZlyKu/SY/hXjBJw0qnu3f2DziwmuI6+eMj2nrgBEA0OoqF9Bd+VxVYhJ1ag==
   dependencies:
+    cleye "1.2.0"
     isarray "2.0.5"
     swagger-jsdoc "6.2.1"
 
@@ -5405,6 +5414,11 @@ swagger-ui-react@latest:
     xml-but-prettier "^1.0.1"
     zenscroll "^4.0.2"
 
+terminal-columns@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/terminal-columns/-/terminal-columns-1.4.1.tgz#f669dd878afaad0c404d4b7aa01855fb6f24f1a4"
+  integrity sha512-IKVL/itiMy947XWVv4IHV7a0KQXvKjj4ptbi7Ew9MPMcOLzkiQeyx3Gyvh62hKrfJ0RZc4M1nbhzjNM39Kyujw==
+
 terminal-link@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/terminal-link/-/terminal-link-2.1.1.tgz#14a64a27ab3c0df933ea546fba55f2d078edc994"
@@ -5553,6 +5567,11 @@ type-fest@^1.0.1, type-fest@^1.2.1, type-fest@^1.2.2:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.4.0.tgz#e9fb813fe3bf1744ec359d55d1affefa76f14be1"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
+
+type-flag@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/type-flag/-/type-flag-2.1.0.tgz#9d3c7c84804032d4e03b4877a866c25c122c1136"
+  integrity sha512-ln8u/BdNzppXeFP8JsmsofElwVC2/FYoQAIipzhx45jjFwSApFqIieBEY93TKoLpphQBAbazX8LCoIY59Vwxlg==
 
 type-is@^1.6.18:
   version "1.6.18"

@@ -68,7 +68,7 @@
     "eslint-plugin-react": "7.29.4",
     "husky": "7.0.4",
     "lint-staged": "12.4.1",
-    "next": "12.1.5",
+    "next": "12.1.6",
     "pkgroll": "1.2.0",
     "prettier": "2.6.2",
     "size-limit": "7.0.8",

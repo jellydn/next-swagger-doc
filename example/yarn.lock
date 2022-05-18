@@ -672,16 +672,16 @@
     "@sentry/types" "6.19.7"
     tslib "^1.9.3"
 
-"@stoplight/elements-core@~7.5.18":
-  version "7.5.18"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.5.18.tgz#abf1662a22b94608b2b35a57c20720178908f2a6"
-  integrity sha512-oiP/VL6CbWt5Lp7l6zG5oSRiKTBQj//rAP24AyvGzjwPEucIOU6gPwEilqayYfJhHVR9rnOCwhWRTKrCfM2mDw==
+"@stoplight/elements-core@~7.5.19":
+  version "7.5.19"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.5.19.tgz#f7b778303fb72c5ca748bd5f5a90f7dd067cce04"
+  integrity sha512-GgLsXV78nC7WPGKTsffpnDzGQj2DD43RWbUC7oePTgGuLbnEszYcy6Ia018MiXoqq/Y4NAkxsA7rUjssSlUJcQ==
   dependencies:
     "@fortawesome/free-solid-svg-icons" "^5.14.0"
     "@stoplight/json" "^3.18.0"
     "@stoplight/json-schema-ref-parser" "^9.0.5"
     "@stoplight/json-schema-sampler" "0.2.2"
-    "@stoplight/json-schema-viewer" "^4.5.0"
+    "@stoplight/json-schema-viewer" "^4.5.1"
     "@stoplight/markdown-viewer" "^5.4.7"
     "@stoplight/mosaic" "^1.19.1"
     "@stoplight/mosaic-code-editor" "^1.19.1"
@@ -705,13 +705,13 @@
     util "^0.12.4"
     xml-formatter "^2.4.0"
 
-"@stoplight/elements@7.5.18":
-  version "7.5.18"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.5.18.tgz#cb5a2bd8ef83f83616dcf870cfef843ca56b47ec"
-  integrity sha512-21b/KP1JymePZwmAKOErDZwG5nyqbL2h3BnV5Gxpxg9ccgSW+3cOZ9QQKh7RDoxMoHQ+RydI2yp+3xpB7EQqDA==
+"@stoplight/elements@7.5.19":
+  version "7.5.19"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.5.19.tgz#e374207844f3ed3289646ff5f7f1ab8ac6deb5ab"
+  integrity sha512-rZVuF11AP98MbHSM2xAkKFMgp9l6CMMtLgJL9kiUGPxlj4CaoPDCEQz1HDgvDQHu5EYQrCWDOEaQw0SfNMUr/g==
   dependencies:
     "@fortawesome/free-solid-svg-icons" "^5.14.0"
-    "@stoplight/elements-core" "~7.5.18"
+    "@stoplight/elements-core" "~7.5.19"
     "@stoplight/http-spec" "^5.1.0"
     "@stoplight/json" "^3.18.0"
     "@stoplight/mosaic" "^1.16.2"
@@ -784,10 +784,10 @@
     "@types/json-schema" "^7.0.7"
     json-pointer "^0.6.1"
 
-"@stoplight/json-schema-tree@^2.1.3":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/json-schema-tree/-/json-schema-tree-2.2.0.tgz#2559d99378b7b03601c2ace8c8b9691278991f3f"
-  integrity sha512-CWVvLROBHY/+f30wGUkD1soKW3GJ2svq+JdHLSDNk8Y+rbXaAj9NpWCMbgy6+W3FsB97xQFv6oImFiK+ZfZfNQ==
+"@stoplight/json-schema-tree@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/json-schema-tree/-/json-schema-tree-2.2.1.tgz#bfd8ec5a18c4bbc3e0ae3617725e4e4173553f0a"
+  integrity sha512-TKAvYtB5U8A7sAKj4co61LnMI9+133keQ+z8yGiLCpvUd8FDCNkQ7TWuFqdWOA1s5La4U6Gc75A1qZqfkGNdJw==
   dependencies:
     "@stoplight/json" "^3.12.0"
     "@stoplight/json-schema-merge-allof" "^0.7.7"
@@ -795,14 +795,14 @@
     "@types/json-schema" "^7.0.7"
     magic-error "0.0.1"
 
-"@stoplight/json-schema-viewer@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/json-schema-viewer/-/json-schema-viewer-4.5.0.tgz#0b54e20766e94c2adc8e41f2517a8e9b44b73a78"
-  integrity sha512-YtLL+BqyqfcRUMiFFl2w8501b0A7Ae3/RzoYzaHX+y+q/6nGv0/ViwV6W9q2dvC0QXGMjIL+5YhthKyeJ4Px+A==
+"@stoplight/json-schema-viewer@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/json-schema-viewer/-/json-schema-viewer-4.5.1.tgz#1bd271197e4579a9a58e75b70fb0a23fd0302a18"
+  integrity sha512-03eTbyb5tLgheXyZG45SHKHdkNCeaTvON+7/efxfnLJfHh2eN1EChsIN+FydRqhIzd27gVdVC95NtqOmeM97GQ==
   dependencies:
     "@fortawesome/free-solid-svg-icons" "^5.15.2"
     "@stoplight/json" "^3.17.1"
-    "@stoplight/json-schema-tree" "^2.1.3"
+    "@stoplight/json-schema-tree" "^2.2.1"
     "@stoplight/react-error-boundary" "^2.0.0"
     "@types/json-schema" "^7.0.7"
     classnames "^2.2.6"

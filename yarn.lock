@@ -3026,10 +3026,10 @@ pify@^5.0.0:
   resolved "https://registry.npmjs.org/pify/-/pify-5.0.0.tgz"
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
-pkgroll@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/pkgroll/-/pkgroll-1.3.0.tgz#4c5a1aed405c55d82b511e67c9a389bf8b27818f"
-  integrity sha512-YEGAuwtjT9gjkd4teAHJfTmlqfusy8YSjmKgDwus9SHI1IFVlTQ/zrAkuBFGfeBr2m0bgVTLtwGoZuI7zu6kjA==
+pkgroll@1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/pkgroll/-/pkgroll-1.3.1.tgz#50cafe3b710dece6344599598f20ed27506c2291"
+  integrity sha512-1yeY/qH7u87cXuy9bl1TUEgK3wyxswgwK7tv9k8eGmjJ9jF57mk9kmI3G6Nan8FOY4JkmXEnKNwvQ325Eon2vQ==
   dependencies:
     "@rollup/plugin-alias" "^3.1.9"
     "@rollup/plugin-commonjs" "^22.0.0"

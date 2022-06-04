@@ -47,7 +47,7 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
-    "cleye": "1.2.0",
+    "cleye": "1.2.1",
     "isarray": "2.0.5",
     "swagger-jsdoc": "6.2.1"
   },

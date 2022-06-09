@@ -10,7 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@stoplight/elements": "7.5.19",
+    "@stoplight/elements": "7.5.20",
     "@xstyled/styled-components": "3.6.0",
     "@xstyled/system": "3.6.0",
     "isarray": "2.0.5",

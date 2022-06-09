@@ -672,16 +672,16 @@
     "@sentry/types" "6.19.7"
     tslib "^1.9.3"
 
-"@stoplight/elements-core@~7.5.19":
-  version "7.5.19"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.5.19.tgz#f7b778303fb72c5ca748bd5f5a90f7dd067cce04"
-  integrity sha512-GgLsXV78nC7WPGKTsffpnDzGQj2DD43RWbUC7oePTgGuLbnEszYcy6Ia018MiXoqq/Y4NAkxsA7rUjssSlUJcQ==
+"@stoplight/elements-core@~7.5.20":
+  version "7.5.20"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.5.20.tgz#6815e69688af1c8aed9df5cbb8151cfcdafadea8"
+  integrity sha512-nT7Btuvv0H46t9dSAso1ZCbMc0e9C/lFm39Ajbn9oN52ZNaMLqP90Z2nN/s76S4ju82xcnXy5VLoy6TtLttJYg==
   dependencies:
     "@fortawesome/free-solid-svg-icons" "^5.14.0"
-    "@stoplight/json" "^3.18.0"
+    "@stoplight/json" "^3.18.1"
     "@stoplight/json-schema-ref-parser" "^9.0.5"
     "@stoplight/json-schema-sampler" "0.2.2"
-    "@stoplight/json-schema-viewer" "^4.5.1"
+    "@stoplight/json-schema-viewer" "^4.6.0"
     "@stoplight/markdown-viewer" "^5.4.7"
     "@stoplight/mosaic" "^1.19.1"
     "@stoplight/mosaic-code-editor" "^1.19.1"
@@ -689,7 +689,7 @@
     "@stoplight/path" "^1.3.2"
     "@stoplight/react-error-boundary" "^2.0.0"
     "@stoplight/types" "^13.0.0"
-    "@stoplight/yaml" "^4.2.2"
+    "@stoplight/yaml" "^4.2.3"
     classnames "^2.2.6"
     httpsnippet "^1.24.0"
     jotai "1.3.9"
@@ -697,36 +697,36 @@
     lodash "^4.17.19"
     nanoid "^3.1.32"
     prop-types "^15.7.2"
-    react-query "^3.15.2"
+    react-query "^3.34.19"
     react-router-dom "^5.2.0"
     react-router-hash-link "^2.1.0"
     tslib "^2.1.0"
     urijs "^1.19.11"
     util "^0.12.4"
-    xml-formatter "^2.4.0"
+    xml-formatter "^2.6.1"
 
-"@stoplight/elements@7.5.19":
-  version "7.5.19"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.5.19.tgz#e374207844f3ed3289646ff5f7f1ab8ac6deb5ab"
-  integrity sha512-rZVuF11AP98MbHSM2xAkKFMgp9l6CMMtLgJL9kiUGPxlj4CaoPDCEQz1HDgvDQHu5EYQrCWDOEaQw0SfNMUr/g==
+"@stoplight/elements@7.5.20":
+  version "7.5.20"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.5.20.tgz#84bc4f608206ed31a0cb79cc575d12a112476fbf"
+  integrity sha512-BxoTlID/12ZoRcBJ2ydAYgLvyNsHcH48NBruR8anvBw9VGckXR795zXeG8EtT7HEoyrJ0tqxWfq9ajSUJzXywg==
   dependencies:
     "@fortawesome/free-solid-svg-icons" "^5.14.0"
-    "@stoplight/elements-core" "~7.5.19"
-    "@stoplight/http-spec" "^5.1.0"
-    "@stoplight/json" "^3.18.0"
+    "@stoplight/elements-core" "~7.5.20"
+    "@stoplight/http-spec" "^5.1.4"
+    "@stoplight/json" "^3.18.1"
     "@stoplight/mosaic" "^1.16.2"
     "@stoplight/types" "^13.0.0"
-    "@stoplight/yaml" "^4.2.2"
+    "@stoplight/yaml" "^4.2.3"
     classnames "^2.2.6"
     file-saver "^2.0.5"
     lodash "^4.17.19"
-    react-query "^3.15.2"
+    react-query "^3.34.19"
     react-router-dom "^5.2.0"
 
-"@stoplight/http-spec@^5.1.0":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@stoplight/http-spec/-/http-spec-5.1.4.tgz#85677ed0b238794f0ee7fc6b48e192c623d29598"
-  integrity sha512-9TC1iNvDWC8XI3w8vMVwSYBWXTx67PhwYPntm/izbsUIIJ17Y/9KZ04WtqrlqBdF4GLfTXq6ysdRiuYSc0H48Q==
+"@stoplight/http-spec@^5.1.4":
+  version "5.1.7"
+  resolved "https://registry.yarnpkg.com/@stoplight/http-spec/-/http-spec-5.1.7.tgz#59d6ab42640f2da343963c87680e0ac9c28e0562"
+  integrity sha512-ZLo6SXXH3h+k0x0cE52eEKqKNGT+nTdACV90OZLKRXjdAZQw5gFWlx1TOt8JA8TgaHvDhFkzyyLVajOyA1F3WQ==
   dependencies:
     "@stoplight/json" "^3.18.1"
     "@stoplight/json-schema-generator" "1.0.1"
@@ -795,10 +795,10 @@
     "@types/json-schema" "^7.0.7"
     magic-error "0.0.1"
 
-"@stoplight/json-schema-viewer@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@stoplight/json-schema-viewer/-/json-schema-viewer-4.5.1.tgz#1bd271197e4579a9a58e75b70fb0a23fd0302a18"
-  integrity sha512-03eTbyb5tLgheXyZG45SHKHdkNCeaTvON+7/efxfnLJfHh2eN1EChsIN+FydRqhIzd27gVdVC95NtqOmeM97GQ==
+"@stoplight/json-schema-viewer@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@stoplight/json-schema-viewer/-/json-schema-viewer-4.6.0.tgz#e2587da709dc74a4f6ac9c1b3f56b52c91b163cd"
+  integrity sha512-hqzv57bDcupG3zGN8JTfsnYi90B1EkcLmKws0Ody+OSYelV1yAD8DVVzVPi5cPKaDaiLETHEW8M5dy8KpwoCMg==
   dependencies:
     "@fortawesome/free-solid-svg-icons" "^5.15.2"
     "@stoplight/json" "^3.17.1"
@@ -809,7 +809,7 @@
     jotai "^1.4.5"
     lodash "^4.17.19"
 
-"@stoplight/json@^3.12.0", "@stoplight/json@^3.17.1", "@stoplight/json@^3.18.0", "@stoplight/json@^3.18.1":
+"@stoplight/json@^3.12.0", "@stoplight/json@^3.17.1", "@stoplight/json@^3.18.1":
   version "3.18.1"
   resolved "https://registry.yarnpkg.com/@stoplight/json/-/json-3.18.1.tgz#725b34b24e8b0c0f73113362be54c7a4f294cdba"
   integrity sha512-QmELAqBS8DC+8YuG7+OvDVP6RaUVi8bzN0KKW2UEcZg+0a1sqeeZgfW079AmJIZg8HEN7udAt4iozIB8Dm0t1Q==
@@ -990,7 +990,7 @@
   resolved "https://registry.yarnpkg.com/@stoplight/yaml-ast-parser/-/yaml-ast-parser-0.0.48.tgz#442b21f419427acaa8a3106ebc5d73351c407002"
   integrity sha512-sV+51I7WYnLJnKPn2EMWgS4EUfoP4iWEbrWwbXsj0MZCB/xOK8j6+C9fntIdOM50kpx45ZLC3s6kwKivWuqvyg==
 
-"@stoplight/yaml@^4.0.2", "@stoplight/yaml@^4.2.2":
+"@stoplight/yaml@^4.0.2", "@stoplight/yaml@^4.2.2", "@stoplight/yaml@^4.2.3":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/@stoplight/yaml/-/yaml-4.2.3.tgz#d177664fecd6b2fd0d4f264f1078550c30cfd8d1"
   integrity sha512-Mx01wjRAR9C7yLMUyYFTfbUf5DimEpHMkRDQ1PKLe9dfNILbgdxyrncsOXM3vCpsQ1Hfj4bPiGl+u4u6e9Akqw==
@@ -4819,10 +4819,10 @@ react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-query@^3.15.2:
-  version "3.38.0"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.38.0.tgz#e7f4081e45ba47a4119e548ddcfd0fab18f0580e"
-  integrity sha512-VRbCTRrDfC5FsB70+JfZuxFRv9SAvkZ1h36MsN8+QaDN+NWB6s1vJndqpoLQnJqN0COTG2zsInMq0KFdYze6TA==
+react-query@^3.34.19:
+  version "3.39.1"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.1.tgz#3876c0fdac7a3b5a84e195534e5fa8fbdd628847"
+  integrity sha512-qYKT1bavdDiQZbngWZyPotlBVzcBjDYEJg5RQLBa++5Ix5jjfbEYJmHSZRZD+USVHUSvl/ey9Hu+QfF1QAK80A==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
@@ -6098,7 +6098,7 @@ xml-but-prettier@^1.0.1:
   dependencies:
     repeat-string "^1.5.2"
 
-xml-formatter@^2.4.0:
+xml-formatter@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/xml-formatter/-/xml-formatter-2.6.1.tgz#066ef3a100bd58ee3b943f0c503be63176d3d497"
   integrity sha512-dOiGwoqm8y22QdTNI7A+N03tyVfBlQ0/oehAzxIZtwnFAHGeSlrfjF73YQvzSsa/Kt6+YZasKsrdu6OIpuBggw==

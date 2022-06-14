@@ -16,8 +16,8 @@
     "isarray": "2.0.5",
     "next": "12.1.6",
     "next-swagger-doc": "0.3.4",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "styled-components": "5.3.5",
     "swagger-ui-react": "latest"
   },

@@ -57,7 +57,7 @@
     "@types/swagger-jsdoc": "6.0.1",
     "@typescript-eslint/eslint-plugin": "5.28.0",
     "@typescript-eslint/parser": "5.28.0",
-    "@vitest/ui": "0.15.0",
+    "@vitest/ui": "0.15.1",
     "all-contributors-cli": "6.20.0",
     "c8": "7.11.3",
     "eslint": "8.17.0",

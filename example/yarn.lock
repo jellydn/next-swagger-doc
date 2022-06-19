@@ -1033,7 +1033,7 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
-"@types/json-schema@7.0.11", "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.9":
+"@types/json-schema@7.0.11", "@types/json-schema@^7.0.11", "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
@@ -1128,10 +1128,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@18.0.12":
-  version "18.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.12.tgz#cdaa209d0a542b3fcf69cf31a03976ec4cdd8840"
-  integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
+"@types/react@18.0.14":
+  version "18.0.14"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.14.tgz#e016616ffff51dba01b04945610fe3671fdbe06d"
+  integrity sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -1897,47 +1897,47 @@ core-js-pure@^3.20.2:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.20.3.tgz#6cc4f36da06c61d95254efc54024fe4797fd5d02"
   integrity sha512-Q2H6tQ5MtPtcC7f3HxJ48i4Q7T9ybPKgvWyuH7JXIoNa2pm0KuBnycsET/qw1SLLZYfbsbrZQNMeIOClb+6WIA==
 
-core-types-graphql@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/core-types-graphql/-/core-types-graphql-1.4.0.tgz#5b40da8c4ed2dcbebe4356e6e2930359027f6fc4"
-  integrity sha512-jRqCHdrZ7fGOdM41QyGGTsNxGIgozYkNrjNPRUWdr2MsnOjM+rz7wwugpkAj5MHoN6PwvSsJh1svvWq725YlPA==
+core-types-graphql@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/core-types-graphql/-/core-types-graphql-1.5.0.tgz#575d5302b7062501547dd4751de716c9fe4c09a7"
+  integrity sha512-kpCIuZOQCl/7deKpjOTCHsniOcdOlOqJIzGwmI71Ll/F1hkuqRpJN3G4dkAfKXcPUxBdoCyzENlznZ5SF5Yt4Q==
   dependencies:
     core-types "^1.10.0"
-    graphql "^15.5.0"
+    graphql "^16.5.0"
 
-core-types-json-schema@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/core-types-json-schema/-/core-types-json-schema-1.6.2.tgz#99eb64f9cae0c29486b7c98fcaaa826413bad588"
-  integrity sha512-KIvY2s+Fk40RqIgbKpqPIYpVtfsg+wq5J/fQC8xVM+UiTYT6pw3FozBemtUCeHiSE+NKTkv7QJQe/CyT+kaRPg==
+core-types-json-schema@^1.6.3:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/core-types-json-schema/-/core-types-json-schema-1.7.0.tgz#5b9806501e993554a86b7c39e7622ba109f01046"
+  integrity sha512-2C7uAMhFIdXZPvlV4dAN7DVfIt1g28PNsJUDQ4hMDIZE9P78iDN7AvFC9RTxqm3L9k9lV3La6V59RXydfqslYA==
   dependencies:
-    "@types/json-schema" "^7.0.9"
+    "@types/json-schema" "^7.0.11"
     core-types "^1.10.0"
     jsonpos "^1.1.0"
     openapi-json-schema "^1.1.3"
 
-core-types-suretype@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/core-types-suretype/-/core-types-suretype-1.4.1.tgz#36011c97ecbd611f9f362ed1285f4610bd6d7726"
-  integrity sha512-O7XrUNvSWpEj7llkoEe09i/FTLHksqdy77SWKoFPMSfFE6dN+qpqyLW2MQOu3WqCb4dyj6fcSK/8DPBzoLEblQ==
+core-types-suretype@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/core-types-suretype/-/core-types-suretype-2.0.0.tgz#94c66bb29f1a9e85b45d9a0e7edd0edb792cea53"
+  integrity sha512-vIQD9M95FIVPTBFfofnlgGyMqc/drk7oQhmTreIGSBH6f/051aOZ0G50fpsu1NjxCI+rjWmGFbDNsNyFjpfiPw==
   dependencies:
     "@types/json-schema" "^7.0.9"
     core-types "^1.10.0"
-    core-types-json-schema "^1.6.2"
-    core-types-ts "^1.5.0"
+    core-types-json-schema "^1.6.3"
+    core-types-ts "^2.0.0"
     json-schema-cycles "^1.1.0"
     jsonpos "^1.1.0"
     openapi-json-schema "^1.1.3"
     suretype "^2.4.1"
     toposort "^2.0.2"
-    typescript "^4.4.3"
+    typescript "^4.7.4"
 
-core-types-ts@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/core-types-ts/-/core-types-ts-1.5.0.tgz#4675c5990a571ddfc6e2a69a69f09b2fb16f865e"
-  integrity sha512-iJK7Kq8bwoThZNITtyOSz5diWb+H6FJRxyk5Yai+iY8ef5XpTNUs7uRsR8U/jrlVN0WulgeDEbUzUeUhGj02FQ==
+core-types-ts@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/core-types-ts/-/core-types-ts-2.0.0.tgz#06506d38cefb665edb8c64e13d5d5b49acb92e51"
+  integrity sha512-2gM33bDptTKgjL8m8O7TjhRQbvD7duxPZH5ce+sGaths4HN2FYasMB/NqcYoV+glbF+0DGIIr3giwPyvlZERFg==
   dependencies:
     core-types "^1.10.0"
-    typescript "^4.4.3"
+    typescript "^4.7.4"
 
 core-types@^1.10.0:
   version "1.10.0"
@@ -2467,10 +2467,10 @@ eslint-visitor-keys@^3.3.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
-eslint@8.17.0:
-  version "8.17.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.17.0.tgz#1cfc4b6b6912f77d24b874ca1506b0fe09328c21"
-  integrity sha512-gq0m0BTJfci60Fz4nczYxNAlED+sMcihltndR8t9t1evnU/azx53x3t2UHXC/uRjcbvRw/XctpaNygSTcQD+Iw==
+eslint@8.18.0:
+  version "8.18.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.18.0.tgz#78d565d16c993d0b73968c523c0446b13da784fd"
+  integrity sha512-As1EfFMVk7Xc6/CvhssHUjsAQSkpfXvUGMFC3ce8JDe6WvqCgRrLOBQbVpsBFr1X1V+RACOadnzVvcUS5ni2bA==
   dependencies:
     "@eslint/eslintrc" "^1.3.0"
     "@humanwhocodes/config-array" "^0.9.2"
@@ -2960,10 +2960,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-graphql@^15.5.0:
-  version "15.8.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.8.0.tgz#33410e96b012fa3bdb1091cc99a94769db212b38"
-  integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
+graphql@^16.5.0:
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.5.0.tgz#41b5c1182eaac7f3d47164fb247f61e4dfb69c85"
+  integrity sha512-qbHgh8Ix+j/qY+a/ZcJnFQ+j8ezakqPiHwPiZhV/3PgGlgf96QMBB5/f2rkiC9sgLoy/xvT6TSiaf2nTHJh5iA==
 
 har-schema@^2.0.0:
   version "2.0.0"
@@ -5693,33 +5693,28 @@ type-is@^1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typeconv@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/typeconv/-/typeconv-1.7.0.tgz#2823f13e8db2a922459abd5c47cbf7a4dc397a82"
-  integrity sha512-RHDkzqld8eqSvJNIDvLt51N8Y6vZZmu4/Mi2hNS+kxTxQBaJ2oRA3swBmv7SpIKxPshN+yV+0D+MVi1JCV3TLw==
+typeconv@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/typeconv/-/typeconv-1.8.0.tgz#d2598af1291472b87864798b8c4b5c8186b210ed"
+  integrity sha512-Xi+ZmqJCjcPwuHpcCYIJaOjOGFyfLKDWEwIIXze3Kc6GBto1VM78Pl4EGw/bJWjKdzaics7Gtr1DgnYocsQiHw==
   dependencies:
     "@babel/code-frame" "^7.15.8"
     already "^2.1.0"
     chalk "^4.1.2"
     core-types "^1.10.0"
-    core-types-graphql "^1.4.0"
-    core-types-json-schema "^1.6.2"
-    core-types-suretype "^1.4.1"
-    core-types-ts "^1.5.0"
+    core-types-graphql "^1.5.0"
+    core-types-json-schema "^1.6.3"
+    core-types-suretype "^2.0.0"
+    core-types-ts "^2.0.0"
     globby "^11.0.3"
     js-yaml "^4.1.0"
     oppa "^0.4.0"
     terminal-link "^2.1.1"
 
-typescript@4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
-  integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
-
-typescript@^4.4.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
-  integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
+typescript@4.7.4, typescript@^4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

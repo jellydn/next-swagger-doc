@@ -24,17 +24,17 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "3.2.0",
     "@types/node": "16.11.41",
-    "@types/react": "18.0.12",
+    "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
     "@types/swagger-jsdoc": "6.0.1",
     "@typescript-eslint/eslint-plugin": "5.28.0",
     "cpy-cli": "4.1.0",
-    "eslint": "8.17.0",
+    "eslint": "8.18.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "12.1.6",
     "eslint-plugin-react": "7.30.0",
     "prettier": "2.7.1",
-    "typeconv": "1.7.0",
-    "typescript": "4.7.3"
+    "typeconv": "1.8.0",
+    "typescript": "4.7.4"
   }
 }

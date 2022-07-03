@@ -10,7 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@stoplight/elements": "7.5.20",
+    "@stoplight/elements": "7.6.0",
     "@xstyled/styled-components": "3.6.0",
     "@xstyled/system": "3.6.0",
     "isarray": "2.0.5",
@@ -23,13 +23,13 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "3.2.0",
-    "@types/node": "16.11.42",
+    "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
     "@types/swagger-jsdoc": "6.0.1",
-    "@typescript-eslint/eslint-plugin": "5.30.0",
+    "@typescript-eslint/eslint-plugin": "5.30.4",
     "cpy-cli": "4.1.0",
-    "eslint": "8.18.0",
+    "eslint": "8.19.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "12.2.0",
     "eslint-plugin-react": "7.30.1",

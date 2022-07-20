@@ -806,10 +806,10 @@
     "@sentry/types" "6.19.7"
     tslib "^1.9.3"
 
-"@stoplight/elements-core@~7.6.0":
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.6.0.tgz#3f4fad39bb493563ca137e0eccd468274d93f2f0"
-  integrity sha512-yL+DeqQezHfDw1MBAYa7nfEOdJQ9YXbKr3g/01cpvyaNPTUOfIF3eWN7dZLChigC/cu0/R4PShOfEiykXeQJGA==
+"@stoplight/elements-core@~7.6.1":
+  version "7.6.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.6.1.tgz#612eec893c076c8610ea147ede8e4c3b9031daef"
+  integrity sha512-EBGFnJi/n8p2R8Zhu/QPSqvhTeIxbJB7COeGbJs5wd1HBjdKlaFwmGw3ZK3lo/2715E8geTW/GLqfnxd+H6jvg==
   dependencies:
     "@stoplight/json" "^3.18.1"
     "@stoplight/json-schema-ref-parser" "^9.0.5"
@@ -838,12 +838,12 @@
     util "^0.12.4"
     xml-formatter "^2.6.1"
 
-"@stoplight/elements@7.6.0":
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.6.0.tgz#d4203aa5801c914d91a6d1cbd9684d83db003a0d"
-  integrity sha512-RC8fjAsFNncGNexfuZ5XNatx0QHsgDDUTxJLy73a7hGK+QdzN9XYv13gjmYI6DmQ8vmp7F/K/ku2So3RDz73tw==
+"@stoplight/elements@7.6.1":
+  version "7.6.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.6.1.tgz#b18b0dd695ab50d8f25bed49c292245f9d87a6b6"
+  integrity sha512-UXJZ9+SpyyiuYw60B8tzd2PrdEOckrWdwyYTSSzj31mT3WT0eEQQm44w3abpI3OQCuocnWgG/QOaofF1QNp4OA==
   dependencies:
-    "@stoplight/elements-core" "~7.6.0"
+    "@stoplight/elements-core" "~7.6.1"
     "@stoplight/http-spec" "^5.1.4"
     "@stoplight/json" "^3.18.1"
     "@stoplight/mosaic" "^1.24.0"

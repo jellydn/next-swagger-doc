@@ -1920,10 +1920,10 @@ clean-stack@^4.0.0:
   dependencies:
     escape-string-regexp "5.0.0"
 
-cleye@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/cleye/-/cleye-1.2.0.tgz#ab6479ad1364e959bc87746579bbe556496d9761"
-  integrity sha512-91phRUNIHDJz+DDKsJQP5t0a82/PGaxpzbhbU+l6qJFRd35u0f0SCpovxWtWhYe6QGfypuj5E4e7k0U7/DRHtw==
+cleye@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/cleye/-/cleye-1.2.1.tgz#d43c47a8cdc740ce4e38aea7ff2ef9ccb96b8eb5"
+  integrity sha512-DjoWA/dFn1rQypY4juFH4IvjVxXxld4o92bmkGPR+uZNqBMpvDXx1VUmL93p2R5CBwSWt83eEe/SLPqtQahZNg==
   dependencies:
     terminal-columns "^1.4.1"
     type-flag "^2.1.0"
@@ -4456,14 +4456,14 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-next-swagger-doc@0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.4.tgz#6f4e23f23af3ed14e223285809be4a29f61cea7c"
-  integrity sha512-HhMzSlcos+MmvxEE09qgTz7QI5sYIQ1LRNSKcQ306k7UTiADtOB+UK/b5nRqr5Le3rxsP1fF8LfA+RHRbdUqhg==
+next-swagger-doc@0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.5.tgz#71164035a050d01ca21e63af1c5dd4155990ecfc"
+  integrity sha512-0xOvJnUE/lXfaRVK6mvO01taVq6MFODPlHZeR7QqnXCWWFJqxJleMR5bntL4ylE6fh4KXuxaAn/oaKN5z9mKBg==
   dependencies:
-    cleye "1.2.0"
+    cleye "1.2.1"
     isarray "2.0.5"
-    swagger-jsdoc "6.2.1"
+    swagger-jsdoc "6.2.2"
 
 next@12.2.3:
   version "12.2.3"
@@ -5825,10 +5825,10 @@ swagger-client@^3.18.4:
     traverse "~0.6.6"
     url "~0.11.0"
 
-swagger-jsdoc@6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/swagger-jsdoc/-/swagger-jsdoc-6.2.1.tgz#2f3f67c8433ae2c09e7e318d2f8fd9e09f0166b3"
-  integrity sha512-l2BwFf7wzNPb11+NRRy65X+kuHUGLb3ZuGFn6A8xDXXTu73YzJmCiy+LED/6QsOgPBPgO3u3sDEz6KuOHAlCtA==
+swagger-jsdoc@6.2.2:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/swagger-jsdoc/-/swagger-jsdoc-6.2.2.tgz#0420bc6826faa5fb4d55ebba913ddc376b120c75"
+  integrity sha512-yEGsoRycqgY2aCoYuyQTLLUKDdPmrntquF1z4BP5KBk7mWSEnfoG7PofrLPGI3zuYT6M4Bi9Lk/vMVQQS12IhQ==
   dependencies:
     commander "6.2.0"
     doctrine "3.0.0"

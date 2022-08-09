@@ -4456,14 +4456,14 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
 
-next-swagger-doc@0.3.5:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.5.tgz#71164035a050d01ca21e63af1c5dd4155990ecfc"
-  integrity sha512-0xOvJnUE/lXfaRVK6mvO01taVq6MFODPlHZeR7QqnXCWWFJqxJleMR5bntL4ylE6fh4KXuxaAn/oaKN5z9mKBg==
+next-swagger-doc@0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/next-swagger-doc/-/next-swagger-doc-0.3.6.tgz#2afc327822faf3c8e5f71f1eef6a59c730520517"
+  integrity sha512-cfnWixZqBcOjitahkheK3+NVlpe+kSYh01SQlEuWJmRrj+2zeQrp9xOm4i50Ty0TGDZ95OLE2u8knyGpavX/BQ==
   dependencies:
     cleye "1.2.1"
     isarray "2.0.5"
-    swagger-jsdoc "6.2.2"
+    swagger-jsdoc "6.2.5"
 
 next@12.2.4:
   version "12.2.4"
@@ -5825,10 +5825,10 @@ swagger-client@^3.18.4:
     traverse "~0.6.6"
     url "~0.11.0"
 
-swagger-jsdoc@6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/swagger-jsdoc/-/swagger-jsdoc-6.2.2.tgz#0420bc6826faa5fb4d55ebba913ddc376b120c75"
-  integrity sha512-yEGsoRycqgY2aCoYuyQTLLUKDdPmrntquF1z4BP5KBk7mWSEnfoG7PofrLPGI3zuYT6M4Bi9Lk/vMVQQS12IhQ==
+swagger-jsdoc@6.2.5:
+  version "6.2.5"
+  resolved "https://registry.yarnpkg.com/swagger-jsdoc/-/swagger-jsdoc-6.2.5.tgz#65bffa142276436b2b131255f59a6b55384a0e8e"
+  integrity sha512-l+cdsKS2y+QDhrH1TJSUiE0y9XKuf5xaGSatjf0hR/wjTlMpO8WfubBK9d/nASdbHPMtj9iJZLBH2ogBEhL7Sw==
   dependencies:
     commander "6.2.0"
     doctrine "3.0.0"

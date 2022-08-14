@@ -4098,10 +4098,10 @@ validator@^12.0.0:
   resolved "https://registry.npmjs.org/validator/-/validator-12.2.0.tgz"
   integrity sha512-jJfE/DW6tIK1Ek8nCfNFqt8Wb3nzMoAbocBF6/Icgg1ZFSBpObdnwVY2jQj6qUqzhx5jc71fpvBWyLGO7Xl+nQ==
 
-vite@3.0.6:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.6.tgz#08e85ebaa34a3b647cb1365c87675b45f3511be0"
-  integrity sha512-pjfsWIzfUlQME/VAmU6SsjdHkTt6WAHysuqPkHDcjzNu6IGtxDSZ/VfRYOwHaCqX4M3Ivz0kxuSfAPM6gAIX+w==
+vite@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.7.tgz#f1e379857e9c5d652126f8b20d371e1365eb700f"
+  integrity sha512-dILhvKba1mbP1wCezVQx/qhEK7/+jVn9ciadEcyKMMhZpsuAi/eWZfJRMkmYlkSFG7Qq9NvJbgFq4XOBxugJsA==
   dependencies:
     esbuild "^0.14.47"
     postcss "^8.4.16"

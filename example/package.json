@@ -35,6 +35,6 @@
     "eslint-plugin-react": "7.31.0",
     "prettier": "2.7.1",
     "typeconv": "1.8.0",
-    "typescript": "4.7.4"
+    "typescript": "4.8.2"
   }
 }

@@ -811,10 +811,10 @@
     "@sentry/types" "6.19.7"
     tslib "^1.9.3"
 
-"@stoplight/elements-core@~7.6.4":
-  version "7.6.4"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.6.4.tgz#cc29ee7037d5917642f9ee88840688196c71c19f"
-  integrity sha512-dvdtOpv9DT7PRrme58PLs1xNVct8KPQWstCrcXhFuyFJxEz3JXYl9otCwOhvfI4XCDUtVQwzi0dNRIpXH8rTgA==
+"@stoplight/elements-core@~7.6.5":
+  version "7.6.5"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.6.5.tgz#d9021fc18ffffc13a760cb1c977d8b8f6b690f95"
+  integrity sha512-guBGi8TjFEJZZJtNcl8g+jQhtYev0z2d8Xpe6M6GFyNBk/0Lw1L1cN5Rx1oM2TWBgqElVQDIea6VG9BxHNOKMg==
   dependencies:
     "@stoplight/json" "^3.18.1"
     "@stoplight/json-schema-ref-parser" "^9.0.5"
@@ -829,7 +829,7 @@
     "@stoplight/types" "^13.0.0"
     "@stoplight/yaml" "^4.2.3"
     classnames "^2.2.6"
-    httpsnippet "^1.24.0"
+    httpsnippet "^2.0.0"
     jotai "1.3.9"
     json-schema "^0.4.0"
     lodash "^4.17.19"
@@ -843,12 +843,12 @@
     util "^0.12.4"
     xml-formatter "^2.6.1"
 
-"@stoplight/elements@7.6.4":
-  version "7.6.4"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.6.4.tgz#2b577d0713992e28607dd4a560d21a8204cf5f52"
-  integrity sha512-9o3YwDupwx9BHeuTHaRJjm6J7I89o5evDpVoPRD8gMUXb+00H1Zd5QCkIv4W/hKA6NoKIwjXu48Vz7YVMaJ5OQ==
+"@stoplight/elements@7.6.5":
+  version "7.6.5"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.6.5.tgz#1fb4c1ecf3aff68d9ff6f87c4379e4e89e3fb4a8"
+  integrity sha512-kdSoOQVBo6+KBa5Ex5qSZHp/A9payZYGzA/NjJ9qCGSCcqUb5hpTmAmUHTyp1Zc4RCTogmbF73qKegBJCQXdmA==
   dependencies:
-    "@stoplight/elements-core" "~7.6.4"
+    "@stoplight/elements-core" "~7.6.5"
     "@stoplight/http-spec" "^5.1.4"
     "@stoplight/json" "^3.18.1"
     "@stoplight/mosaic" "^1.24.5"
@@ -3399,10 +3399,10 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-httpsnippet@^1.24.0:
-  version "1.25.0"
-  resolved "https://registry.yarnpkg.com/httpsnippet/-/httpsnippet-1.25.0.tgz#c7efaef9e3b980c6ba03652a45efcb0b8480a1d0"
-  integrity sha512-jobE6S923cLuf5BPG6Jf+oLBRkPzv2RPp0dwOHcWwj/t9FwV/t9hyZ46kpT3Q5DHn9iFNmGhrcmmFUBqyjoTQg==
+httpsnippet@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/httpsnippet/-/httpsnippet-2.0.0.tgz#695bc2e662535b37a993d25f40b3496b5ae82350"
+  integrity sha512-Hb2ttfB5OhasYxwChZ8QKpYX3v4plNvwMaMulUIC7M3RHRDf1Op6EMp47LfaU2sgQgfvo5spWK4xRAirMEisrg==
   dependencies:
     chalk "^1.1.1"
     commander "^2.9.0"
@@ -3412,7 +3412,6 @@ httpsnippet@^1.24.0:
     fs-readfile-promise "^2.0.1"
     fs-writefile-promise "^1.0.3"
     har-validator "^5.0.0"
-    pinkie-promise "^2.0.0"
     stringify-object "^3.3.0"
 
 hyphenate-style-name@^1.0.2:
@@ -4817,22 +4816,10 @@ pinkie-promise@^1.0.0:
   dependencies:
     pinkie "^1.0.0"
 
-pinkie-promise@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
-  integrity sha1-ITXW36ejWMBprJsXh3YogihFD/o=
-  dependencies:
-    pinkie "^2.0.0"
-
 pinkie@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-1.0.0.tgz#5a47f28ba1015d0201bda7bf0f358e47bec8c7e4"
   integrity sha1-Wkfyi6EBXQIBvae/DzWOR77Ix+Q=
-
-pinkie@^2.0.0:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
-  integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
 polished@^4.1.3:
   version "4.2.2"

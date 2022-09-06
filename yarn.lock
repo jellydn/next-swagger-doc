@@ -787,10 +787,10 @@
     "@typescript-eslint/types" "5.36.1"
     eslint-visitor-keys "^3.3.0"
 
-"@vitest/ui@0.23.0":
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.23.0.tgz#f96f9fe8996ee8712668e40f6457212692d25f1e"
-  integrity sha512-o0zGtldsBlIhu6Whd3ldMEeu1Vx46FPdBpxuG9zamHzNk88PSCJdErRe946Nxsrfi18Z/8cclL+tJPivCmJwBA==
+"@vitest/ui@0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.23.1.tgz#de3e95b7cc01137767d64c4a8464f2d586009925"
+  integrity sha512-W1ygPK4aTyLTPsf6NX3gZFbH0X1ipNzlHhxTRnZ4/HpQXs/qKw5NDY45/U2yC66Fevj5kXHI1tdrNfN00NouFQ==
   dependencies:
     sirv "^2.0.2"
 

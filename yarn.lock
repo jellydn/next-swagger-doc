@@ -3673,10 +3673,10 @@ sirv@^2.0.2:
     mrmime "^1.0.0"
     totalist "^3.0.0"
 
-size-limit@8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-8.0.1.tgz#4c89666e93fe38c893e4b03b7d1131ca78108e94"
-  integrity sha512-VHrozqkQTYfcv1OlZIRIL0x6f+xhZ3TT+RTXC5AvKn/yA+3PIWERrKWqHMJPD7G/Vi0SuBtWAn3IvCGx2/UB1g==
+size-limit@8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-8.1.0.tgz#75e8368ffd22e1d23ec611fcba2597f913955ed2"
+  integrity sha512-bUL+Uyyt/G+a1XzKlI2WKHVDepmXtqMDhF65pdtjccheiQTNjExWW4nFefgbRL2QgNTzRfK6ayFKjO3o4ER4gg==
   dependencies:
     bytes-iec "^3.1.1"
     chokidar "^3.5.3"

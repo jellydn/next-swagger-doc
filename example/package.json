@@ -12,7 +12,7 @@
   "dependencies": {
     "@stoplight/elements": "7.7.2",
     "@xstyled/styled-components": "3.6.0",
-    "@xstyled/system": "3.6.0",
+    "@xstyled/system": "3.7.0",
     "isarray": "2.0.5",
     "next": "12.3.1",
     "next-swagger-doc": "0.3.6",

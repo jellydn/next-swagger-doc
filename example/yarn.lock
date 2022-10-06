@@ -1498,7 +1498,15 @@
     "@xstyled/system" "^3.6.0"
     "@xstyled/util" "^3.5.1"
 
-"@xstyled/system@3.6.0", "@xstyled/system@^3.6.0":
+"@xstyled/system@3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/system/-/system-3.7.0.tgz#ed2c4f87c62eead93e112e71147fd816699759a3"
+  integrity sha512-110+yxP3zJSCr6Qyy89GMvaKhrR/3ezVyAGVOYsyUBz2u0+p3uAJ7uHKro2Pcwbt7V6oc7D5nTQVaOLasKMPCg==
+  dependencies:
+    "@xstyled/util" "^3.7.0"
+    csstype "^3.1.1"
+
+"@xstyled/system@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@xstyled/system/-/system-3.6.0.tgz#a61cd542d39c02dad9932d97075e7a15d82036d4"
   integrity sha512-JnEck581S/HqpgGgPBb7ZMSe0UzGvsAl8Lqcr8pTTqChUG/rK4/BNXk4wlxwJraV76Wo/tXjpUDepuNMlhj+cQ==
@@ -1510,6 +1518,11 @@
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@xstyled/util/-/util-3.5.1.tgz#ab8118652b28bb86bbdaf14fa04b4e61905ff86b"
   integrity sha512-Pf3/t+Xkp+2kKN+vfzBEeyIlO2M1HSOGgb47apgntcqTxYiVms/GrXR4ROKUoMtcLscY9+6xduA+7febPehY1g==
+
+"@xstyled/util@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/util/-/util-3.7.0.tgz#513c045dda0847d43b39612b6d36cc38b507e82d"
+  integrity sha512-rYtXRcNh+pgRxGnciP0Mas21mpyOzcCTVy7w9uIByQk3EytwBQjDiN6wCasXibkw49Urfti5efsklRbCl5QZww==
 
 abort-controller@^3.0.0:
   version "3.0.0"
@@ -2239,6 +2252,11 @@ csstype@^3.0.8:
   version "3.0.11"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.11.tgz#d66700c5eacfac1940deb4e3ee5642792d85cd33"
   integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
+
+csstype@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
+  integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
 damerau-levenshtein@^1.0.7:
   version "1.0.8"

@@ -1481,43 +1481,30 @@
   resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
   integrity sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==
 
-"@xstyled/core@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@xstyled/core/-/core-3.6.0.tgz#035114646ce126fca052e731bf825c9a12361a50"
-  integrity sha512-QctV7zYmGaQLw9hvATaJEF2aO0gNALJyw8+JBPPDTKZMQNvyfqCRjzb8V0Q20qL1S+PnvxU8i/MeW4lKabA6mw==
+"@xstyled/core@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/core/-/core-3.7.0.tgz#b6ea2c4b059ca9d808ffdf3800406eaddd2a9491"
+  integrity sha512-4U7PnDf4DnCWPwLRpyyCocQXod5T3Ap+h0nIwdJyZtHB35sjUXsEO8Cp8wP9lqbn/bnWkqhaL79StjUEmIIvrQ==
   dependencies:
-    "@xstyled/system" "^3.6.0"
-    "@xstyled/util" "^3.5.1"
+    "@xstyled/system" "^3.7.0"
+    "@xstyled/util" "^3.7.0"
 
-"@xstyled/styled-components@3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@xstyled/styled-components/-/styled-components-3.6.0.tgz#a1a1d49f3b1ada05abee6c00e06cefa452a21c57"
-  integrity sha512-ZoNl6bfztNOq8D5lSEeLeKHRCi1ozMG7yezKjg5mZ1+f9b0SUyj4Fp+1IY8V36YX2h7WTRTQFLFUd0j09mt6aA==
+"@xstyled/styled-components@3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@xstyled/styled-components/-/styled-components-3.7.0.tgz#28c9ca3ee675fa320faeccbb4c20116b0c98ec25"
+  integrity sha512-5zUmlC6v3wvBPHrhFUawu0FBYwHzGTFlGZYrZob54QMu9Sv1tFjgMVwGCp4uOLK9kVrRVyTVwWXejKXpyeGFVg==
   dependencies:
-    "@xstyled/core" "^3.6.0"
-    "@xstyled/system" "^3.6.0"
-    "@xstyled/util" "^3.5.1"
+    "@xstyled/core" "^3.7.0"
+    "@xstyled/system" "^3.7.0"
+    "@xstyled/util" "^3.7.0"
 
-"@xstyled/system@3.7.0":
+"@xstyled/system@3.7.0", "@xstyled/system@^3.7.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@xstyled/system/-/system-3.7.0.tgz#ed2c4f87c62eead93e112e71147fd816699759a3"
   integrity sha512-110+yxP3zJSCr6Qyy89GMvaKhrR/3ezVyAGVOYsyUBz2u0+p3uAJ7uHKro2Pcwbt7V6oc7D5nTQVaOLasKMPCg==
   dependencies:
     "@xstyled/util" "^3.7.0"
     csstype "^3.1.1"
-
-"@xstyled/system@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@xstyled/system/-/system-3.6.0.tgz#a61cd542d39c02dad9932d97075e7a15d82036d4"
-  integrity sha512-JnEck581S/HqpgGgPBb7ZMSe0UzGvsAl8Lqcr8pTTqChUG/rK4/BNXk4wlxwJraV76Wo/tXjpUDepuNMlhj+cQ==
-  dependencies:
-    "@xstyled/util" "^3.5.1"
-    csstype "^3.0.8"
-
-"@xstyled/util@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@xstyled/util/-/util-3.5.1.tgz#ab8118652b28bb86bbdaf14fa04b4e61905ff86b"
-  integrity sha512-Pf3/t+Xkp+2kKN+vfzBEeyIlO2M1HSOGgb47apgntcqTxYiVms/GrXR4ROKUoMtcLscY9+6xduA+7febPehY1g==
 
 "@xstyled/util@^3.7.0":
   version "3.7.0"
@@ -2247,11 +2234,6 @@ csstype@^3.0.6:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
   integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
-
-csstype@^3.0.8:
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.11.tgz#d66700c5eacfac1940deb4e3ee5642792d85cd33"
-  integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
 
 csstype@^3.1.1:
   version "3.1.1"

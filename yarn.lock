@@ -3956,19 +3956,7 @@ validator@^12.0.0:
   resolved "https://registry.npmjs.org/validator/-/validator-12.2.0.tgz"
   integrity sha512-jJfE/DW6tIK1Ek8nCfNFqt8Wb3nzMoAbocBF6/Icgg1ZFSBpObdnwVY2jQj6qUqzhx5jc71fpvBWyLGO7Xl+nQ==
 
-vite@3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.1.5.tgz#fb650af04334ddb1b0769adfdfab93c702df93d6"
-  integrity sha512-V4Avke0b7h2zTWVJf8vq6TE3aH061NQ3b1ixHQyqdoE/5HIVsxVLCyTLjJtHVcsJ5fIKSHvOtflWpgavHS8RPw==
-  dependencies:
-    esbuild "^0.15.9"
-    postcss "^8.4.16"
-    resolve "^1.22.1"
-    rollup "~2.78.0"
-  optionalDependencies:
-    fsevents "~2.3.2"
-
-vite@^3.0.0:
+vite@3.1.7, vite@^3.0.0:
   version "3.1.7"
   resolved "https://registry.yarnpkg.com/vite/-/vite-3.1.7.tgz#9fc2b57a395f79175d38fa3cffd15080b0d9cbfc"
   integrity sha512-5vCAmU4S8lyVdFCInu9M54f/g8qbOMakVw5xJ4pjoaDy5wgy9sLLZkGdSLN52dlsBqh0tBqxjaqqa8LgPqwRAA==

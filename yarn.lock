@@ -4000,10 +4000,10 @@ type-flag@^2.1.0:
   resolved "https://registry.yarnpkg.com/type-flag/-/type-flag-2.1.0.tgz#9d3c7c84804032d4e03b4877a866c25c122c1136"
   integrity sha512-ln8u/BdNzppXeFP8JsmsofElwVC2/FYoQAIipzhx45jjFwSApFqIieBEY93TKoLpphQBAbazX8LCoIY59Vwxlg==
 
-typedoc@0.23.17:
-  version "0.23.17"
-  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.23.17.tgz#ca644e7ecac78be85cfd556f5436917a4ac76dda"
-  integrity sha512-3rtNubo1dK0pvs6ixpMAq4pESULd5/JNUqJbdyZoeilI14reb1RNVomN4fMgIadd0RMX1aenYjJSSMBOJ+/+0Q==
+typedoc@0.23.18:
+  version "0.23.18"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.23.18.tgz#61fe79bc016c8367cc02135b96f5c7406b199007"
+  integrity sha512-0Tq/uFkUuWyRYyjOShTkhsOm6u5E8wf0i6L76/k5znEaxvWKHGeT2ywZThGrDrryV/skO/REM824D1gm8ccQuA==
   dependencies:
     lunr "^2.3.9"
     marked "^4.0.19"

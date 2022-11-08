@@ -1,5 +1,14 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    "group:allNonMajor",
+    ":pinAllExceptPeerDependencies"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "automerge": true,
+  "major": {
+    "automerge": false
+  }
 }

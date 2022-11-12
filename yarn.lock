@@ -1239,10 +1239,10 @@ clean-stack@^2.0.0:
   resolved "https://registry.npmjs.org/clean-stack/-/clean-stack-2.2.0.tgz"
   integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
 
-cleye@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/cleye/-/cleye-1.3.0.tgz#810777fd4e4e361faf3a7fe369ed0905d7b26eff"
-  integrity sha512-IZ0mRzFQeeQwQk6gT1KIjxa0U86VdFmVB+EIlW3t1Wl1jZShTuWbCu11LcfOA6kODYJ2K7AwgVEb4b7TxN/s2A==
+cleye@1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/cleye/-/cleye-1.3.1.tgz#ff891e9aeda20c34516e78b2cf510fcba4ae05cf"
+  integrity sha512-8Za9ohNiygniCAHj6sVKJFI1FkEdmJM7XGA+tI3TVMSf9wQ1o8k0I6CZSRDx4AG5WZuqr0Zj4i/6Bw1TdoMyJQ==
   dependencies:
     terminal-columns "^1.4.1"
     type-flag "^3.0.0"

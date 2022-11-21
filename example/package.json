@@ -10,7 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@stoplight/elements": "7.7.6",
+    "@stoplight/elements": "7.7.7",
     "@xstyled/styled-components": "3.7.0",
     "@xstyled/system": "3.7.0",
     "isarray": "2.0.5",
@@ -27,7 +27,7 @@
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "@types/swagger-jsdoc": "6.0.1",
-    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/eslint-plugin": "5.44.0",
     "cpy-cli": "4.2.0",
     "eslint": "8.28.0",
     "eslint-config-airbnb": "19.0.4",

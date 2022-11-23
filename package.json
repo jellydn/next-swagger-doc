@@ -70,7 +70,7 @@
     "lint-staged": "13.0.3",
     "next": "13.0.4",
     "pkgroll": "1.4.0",
-    "prettier": "2.7.1",
+    "prettier": "2.8.0",
     "size-limit": "8.1.0",
     "sort-package-json": "2.1.0",
     "tslib": "2.4.1",

@@ -2901,10 +2901,10 @@ pify@^5.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-5.0.0.tgz#1f5eca3f5e87ebec28cc6d54a0e4aaf00acc127f"
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
-pkgroll@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/pkgroll/-/pkgroll-1.5.0.tgz#9b2a3e729ea797699914a570232d3c85987fa1fd"
-  integrity sha512-jXwfar831lKFpQV6bWnbvmqQCfaBh35syNOeklYNBZ07I1FRv0N7QjV+ewMdExQjXzt5hD3rZ/GvU8NubNGPjw==
+pkgroll@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/pkgroll/-/pkgroll-1.6.0.tgz#5aea7b714fe23fea303cce4dd176279c8ceb57b6"
+  integrity sha512-gVr6+WPpVHnm2WxaVImyA3tocXLtUI/cOB8r3p7PR7mMDycCFrsKyw46zCGcs3XU1fXxnC4oe6k8f4/3X8SRzw==
   dependencies:
     "@rollup/plugin-alias" "^3.1.9"
     "@rollup/plugin-commonjs" "^22.0.2"

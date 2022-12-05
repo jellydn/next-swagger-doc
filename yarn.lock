@@ -2901,10 +2901,10 @@ pify@^5.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-5.0.0.tgz#1f5eca3f5e87ebec28cc6d54a0e4aaf00acc127f"
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
-pkgroll@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/pkgroll/-/pkgroll-1.6.0.tgz#5aea7b714fe23fea303cce4dd176279c8ceb57b6"
-  integrity sha512-gVr6+WPpVHnm2WxaVImyA3tocXLtUI/cOB8r3p7PR7mMDycCFrsKyw46zCGcs3XU1fXxnC4oe6k8f4/3X8SRzw==
+pkgroll@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/pkgroll/-/pkgroll-1.7.0.tgz#7631893212ba20e372d06a2fe21ea92486085763"
+  integrity sha512-rP6cx/LTD6fXabCTY72aAJbJU0T0MKkHIJmsT8yLBvZRc2zWllv2XkjkHejcuuxTCtoZpyV0+RTX9ZupK/psBg==
   dependencies:
     "@rollup/plugin-alias" "^3.1.9"
     "@rollup/plugin-commonjs" "^22.0.2"
@@ -3567,7 +3567,19 @@ validator@^13.6.0:
   resolved "https://registry.yarnpkg.com/validator/-/validator-13.7.0.tgz#4f9658ba13ba8f3d82ee881d3516489ea85c0857"
   integrity sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==
 
-vite@3.2.4, vite@^3.0.0:
+vite@3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.5.tgz#dee5678172a8a0ab3e547ad4148c3d547f90e86a"
+  integrity sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==
+  dependencies:
+    esbuild "^0.15.9"
+    postcss "^8.4.18"
+    resolve "^1.22.1"
+    rollup "^2.79.1"
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+vite@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.4.tgz#d8c7892dd4268064e04fffbe7d866207dd24166e"
   integrity sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==

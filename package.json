@@ -57,7 +57,7 @@
     "@types/swagger-jsdoc": "6.0.1",
     "@typescript-eslint/eslint-plugin": "5.45.1",
     "@typescript-eslint/parser": "5.45.1",
-    "@vitest/ui": "0.25.4",
+    "@vitest/ui": "0.25.5",
     "all-contributors-cli": "6.24.0",
     "c8": "7.12.0",
     "eslint": "8.29.0",
@@ -77,7 +77,7 @@
     "typedoc": "0.23.21",
     "typescript": "4.9.3",
     "vite": "3.2.5",
-    "vitest": "0.25.4"
+    "vitest": "0.25.5"
   },
   "peerDependencies": {
     "next": ">=9"

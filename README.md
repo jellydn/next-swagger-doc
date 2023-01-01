@@ -15,6 +15,8 @@
 
 > Generate Swagger JSON API from NextJS Api Routes
 
+<sub>If you enjoy working with next-swagger-doc, you will love [next-validations: NextJS API Validations, support Zod, Yup, Fastest-Validator, Joi, and more](https://github.com/jellydn/next-validations)</sub>
+
 ## 🏠 [Homepage](https://github.com/jellydn/next-swagger-doc)
 
 ### ✨ [Demo](https://next-swagger-doc-demo.productsway.com/api-doc)

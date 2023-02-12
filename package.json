@@ -71,7 +71,7 @@
     "next": "13.1.6",
     "pkgroll": "1.8.2",
     "prettier": "2.8.4",
-    "size-limit": "8.1.2",
+    "size-limit": "8.2.4",
     "sort-package-json": "2.4.1",
     "tslib": "2.5.0",
     "typedoc": "0.23.25",

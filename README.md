@@ -166,6 +166,43 @@ yarn dev
 Then open http://localhost:3000/api-doc or http://localhost:3000/ on your browser
 ![./example-screenshot.png](./example-screenshot.png)
 
+## Linter
+In order to set an eslint rule that checks that all the APIs actually have a swagger JsDoc description we can use the following settings:
+
+Install the JsDoc eslint plugin:
+```sh
+yarn add -D eslint-plugin-jsdoc
+```
+
+Create the custom rule in your eslint configuration file:
+```json
+{
+    //...your configuration
+    "overrides": [
+        //...your overrides
+        {
+            // Force the setting of a swagger description on each api endpoint
+            "files": ["pages/api/**/*.ts"], 
+            "plugins": ["jsdoc"],
+            "rules": {
+                "jsdoc/no-missing-syntax": [
+                "error",
+                {
+                    "contexts": [
+                    {
+                        "comment": "JsdocBlock:has(JsdocTag[tag=swagger])",
+                        "context": "any",
+                        "message": "@swagger documentation is required on each API. Check this out for syntax info: https://github.com/jellydn/next-swagger-doc"
+                    }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+
 ## Author
 
 👤 **Huynh Duc Dung**

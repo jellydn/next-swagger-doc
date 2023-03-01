@@ -1,10 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 import { NextApiRequest, NextApiResponse } from 'next';
 import { join } from 'path';
-import swaggerJsdoc, { Options } from 'swagger-jsdoc';
+import swaggerJsdoc, { OAS3Definition, Options } from 'swagger-jsdoc';
 
 type SwaggerOptions = Options & {
   apiFolder?: string;
   schemaFolders?: string[];
+  definition: OAS3Definition;
   outputFile?: string;
 };
 
@@ -52,9 +54,26 @@ export function createSwaggerSpec({
       ),
     ];
   });
+
+  // Append base path server element to server array
+  // Conditions: basePath is specified. Server array is not defined.
+  const definition = {
+    ...swaggerOptions.definition,
+    ...(process.env.__NEXT_ROUTER_BASEPATH
+      && !swaggerOptions.definition.servers && {
+      servers: [
+        {
+          url: process.env.__NEXT_ROUTER_BASEPATH,
+          description: 'next-js',
+        },
+      ],
+    }),
+  };
+
   const options: Options = {
     apis, // files containing annotations as above
     ...swaggerOptions,
+    definition,
   };
   const spec = swaggerJsdoc(options);
 

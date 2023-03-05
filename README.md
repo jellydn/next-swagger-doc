@@ -2,7 +2,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -167,14 +167,17 @@ Then open http://localhost:3000/api-doc or http://localhost:3000/ on your browse
 ![./example-screenshot.png](./example-screenshot.png)
 
 ## Linter
+
 In order to set an eslint rule that checks that all the APIs actually have a swagger JsDoc description we can use the following settings:
 
 Install the JsDoc eslint plugin:
+
 ```sh
 yarn add -D eslint-plugin-jsdoc
 ```
 
 Create the custom rule in your eslint configuration file:
+
 ```json
 {
     //...your configuration
@@ -182,7 +185,7 @@ Create the custom rule in your eslint configuration file:
         //...your overrides
         {
             // Force the setting of a swagger description on each api endpoint
-            "files": ["pages/api/**/*.ts"], 
+            "files": ["pages/api/**/*.ts"],
             "plugins": ["jsdoc"],
             "rules": {
                 "jsdoc/no-missing-syntax": [
@@ -201,7 +204,6 @@ Create the custom rule in your eslint configuration file:
     ]
 }
 ```
-
 
 ## Author
 
@@ -231,14 +233,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://productsway.com/"><img src="https://avatars.githubusercontent.com/u/870029?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dung Duc Huynh (Kaka)</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=jellydn" title="Code">💻</a> <a href="https://github.com/jellydn/next-swagger-doc/commits?author=jellydn" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/tmirkovic"><img src="https://avatars.githubusercontent.com/u/6806116?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tmirkovic</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=tmirkovic" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://holloway.co.nz/"><img src="https://avatars.githubusercontent.com/u/620580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matthew Holloway</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=holloway" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/leventemihaly"><img src="https://avatars.githubusercontent.com/u/11655496?v=4?s=100" width="100px;" alt=""/><br /><sub><b>leventemihaly</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=leventemihaly" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/pahrizal"><img src="https://avatars.githubusercontent.com/u/36581242?v=4?s=100" width="100px;" alt=""/><br /><sub><b>PAHRIZAL MA'RUP</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=pahrizal" title="Code">💻</a></td>
-    <td align="center"><a href="https://ariskk.com/"><img src="https://avatars.githubusercontent.com/u/4972825?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aris</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=ariskk" title="Documentation">📖</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://productsway.com/"><img src="https://avatars.githubusercontent.com/u/870029?v=4?s=100" width="100px;" alt="Dung Duc Huynh (Kaka)"/><br /><sub><b>Dung Duc Huynh (Kaka)</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=jellydn" title="Code">💻</a> <a href="https://github.com/jellydn/next-swagger-doc/commits?author=jellydn" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tmirkovic"><img src="https://avatars.githubusercontent.com/u/6806116?v=4?s=100" width="100px;" alt="tmirkovic"/><br /><sub><b>tmirkovic</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=tmirkovic" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://holloway.co.nz/"><img src="https://avatars.githubusercontent.com/u/620580?v=4?s=100" width="100px;" alt="Matthew Holloway"/><br /><sub><b>Matthew Holloway</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=holloway" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/leventemihaly"><img src="https://avatars.githubusercontent.com/u/11655496?v=4?s=100" width="100px;" alt="leventemihaly"/><br /><sub><b>leventemihaly</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=leventemihaly" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/pahrizal"><img src="https://avatars.githubusercontent.com/u/36581242?v=4?s=100" width="100px;" alt="PAHRIZAL MA'RUP"/><br /><sub><b>PAHRIZAL MA'RUP</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=pahrizal" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://ariskk.com/"><img src="https://avatars.githubusercontent.com/u/4972825?v=4?s=100" width="100px;" alt="Aris"/><br /><sub><b>Aris</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=ariskk" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://valerioageno.me/"><img src="https://avatars.githubusercontent.com/u/51341197?v=4?s=100" width="100px;" alt="Valerio Ageno"/><br /><sub><b>Valerio Ageno</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=Valerioageno" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->

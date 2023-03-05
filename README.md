@@ -2,7 +2,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -242,6 +242,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/pahrizal"><img src="https://avatars.githubusercontent.com/u/36581242?v=4?s=100" width="100px;" alt="PAHRIZAL MA'RUP"/><br /><sub><b>PAHRIZAL MA'RUP</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=pahrizal" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://ariskk.com/"><img src="https://avatars.githubusercontent.com/u/4972825?v=4?s=100" width="100px;" alt="Aris"/><br /><sub><b>Aris</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=ariskk" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://valerioageno.me/"><img src="https://avatars.githubusercontent.com/u/51341197?v=4?s=100" width="100px;" alt="Valerio Ageno"/><br /><sub><b>Valerio Ageno</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=Valerioageno" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/cachho"><img src="https://avatars.githubusercontent.com/u/14180064?v=4?s=100" width="100px;" alt="cachho"/><br /><sub><b>cachho</b></sub></a><br /><a href="https://github.com/jellydn/next-swagger-doc/commits?author=cachho" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

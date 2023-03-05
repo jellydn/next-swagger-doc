@@ -73,6 +73,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "cachho",
+      "name": "cachho",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14180064?v=4",
+      "profile": "https://github.com/cachho",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

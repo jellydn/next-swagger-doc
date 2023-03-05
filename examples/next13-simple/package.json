@@ -15,7 +15,7 @@
     "@xstyled/system": "3.7.0",
     "isarray": "2.0.5",
     "next": "13.2.3",
-    "next-swagger-doc": "0.3.6",
+    "next-swagger-doc": "next",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "5.3.8",

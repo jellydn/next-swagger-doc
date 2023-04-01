@@ -12,3 +12,73 @@ exports[`withSwagger > should create default swagger json option 1`] = `
   "tags": [],
 }
 `;
+
+exports[`withSwagger > should have Bearer Authentication 1`] = `
+{
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "bearerFormat": "JWT",
+        "scheme": "bearer",
+        "type": "http",
+      },
+    },
+  },
+  "info": {
+    "title": "NextJS Swagger",
+    "version": "0.1.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {},
+  "security": [
+    {
+      "bearerAuth": [],
+    },
+  ],
+  "tags": [],
+}
+`;
+
+exports[`withSwagger > should have support OAuth2 Authentication 1`] = `
+{
+  "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "description": "OAuth2 authentication with a bearer token.",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://example.com/authorize",
+            "scopes": {
+              "read:pets": "read your pets",
+              "write:pets": "modify pets in your account",
+            },
+          },
+          "password": {
+            "scopes": {
+              "read:pets": "read your pets",
+              "write:pets": "modify pets in your account",
+            },
+            "tokenUrl": "https://example.com/token",
+          },
+        },
+        "type": "oauth2",
+      },
+    },
+  },
+  "info": {
+    "title": "NextJS Swagger",
+    "version": "0.1.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {},
+  "security": [
+    {
+      "OAuth2": [
+        "read",
+        "write",
+      ],
+    },
+  ],
+  "tags": [],
+}
+`;

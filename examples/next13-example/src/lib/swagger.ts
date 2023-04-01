@@ -10,6 +10,29 @@ export const getApiDocs = async () => {
         title: 'Next Swagger API Example',
         version: '1.0',
       },
+      components: {
+        securitySchemes: {
+          BearerAuth: {
+            type: 'http',
+            scheme: 'bearer',
+            bearerFormat: 'JWT',
+          },
+          OAuth2: {
+            type: 'oauth2',
+            flows: {
+              authorizationCode: {
+                authorizationUrl: 'https://example.com/oauth/authorize',
+                tokenUrl: 'https://example.com/oauth/token',
+                scopes: {
+                  read: 'Grants read access',
+                  write: 'Grants write access',
+                },
+              },
+            },
+          },
+        },
+      },
+      security: [],
     },
   });
   return spec;

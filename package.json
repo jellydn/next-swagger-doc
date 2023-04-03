@@ -55,8 +55,8 @@
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
-    "@typescript-eslint/eslint-plugin": "5.57.0",
-    "@typescript-eslint/parser": "5.57.0",
+    "@typescript-eslint/eslint-plugin": "5.57.1",
+    "@typescript-eslint/parser": "5.57.1",
     "@vitest/ui": "0.29.8",
     "all-contributors-cli": "6.24.0",
     "c8": "7.13.0",

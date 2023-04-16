@@ -3699,10 +3699,10 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typedoc@0.24.2:
-  version "0.24.2"
-  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.24.2.tgz#5de4be6f4f4e8f77ab0e916c7222d14e8f162e32"
-  integrity sha512-Ln1EItgcdKfRzaFSfs9uEc4amz9ZeUZoaTbFdH0ZC8ScA2OjvNMdW7vrjTtZwKE0iF38njUmuFFgQMP4tDl7ag==
+typedoc@0.24.4:
+  version "0.24.4"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.24.4.tgz#bae677982115f94b9c6bc5d2bfa133350de7fedd"
+  integrity sha512-vQuliyGhJEGeKzzCFHbkS3m0gHoIL6cfr0fHf6eX658iGELtq2J9mWe0b+X5McEYgFoMuHFt5Py3Zug6Sxjn/Q==
   dependencies:
     lunr "^2.3.9"
     marked "^4.3.0"

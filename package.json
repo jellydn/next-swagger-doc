@@ -73,7 +73,7 @@
     "prettier": "2.8.8",
     "size-limit": "8.2.4",
     "sort-package-json": "2.4.1",
-    "tslib": "2.5.0",
+    "tslib": "2.5.1",
     "typedoc": "0.24.7",
     "typescript": "5.0.4",
     "vite": "4.3.7",

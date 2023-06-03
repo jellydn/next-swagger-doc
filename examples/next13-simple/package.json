@@ -10,31 +10,31 @@
     "start": "next start"
   },
   "dependencies": {
-    "@stoplight/elements": "7.7.14",
-    "@xstyled/styled-components": "3.7.5",
-    "@xstyled/system": "3.7.5",
+    "@stoplight/elements": "7.7.17",
+    "@xstyled/styled-components": "3.8.0",
+    "@xstyled/system": "3.8.0",
     "isarray": "2.0.5",
-    "next": "13.2.4",
+    "next": "13.4.4",
     "next-swagger-doc": "next",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "5.3.9",
+    "styled-components": "5.3.11",
     "swagger-ui-react": "latest"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.31",
-    "@types/react-dom": "18.0.11",
+    "@types/node": "20.2.5",
+    "@types/react": "18.2.8",
+    "@types/react-dom": "18.2.4",
     "@types/swagger-jsdoc": "6.0.1",
-    "@typescript-eslint/eslint-plugin": "5.57.0",
+    "@typescript-eslint/eslint-plugin": "5.59.8",
     "cpy-cli": "4.2.0",
-    "eslint": "8.37.0",
+    "eslint": "8.42.0",
     "eslint-config-airbnb": "19.0.4",
-    "eslint-config-next": "13.2.4",
+    "eslint-config-next": "13.4.4",
     "eslint-plugin-react": "7.32.2",
-    "prettier": "2.8.7",
-    "typeconv": "2.2.0",
-    "typescript": "5.0.3"
+    "prettier": "2.8.8",
+    "typeconv": "2.3.0",
+    "typescript": "5.1.3"
   }
 }

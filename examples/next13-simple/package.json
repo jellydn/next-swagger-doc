@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "next13-simple",
   "version": "0.1.1",
   "private": true,
   "scripts": {
@@ -30,9 +30,7 @@
     "@typescript-eslint/eslint-plugin": "5.59.8",
     "cpy-cli": "4.2.0",
     "eslint": "8.42.0",
-    "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "13.4.4",
-    "eslint-plugin-react": "7.32.2",
     "prettier": "2.8.8",
     "typeconv": "2.3.0",
     "typescript": "5.1.3"

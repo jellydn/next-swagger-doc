@@ -137,6 +137,8 @@ export async function GET(_request: Request) {
 
 Now, navigate to `localhost:3000/api-doc` (or wherever you host your Next.js application), and you should see the swagger UI.
 
+![https://gyazo.com/6bfa919c4969b000615df6bb9cabcd02.gif](https://gyazo.com/6bfa919c4969b000615df6bb9cabcd02.gif)
+
 ## Usage #2: Create an single API document
 
 ```sh

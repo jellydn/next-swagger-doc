@@ -38,7 +38,106 @@ This package reads your JSDoc-annotated source code on [NextJS API route](https:
 yarn add next-swagger-doc
 ```
 
-## Usage #1: Create an single API document
+## Usage #1: next-swagger-doc with Next.js 13
+
+To incorporate `next-swagger-doc` with your Next.js 13 project, follow these steps. This setup will generate Swagger documentation for your API based on your code and provide a built-in Swagger UI for viewing the documentation.
+
+### 1. Create Swagger Spec
+
+Next, create a new file `lib/swagger.ts`. This file uses the `next-swagger-doc` library to create a Swagger specification based on the API routes in your Next.js project.
+
+```javascript
+import { createSwaggerSpec } from 'next-swagger-doc';
+
+export const getApiDocs = async () => {
+  const spec = createSwaggerSpec({
+    apiFolder: 'app/api', // define api folder under app folder
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Next Swagger API Example',
+        version: '1.0',
+      },
+      components: {
+        securitySchemes: {
+          BearerAuth: {
+            type: 'http',
+            scheme: 'bearer',
+            bearerFormat: 'JWT',
+          },
+        },
+      },
+      security: [],
+    },
+  });
+  return spec;
+};
+```
+
+### 2. Create Swagger UI Component
+
+Create a new file `app/api-doc/react-swagger.tsx`. This file exports a React component that uses `swagger-ui-react` to display the Swagger UI based on the given spec.
+
+```javascript
+'use client';
+
+import SwaggerUI from 'swagger-ui-react';
+import 'swagger-ui-react/swagger-ui.css';
+
+type Props = {
+  spec: Record<string, any>,
+};
+
+function ReactSwagger({ spec }: Props) {
+  return <SwaggerUI spec={spec} />;
+}
+
+export default ReactSwagger;
+```
+
+### 3. Create API Documentation Page
+
+Create a new file `app/api-doc/page.tsx`. This page imports the Swagger spec and the Swagger UI component to display the Swagger documentation.
+
+```javascript
+import { getApiDocs } from '@/lib/swagger';
+import ReactSwagger from './react-swagger';
+
+export default async function IndexPage() {
+  const spec = await getApiDocs();
+  return (
+    <section className="container">
+      <ReactSwagger spec={spec} />
+    </section>
+  );
+}
+```
+
+### 4. Add Swagger Comment to API Route
+
+Lastly, add a Swagger comment to your API route in `app/api/hello/route.ts`. This comment includes metadata about the API endpoint which will be read by `next-swagger-doc` and included in the Swagger spec.
+
+```javascript
+/**
+ * @swagger
+ * /api/hello:
+ *   get:
+ *     description: Returns the hello world
+ *     responses:
+ *       200:
+ *         description: Hello World!
+ */
+export async function GET(_request: Request) {
+  // Do whatever you want
+  return new Response('Hello World!', {
+    status: 200,
+  });
+}
+```
+
+Now, navigate to `localhost:3000/api-doc` (or wherever you host your Next.js application), and you should see the swagger UI.
+
+## Usage #2: Create an single API document
 
 ```sh
 yarn add next-swagger-doc swagger-ui-react
@@ -83,7 +182,7 @@ export default ApiDoc;
 
 ![https://gyazo.com/af250bab0d07f931c596ebc8c955ae2e.gif](https://gyazo.com/af250bab0d07f931c596ebc8c955ae2e.gif)
 
-## Usage #2: Use NextJS API route to create Swagger JSON spec
+## Usage #3: Use NextJS API route to create Swagger JSON spec
 
 - Step 1: Create an api route on nextjs, e.g: `pages/api/doc.ts`
 
@@ -130,7 +229,7 @@ export default handler;
 
 ![https://gyazo.com/0bcf45f0e15778a5cb851b40526324f3.gif](https://gyazo.com/0bcf45f0e15778a5cb851b40526324f3.gif)
 
-## Usage 3: Generate Swagger file from CLI
+## Usage #4: Generate Swagger file from CLI
 
 - Step 1: create a JSON config file as `next-swagger-doc.json`
 
@@ -255,7 +354,3 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
----
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

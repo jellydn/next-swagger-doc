@@ -1076,10 +1076,10 @@ bytes-iec@^3.1.1:
   resolved "https://registry.yarnpkg.com/bytes-iec/-/bytes-iec-3.1.1.tgz#94cd36bf95c2c22a82002c247df8772d1d591083"
   integrity sha512-fey6+4jDK7TFtFg/klGSvNKJctyU7n2aQdnM+CO0ruLPbqqMOM8Tio0Pc+deqUeVKX1tL5DQep1zQ7+37aTAsA==
 
-c8@7.14.0:
-  version "7.14.0"
-  resolved "https://registry.yarnpkg.com/c8/-/c8-7.14.0.tgz#f368184c73b125a80565e9ab2396ff0be4d732f3"
-  integrity sha512-i04rtkkcNcCf7zsQcSv/T9EbUn4RXQ6mropeMcjFOsQXQ0iGLAr/xT6TImQg4+U9hmNpN9XdvPkjUL1IzbgxJw==
+c8@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/c8/-/c8-8.0.0.tgz#99c7408fbbafaa5630ddc80881adbfe461fc6c8f"
+  integrity sha512-XHA5vSfCLglAc0Xt8eLBZMv19lgiBSjnb1FLAQgnwkuhJYEonpilhEB4Ea3jPAbm0FhD6VVJrc0z73jPe7JyGQ==
   dependencies:
     "@bcoe/v8-coverage" "^0.2.3"
     "@istanbuljs/schema" "^0.1.3"

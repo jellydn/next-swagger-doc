@@ -55,8 +55,8 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.0.2",
     "@skypack/package-check": "0.2.2",
-    "@typescript-eslint/eslint-plugin": "5.60.0",
-    "@typescript-eslint/parser": "5.60.0",
+    "@typescript-eslint/eslint-plugin": "5.60.1",
+    "@typescript-eslint/parser": "5.60.1",
     "@vitest/ui": "0.32.2",
     "all-contributors-cli": "6.26.0",
     "c8": "8.0.0",

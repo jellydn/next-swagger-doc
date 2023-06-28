@@ -1,8 +1,8 @@
 import '@stoplight/elements/styles.min.css';
 import {
+  defaultTheme,
   Preflight,
   ThemeProvider,
-  defaultTheme,
   x,
 } from '@xstyled/styled-components';
 import dynamic from 'next/dynamic';
@@ -17,24 +17,11 @@ const APIDocumentUI = dynamic<{
   {
     ssr: false,
     loading: () => <p>Loading...</p>,
-  },
+  }
 );
 
 const theme = {
   ...defaultTheme,
-  // Customize your theme here
-  colors: {
-    text: '#000',
-    background: '#fff',
-    primary: '#07c',
-    modes: {
-      dark: {
-        text: '#fff',
-        background: '#000',
-        primary: '#0cf',
-      },
-    },
-  },
 };
 
 export default function Playground() {

@@ -60,7 +60,7 @@
     "@vitest/ui": "0.32.2",
     "all-contributors-cli": "6.26.0",
     "c8": "8.0.0",
-    "eslint": "8.43.0",
+    "eslint": "8.44.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",

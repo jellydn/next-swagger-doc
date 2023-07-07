@@ -68,7 +68,7 @@
     "eslint-plugin-react": "7.32.2",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
-    "next": "13.4.8",
+    "next": "13.4.9",
     "pkgroll": "1.10.0",
     "prettier": "3.0.0",
     "size-limit": "8.2.6",
@@ -76,7 +76,7 @@
     "tslib": "2.6.0",
     "typedoc": "0.24.8",
     "typescript": "5.1.6",
-    "vite": "4.4.1",
+    "vite": "4.4.2",
     "vitest": "0.33.0"
   },
   "peerDependencies": {

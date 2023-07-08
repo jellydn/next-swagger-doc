@@ -72,7 +72,7 @@
     "pkgroll": "1.10.0",
     "prettier": "3.0.0",
     "size-limit": "8.2.6",
-    "sort-package-json": "2.5.0",
+    "sort-package-json": "2.5.1",
     "tslib": "2.6.0",
     "typedoc": "0.24.8",
     "typescript": "5.1.6",

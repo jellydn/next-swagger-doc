@@ -53,14 +53,14 @@
     "swagger-jsdoc": "6.2.8"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "4.0.2",
+    "@ianvs/prettier-plugin-sort-imports": "4.1.0",
     "@skypack/package-check": "0.2.2",
     "@typescript-eslint/eslint-plugin": "6.0.0",
     "@typescript-eslint/parser": "6.0.0",
     "@vitest/ui": "0.33.0",
     "all-contributors-cli": "6.26.1",
     "c8": "8.0.0",
-    "eslint": "8.44.0",
+    "eslint": "8.45.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",

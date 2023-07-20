@@ -26,7 +26,7 @@ devDependencies:
     specifier: 0.2.2
     version: 0.2.2
   '@types/node':
-    specifier: ^20.4.2
+    specifier: 20.4.2
     version: 20.4.2
   '@typescript-eslint/eslint-plugin':
     specifier: 6.1.0
@@ -35,7 +35,7 @@ devDependencies:
     specifier: 6.1.0
     version: 6.1.0(eslint@8.45.0)(typescript@5.1.6)
   '@vitest/coverage-v8':
-    specifier: ^0.33.0
+    specifier: 0.33.0
     version: 0.33.0(vitest@0.33.0)
   '@vitest/ui':
     specifier: 0.33.0

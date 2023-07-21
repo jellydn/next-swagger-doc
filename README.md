@@ -163,6 +163,7 @@ function ApiDoc({ spec }: InferGetStaticPropsType<typeof getStaticProps>) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const spec: Record<string, any> = createSwaggerSpec({
+    apiFolder: 'pages/api' // or 'src/pages/api',
     definition: {
       openapi: '3.0.0',
       info: {

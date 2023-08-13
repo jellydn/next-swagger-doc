@@ -69,7 +69,7 @@
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-react": "7.33.1",
     "husky": "8.0.3",
-    "lint-staged": "13.2.3",
+    "lint-staged": "13.3.0",
     "next": "13.4.13",
     "pkgroll": "1.11.0",
     "prettier": "3.0.1",

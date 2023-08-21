@@ -68,8 +68,8 @@ devDependencies:
     specifier: 8.0.3
     version: 8.0.3
   lint-staged:
-    specifier: 14.0.0
-    version: 14.0.0
+    specifier: 14.0.1
+    version: 14.0.1
   next:
     specifier: 13.4.19
     version: 13.4.19(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
@@ -3066,8 +3066,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /lint-staged@14.0.0:
-    resolution: {integrity: sha512-0tLf0pqZYkar/wu3nTctk4rVIG+d7PanDYv4/IQR4qwdqfQkTDziLRFnqMcLuLBTuUqmcLwsHPD2EjQ18d/oaA==}
+  /lint-staged@14.0.1:
+    resolution: {integrity: sha512-Mw0cL6HXnHN1ag0mN/Dg4g6sr8uf8sn98w2Oc1ECtFto9tvRF7nkXGJRbx8gPlHyoR0pLyBr2lQHbWwmUHe1Sw==}
     engines: {node: ^16.14.0 || >=18.0.0}
     hasBin: true
     dependencies:

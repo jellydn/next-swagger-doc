@@ -1,9 +1,8 @@
-/* eslint-disable no-underscore-dangle */
-import { NextApiRequest, NextApiResponse } from 'next';
+import { type NextApiRequest, type NextApiResponse } from 'next';
 import { join } from 'path';
-import swaggerJsdoc, { OAS3Definition, Options } from 'swagger-jsdoc';
+import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
 
-type SwaggerOptions = Options & {
+export type SwaggerOptions = Options & {
   apiFolder?: string;
   schemaFolders?: string[];
   definition: OAS3Definition;
@@ -44,13 +43,13 @@ export function createSwaggerSpec({
     const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'json', 'swagger.yaml'];
     return [
       ...fileTypes.map((fileType) => `${apiDirectory}/**/*.${fileType}`),
-      // only scan build directory for *.swagger.yaml and *.js files
+      // Only scan build directory for *.swagger.yaml and *.js files
       ...['js', 'swagger.yaml', 'json'].map(
-        (fileType) => `${buildApiDirectory}/**/*.${fileType}`,
+        (fileType) => `${buildApiDirectory}/**/*.${fileType}`
       ),
-      // support load static files from public directory
+      // Support load static files from public directory
       ...['swagger.yaml', 'json'].map(
-        (fileType) => `${publicDirectory}/**/*.${fileType}`,
+        (fileType) => `${publicDirectory}/**/*.${fileType}`
       ),
     ];
   });
@@ -59,19 +58,19 @@ export function createSwaggerSpec({
   // Conditions: basePath is specified. Server array is not defined.
   const definition = {
     ...swaggerOptions.definition,
-    ...(process.env.__NEXT_ROUTER_BASEPATH
-      && !swaggerOptions.definition.servers && {
-      servers: [
-        {
-          url: process.env.__NEXT_ROUTER_BASEPATH,
-          description: 'next-js',
-        },
-      ],
-    }),
+    ...(process.env.__NEXT_ROUTER_BASEPATH &&
+      !swaggerOptions.definition.servers && {
+        servers: [
+          {
+            url: process.env.__NEXT_ROUTER_BASEPATH,
+            description: 'next-js',
+          },
+        ],
+      }),
   };
 
   const options: Options = {
-    apis, // files containing annotations as above
+    apis, // Files containing annotations as above
     ...swaggerOptions,
     definition,
   };
@@ -81,7 +80,7 @@ export function createSwaggerSpec({
 }
 
 /**
- * withSwagger middleware
+ * WithSwagger middleware
  * @param options.openApiVersion Open API version {3.0.0}
  * @param options.apiFolder NextJS API folder {pages/api}
  * @param options.schemaFolders entity schema folders

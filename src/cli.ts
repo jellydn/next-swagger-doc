@@ -1,7 +1,7 @@
 import { cli } from 'cleye';
 import { readFileSync, writeFileSync } from 'fs';
 
-import { createSwaggerSpec } from './swagger';
+import { type SwaggerOptions, createSwaggerSpec } from './swagger';
 
 // Parse argv
 const argv = cli({
@@ -10,7 +10,7 @@ const argv = cli({
   // Define parameters
   // Becomes available in ._.filePath
   parameters: [
-    '<config file>', // next swagger config file is required
+    '<config file>', // Next swagger config file is required
   ],
 
   // Define flags/options
@@ -27,12 +27,12 @@ const argv = cli({
 
 const config = readFileSync(argv._.configFile);
 
-const spec: Record<string, any> = createSwaggerSpec(
-  JSON.parse(config.toString()),
+const spec = createSwaggerSpec(
+  JSON.parse(config.toString()) as unknown as SwaggerOptions
 );
 
 console.log(
   `Generating swagger spec to ${argv.flags.output} with config`,
-  config.toString(),
+  config.toString()
 );
 writeFileSync(argv.flags.output, JSON.stringify(spec, null, 2));

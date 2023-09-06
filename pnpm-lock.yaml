@@ -68,8 +68,8 @@ devDependencies:
     specifier: 3.0.3
     version: 3.0.3
   size-limit:
-    specifier: 8.2.6
-    version: 8.2.6
+    specifier: 9.0.0
+    version: 9.0.0
   sort-package-json:
     specifier: 2.5.1
     version: 2.5.1
@@ -3866,9 +3866,9 @@ packages:
       totalist: 3.0.1
     dev: true
 
-  /size-limit@8.2.6:
-    resolution: {integrity: sha512-zpznim/tX/NegjoQuRKgWTF4XiB0cn2qt90uJzxYNTFAqexk4b94DOAkBD3TwhC6c3kw2r0KcnA5upziVMZqDg==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+  /size-limit@9.0.0:
+    resolution: {integrity: sha512-DrA7o2DeRN3s+vwCA9nn7Ck9Y4pn9t0GNUwQRpKqBtBmNkl6LA2s/NlNCdtKHrEkRTeYA1ZQ65mnYveo9rUqgA==}
+    engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:
       bytes-iec: 3.1.1

@@ -85,7 +85,7 @@ describe('withSwagger', () => {
             },
           ],
         },
-        apiFolder: 'pages/api',
+        apiFolder: 'test/test-api-folder/app/api',
       }),
     ).toMatchSnapshot();
   });

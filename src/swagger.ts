@@ -69,12 +69,21 @@ export function createSwaggerSpec({
       }),
   };
 
+  // Given the globs found, create a temporary folder with the files
+  // AST parse the temporary folder to add jsdoc comments where necessary
+  // send the temporary folder to swagger jsdoc instead
+
   const options: Options = {
     apis, // Files containing annotations as above
     ...swaggerOptions,
     definition,
   };
+
+  console.log(options);
+
   const spec = swaggerJsdoc(options);
+
+  // Delete the temporary folder
 
   return spec;
 }

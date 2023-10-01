@@ -1,10 +1,16 @@
+import traverse from '@babel/traverse';
+import * as doctrine from 'doctrine';
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { join } from 'path';
-import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
-import { getRoutesAndCode } from './helpers/getRoutesAndCode';
+import swaggerJsdoc, {
+  type Paths,
+  type OAS3Definition,
+  type Options,
+} from 'swagger-jsdoc';
+import { parse } from 'yaml';
+import { z } from 'zod';
 import { codeToAst } from './helpers/codeToAST';
-import traverse from '@babel/traverse';
-import * as doctrine from 'doctrine'
+import { getRoutesAndCode } from './helpers/getRoutesAndCode';
 
 export type SwaggerOptions = Options & {
   apiFolder?: string;
@@ -61,7 +67,9 @@ export function createSwaggerSpec({
   // For each of the api folders, parse as AST and get the route and possible return types
   const routesPathToCode = getRoutesAndCode(apiFolder);
 
-  Object.entries(routesPathToCode).map(([route, code]) => {
+  const paths: Paths = {};
+
+  Object.entries(routesPathToCode).forEach(([route, code]) => {
     const ast = codeToAst(code);
     traverse(ast, {
       enter(path) {
@@ -71,7 +79,23 @@ export function createSwaggerSpec({
               const parsedComment = doctrine.parse(comment.value, {
                 unwrap: true,
               });
-              console.log('Parsed Comment:', parsedComment);
+              // Get the route tag
+              const routeTag = parsedComment.tags.find(
+                (tag) => tag.title === 'route'
+              );
+              if (!routeTag) return;
+              const routeDescription = routeTag.description;
+              if (!routeDescription) return;
+              const parsedYaml = parse(routeDescription);
+              const schema = z.object({
+                description: z.string(),
+              });
+              const { description } = schema.parse(parsedYaml);
+              paths[route] = {
+                get: {
+                  description,
+                },
+              };
             }
           }
         }
@@ -83,6 +107,10 @@ export function createSwaggerSpec({
   // Conditions: basePath is specified. Server array is not defined.
   const definition = {
     ...swaggerOptions.definition,
+    paths: {
+      ...paths,
+      ...swaggerOptions.definition.paths,
+    },
     ...(process.env.__NEXT_ROUTER_BASEPATH &&
       !swaggerOptions.definition.servers && {
         servers: [
@@ -94,7 +122,7 @@ export function createSwaggerSpec({
       }),
   };
 
-  const options: Options = {
+  const options: SwaggerOptions = {
     apis, // Files containing annotations as above
     ...swaggerOptions,
     definition,

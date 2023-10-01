@@ -13,7 +13,7 @@ describe('withSwagger', () => {
             version: '0.1.0',
           },
         },
-      }),
+      })
     ).toMatchSnapshot();
   });
 
@@ -42,7 +42,7 @@ describe('withSwagger', () => {
           ],
         },
         apiFolder: 'pages/api',
-      }),
+      })
     ).toMatchSnapshot();
   });
 
@@ -85,8 +85,15 @@ describe('withSwagger', () => {
             },
           ],
         },
-        apiFolder: 'test/test-api-folder/app/api',
-      }),
+        apiFolder: 'test/test-api-folder/app',
+      })
     ).toMatchSnapshot();
   });
+
+  it.todo('Should work for normal next.js paths (App Router)');
+  it.todo('Should work for dynamic next.js paths (App Router)');
+
+  it.todo(
+    "Should warn user when using path router cos I'm too lazy to implement that shit"
+  );
 });

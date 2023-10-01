@@ -1,6 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { join } from 'path';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
+import { getRoutesAndCode } from './helpers/getRoutesAndCode';
 
 export type SwaggerOptions = Options & {
   apiFolder?: string;
@@ -54,7 +55,11 @@ export function createSwaggerSpec({
     ];
   });
 
-  // Append base path server element to server array
+  // For each of the api folders, parse as AST and get the route and possible return types
+  const routesPathToCode = getRoutesAndCode(apiFolder);
+  console.log(routesPathToCode);
+  // Convert that data and append it to the swagger options
+
   // Conditions: basePath is specified. Server array is not defined.
   const definition = {
     ...swaggerOptions.definition,
@@ -69,17 +74,11 @@ export function createSwaggerSpec({
       }),
   };
 
-  // Given the globs found, create a temporary folder with the files
-  // AST parse the temporary folder to add jsdoc comments where necessary
-  // send the temporary folder to swagger jsdoc instead
-
   const options: Options = {
     apis, // Files containing annotations as above
     ...swaggerOptions,
     definition,
   };
-
-  console.log(options);
 
   const spec = swaggerJsdoc(options);
 

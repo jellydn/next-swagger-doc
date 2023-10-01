@@ -2,6 +2,9 @@ import { type NextApiRequest, type NextApiResponse } from 'next';
 import { join } from 'path';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
 import { getRoutesAndCode } from './helpers/getRoutesAndCode';
+import { codeToAst } from './helpers/codeToAST';
+import traverse from '@babel/traverse';
+import * as doctrine from 'doctrine'
 
 export type SwaggerOptions = Options & {
   apiFolder?: string;
@@ -57,7 +60,24 @@ export function createSwaggerSpec({
 
   // For each of the api folders, parse as AST and get the route and possible return types
   const routesPathToCode = getRoutesAndCode(apiFolder);
-  console.log(routesPathToCode);
+
+  Object.entries(routesPathToCode).map(([route, code]) => {
+    const ast = codeToAst(code);
+    traverse(ast, {
+      enter(path) {
+        if (path.node.leadingComments) {
+          for (const comment of path.node.leadingComments) {
+            if (comment.type === 'CommentBlock') {
+              const parsedComment = doctrine.parse(comment.value, {
+                unwrap: true,
+              });
+              console.log('Parsed Comment:', parsedComment);
+            }
+          }
+        }
+      },
+    });
+  });
   // Convert that data and append it to the swagger options
 
   // Conditions: basePath is specified. Server array is not defined.

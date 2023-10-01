@@ -47,8 +47,12 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
+    "@babel/parser": "^7.23.0",
+    "@babel/traverse": "^7.23.0",
+    "@babel/types": "^7.23.0",
     "@types/swagger-jsdoc": "6.0.1",
     "cleye": "1.3.2",
+    "doctrine": "^3.0.0",
     "glob": "^10.3.10",
     "isarray": "2.0.5",
     "swagger-jsdoc": "6.2.8"
@@ -56,6 +60,8 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.0",
     "@skypack/package-check": "0.2.2",
+    "@types/babel__traverse": "^7.20.2",
+    "@types/doctrine": "^0.0.7",
     "@types/node": "20.6.4",
     "@typescript-eslint/eslint-plugin": "6.7.2",
     "@typescript-eslint/parser": "6.7.2",

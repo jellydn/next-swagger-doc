@@ -8,7 +8,7 @@
 
 [![Version](https://img.shields.io/npm/v/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
 [![Downloads/week](https://img.shields.io/npm/dw/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
-![Prerequisite](https://img.shields.io/badge/node-%3E%3D10-blue.svg)
+![Prerequisite](https://img.shields.io/badge/node-%3E%3D18-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](http://next-swagger-doc.productsway.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: jellydn](https://img.shields.io/twitter/follow/jellydn.svg?style=social)](https://twitter.com/jellydn)
@@ -23,7 +23,8 @@
 
 ## Prerequisites
 
-- nextjs >= 9
+- Nextjs >= 9
+- Node >= 18
 
 ## Motivation
 

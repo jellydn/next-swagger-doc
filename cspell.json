@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "globRoot": ".",
+  "dictionaryDefinitions": [
+    {
+      "name": "next-swagger-doc",
+      "path": "./next-swagger-doc.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": [
+    "next-swagger-doc"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "build",
+    "/next-swagger-doc.txt"
+  ]
+}

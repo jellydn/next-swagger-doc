@@ -68,8 +68,8 @@ devDependencies:
     specifier: 3.0.3
     version: 3.0.3
   size-limit:
-    specifier: 9.0.0
-    version: 9.0.0
+    specifier: 10.0.1
+    version: 10.0.1
   sort-package-json:
     specifier: 2.6.0
     version: 2.6.0
@@ -3871,14 +3871,14 @@ packages:
       totalist: 3.0.1
     dev: true
 
-  /size-limit@9.0.0:
-    resolution: {integrity: sha512-DrA7o2DeRN3s+vwCA9nn7Ck9Y4pn9t0GNUwQRpKqBtBmNkl6LA2s/NlNCdtKHrEkRTeYA1ZQ65mnYveo9rUqgA==}
+  /size-limit@10.0.1:
+    resolution: {integrity: sha512-lANGZsG+kk5P9zv84J/ratfT6LPTbWR8IitFXNfy41OyfnxoDBHqsl5+JVcG4YSU1UYcmShbp99O/SEPlDs1ZA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:
       bytes-iec: 3.1.1
       chokidar: 3.5.3
-      globby: 11.1.0
+      globby: 13.2.2
       lilconfig: 2.1.0
       nanospinner: 1.1.0
       picocolors: 1.0.0

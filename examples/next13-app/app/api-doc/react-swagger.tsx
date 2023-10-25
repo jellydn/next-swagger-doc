@@ -9,6 +9,7 @@ type Props = {
 }
 
 function ReactSwagger({ spec }: Props) {
+  // @ts-ignore - SwaggerUI is not typed
   return <SwaggerUI spec={spec} />
 }
 

@@ -375,6 +375,11 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@fastify/busboy@2.0.0:
+    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@humanwhocodes/config-array@0.11.13:
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}
     engines: {node: '>=10.10.0'}
@@ -678,6 +683,7 @@ packages:
 
   /@swagger-api/apidom-ns-json-schema-draft-4@0.78.0:
     resolution: {integrity: sha512-19NR9lTHMOQTIEV4tJq+FlHQAYnjyH+DgI4mmRu6UMFSZjRjutYF7B8lCGogSus9Uwy8YpUk00prLFTld00wgA==}
+    requiresBuild: true
     dependencies:
       '@babel/runtime-corejs3': 7.23.2
       '@swagger-api/apidom-ast': 0.78.0
@@ -4177,7 +4183,7 @@ packages:
       node-fetch-commonjs: 3.3.2
       qs: 6.11.2
       traverse: 0.6.7
-      undici: 5.24.0
+      undici: 5.26.5
     transitivePeerDependencies:
       - debug
     dev: false
@@ -4532,11 +4538,11 @@ packages:
     resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
     dev: true
 
-  /undici@5.24.0:
-    resolution: {integrity: sha512-OKlckxBjFl0oXxcj9FU6oB8fDAaiRUq+D8jrFWGmOfI/gIyjk/IeS75LMzgYKUaeHzLUcYvf9bbJGSrUwTfwwQ==}
+  /undici@5.26.5:
+    resolution: {integrity: sha512-cSb4bPFd5qgR7qr2jYAi0hlX9n5YKK2ONKkLFkxl+v/9BvC0sOpZjBHDBSXc5lWAf5ty9oZdRXytBIHzgUcerw==}
     engines: {node: '>=14.0'}
     dependencies:
-      busboy: 1.6.0
+      '@fastify/busboy': 2.0.0
     dev: false
 
   /universalify@2.0.0:

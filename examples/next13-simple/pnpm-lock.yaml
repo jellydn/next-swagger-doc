@@ -349,6 +349,11 @@ packages:
     resolution: {integrity: sha512-R11tGE6yIFwqpaIqcfkcg7AICXzFg14+5h5v0TfF/9+RMDL6jhzCy/pxHVOfbALGdtVYdt6JdR21tuxEgl34dw==}
     dev: false
 
+  /@fastify/busboy@2.0.0:
+    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@fortawesome/fontawesome-common-types@6.4.0:
     resolution: {integrity: sha512-HNii132xfomg5QVZw0HwXXpN22s7VBHQBv9CeOu9tfJnhsWQNd2lmTNi8CSrnw5B+5YOmzu1UoPAyxaXsJ6RgQ==}
     engines: {node: '>=6'}
@@ -1300,6 +1305,7 @@ packages:
 
   /@swagger-api/apidom-ns-json-schema-draft-4@0.76.2:
     resolution: {integrity: sha512-0Y32CQE6tIt4IPsoCzWAUskZSyGkfw87IIsH5Bcm3D1qIlAhPAokQbe1212MmZoLVUvqrXDqZHXnOxxMaHZvYw==}
+    requiresBuild: true
     dependencies:
       '@babel/runtime-corejs3': 7.22.15
       '@swagger-api/apidom-ast': 0.76.2
@@ -6413,7 +6419,7 @@ packages:
       node-fetch-commonjs: 3.3.2
       qs: 6.11.2
       traverse: 0.6.7
-      undici: 5.24.0
+      undici: 5.26.5
     transitivePeerDependencies:
       - debug
     dev: false
@@ -6798,11 +6804,11 @@ packages:
   /undici-types@5.25.3:
     resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
 
-  /undici@5.24.0:
-    resolution: {integrity: sha512-OKlckxBjFl0oXxcj9FU6oB8fDAaiRUq+D8jrFWGmOfI/gIyjk/IeS75LMzgYKUaeHzLUcYvf9bbJGSrUwTfwwQ==}
+  /undici@5.26.5:
+    resolution: {integrity: sha512-cSb4bPFd5qgR7qr2jYAi0hlX9n5YKK2ONKkLFkxl+v/9BvC0sOpZjBHDBSXc5lWAf5ty9oZdRXytBIHzgUcerw==}
     engines: {node: '>=14.0'}
     dependencies:
-      busboy: 1.6.0
+      '@fastify/busboy': 2.0.0
     dev: false
 
   /unified@9.2.2:

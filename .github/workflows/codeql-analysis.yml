@@ -68,3 +68,20 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+
+    - name: Save AppMaps
+      uses: actions/cache/save@v3
+      if: always()
+      with:
+        path: ./tmp/appmap
+        key: appmaps-${{ github.sha }}-${{ github.run_attempt }}
+        
+  appmap-analysis:
+    if: always()
+    needs: [ Save AppMaps ]
+    uses: getappmap/analyze-action/.github/workflows/appmap-analysis.yml@v1
+    permissions:
+      actions: read
+      contents: read
+      checks: write
+      pull-requests: write

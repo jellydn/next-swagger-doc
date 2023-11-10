@@ -92,5 +92,13 @@ jobs:
         message: "ci: Add AppMap language agent and appmap.yml"
     # End AppMap CI language agent installation
 
+    # Begin AppMap bootstrap archive step
+    - name: Archive AppMaps
+      id: appmap-bootstrap-archive-appmaps
+      uses: getappmap/archive-action@v1
+      with:
+        revision: ${{ github.event.pull_request.base.sha }}
+    # End AppMap bootstrap archive step
+
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2

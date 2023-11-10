@@ -15,10 +15,8 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
   schedule:
-    - cron: '18 18 * * 5'
+    - cron: '0 0 * * 0'
 
 permissions:
   # Allows the EndBug/add-and-commit step to commit the package manager changes,

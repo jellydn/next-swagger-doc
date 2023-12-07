@@ -55,11 +55,11 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
     "@skypack/package-check": "0.2.2",
-    "@types/node": "20.10.3",
+    "@types/node": "20.10.4",
     "@typescript-eslint/eslint-plugin": "6.13.2",
     "@typescript-eslint/parser": "6.13.2",
-    "@vitest/coverage-v8": "1.0.1",
-    "@vitest/ui": "1.0.1",
+    "@vitest/coverage-v8": "1.0.2",
+    "@vitest/ui": "1.0.2",
     "all-contributors-cli": "6.26.1",
     "c8": "8.0.1",
     "eslint": "8.55.0",
@@ -75,7 +75,7 @@
     "typedoc": "0.25.4",
     "typescript": "5.3.3",
     "vite": "5.0.6",
-    "vitest": "1.0.1"
+    "vitest": "1.0.2"
   },
   "peerDependencies": {
     "next": ">=9"

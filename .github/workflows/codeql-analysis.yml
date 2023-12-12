@@ -15,10 +15,8 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
   schedule:
-    - cron: '18 18 * * 5'
+    - cron: '0 0 * * 0'
 
 jobs:
   analyze:
@@ -26,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       actions: read
-      contents: read
+      contents: write
       security-events: write
 
     strategy:
@@ -70,3 +68,20 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+
+    - name: Save AppMaps
+      uses: actions/cache/save@v3
+      if: always()
+      with:
+        path: ./tmp/appmap
+        key: appmaps-${{ github.sha }}-${{ github.run_attempt }}
+        
+  appmap-analysis:
+    if: always()
+    needs: [ Save AppMaps ]
+    uses: getappmap/analyze-action/.github/workflows/appmap-analysis.yml@v1
+    permissions:
+      actions: read
+      contents: read
+      checks: write
+      pull-requests: write

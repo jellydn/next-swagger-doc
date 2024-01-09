@@ -742,6 +742,7 @@ packages:
 
   /@swagger-api/apidom-ns-json-schema-draft-4@0.83.0:
     resolution: {integrity: sha512-boknhIfrXF1k9IxLV0CkO1EoeXed4mzDNbFNKTkIv7UAdFwAa7NiQLVlEehNY3Ufm3/PjVMzYVQ80tUbyQE2Sw==}
+    requiresBuild: true
     dependencies:
       '@babel/runtime-corejs3': 7.23.2
       '@swagger-api/apidom-ast': 0.83.0
@@ -1378,7 +1379,7 @@ packages:
   /axios@1.6.1:
     resolution: {integrity: sha512-vfBmhDpKafglh0EldBEbVuoe7DyAavGSLWhuSm5ZSEKQnHhBf0xAAwybbNH1IkrJNGnS/VG4I5yxig1pCEXE4g==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.4
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -2334,8 +2335,8 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /follow-redirects@1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+  /follow-redirects@1.15.4:
+    resolution: {integrity: sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'

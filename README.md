@@ -34,9 +34,13 @@ This package reads your JSDoc-annotated source code on [NextJS API route](https:
 [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc/blob/v6/docs/README.md) = [next-swagger-doc](https://github.com/jellydn/next-swagger-doc)
 
 ## Install
-
+Yarn:
 ```sh
-yarn add next-swagger-doc
+yarn add next-swagger-doc swagger-ui-react
+```
+NPM:
+```sh
+npm install next-swagger-doc swagger-ui-react
 ```
 
 ## Usage #1: next-swagger-doc with Next.js 13

@@ -68,8 +68,8 @@ devDependencies:
     specifier: 3.2.2
     version: 3.2.2
   size-limit:
-    specifier: 11.0.1
-    version: 11.0.1
+    specifier: 11.0.2
+    version: 11.0.2
   sort-package-json:
     specifier: 2.6.0
     version: 2.6.0
@@ -4303,8 +4303,8 @@ packages:
       totalist: 3.0.1
     dev: true
 
-  /size-limit@11.0.1:
-    resolution: {integrity: sha512-6L80ocVspWPrhIRg8kPl41VypqTGH8/lu9e6TJiSJpkNLtOR2h/EEqdAO/wNJOv/sUVtjX+lVEWrzBpItGP+gQ==}
+  /size-limit@11.0.2:
+    resolution: {integrity: sha512-iFZ8iTR/3zPqxSwEIdGnTVYVU0F2nhodLQG/G6zpi/NxECYAK9ntq2lNr+prXH7h3gyBjx2Umt2D/oS2Qzz+eg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:

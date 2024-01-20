@@ -77,7 +77,11 @@ export const getApiDocs = async () => {
 
 ### 2. Create Swagger UI Component
 
-Create a new file `app/api-doc/react-swagger.tsx`. This file exports a React component that uses `swagger-ui-react` to display the Swagger UI based on the given spec.
+Generate a new file named `app/api-doc/react-swagger.tsx`. In this file, create and export a React component that utilizes the `swagger-ui-react` library to render the Swagger UI according to the provided specification.
+
+For demonstration purposes, here is an example using [swagger-ui-react](https://www.npmjs.com/package/swagger-ui-react)
+
+Feel free to employ any alternative swagger UI library, such as [stoplightio/elements](https://github.com/stoplightio/elements). I have added an [example ](https://github.com/jellydn/next-swagger-doc/blob/main/examples/next13-simple/pages/playground.tsx)using this library in the `example` folder.
 
 ```javascript
 'use client';

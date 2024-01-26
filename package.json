@@ -58,8 +58,8 @@
     "@types/node": "20.11.7",
     "@typescript-eslint/eslint-plugin": "6.19.1",
     "@typescript-eslint/parser": "6.19.1",
-    "@vitest/coverage-v8": "1.2.1",
-    "@vitest/ui": "1.2.1",
+    "@vitest/coverage-v8": "1.2.2",
+    "@vitest/ui": "1.2.2",
     "all-contributors-cli": "6.26.1",
     "c8": "9.1.0",
     "eslint": "8.56.0",
@@ -75,7 +75,7 @@
     "typedoc": "0.25.7",
     "typescript": "5.3.3",
     "vite": "5.0.12",
-    "vitest": "1.2.1"
+    "vitest": "1.2.2"
   },
   "peerDependencies": {
     "next": ">=9"

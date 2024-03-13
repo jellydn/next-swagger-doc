@@ -34,5 +34,6 @@
     "prettier": "3.2.5",
     "typeconv": "2.3.1",
     "typescript": "5.4.2"
-  }
+  },
+  "packageManager": "pnpm@8.15.4"
 }

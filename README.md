@@ -265,9 +265,9 @@ yarn next-swagger-doc-cli next-swagger-doc.json
 
 ```sh
 gh repo clone jellydn/next-swagger-doc
-cd example
-yarn install
-yarn dev
+cd examples/next14-app
+pnpm install
+pnm run dev
 ```
 
 Then open http://localhost:3000/api-doc or http://localhost:3000/ on your browser

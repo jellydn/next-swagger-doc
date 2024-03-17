@@ -53,7 +53,7 @@
 		"swagger-jsdoc": "6.2.8"
 	},
 	"devDependencies": {
-		"@ianvs/prettier-plugin-sort-imports": "4.2.0",
+		"@ianvs/prettier-plugin-sort-imports": "4.2.1",
 		"@skypack/package-check": "0.2.2",
 		"@types/node": "20.11.28",
 		"@typescript-eslint/eslint-plugin": "7.2.0",

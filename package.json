@@ -55,32 +55,32 @@
 	"devDependencies": {
 		"@ianvs/prettier-plugin-sort-imports": "4.2.1",
 		"@skypack/package-check": "0.2.2",
-		"@types/node": "20.11.28",
-		"@typescript-eslint/eslint-plugin": "7.2.0",
-		"@typescript-eslint/parser": "7.2.0",
+		"@types/node": "20.11.30",
+		"@typescript-eslint/eslint-plugin": "7.3.1",
+		"@typescript-eslint/parser": "7.3.1",
 		"@vitest/coverage-v8": "1.4.0",
 		"@vitest/ui": "1.4.0",
 		"all-contributors-cli": "6.26.1",
 		"c8": "9.1.0",
 		"eslint": "8.57.0",
-		"eslint-config-productsway": "1.3.1",
+		"eslint-config-productsway": "1.3.2",
 		"husky": "9.0.11",
 		"lint-staged": "15.2.2",
-		"next": "14.1.3",
+		"next": "14.1.4",
 		"pkgroll": "2.0.2",
 		"prettier": "3.2.5",
-		"size-limit": "11.1.1",
+		"size-limit": "11.1.2",
 		"sort-package-json": "2.8.0",
 		"tslib": "2.6.2",
 		"typedoc": "0.25.12",
-		"typescript": "5.4.2",
-		"vite": "5.1.6",
+		"typescript": "5.4.3",
+		"vite": "5.2.2",
 		"vitest": "1.4.0"
 	},
 	"peerDependencies": {
 		"next": ">=9"
 	},
-	"packageManager": "pnpm@8.15.4",
+	"packageManager": "pnpm@8.15.5",
 	"engines": {
 		"node": ">=18"
 	}

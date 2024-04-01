@@ -55,7 +55,7 @@
 	"devDependencies": {
 		"@ianvs/prettier-plugin-sort-imports": "4.2.1",
 		"@skypack/package-check": "0.2.2",
-		"@types/node": "20.11.30",
+		"@types/node": "20.12.2",
 		"@typescript-eslint/eslint-plugin": "7.4.0",
 		"@typescript-eslint/parser": "7.4.0",
 		"@vitest/coverage-v8": "1.4.0",
@@ -70,11 +70,11 @@
 		"pkgroll": "2.0.2",
 		"prettier": "3.2.5",
 		"size-limit": "11.1.2",
-		"sort-package-json": "2.9.0",
+		"sort-package-json": "2.10.0",
 		"tslib": "2.6.2",
 		"typedoc": "0.25.12",
 		"typescript": "5.4.3",
-		"vite": "5.2.6",
+		"vite": "5.2.7",
 		"vitest": "1.4.0"
 	},
 	"peerDependencies": {

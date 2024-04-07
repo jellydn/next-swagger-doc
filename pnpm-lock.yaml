@@ -77,8 +77,8 @@ devDependencies:
     specifier: 2.6.2
     version: 2.6.2
   typedoc:
-    specifier: 0.25.12
-    version: 0.25.12(typescript@5.4.4)
+    specifier: 0.25.13
+    version: 0.25.13(typescript@5.4.4)
   typescript:
     specifier: 5.4.4
     version: 5.4.4
@@ -4614,8 +4614,8 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /typedoc@0.25.12(typescript@5.4.4):
-    resolution: {integrity: sha512-F+qhkK2VoTweDXd1c42GS/By2DvI2uDF4/EpG424dTexSHdtCH52C6IcAvMA6jR3DzAWZjHpUOW+E02kyPNUNw==}
+  /typedoc@0.25.13(typescript@5.4.4):
+    resolution: {integrity: sha512-pQqiwiJ+Z4pigfOnnysObszLiU3mVLWAExSPf+Mu06G/qsc3wzbuM56SZQvONhHLncLUhYzOVkjFFpFfL5AzhQ==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:

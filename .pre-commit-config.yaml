@@ -1,0 +1,12 @@
+repos:
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v4.0.0-alpha.8" # Use the sha or tag you want to point at
+    hooks:
+      - id: prettier
+        # Those are not supported by biomejs yet, refer https://biomejs.dev/internals/language-support/
+        types_or: [html, css, markdown]
+  - repo: https://github.com/biomejs/pre-commit
+    rev: "v0.1.0" # Use the sha / tag you want to point at
+    hooks:
+      - id: biome-check
+        additional_dependencies: ["@biomejs/biome@1.7.0"]

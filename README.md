@@ -48,23 +48,23 @@ To incorporate `next-swagger-doc` with your Next.js 13 project, follow these ste
 Next, create a new file `lib/swagger.ts`. This file uses the `next-swagger-doc` library to create a Swagger specification based on the API routes in your Next.js project.
 
 ```javascript
-import { createSwaggerSpec } from 'next-swagger-doc';
+import { createSwaggerSpec } from "next-swagger-doc";
 
 export const getApiDocs = async () => {
   const spec = createSwaggerSpec({
-    apiFolder: 'app/api', // define api folder under app folder
+    apiFolder: "app/api", // define api folder under app folder
     definition: {
-      openapi: '3.0.0',
+      openapi: "3.0.0",
       info: {
-        title: 'Next Swagger API Example',
-        version: '1.0',
+        title: "Next Swagger API Example",
+        version: "1.0",
       },
       components: {
         securitySchemes: {
           BearerAuth: {
-            type: 'http',
-            scheme: 'bearer',
-            bearerFormat: 'JWT',
+            type: "http",
+            scheme: "bearer",
+            bearerFormat: "JWT",
           },
         },
       },
@@ -105,8 +105,8 @@ export default ReactSwagger;
 Create a new file `app/api-doc/page.tsx`. This page imports the Swagger spec and the Swagger UI component to display the Swagger documentation.
 
 ```javascript
-import { getApiDocs } from '@/lib/swagger';
-import ReactSwagger from './react-swagger';
+import { getApiDocs } from "@/lib/swagger";
+import ReactSwagger from "./react-swagger";
 
 export default async function IndexPage() {
   const spec = await getApiDocs();
@@ -195,17 +195,17 @@ export default ApiDoc;
 - Step 1: Create an api route on nextjs, e.g: `pages/api/doc.ts`
 
 ```typescript
-import { withSwagger } from 'next-swagger-doc';
+import { withSwagger } from "next-swagger-doc";
 
 const swaggerHandler = withSwagger({
   definition: {
-    openapi: '3.0.0',
+    openapi: "3.0.0",
     info: {
-      title: 'NextJS Swagger',
-      version: '0.1.0',
+      title: "NextJS Swagger",
+      version: "0.1.0",
     },
   },
-  apiFolder: 'pages/api',
+  apiFolder: "pages/api",
 });
 export default swaggerHandler();
 ```
@@ -213,7 +213,7 @@ export default swaggerHandler();
 - Step 2: Add JSdoc to any NextJS API routes, for example: `pages/api/hello.ts`
 
 ```typescript
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from "next";
 
 /**
  * @swagger
@@ -226,7 +226,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
  */
 const handler = (_req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json({
-    result: 'hello world',
+    result: "hello world",
   });
 };
 
@@ -310,6 +310,14 @@ Create the custom rule in your eslint configuration file:
         }
     ]
 }
+```
+
+## Pre-commit hook
+
+This project uses [pre-commit](https://pre-commit.com/) to enforce code quality. To install pre-commit hooks, run:
+
+```sh
+pre-commit install
 ```
 
 ## Author

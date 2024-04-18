@@ -5,18 +5,11 @@
   "globRoot": ".",
   "dictionaryDefinitions": [
     {
-      "name": "next-swagger-doc",
-      "path": "./next-swagger-doc.txt",
+      "name": "cspell-tool",
+      "path": "./cspell-tool.txt",
       "addWords": true
     }
   ],
-  "dictionaries": [
-    "next-swagger-doc"
-  ],
-  "ignorePaths": [
-    "node_modules",
-    "dist",
-    "build",
-    "/next-swagger-doc.txt"
-  ]
+  "dictionaries": ["cspell-tool"],
+  "ignorePaths": ["node_modules", "dist", "build", "/cspell-tool.txt"]
 }

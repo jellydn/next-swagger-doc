@@ -1,32 +1,32 @@
-import { createSwaggerSpec } from "next-swagger-doc"
+import { createSwaggerSpec } from 'next-swagger-doc';
 
-import "server-only"
+import 'server-only';
 
 export const getApiDocs = async () => {
   const spec = createSwaggerSpec({
-    apiFolder: "app/api",
+    apiFolder: 'app/api',
     definition: {
-      openapi: "3.0.0",
+      openapi: '3.0.0',
       info: {
-        title: "Next Swagger API Example",
-        version: "1.0",
+        title: 'Next Swagger API Example',
+        version: '1.0',
       },
       components: {
         securitySchemes: {
           BearerAuth: {
-            type: "http",
-            scheme: "bearer",
-            bearerFormat: "JWT",
+            type: 'http',
+            scheme: 'bearer',
+            bearerFormat: 'JWT',
           },
           OAuth2: {
-            type: "oauth2",
+            type: 'oauth2',
             flows: {
               authorizationCode: {
-                authorizationUrl: "https://example.com/oauth/authorize",
-                tokenUrl: "https://example.com/oauth/token",
+                authorizationUrl: 'https://example.com/oauth/authorize',
+                tokenUrl: 'https://example.com/oauth/token',
                 scopes: {
-                  read: "Grants read access",
-                  write: "Grants write access",
+                  read: 'Grants read access',
+                  write: 'Grants write access',
                 },
               },
             },
@@ -35,6 +35,6 @@ export const getApiDocs = async () => {
       },
       security: [],
     },
-  })
-  return spec
-}
+  });
+  return spec;
+};

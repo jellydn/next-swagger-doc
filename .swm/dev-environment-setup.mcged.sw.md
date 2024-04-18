@@ -9,12 +9,12 @@ To run your local dev environment you will need a few things on your machine. Fo
 
 ## Installations
 
-*   Install [Node JS](https://nodejs.org/en/download/), version `16.x`
+- Install [Node JS](https://nodejs.org/en/download/), version `16.x`
 
-*   Install an IDE (preferably [VS Code](https://code.visualstudio.com/))
+- Install an IDE (preferably [VS Code](https://code.visualstudio.com/))
 
-*   Install Git (if you don't already have it on your machine).
-<br/>
+- Install Git (if you don't already have it on your machine).
+  <br/>
 
 ## Getting the sources
 
@@ -26,17 +26,18 @@ git clone https://github.com/jellydn/next-swagger-doc.git
 
 ## Build
 
-*   Within the repository directory, run `yarn install` to install the project's dependencies.
+- Within the repository directory, run `yarn install` to install the project's dependencies.
 
-*   Then, build the project by running `yarn build`.
+- Then, build the project by running `yarn build`.
 
 Here's what `yarn build` doing behind the scenes:
 
 <br/>
 
-
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
+
 ### 📄 package.json
+
 ```json
 34         "build": "pkgroll",
 35         "coverage": "vitest run --coverage",

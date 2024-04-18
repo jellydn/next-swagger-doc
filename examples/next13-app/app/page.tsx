@@ -1,7 +1,7 @@
-import Link from "next/link"
+import Link from 'next/link';
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from '@/components/ui/button';
+import { siteConfig } from '@/config/site';
 
 export default function IndexPage() {
   return (
@@ -11,7 +11,7 @@ export default function IndexPage() {
           Simple usage how to use Tailwind CSS with Next.js
         </h1>
         <p className="text-muted-foreground max-w-[700px] text-lg">
-          Click on <Link href={"/api-doc"}>Doc</Link> to see the swagger UI.
+          Click on <Link href={'/api-doc'}>Doc</Link> to see the swagger UI.
         </p>
       </div>
       <div className="flex gap-4">
@@ -27,11 +27,11 @@ export default function IndexPage() {
           target="_blank"
           rel="noreferrer"
           href={siteConfig.links.github}
-          className={buttonVariants({ variant: "outline" })}
+          className={buttonVariants({ variant: 'outline' })}
         >
           GitHub
         </Link>
       </div>
     </section>
-  )
+  );
 }

@@ -21,7 +21,7 @@
  *          type: string
  *          format: date-time
  */
-import { Company } from './company';
+import type { Company } from './company';
 
 export interface Organization {
   id: string;

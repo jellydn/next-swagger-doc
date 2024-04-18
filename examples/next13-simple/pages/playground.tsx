@@ -1,8 +1,8 @@
 import '@stoplight/elements/styles.min.css';
 import {
-  defaultTheme,
   Preflight,
   ThemeProvider,
+  defaultTheme,
   x,
 } from '@xstyled/styled-components';
 import dynamic from 'next/dynamic';

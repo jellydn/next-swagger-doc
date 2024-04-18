@@ -1,5 +1,5 @@
-import { type NextApiRequest, type NextApiResponse } from 'next';
-import { join } from 'path';
+import { join } from 'node:path';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
 
 export type SwaggerOptions = Options & {

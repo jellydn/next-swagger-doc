@@ -1,5 +1,5 @@
 // import original module declarations
-import {
+import type {
   ITheme,
   DefaultTheme as XStyledDefaultTheme,
 } from '@xstyled/styled-components';

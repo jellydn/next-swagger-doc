@@ -13,7 +13,7 @@ describe('withSwagger', () => {
             version: '0.1.0',
           },
         },
-      }),
+      })
     ).toMatchSnapshot();
   });
 
@@ -42,7 +42,7 @@ describe('withSwagger', () => {
           ],
         },
         apiFolder: 'pages/api',
-      }),
+      })
     ).toMatchSnapshot();
   });
 
@@ -86,7 +86,7 @@ describe('withSwagger', () => {
           ],
         },
         apiFolder: 'pages/api',
-      }),
+      })
     ).toMatchSnapshot();
   });
 });

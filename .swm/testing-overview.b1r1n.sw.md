@@ -29,9 +29,10 @@ Use snapshot testing for make sure the output is the same.
 
 <br/>
 
-
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
+
 ### 📄 test/index.test.ts
+
 ```typescript
 7          expect(
 8            createSwaggerSpec({
@@ -58,9 +59,10 @@ Test by file
 
 <br/>
 
-
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
+
 ### 📄 test/index.test.ts
+
 ```typescript
 5      describe('withSwagger', () => {
 ```
@@ -68,8 +70,11 @@ Test by file
 <br/>
 
 Then we have all related use cases to the same group
+
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
+
 ### 📄 test/index.test.ts
+
 ```typescript
 6        it('should create default swagger json option', () => {
 7          expect(
@@ -84,7 +89,7 @@ Then we have all related use cases to the same group
 16           }),
 17         ).toMatchSnapshot();
 18       });
-19     
+19
 20       it('should have Bearer Authentication', () => {
 21         expect(
 22           createSwaggerSpec({
@@ -113,7 +118,7 @@ Then we have all related use cases to the same group
 45           }),
 46         ).toMatchSnapshot();
 47       });
-48     
+48
 49       it('should have support OAuth2 Authentication', () => {
 50         expect(
 51           createSwaggerSpec({

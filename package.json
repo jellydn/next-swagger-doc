@@ -1,87 +1,74 @@
 {
-	"name": "next-swagger-doc",
-	"version": "0.4.0",
-	"keywords": [
-		"next-swagger",
-		"next-swagger-doc",
-		"nextjs",
-		"swagger",
-		"swagger-jsdoc"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jellydn/next-swagger-doc"
-	},
-	"license": "MIT",
-	"author": "Huynh Duc Dung",
-	"type": "module",
-	"exports": {
-		"require": "./dist/index.cjs",
-		"import": "./dist/index.js"
-	},
-	"main": "dist/index.cjs",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"typings": "dist/index.d.ts",
-	"bin": {
-		"next-swagger-doc-cli": "dist/cli.js"
-	},
-	"files": [
-		"dist",
-		"src"
-	],
-	"scripts": {
-		"build": "pkgroll",
-		"coverage": "vitest run --coverage",
-		"format": "prettier --write '{src,test}/**/*.ts'",
-		"lint": "eslint src/**/*.ts --fix",
-		"prepare": "husky && pkgroll",
-		"start": "pkgroll --watch",
-		"test": "vitest run",
-		"test:ui": "vitest --ui",
-		"vercel-build": "npx typedoc src/index.ts"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": "eslint --fix",
-		"*.{js,ts,tsx,css,md}": "prettier --write",
-		"package.json": "sort-package-json"
-	},
-	"dependencies": {
-		"@types/swagger-jsdoc": "6.0.4",
-		"cleye": "1.3.2",
-		"isarray": "2.0.5",
-		"swagger-jsdoc": "6.2.8"
-	},
-	"devDependencies": {
-		"@ianvs/prettier-plugin-sort-imports": "4.2.1",
-		"@skypack/package-check": "0.2.2",
-		"@types/node": "20.12.7",
-		"@typescript-eslint/eslint-plugin": "7.7.0",
-		"@typescript-eslint/parser": "7.7.0",
-		"@vitest/coverage-v8": "1.5.0",
-		"@vitest/ui": "1.5.0",
-		"all-contributors-cli": "6.26.1",
-		"c8": "9.1.0",
-		"eslint": "8.57.0",
-		"eslint-config-productsway": "1.3.2",
-		"husky": "9.0.11",
-		"lint-staged": "15.2.2",
-		"next": "14.2.2",
-		"pkgroll": "2.0.2",
-		"prettier": "3.2.5",
-		"size-limit": "11.1.2",
-		"sort-package-json": "2.10.0",
-		"tslib": "2.6.2",
-		"typedoc": "0.25.13",
-		"typescript": "5.4.5",
-		"vite": "5.2.9",
-		"vitest": "1.5.0"
-	},
-	"peerDependencies": {
-		"next": ">=9"
-	},
-	"packageManager": "pnpm@8.15.7",
-	"engines": {
-		"node": ">=18"
-	}
+  "name": "next-swagger-doc",
+  "version": "0.4.0",
+  "keywords": [
+    "next-swagger",
+    "next-swagger-doc",
+    "nextjs",
+    "swagger",
+    "swagger-jsdoc"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jellydn/next-swagger-doc"
+  },
+  "license": "MIT",
+  "author": "Huynh Duc Dung",
+  "type": "module",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "bin": {
+    "next-swagger-doc-cli": "dist/cli.js"
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "pkgroll",
+    "coverage": "vitest run --coverage",
+    "format": "biome format src",
+    "lint": "biome lint src",
+    "migrate:eslint": "biome migrate eslint --write --include-inspired",
+    "migrate:prettier": "biome migrate prettier --write",
+    "prepare": "pkgroll",
+    "start": "pkgroll --watch",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "vercel-build": "npx typedoc src/index.ts"
+  },
+  "dependencies": {
+    "@types/swagger-jsdoc": "6.0.4",
+    "cleye": "1.3.2",
+    "isarray": "2.0.5",
+    "swagger-jsdoc": "6.2.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.0",
+    "@skypack/package-check": "0.2.2",
+    "@types/node": "20.12.7",
+    "@vitest/coverage-v8": "1.5.0",
+    "@vitest/ui": "1.5.0",
+    "all-contributors-cli": "6.26.1",
+    "c8": "9.1.0",
+    "next": "14.2.2",
+    "pkgroll": "2.0.2",
+    "size-limit": "11.1.2",
+    "sort-package-json": "2.10.0",
+    "tslib": "2.6.2",
+    "typedoc": "0.25.13",
+    "typescript": "5.4.5",
+    "vite": "5.2.9",
+    "vitest": "1.5.0"
+  },
+  "peerDependencies": {
+    "next": ">=9"
+  },
+  "packageManager": "pnpm@9.0.2",
+  "engines": {
+    "node": ">=18"
+  }
 }

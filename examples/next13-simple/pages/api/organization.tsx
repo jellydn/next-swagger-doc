@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Organization } from '../../models/organization';
+import type { Organization } from '../../models/organization';
 
 /**
  * @swagger
@@ -22,7 +22,7 @@ import { Organization } from '../../models/organization';
 
 const handler = async (
   _req: NextApiRequest,
-  res: NextApiResponse<Organization[]>,
+  res: NextApiResponse<Organization[]>
 ) => {
   res.status(200).json([
     {

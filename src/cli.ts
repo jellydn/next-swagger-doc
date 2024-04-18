@@ -1,5 +1,5 @@
-import { cli } from 'cleye';
 import { readFileSync, writeFileSync } from 'fs';
+import { cli } from 'cleye';
 
 import { type SwaggerOptions, createSwaggerSpec } from './swagger';
 

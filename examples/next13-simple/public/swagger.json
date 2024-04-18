@@ -17,9 +17,7 @@
     },
     "/api/organization": {
       "get": {
-        "tags": [
-          "Organization"
-        ],
+        "tags": ["Organization"],
         "responses": {
           "200": {
             "description": "Organization",
@@ -65,10 +63,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "id",
-          "name"
-        ],
+        "required": ["id", "name"],
         "additionalProperties": false,
         "title": "Company",
         "type": "object"
@@ -103,11 +98,7 @@
             "format": "date-time"
           }
         },
-        "required": [
-          "id",
-          "name",
-          "createdAt"
-        ],
+        "required": ["id", "name", "createdAt"],
         "additionalProperties": false,
         "title": "Organization",
         "type": "object"
@@ -139,10 +130,7 @@
             "title": "People.company"
           }
         },
-        "required": [
-          "id",
-          "name"
-        ],
+        "required": ["id", "name"],
         "additionalProperties": false,
         "title": "People",
         "type": "object"

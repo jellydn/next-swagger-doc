@@ -32,8 +32,6 @@
     "coverage": "vitest run --coverage",
     "format": "biome format src",
     "lint": "biome lint src",
-    "migrate:eslint": "biome migrate eslint --write --include-inspired",
-    "migrate:prettier": "biome migrate prettier --write",
     "prepare": "pkgroll",
     "start": "pkgroll --watch",
     "test": "vitest run",

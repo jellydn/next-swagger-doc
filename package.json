@@ -59,7 +59,7 @@
     "tslib": "2.6.2",
     "typedoc": "0.25.13",
     "typescript": "5.4.5",
-    "vite": "5.2.10",
+    "vite": "5.2.11",
     "vitest": "1.5.3"
   },
   "peerDependencies": {

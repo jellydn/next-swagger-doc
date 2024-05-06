@@ -45,9 +45,9 @@
     "swagger-jsdoc": "6.2.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.2",
+    "@biomejs/biome": "1.7.3",
     "@skypack/package-check": "0.2.2",
-    "@types/node": "20.12.8",
+    "@types/node": "20.12.10",
     "@vitest/coverage-v8": "1.6.0",
     "@vitest/ui": "1.6.0",
     "all-contributors-cli": "6.26.1",
@@ -65,7 +65,7 @@
   "peerDependencies": {
     "next": ">=9"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@9.1.0",
   "engines": {
     "node": ">=18"
   }

@@ -45,7 +45,7 @@
     "swagger-jsdoc": "6.2.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.3",
+    "@biomejs/biome": "1.8.0",
     "@skypack/package-check": "0.2.2",
     "@types/node": "20.14.1",
     "@vitest/coverage-v8": "1.6.0",

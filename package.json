@@ -45,9 +45,9 @@
     "swagger-jsdoc": "6.2.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.1",
+    "@biomejs/biome": "1.8.2",
     "@skypack/package-check": "0.2.2",
-    "@types/node": "20.14.6",
+    "@types/node": "20.14.7",
     "@vitest/coverage-v8": "1.6.0",
     "@vitest/ui": "1.6.0",
     "all-contributors-cli": "6.26.1",
@@ -58,7 +58,7 @@
     "sort-package-json": "2.10.0",
     "tslib": "2.6.3",
     "typedoc": "0.25.13",
-    "typescript": "5.4.5",
+    "typescript": "5.5.2",
     "vite": "5.3.1",
     "vitest": "1.6.0"
   },

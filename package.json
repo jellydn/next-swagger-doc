@@ -47,7 +47,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.2",
     "@skypack/package-check": "0.2.2",
-    "@types/node": "20.14.7",
+    "@types/node": "20.14.8",
     "@vitest/coverage-v8": "1.6.0",
     "@vitest/ui": "1.6.0",
     "all-contributors-cli": "6.26.1",
@@ -57,7 +57,7 @@
     "size-limit": "11.1.4",
     "sort-package-json": "2.10.0",
     "tslib": "2.6.3",
-    "typedoc": "0.25.13",
+    "typedoc": "0.26.2",
     "typescript": "5.5.2",
     "vite": "5.3.1",
     "vitest": "1.6.0"

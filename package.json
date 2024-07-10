@@ -52,7 +52,7 @@
     "@vitest/ui": "1.6.0",
     "all-contributors-cli": "6.26.1",
     "c8": "10.1.2",
-    "next": "14.2.4",
+    "next": "14.2.5",
     "pkgroll": "2.1.1",
     "size-limit": "11.1.4",
     "sort-package-json": "2.10.0",

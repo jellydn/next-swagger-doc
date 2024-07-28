@@ -47,7 +47,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@skypack/package-check": "0.2.2",
-    "@types/node": "20.14.12",
+    "@types/node": "20.14.13",
     "@vitest/coverage-v8": "1.6.0",
     "@vitest/ui": "1.6.0",
     "all-contributors-cli": "6.26.1",

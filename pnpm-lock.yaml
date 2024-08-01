@@ -46,8 +46,8 @@ importers:
         specifier: 14.2.5
         version: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       pkgroll:
-        specifier: 2.4.1
-        version: 2.4.1(typescript@5.5.4)
+        specifier: 2.4.2
+        version: 2.4.2(typescript@5.5.4)
       size-limit:
         specifier: 11.1.4
         version: 11.1.4
@@ -1456,8 +1456,8 @@ packages:
     resolution: {integrity: sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==}
     engines: {node: '>=10'}
 
-  pkgroll@2.4.1:
-    resolution: {integrity: sha512-lIQv67Ynv85N5RNAoWF0Wit7vlifds4yOM5K64gclmDzNacbI18dLYpYRHk1/8XR5bLI37b+MWb2y/Fj/MQ+JA==}
+  pkgroll@2.4.2:
+    resolution: {integrity: sha512-9seL/4BNQsE+eL+kefjfh5jSLqQPSKXQE/adw1L76k49KFw/XnOnyU8dRwuWpVtvMyIVyecaSBIpvFYrmnZq6A==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -3081,7 +3081,7 @@ snapshots:
 
   pify@5.0.0: {}
 
-  pkgroll@2.4.1(typescript@5.5.4):
+  pkgroll@2.4.2(typescript@5.5.4):
     dependencies:
       '@rollup/plugin-alias': 5.1.0(rollup@4.19.0)
       '@rollup/plugin-commonjs': 26.0.1(rollup@4.19.0)

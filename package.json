@@ -54,7 +54,7 @@
     "c8": "10.1.2",
     "next": "14.2.8",
     "pkgroll": "2.4.2",
-    "size-limit": "11.1.4",
+    "size-limit": "11.1.5",
     "sort-package-json": "2.10.1",
     "tslib": "2.7.0",
     "typedoc": "0.26.7",

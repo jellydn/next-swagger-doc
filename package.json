@@ -57,7 +57,7 @@
     "size-limit": "11.1.4",
     "sort-package-json": "2.10.1",
     "tslib": "2.7.0",
-    "typedoc": "0.26.6",
+    "typedoc": "0.26.7",
     "typescript": "5.5.4",
     "vite": "5.4.3",
     "vitest": "2.0.5"

@@ -48,8 +48,8 @@
     "@biomejs/biome": "1.9.3",
     "@skypack/package-check": "0.2.2",
     "@types/node": "20.16.10",
-    "@vitest/coverage-v8": "2.1.1",
-    "@vitest/ui": "2.1.1",
+    "@vitest/coverage-v8": "2.1.2",
+    "@vitest/ui": "2.1.2",
     "all-contributors-cli": "6.26.1",
     "c8": "10.1.2",
     "next": "14.2.14",
@@ -60,12 +60,12 @@
     "typedoc": "0.26.7",
     "typescript": "5.6.2",
     "vite": "5.4.8",
-    "vitest": "2.1.1"
+    "vitest": "2.1.2"
   },
   "peerDependencies": {
     "next": ">=9"
   },
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@9.12.0",
   "engines": {
     "node": ">=18"
   }

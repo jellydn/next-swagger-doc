@@ -39,6 +39,12 @@ This package reads your JSDoc-annotated source code on [NextJS API route](https:
 yarn add next-swagger-doc
 ```
 
+## If you are using typescript
+
+```sh
+npm i --save-dev @types/swagger-ui-react next-swagger-doc 
+```
+
 ## Usage #1: next-swagger-doc with Next.js 13
 
 To incorporate `next-swagger-doc` with your Next.js 13 project, follow these steps. This setup will generate Swagger documentation for your API based on your code and provide a built-in Swagger UI for viewing the documentation.

@@ -1,6 +1,6 @@
 {
   "name": "next-swagger-doc",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "keywords": [
     "next-swagger",
     "next-swagger-doc",
@@ -26,7 +26,10 @@
   "bin": {
     "next-swagger-doc-cli": "dist/cli.js"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "pkgroll",
     "coverage": "vitest run --coverage",

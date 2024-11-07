@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@stoplight/elements':
-        specifier: 8.1.2
-        version: 8.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 8.4.7
+        version: 8.4.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xstyled/styled-components':
-        specifier: 3.8.0
-        version: 3.8.0(styled-components@6.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        specifier: 4.0.0
+        version: 4.0.0(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@xstyled/system':
-        specifier: 3.8.0
-        version: 3.8.0
+        specifier: 3.8.1
+        version: 3.8.1
       isarray:
         specifier: 2.0.5
         version: 2.0.5
@@ -33,21 +33,21 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
       styled-components:
-        specifier: 6.1.9
-        version: 6.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 6.1.13
+        version: 6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       swagger-ui-react:
         specifier: latest
-        version: 5.17.2(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.17.2(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/node':
-        specifier: 20.12.7
-        version: 20.12.7
+        specifier: 22.9.0
+        version: 22.9.0
       '@types/react':
+        specifier: 18.3.12
+        version: 18.3.12
+      '@types/react-dom':
         specifier: 18.3.1
         version: 18.3.1
-      '@types/react-dom':
-        specifier: 18.3.0
-        version: 18.3.0
       '@types/swagger-jsdoc':
         specifier: 6.0.4
         version: 6.0.4
@@ -58,8 +58,8 @@ importers:
         specifier: 2.3.1
         version: 2.3.1
       typescript:
-        specifier: 5.4.5
-        version: 5.4.5
+        specifier: 5.6.3
+        version: 5.6.3
 
 packages:
 
@@ -93,11 +93,17 @@ packages:
   '@braintree/sanitize-url@7.0.1':
     resolution: {integrity: sha512-URg8UM6lfC9ZYqFipItRSxYJdgpU5d2Z4KnjsJ+rj6tgAmGme7E+PQNCiud8g0HDaZKMovu2qjfa0f5Ge0Vlsg==}
 
-  '@emotion/is-prop-valid@1.2.1':
-    resolution: {integrity: sha512-61Mf7Ufx4aDxx1xlDeOm8aFFigGHE4z+0sKCa+IHCeZKiyP9RLD0Mmx7m8b9/Cf37f7NAvQOOJAbQQGVr5uERw==}
+  '@emotion/is-prop-valid@1.2.2':
+    resolution: {integrity: sha512-uNsoYd37AFmaCdXlg6EYD1KaPOaRWRByMCYzbKUX4+hhMfrxdVSelShywL4JVaAeM/eHUOSprYBQls+/neX3pw==}
+
+  '@emotion/is-prop-valid@1.3.1':
+    resolution: {integrity: sha512-/ACwoqx7XQi9knQs/G0qKvv5teDMhD7bXYns9N/wM8ah8iNb8jZ2uNO0YOgiq2o2poIvVtJS2YALasQuMSQ7Kw==}
 
   '@emotion/memoize@0.8.1':
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
+
+  '@emotion/memoize@0.9.0':
+    resolution: {integrity: sha512-30FAj7/EoJ5mwVPOWhAyCX+FPfMDrVecJAM+Iw9NRoSl4BBAQeqj4cApHHUXOVvIPgLVDsCFoz/hGD+5QQD1GQ==}
 
   '@emotion/unitless@0.8.1':
     resolution: {integrity: sha512-KOEGMu6dmJZtpadb476IsZBclKvILjopjUii3V+7MnXIQCYh8W3NgNcgwo21n9LXZX6EDIKvqfjYxXebDwxKmQ==}
@@ -308,22 +314,22 @@ packages:
     resolution: {integrity: sha512-z95ECmE3i9pbWoXQrD/7PgkBAzJYR+iXtPuTkpBjDKs86O3mT+PXOT3BAn79w2wkn7/i3vOGD2xVr1uiMl26dA==}
     engines: {node: '>=6'}
 
-  '@stoplight/elements-core@8.1.3':
-    resolution: {integrity: sha512-aEzF81jHTP9KYWQWAGkOuGOkk45Kd4w+ubL+QE0wFfEstRatkTnUoqmsPpPoKS59GzPTP/EmiDprN1UebXUiVQ==}
-    engines: {node: '>=14.13'}
+  '@stoplight/elements-core@8.4.7':
+    resolution: {integrity: sha512-YF0mxLjsVP7WOlVZ1w8qVoFASpIrwlW26Yy2i5DxZdG5ORcM18HLW+REu3AjaOHKhxRoSgO6+fj/RXbOmxzslg==}
+    engines: {node: '>=16'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
 
-  '@stoplight/elements@8.1.2':
-    resolution: {integrity: sha512-4TIxoDRzcVkt6ejzhHr8zAQM+tREiklhF2PHn2yBiimt0q24cH6SBQfZtz6l3gD0Er/czh+rmmkG4vkm8d6flg==}
-    engines: {node: '>=14.13'}
+  '@stoplight/elements@8.4.7':
+    resolution: {integrity: sha512-CMsk8ouKAAieKyPCkJESMJHX9Vgv9NNRqnvlS5sqhzFe5xYp5v9E/2OcCkMoUCb87Y8xXJ5Qt/X3wI3OJmvxlg==}
+    engines: {node: '>=16'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
 
-  '@stoplight/http-spec@7.0.3':
-    resolution: {integrity: sha512-r9Y8rT4RbqY7NWqSXjiqtBq0Nme2K5cArSX9gDPeuud8F4CwbizP7xkUwLdwDdHgoJkyIQ3vkFJpHzUVCQeOOA==}
+  '@stoplight/http-spec@7.1.0':
+    resolution: {integrity: sha512-Z2XqKX2SV8a1rrgSzFqccX2TolfcblT+l4pNvUU+THaLl50tKDoeidwWWZTzYUzqU0+UV97ponvqEbWWN3PaXg==}
     engines: {node: '>=14.13'}
 
   '@stoplight/json-schema-generator@1.0.2':
@@ -336,15 +342,15 @@ packages:
   '@stoplight/json-schema-ref-parser@9.2.7':
     resolution: {integrity: sha512-1vNzJ7iSrFTAFNbZHPyhI6GiJJw74+WaV61bARUQEDR4Jm80f9s0Tq9uCvGoMYwIFmWDJAoTiyegnUs6SvVxDw==}
 
-  '@stoplight/json-schema-sampler@0.2.3':
-    resolution: {integrity: sha512-57PqNll9y/Rkfp4/t1AkVfz5C0PIrDd8i2AW/N0XU5wVJ50kIrmJg3BD+PzmVcrF3lXFH7/LojoOUkzLZXMJpg==}
+  '@stoplight/json-schema-sampler@0.3.0':
+    resolution: {integrity: sha512-G7QImi2xr9+8iPEg0D9YUi1BWhIiiEm19aMb91oWBSdxuhezOAqqRP3XNY6wczHV9jLWW18f+KkghTy9AG0BQA==}
 
   '@stoplight/json-schema-tree@4.0.0':
     resolution: {integrity: sha512-SAGtof+ihIdPqETR+7XXOaqZJcrbSih/xEahaw5t1nXk5sVW6ss2l5A1WCIuvtvnQiUKnBfanmZU4eoM1ZvItg==}
     engines: {node: '>=10.18'}
 
-  '@stoplight/json-schema-viewer@4.16.0':
-    resolution: {integrity: sha512-5IYPI7sEbyQq2QyDhU9MqDGi9/KhNvaKsG+VOVelTcSqs56Vg9ASbSr/U6dISi5FK0FEfTh6FUggToUAzpr4NQ==}
+  '@stoplight/json-schema-viewer@4.16.1':
+    resolution: {integrity: sha512-gQ1v9/Dj1VP43zERuZoFMOr7RQDBZlgfF7QFh+R0sadP6W30oYFJtD7y2PG2gIQDohKElVuPjhFUbVH/81MnSg==}
     engines: {node: '>=16'}
     peerDependencies:
       '@stoplight/markdown-viewer': ^5
@@ -361,8 +367,8 @@ packages:
     resolution: {integrity: sha512-JbPRTIzPZabeYPAk5+gdsnfwAxqW35G9e0ZjOG3toUmNViLOsEzuK4vpWd+Prv2Mw8HRmu+haiYizteZp6mk0w==}
     engines: {node: '>=8.3.0'}
 
-  '@stoplight/markdown-viewer@5.7.0':
-    resolution: {integrity: sha512-SOFmEapj/RAJ6fUqgZO41diB9ocEFxhrSL7C8aJKNoYoHme0xxk5DK53DvFNBayEEXnf9e/YmKPfwJjFdKUilA==}
+  '@stoplight/markdown-viewer@5.7.1':
+    resolution: {integrity: sha512-EiJC0w/l+Juc49fVCBOEOOg/NdCWDC8o1lS7d6P5skHS5G+hw1c3GNlCZ2BSqs8z8kkmSzSDWo5XY1S16NVJbQ==}
     engines: {node: '>=12'}
     peerDependencies:
       '@stoplight/mosaic': ^1.24.4
@@ -374,18 +380,18 @@ packages:
     resolution: {integrity: sha512-Hhnrj7xb+f4iMQQeZBKLgfst3OJyV8T4BKr8BSYnKpp070B6fE63V/lkPuKqrpvidcv6kz3INDBU/GE7K2Q0uw==}
     engines: {node: '>=12'}
 
-  '@stoplight/mosaic-code-editor@1.53.1':
-    resolution: {integrity: sha512-xA6kgWTelz/oLphI+2pU1MId92zGG9ZLQb9mY1UoeqCZLxC7oH/UxIuNW7JGG5yCOEppgW4fiIBgLBDKGlt8wA==}
+  '@stoplight/mosaic-code-editor@1.53.4':
+    resolution: {integrity: sha512-StVEXVq5ZlVGvfdsKIYw/h76jb22CKCBUcgNmGyKSQx9ZmLc1wA24CWvbRvSxXKm3/0/P/IyVZ61aaYItqhmrg==}
     peerDependencies:
       react: '>= 16.14'
 
-  '@stoplight/mosaic-code-viewer@1.53.1':
-    resolution: {integrity: sha512-SqIR1dEZaj+o7PDnT+nMy7AAWMyVZ4LV/9Y3xJ9AGBJiszyyBN0uJS/OHsYBXzZvD+I8I5NsZymmDiG7xEatSw==}
+  '@stoplight/mosaic-code-viewer@1.53.4':
+    resolution: {integrity: sha512-RZEZ7+UodFQtuuVHyCONg/8wNDlFCuDz0knneGrDaQ1vDa3ddePPjBQnpqVFY0ndXqoaxZTuQu4GvcC8wKdk0Q==}
     peerDependencies:
       react: '>= 16.14'
 
-  '@stoplight/mosaic@1.53.1':
-    resolution: {integrity: sha512-zLh81fUGHlUUFYI2JKTreOU9osIkJPAsWPPbVAQ8o1RQPCEdI+zZTIdzsFvZxnwVzSf+lEDfzBeT0ZxOAHVzww==}
+  '@stoplight/mosaic@1.53.4':
+    resolution: {integrity: sha512-k3D9B2bM/Ko7ibKKWxJuhomHCOAxooPNPZNX0aY+3kTmQf7tJL+70iwcwD7TbrMyOj7L8SzJPRpJ9fcM8LaDNA==}
     peerDependencies:
       react: '>= 16.14'
 
@@ -544,8 +550,8 @@ packages:
   '@types/mdurl@1.0.5':
     resolution: {integrity: sha512-6L6VymKTzYSrEf4Nev4Xa1LCHKrlTlYCBMTlQKFuddo1CvQcE52I0mwfOJayueUC7MJuXOeHTcIU683lzd0cUA==}
 
-  '@types/node@20.12.7':
-    resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
+  '@types/node@22.9.0':
+    resolution: {integrity: sha512-vuyHg81vvWA1Z1ELfvLko2c8f34gyA0zaic0+Rllc5lbCnbSyuvb2Oxpm6TAUAC/2xZN3QGqxBNggD1nNR2AfQ==}
 
   '@types/parse5@6.0.3':
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
@@ -559,20 +565,20 @@ packages:
   '@types/react-dom@17.0.25':
     resolution: {integrity: sha512-urx7A7UxkZQmThYA4So0NelOVjx3V4rNFVJwp0WZlbIK5eM4rNJDiN3R/E9ix0MBh6kAEojk/9YL+Te6D9zHNA==}
 
-  '@types/react-dom@18.3.0':
-    resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
+  '@types/react-dom@18.3.1':
+    resolution: {integrity: sha512-qW1Mfv8taImTthu4KoXgDfLuk4bydU6Q/TkADnDWWHwi4NX4BR+LWfTp2sVmTqRrsHvyDDTelgelxJ+SsejKKQ==}
 
   '@types/react@17.0.80':
     resolution: {integrity: sha512-LrgHIu2lEtIo8M7d1FcI3BdwXWoRQwMoXOZ7+dPTW0lYREjmlHl3P0U1VD0i/9tppOuv8/sam7sOjx34TxSFbA==}
 
-  '@types/react@18.3.1':
-    resolution: {integrity: sha512-V0kuGBX3+prX+DQ/7r2qsv1NsdfnCLnTgnRJ1pYnxykBhGMz+qj+box5lq7XsO5mtZsBqpjwwTu/7wszPfMBcw==}
+  '@types/react@18.3.12':
+    resolution: {integrity: sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==}
 
   '@types/scheduler@0.16.8':
     resolution: {integrity: sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==}
 
-  '@types/stylis@4.2.0':
-    resolution: {integrity: sha512-n4sx2bqL0mW1tvDf/loQ+aMX7GQD3lc3fkCMC55VFNDu/vBOabO+LTIeXKM14xK0ppk5TUGcWRjiSpIlUpghKw==}
+  '@types/stylis@4.2.5':
+    resolution: {integrity: sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw==}
 
   '@types/swagger-jsdoc@6.0.1':
     resolution: {integrity: sha512-+MUpcbyxD528dECUBCEVm6abNuORdbuGjbrUdHDeAQ+rkPuo2a+L4N02WJHF3bonSSE6SJ3dUJwF2V6+cHnf0w==}
@@ -595,16 +601,16 @@ packages:
   '@xobotyi/scrollbar-width@1.9.5':
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
 
-  '@xstyled/core@3.8.0':
-    resolution: {integrity: sha512-DkRtg1841+xJBW4azIEW6bQGPudnRYGDusXhTTT7W0xhMrSEvIyv02Ivhh6KkHtTYmmUalGJ+dRPHyOqrVpMUA==}
+  '@xstyled/core@3.8.1':
+    resolution: {integrity: sha512-5mqKUZQLuB26NqF36jxvfhl6xqTW9TT2LfBbZJmoJISqS+cgAVoO9H82edisQsH/vxtoO9vjevcxtFXwOJPArA==}
 
-  '@xstyled/styled-components@3.8.0':
-    resolution: {integrity: sha512-TCOByj56DxdF2CM71sdEZSu4cA4s74/+C6n6etY21b0HxqU8Pm1KpMwhCZY0kV3Zb/y2VQsBAhWj5Nspv69Msg==}
+  '@xstyled/styled-components@4.0.0':
+    resolution: {integrity: sha512-w+r8etqil6nocv4CBJRnJoCH3yfM86ePL1qJ6Sh1YhLLwZc2D5OSBejVsJfclqGRC3GjrYbUbRqGt3uaaJkLig==}
     peerDependencies:
-      styled-components: ^4.0.0 || ^5.0.0
+      styled-components: ^6.1.11
 
-  '@xstyled/system@3.8.0':
-    resolution: {integrity: sha512-XDYihj8UHtA64lcKklUYu/ZN3SCB7ciqb6JBl6uFmaMIr8lgre8chJONqAyIX0s6MLjvcQdseSf0a7X2hTntOw==}
+  '@xstyled/system@3.8.1':
+    resolution: {integrity: sha512-mmWeAHrnTjV5ZDhUv5kPf4NF0BKLUbN9bHBmx1U+6kNwPAqHq+kOA+7ef9DZEeedTY4g29uYg8hvLqBweHXKqQ==}
 
   '@xstyled/util@3.7.0':
     resolution: {integrity: sha512-rYtXRcNh+pgRxGnciP0Mas21mpyOzcCTVy7w9uIByQk3EytwBQjDiN6wCasXibkw49Urfti5efsklRbCl5QZww==}
@@ -881,9 +887,6 @@ packages:
 
   css.escape@1.5.1:
     resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==}
-
-  csstype@3.1.2:
-    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
@@ -1820,6 +1823,10 @@ packages:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
 
+  postcss@8.4.38:
+    resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
+    engines: {node: ^10 || ^12 || >=14}
+
   postman-collection@4.4.0:
     resolution: {integrity: sha512-2BGDFcUwlK08CqZFUlIC8kwRJueVzPjZnnokWPtJCd9f2J06HBQpGL7t2P1Ud1NEsK9NHq9wdipUhWLOPj5s/Q==}
     engines: {node: '>=10'}
@@ -2225,8 +2232,8 @@ packages:
   style-to-object@0.4.4:
     resolution: {integrity: sha512-HYNoHZa2GorYNyqiCaBgsxvcJIn7OHq6inEga+E6Ke3m5JkoqpQbnFssk4jwe+K7AhGa2fcha4wSOf1Kn01dMg==}
 
-  styled-components@6.1.9:
-    resolution: {integrity: sha512-aBOqs0uMsYufFXSE4q6cA6Ty1fwZuMk4BJRHfiGSna59F1otnxiDelwhN4fEwmBtIymmF0ZqXHnpSigr2ps9Cg==}
+  styled-components@6.1.13:
+    resolution: {integrity: sha512-M0+N2xSnAtwcVAQeFEsGWFFxXDftHUD7XrKla06QbpUMmbmtFBMMTcKWvFXtWxuD5qQkB8iU5gk6QASlx2ZRMw==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
@@ -2244,9 +2251,6 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
-
-  stylis@4.3.1:
-    resolution: {integrity: sha512-EQepAV+wMsIaGVGX1RECzgrcqRRU/0sYOHkeLsZ3fzHaHXZy4DaOOX0vOlGQdlsjkh3mFHAIlVimpwAs4dslyQ==}
 
   stylis@4.3.2:
     resolution: {integrity: sha512-bhtUjWd/z6ltJiQwg0dUfxEJ+W+jdqQd8TbWLWyeIJHlnsqmGLRFFd8e5mA0AZi/zx90smXRlN66YMTcaSFifg==}
@@ -2353,9 +2357,6 @@ packages:
   tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
-  tslib@2.5.0:
-    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
-
   tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
@@ -2385,13 +2386,13 @@ packages:
   types-ramda@0.29.10:
     resolution: {integrity: sha512-5PJiW/eiTPyXXBYGZOYGezMl6qj7keBiZheRwfjJZY26QPHsNrjfJnz0mru6oeqqoTHOni893Jfd6zyUXfQRWg==}
 
-  typescript@5.4.5:
-    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
+  typescript@5.6.3:
+    resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   unified@9.2.2:
     resolution: {integrity: sha512-Sg7j110mtefBD+qunSLO1lqOEKdrwBFBrR6Qd8f4uwkhWNlbkaqwHse6e7QvD3AP/MNoJdEDLaf8OxYyoWgorQ==}
@@ -2561,13 +2562,13 @@ packages:
   xml-but-prettier@1.0.1:
     resolution: {integrity: sha512-C2CJaadHrZTqESlH03WOyw0oZTtoy2uEg6dSDF6YRg+9GnYNub53RRemLpnvtbHDFelxMx4LajiFsYeR6XJHgQ==}
 
-  xml-formatter@2.6.1:
-    resolution: {integrity: sha512-dOiGwoqm8y22QdTNI7A+N03tyVfBlQ0/oehAzxIZtwnFAHGeSlrfjF73YQvzSsa/Kt6+YZasKsrdu6OIpuBggw==}
-    engines: {node: '>= 10'}
+  xml-formatter@3.6.3:
+    resolution: {integrity: sha512-++x1TlRO1FRlQ82AZ4WnoCSufaI/PT/sycn4K8nRl4gnrNC1uYY2VV/67aALZ2m0Q4Q/BLj/L69K360Itw9NNg==}
+    engines: {node: '>= 16'}
 
-  xml-parser-xo@3.2.0:
-    resolution: {integrity: sha512-8LRU6cq+d7mVsoDaMhnkkt3CTtAs4153p49fRo+HIB3I1FD1o5CeXRjRH29sQevIfVJIcPjKSsPU/+Ujhq09Rg==}
-    engines: {node: '>= 10'}
+  xml-parser-xo@4.1.2:
+    resolution: {integrity: sha512-Z/DRB0ZAKj5vAQg++XsfQQKfT73Vfj5n5lKIVXobBDQEva6NHWUTxOA6OohJmEcpoy8AEqBmSGkXXAnFwt5qAA==}
+    engines: {node: '>= 16'}
 
   xml@1.0.1:
     resolution: {integrity: sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==}
@@ -2651,11 +2652,17 @@ snapshots:
 
   '@braintree/sanitize-url@7.0.1': {}
 
-  '@emotion/is-prop-valid@1.2.1':
+  '@emotion/is-prop-valid@1.2.2':
     dependencies:
       '@emotion/memoize': 0.8.1
 
+  '@emotion/is-prop-valid@1.3.1':
+    dependencies:
+      '@emotion/memoize': 0.9.0
+
   '@emotion/memoize@0.8.1': {}
+
+  '@emotion/memoize@0.9.0': {}
 
   '@emotion/unitless@0.8.1': {}
 
@@ -2764,7 +2771,7 @@ snapshots:
 
   '@react-types/button@3.4.1(react@18.3.1)':
     dependencies:
-      '@react-types/shared': 3.9.0(react@18.3.1)
+      '@react-types/shared': 3.22.1(react@18.3.1)
       react: 18.3.1
 
   '@react-types/checkbox@3.7.1(react@18.3.1)':
@@ -2774,7 +2781,7 @@ snapshots:
 
   '@react-types/radio@3.1.2(react@18.3.1)':
     dependencies:
-      '@react-types/shared': 3.9.0(react@18.3.1)
+      '@react-types/shared': 3.22.1(react@18.3.1)
       react: 18.3.1
 
   '@react-types/shared@3.22.1(react@18.3.1)':
@@ -2788,12 +2795,12 @@ snapshots:
   '@react-types/switch@3.1.2(react@18.3.1)':
     dependencies:
       '@react-types/checkbox': 3.7.1(react@18.3.1)
-      '@react-types/shared': 3.9.0(react@18.3.1)
+      '@react-types/shared': 3.22.1(react@18.3.1)
       react: 18.3.1
 
   '@react-types/textfield@3.3.0(react@18.3.1)':
     dependencies:
-      '@react-types/shared': 3.9.0(react@18.3.1)
+      '@react-types/shared': 3.22.1(react@18.3.1)
       react: 18.3.1
 
   '@rehooks/component-size@1.0.3(react@18.3.1)':
@@ -2844,18 +2851,18 @@ snapshots:
       '@sentry/types': 6.19.7
       tslib: 1.14.1
 
-  '@stoplight/elements-core@8.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@stoplight/elements-core@8.4.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@stoplight/http-spec': 7.0.3
+      '@stoplight/http-spec': 7.1.0
       '@stoplight/json': 3.21.0
       '@stoplight/json-schema-ref-parser': 9.2.7
-      '@stoplight/json-schema-sampler': 0.2.3
+      '@stoplight/json-schema-sampler': 0.3.0
       '@stoplight/json-schema-tree': 4.0.0
-      '@stoplight/json-schema-viewer': 4.16.0(@stoplight/markdown-viewer@5.7.0(@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/markdown-viewer': 5.7.0(@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/mosaic': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/mosaic-code-editor': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/mosaic-code-viewer': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/json-schema-viewer': 4.16.1(@stoplight/markdown-viewer@5.7.1(@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/markdown-viewer': 5.7.1(@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic-code-editor': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic-code-viewer': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stoplight/path': 1.3.2
       '@stoplight/react-error-boundary': 3.0.0(react@18.3.1)
       '@stoplight/types': 14.1.1
@@ -2875,7 +2882,7 @@ snapshots:
       tslib: 2.6.2
       urijs: 1.19.11
       util: 0.12.5
-      xml-formatter: 2.6.1
+      xml-formatter: 3.6.3
     transitivePeerDependencies:
       - '@babel/core'
       - '@babel/template'
@@ -2898,12 +2905,12 @@ snapshots:
       - wonka
       - xstate
 
-  '@stoplight/elements@8.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@stoplight/elements@8.4.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@stoplight/elements-core': 8.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/http-spec': 7.0.3
+      '@stoplight/elements-core': 8.4.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/http-spec': 7.1.0
       '@stoplight/json': 3.21.0
-      '@stoplight/mosaic': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stoplight/types': 14.1.1
       '@stoplight/yaml': 4.3.0
       classnames: 2.5.1
@@ -2935,7 +2942,7 @@ snapshots:
       - wonka
       - xstate
 
-  '@stoplight/http-spec@7.0.3':
+  '@stoplight/http-spec@7.1.0':
     dependencies:
       '@stoplight/json': 3.21.0
       '@stoplight/json-schema-generator': 1.0.2
@@ -2980,7 +2987,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@stoplight/json-schema-sampler@0.2.3':
+  '@stoplight/json-schema-sampler@0.3.0':
     dependencies:
       '@types/json-schema': 7.0.15
       json-pointer: 0.6.2
@@ -2993,13 +3000,13 @@ snapshots:
       '@types/json-schema': 7.0.15
       magic-error: 0.0.1
 
-  '@stoplight/json-schema-viewer@4.16.0(@stoplight/markdown-viewer@5.7.0(@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@stoplight/json-schema-viewer@4.16.1(@stoplight/markdown-viewer@5.7.1(@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@stoplight/json': 3.21.0
       '@stoplight/json-schema-tree': 4.0.0
-      '@stoplight/markdown-viewer': 5.7.0(@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/mosaic': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/mosaic-code-viewer': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/markdown-viewer': 5.7.1(@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic-code-viewer': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stoplight/react-error-boundary': 2.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/json-schema': 7.0.15
       classnames: 2.5.1
@@ -3035,12 +3042,12 @@ snapshots:
       tslib: 2.6.2
       wolfy87-eventemitter: 5.2.9
 
-  '@stoplight/markdown-viewer@5.7.0(@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@stoplight/markdown-viewer@5.7.1(@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@rehooks/component-size': 1.0.3(react@18.3.1)
       '@stoplight/markdown': 3.2.0
-      '@stoplight/mosaic': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/mosaic-code-viewer': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic-code-viewer': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stoplight/react-error-boundary': 2.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       deepmerge: 4.3.1
       hast-to-hyperscript: 10.0.3
@@ -3077,7 +3084,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@stoplight/mosaic-code-editor@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@stoplight/mosaic-code-editor@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@fortawesome/fontawesome-svg-core': 6.5.2
       '@fortawesome/react-fontawesome': 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.3.1)
@@ -3086,8 +3093,8 @@ snapshots:
       '@react-types/radio': 3.1.2(react@18.3.1)
       '@react-types/shared': 3.9.0(react@18.3.1)
       '@react-types/switch': 3.1.2(react@18.3.1)
-      '@stoplight/mosaic': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stoplight/mosaic-code-viewer': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic-code-viewer': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stoplight/types': 13.20.0
       clsx: 1.2.1
       copy-to-clipboard: 3.3.3
@@ -3107,7 +3114,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@stoplight/mosaic-code-viewer@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@stoplight/mosaic-code-viewer@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@fortawesome/fontawesome-svg-core': 6.5.2
       '@fortawesome/react-fontawesome': 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.3.1)
@@ -3116,7 +3123,7 @@ snapshots:
       '@react-types/radio': 3.1.2(react@18.3.1)
       '@react-types/shared': 3.9.0(react@18.3.1)
       '@react-types/switch': 3.1.2(react@18.3.1)
-      '@stoplight/mosaic': 1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stoplight/mosaic': 1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@stoplight/types': 13.20.0
       clsx: 1.2.1
       copy-to-clipboard: 3.3.3
@@ -3136,7 +3143,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@stoplight/mosaic@1.53.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@stoplight/mosaic@1.53.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@fortawesome/fontawesome-svg-core': 6.5.2
       '@fortawesome/react-fontawesome': 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.3.1)
@@ -3192,7 +3199,7 @@ snapshots:
 
   '@stoplight/types@14.1.0':
     dependencies:
-      '@types/json-schema': 7.0.11
+      '@types/json-schema': 7.0.15
       utility-types: 3.11.0
 
   '@stoplight/types@14.1.1':
@@ -3565,9 +3572,9 @@ snapshots:
 
   '@types/mdurl@1.0.5': {}
 
-  '@types/node@20.12.7':
+  '@types/node@22.9.0':
     dependencies:
-      undici-types: 5.26.5
+      undici-types: 6.19.8
 
   '@types/parse5@6.0.3': {}
 
@@ -3581,9 +3588,9 @@ snapshots:
     dependencies:
       '@types/react': 17.0.80
 
-  '@types/react-dom@18.3.0':
+  '@types/react-dom@18.3.1':
     dependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.12
 
   '@types/react@17.0.80':
     dependencies:
@@ -3591,14 +3598,14 @@ snapshots:
       '@types/scheduler': 0.16.8
       csstype: 3.1.3
 
-  '@types/react@18.3.1':
+  '@types/react@18.3.12':
     dependencies:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
 
   '@types/scheduler@0.16.8': {}
 
-  '@types/stylis@4.2.0': {}
+  '@types/stylis@4.2.5': {}
 
   '@types/swagger-jsdoc@6.0.1': {}
 
@@ -3608,7 +3615,7 @@ snapshots:
 
   '@types/type-is@1.6.6':
     dependencies:
-      '@types/node': 20.12.7
+      '@types/node': 22.9.0
 
   '@types/unist@2.0.10': {}
 
@@ -3616,19 +3623,20 @@ snapshots:
 
   '@xobotyi/scrollbar-width@1.9.5': {}
 
-  '@xstyled/core@3.8.0':
+  '@xstyled/core@3.8.1':
     dependencies:
-      '@xstyled/system': 3.8.0
+      '@xstyled/system': 3.8.1
       '@xstyled/util': 3.7.0
 
-  '@xstyled/styled-components@3.8.0(styled-components@6.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@xstyled/styled-components@4.0.0(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
-      '@xstyled/core': 3.8.0
-      '@xstyled/system': 3.8.0
+      '@emotion/is-prop-valid': 1.3.1
+      '@xstyled/core': 3.8.1
+      '@xstyled/system': 3.8.1
       '@xstyled/util': 3.7.0
-      styled-components: 6.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      styled-components: 6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  '@xstyled/system@3.8.0':
+  '@xstyled/system@3.8.1':
     dependencies:
       '@xstyled/util': 3.7.0
       csstype: 3.1.3
@@ -3877,12 +3885,12 @@ snapshots:
       openapi-json-schema: 2.0.0
       suretype: 3.3.1
       toposort: 2.0.2
-      typescript: 5.4.5
+      typescript: 5.6.3
 
   core-types-ts@4.1.0:
     dependencies:
       core-types: 3.1.0
-      typescript: 5.4.5
+      typescript: 5.6.3
 
   core-types@3.1.0: {}
 
@@ -3940,8 +3948,6 @@ snapshots:
       source-map: 0.6.1
 
   css.escape@1.5.1: {}
-
-  csstype@3.1.2: {}
 
   csstype@3.1.3: {}
 
@@ -4674,7 +4680,7 @@ snapshots:
 
   mkdirp@0.5.6:
     dependencies:
-      minimist: 1.2.6
+      minimist: 1.2.8
 
   ms@2.1.2: {}
 
@@ -4868,6 +4874,12 @@ snapshots:
       picocolors: 1.0.0
       source-map-js: 1.2.0
 
+  postcss@8.4.38:
+    dependencies:
+      nanoid: 3.3.7
+      picocolors: 1.0.0
+      source-map-js: 1.2.0
+
   postman-collection@4.4.0:
     dependencies:
       '@faker-js/faker': 5.5.3
@@ -5020,13 +5032,13 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  react-redux@9.1.1(@types/react@18.3.1)(react@18.3.1)(redux@5.0.1):
+  react-redux@9.1.1(@types/react@18.3.12)(react@18.3.1)(redux@5.0.1):
     dependencies:
       '@types/use-sync-external-store': 0.0.3
       react: 18.3.1
       use-sync-external-store: 1.2.2(react@18.3.1)
     optionalDependencies:
-      '@types/react': 18.3.1
+      '@types/react': 18.3.12
       redux: 5.0.1
 
   react-router-dom@5.3.4(react@18.3.1):
@@ -5305,26 +5317,24 @@ snapshots:
     dependencies:
       inline-style-parser: 0.1.1
 
-  styled-components@6.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@emotion/is-prop-valid': 1.2.1
+      '@emotion/is-prop-valid': 1.2.2
       '@emotion/unitless': 0.8.1
-      '@types/stylis': 4.2.0
+      '@types/stylis': 4.2.5
       css-to-react-native: 3.2.0
-      csstype: 3.1.2
-      postcss: 8.4.31
+      csstype: 3.1.3
+      postcss: 8.4.38
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       shallowequal: 1.1.0
-      stylis: 4.3.1
-      tslib: 2.5.0
+      stylis: 4.3.2
+      tslib: 2.6.2
 
   styled-jsx@5.1.1(react@18.3.1):
     dependencies:
       client-only: 0.0.1
       react: 18.3.1
-
-  stylis@4.3.1: {}
 
   stylis@4.3.2: {}
 
@@ -5380,7 +5390,7 @@ snapshots:
     transitivePeerDependencies:
       - openapi-types
 
-  swagger-ui-react@5.17.2(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  swagger-ui-react@5.17.2(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime-corejs3': 7.24.5
       '@braintree/sanitize-url': 7.0.1
@@ -5405,7 +5415,7 @@ snapshots:
       react-immutable-proptypes: 2.2.0(immutable@3.8.2)
       react-immutable-pure-component: 2.2.2(immutable@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-inspector: 6.0.2(react@18.3.1)
-      react-redux: 9.1.1(@types/react@18.3.1)(react@18.3.1)(redux@5.0.1)
+      react-redux: 9.1.1(@types/react@18.3.12)(react@18.3.1)(redux@5.0.1)
       react-syntax-highlighter: 15.5.0(react@18.3.1)
       redux: 5.0.1
       redux-immutable: 4.0.0(immutable@3.8.2)
@@ -5497,8 +5507,6 @@ snapshots:
 
   tslib@1.14.1: {}
 
-  tslib@2.5.0: {}
-
   tslib@2.6.2: {}
 
   tunnel-agent@0.6.0:
@@ -5536,9 +5544,9 @@ snapshots:
     dependencies:
       ts-toolbelt: 9.6.0
 
-  typescript@5.4.5: {}
+  typescript@5.6.3: {}
 
-  undici-types@5.26.5: {}
+  undici-types@6.19.8: {}
 
   unified@9.2.2:
     dependencies:
@@ -5744,11 +5752,11 @@ snapshots:
     dependencies:
       repeat-string: 1.6.1
 
-  xml-formatter@2.6.1:
+  xml-formatter@3.6.3:
     dependencies:
-      xml-parser-xo: 3.2.0
+      xml-parser-xo: 4.1.2
 
-  xml-parser-xo@3.2.0: {}
+  xml-parser-xo@4.1.2: {}
 
   xml@1.0.1: {}
 

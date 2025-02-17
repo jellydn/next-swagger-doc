@@ -43,26 +43,26 @@
   },
   "dependencies": {
     "@types/swagger-jsdoc": "6.0.4",
-    "cleye": "1.3.2",
+    "cleye": "1.3.4",
     "isarray": "2.0.5",
     "swagger-jsdoc": "6.2.8"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@skypack/package-check": "0.2.2",
-    "@types/node": "22.10.7",
+    "@types/node": "22.13.4",
     "@vitest/coverage-v8": "3.0.5",
     "@vitest/ui": "3.0.5",
     "all-contributors-cli": "6.26.1",
     "c8": "10.1.3",
-    "next": "15.0.3",
-    "pkgroll": "2.6.1",
+    "next": "15.1.7",
+    "pkgroll": "2.10.0",
     "size-limit": "11.1.6",
     "sort-package-json": "2.14.0",
     "tslib": "2.8.1",
-    "typedoc": "0.27.6",
+    "typedoc": "0.27.7",
     "typescript": "5.7.3",
-    "vite": "6.0.7",
+    "vite": "6.1.0",
     "vitest": "3.0.5"
   },
   "peerDependencies": {
@@ -71,5 +71,12 @@
   "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=18"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild",
+      "sharp"
+    ]
   }
 }

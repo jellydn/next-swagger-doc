@@ -10,31 +10,31 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
+    "@radix-ui/react-slot": "^1.2.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "0.454.0",
+    "lucide-react": "0.487.0",
     "next": "^14.2.10",
     "next-swagger-doc": "^0.4.1",
-    "next-themes": "^0.4.3",
+    "next-themes": "^0.4.6",
     "openapi-types": "^12.1.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sharp": "^0.33.5",
-    "swagger-ui-react": "^5.18.1",
+    "sharp": "^0.34.1",
+    "swagger-ui-react": "^5.20.8",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
-    "@types/node": "^22.9.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@types/node": "^22.14.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@types/swagger-ui-react": "^4.18.3",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
+    "@types/swagger-ui-react": "^5.18.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
     "tailwindcss": "^3.4.14",
-    "typescript": "^5.6.3"
+    "typescript": "^5.8.3"
   },
-  "packageManager": "pnpm@9.12.3"
+  "packageManager": "pnpm@10.8.0"
 }

@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
@@ -41,17 +42,25 @@ export function createSwaggerSpec({
     const apiDirectory = join(process.cwd(), folder);
     const publicDirectory = join(process.cwd(), 'public');
     const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'json', 'swagger.yaml'];
-    return [
+    
+    const basePaths = [
       ...fileTypes.map((fileType) => `${apiDirectory}/**/*.${fileType}`),
-      // Only scan build directory for *.swagger.yaml and *.js files
-      ...['js', 'swagger.yaml', 'json'].map(
-        (fileType) => `${buildApiDirectory}/**/*.${fileType}`
-      ),
       // Support load static files from public directory
       ...['swagger.yaml', 'json'].map(
         (fileType) => `${publicDirectory}/**/*.${fileType}`
       ),
     ];
+    
+    // Only scan build directory if it exists (to prevent ENOENT errors in Vercel builds)
+    if (existsSync(buildApiDirectory)) {
+      basePaths.push(
+        ...['js', 'swagger.yaml', 'json'].map(
+          (fileType) => `${buildApiDirectory}/**/*.${fileType}`
+        )
+      );
+    }
+    
+    return basePaths;
   });
 
   // Append base path server element to server array

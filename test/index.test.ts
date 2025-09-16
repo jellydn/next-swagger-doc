@@ -89,4 +89,21 @@ describe('withSwagger', () => {
       })
     ).toMatchSnapshot();
   });
+
+  it('should work when .next/server directory does not exist (Vercel build scenario)', () => {
+    // This test ensures the function doesn't crash when build directory doesn't exist
+    // which was the issue reported in Vercel builds
+    expect(() =>
+      createSwaggerSpec({
+        definition: {
+          openapi: '3.0.0',
+          info: {
+            title: 'NextJS Swagger for Vercel',
+            version: '0.1.0',
+          },
+        },
+        apiFolder: 'nonexistent/api/folder', // Use a folder that definitely doesn't exist
+      })
+    ).not.toThrow();
+  });
 });

@@ -5,6 +5,7 @@ Pkgroll
 typecheck
 ianvs
 clsx
+codesee
 lucide
 tailwindcss
 autoprefixer

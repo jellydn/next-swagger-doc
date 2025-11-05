@@ -1,0 +1,236 @@
+# Implementation Plan: Automatic OpenAPI Documentation Generation
+
+**Branch**: `001-auto-generate-doc` | **Date**: 2025-11-05 | **Spec**: [spec.md](./spec.md)
+**Input**: Feature specification from `/specs/001-auto-generate-doc/spec.md`
+
+## Summary
+
+This feature extends next-swagger-doc to automatically infer API paths and HTTP methods from Next.js file structure, and generate OpenAPI schemas from Zod validators or TypeScript types. The goal is to reduce JSDoc boilerplate by 60% while maintaining backward compatibility with explicit annotations. The implementation will add optional auto-generation capabilities as an enhancement to the existing swagger-jsdoc integration, using TypeScript AST parsing for code analysis and @asteasolutions/zod-to-openapi for schema conversion.
+
+## Technical Context
+
+**Language/Version**: TypeScript 5.8.3 (current project version), targeting ES2020+
+**Primary Dependencies**:
+- swagger-jsdoc 6.2.8 (existing - JSDoc parsing)
+- @asteasolutions/zod-to-openapi (new - Zod schema conversion)
+- typescript (existing devDep - will use compiler API for AST parsing)
+- @typescript-eslint/typescript-estree (new - optional, for better TS parsing)
+
+**Storage**: N/A (stateless library, no persistence)
+**Testing**: Vitest 3.1.2 (existing test framework), snapshot testing for generated specs
+**Target Platform**: Node.js >=18 (current project requirement), works with Next.js >=9
+**Project Type**: Single library project (npm package)
+**Performance Goals**: <1s spec generation for 100 endpoints (per constitution), minimal memory footprint
+**Constraints**:
+- Zero breaking changes to existing API
+- Must work with both Pages Router and App Router
+- Opt-in feature (disabled by default for backward compatibility)
+- No runtime overhead when disabled
+
+**Scale/Scope**:
+- Expected to handle projects with 1000+ API endpoints
+- Must support complex Zod schemas (unions, intersections, arrays, nested objects)
+- Target 90% of common API patterns with zero manual annotations
+
+## Constitution Check
+
+*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+
+### ✅ I. OpenAPI Standards Compliance
+- Generated specs must pass OpenAPI 3.0+ validation
+- All auto-inferred paths, methods, and schemas must produce valid OpenAPI output
+- **Gate**: Add validation step in unit tests to verify OpenAPI compliance
+
+### ✅ II. Next.js Version Compatibility
+- Must support Pages Router (pages/api/) and App Router (app/api/) patterns
+- Test with Next.js 9, 12, 13, 14, 15 in CI
+- **Gate**: Example projects for each router type in examples folder
+
+### ✅ III. JSDoc-First Documentation
+- Feature extends (not replaces) JSDoc approach
+- Minimal JSDoc (descriptions only) is still JSDoc
+- **Gate**: All auto-generated content must be augmentable with JSDoc comments
+
+### ✅ IV. Zero-Config Defaults with Flexible Configuration
+- Add single opt-in flag: `autoGenerate: boolean` (default false)
+- Advanced config: Zod schema locations, TypeScript type locations
+- **Gate**: Basic usage requires only enabling the flag
+
+### ✅ V. Multi-Interface Support
+- Auto-generation works with all three interfaces (createSwaggerSpec, withSwagger, CLI)
+- No interface-specific implementations
+- **Gate**: Integration tests for all three interfaces
+
+### ✅ VI. Test Coverage and Quality
+- Target >80% coverage for new code
+- Snapshot tests for various auto-generation scenarios
+- **Gate**: All new functions have unit + integration tests
+
+### ✅ VII. TypeScript-First Development
+- Full TypeScript implementation with no `any` in public API
+- Type-safe configuration options
+- **Gate**: Strict TypeScript mode, no type errors
+
+### Quality Standards Compliance
+
+**Code Quality**:
+- Biome linting (existing) for new code
+- Size-limit monitoring - ensure bundle size increase <20kb
+
+**Documentation Quality**:
+- README update with auto-generation examples
+- New example projects showing auto-generation
+- CHANGELOG entry for this MINOR version feature
+
+**Performance Standards**:
+- Benchmark generation time with/without auto-generation
+- Must stay under 1s for 100 endpoints
+
+### ⚠️ Potential Violations
+
+| Check | Status | Notes |
+|-------|--------|-------|
+| New dependency (zod-to-openapi) | Acceptable | Production-ready library, stable API, no better alternative |
+| Increased complexity in core | Acceptable | Isolated in new modules, feature-flagged, doesn't affect existing users |
+
+## Project Structure
+
+### Documentation (this feature)
+
+```text
+specs/001-auto-generate-doc/
+├── plan.md              # This file
+├── research.md          # Phase 0: Technology choices and patterns
+├── data-model.md        # Phase 1: Core entities and relationships
+├── quickstart.md        # Phase 1: Developer getting started guide
+├── contracts/           # Phase 1: API contracts (internal library APIs)
+│   └── auto-generate-api.md
+└── tasks.md             # Phase 2: Generated by /speckit.tasks
+```
+
+### Source Code (repository root)
+
+```text
+src/
+├── swagger.ts              # Existing - main exports
+├── auto-generate/          # NEW - auto-generation modules
+│   ├── index.ts           # Public API for auto-generation
+│   ├── path-inference.ts  # Extract paths from file structure
+│   ├── method-detection.ts # Detect HTTP methods from exports
+│   ├── schema-extractor.ts # Extract Zod/TS schemas from code
+│   ├── zod-converter.ts   # Convert Zod to OpenAPI via library
+│   ├── ts-converter.ts    # Convert TS types to OpenAPI schemas
+│   ├── merger.ts          # Merge auto-gen + explicit JSDoc
+│   └── config.ts          # Auto-generation configuration types
+├── types.ts                # Existing types + new auto-gen types
+└── index.ts                # Existing - re-exports
+
+test/
+├── auto-generate/          # NEW - auto-generation tests
+│   ├── path-inference.test.ts
+│   ├── method-detection.test.ts
+│   ├── schema-extractor.test.ts
+│   ├── zod-converter.test.ts
+│   ├── ts-converter.test.ts
+│   ├── merger.test.ts
+│   └── integration.test.ts
+├── fixtures/               # NEW - test API routes
+│   ├── pages-router/      # Pages Router examples
+│   └── app-router/        # App Router examples
+└── index.test.ts           # Existing tests
+
+examples/
+├── next13-auto-generate/   # NEW - Auto-gen with Next.js 13
+└── next14-auto-generate/   # NEW - Auto-gen with Next.js 14 App Router
+```
+
+**Structure Decision**: Single library project (Option 1). All auto-generation logic is in a new `src/auto-generate/` directory to keep it isolated from existing code. This allows the feature to be completely opt-in and doesn't affect users who don't enable it. Test fixtures replicate Next.js routing patterns for both Pages and App Router.
+
+## Complexity Tracking
+
+> No constitution violations requiring justification. The new dependency and increased complexity are acceptable per the rationale above.
+
+## Phase 0: Research & Technology Decisions
+
+*Output: research.md*
+
+Research tasks to complete before Phase 1 design:
+
+1. **Zod Schema Detection**: How to reliably find and extract Zod schema definitions from TypeScript source code
+   - AST traversal patterns
+   - Handling imported schemas vs inline schemas
+   - Edge cases (conditional schemas, computed schemas)
+
+2. **TypeScript Type Extraction**: How to convert TypeScript types to JSON Schema/OpenAPI
+   - Using TS Compiler API vs estree
+   - Handling complex types (generics, unions, intersections)
+   - Limitations and fallback strategies
+
+3. **Next.js Router Detection**: How to differentiate between Pages Router and App Router
+   - File path patterns
+   - Export patterns (default export vs named exports)
+   - Middleware detection
+
+4. **Dynamic Route Handling**: How to convert Next.js dynamic segments to OpenAPI parameters
+   - `[id]` → `{id}` parameter
+   - `[...slug]` → array parameter or wildcard
+   - Optional catch-all `[[...slug]]`
+
+5. **JSDoc Merging Strategy**: How to merge auto-generated data with explicit JSDoc
+   - Precedence rules (explicit always wins)
+   - Partial overrides (e.g., only method specified)
+   - Conflict resolution
+
+6. **Zod-to-OpenAPI Integration**: Best practices for using @asteasolutions/zod-to-openapi
+   - Schema registration patterns
+   - Component reuse strategy
+   - Error handling
+
+## Phase 1: Design Artifacts
+
+*Prerequisites: research.md complete*
+
+### Artifacts to Generate
+
+1. **data-model.md**: Core entities and relationships
+   - RouteInfo entity (path, method, file location, handler type)
+   - SchemaInfo entity (schema name, source, OpenAPI representation)
+   - ConfigOptions entity (auto-generation settings)
+
+2. **contracts/auto-generate-api.md**: Internal API contracts
+   - Path inference function signatures
+   - Method detection function signatures
+   - Schema extractor interfaces
+   - Merger logic contracts
+
+3. **quickstart.md**: Developer guide for using auto-generation
+   - Enabling the feature
+   - Minimal JSDoc examples
+   - Zod schema examples
+   - TypeScript type examples
+   - Migration guide from explicit JSDoc
+
+### Agent Context Update
+
+After Phase 1 completion, run:
+```bash
+.specify/scripts/bash/update-agent-context.sh claude
+```
+
+This will update `.claude/claude.md` (or equivalent) with:
+- New auto-generation modules location
+- Configuration options
+- Common patterns for this feature
+
+## Next Steps
+
+After `/speckit.plan` completes Phase 0 and Phase 1:
+1. Review generated research.md for technology decisions
+2. Review data-model.md for entity relationships
+3. Review contracts for API design
+4. Run `/speckit.tasks` to generate implementation task list
+5. Begin implementation starting with Phase 1 tasks (setup)
+
+---
+
+*This plan will be updated as Phase 0 research resolves unknowns and Phase 1 design produces artifacts.*

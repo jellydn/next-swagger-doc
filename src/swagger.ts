@@ -1,12 +1,20 @@
 import { join } from 'node:path';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
+import type { AutoGenerateConfig } from './auto-generate/config';
 
 export type SwaggerOptions = Options & {
   apiFolder?: string;
   schemaFolders?: string[];
   definition: OAS3Definition;
   outputFile?: string;
+  /**
+   * Enable automatic OpenAPI generation from Next.js routes
+   * - `true`: Enable with default settings
+   * - `false`: Disable (default)
+   * - `AutoGenerateConfig`: Enable with custom settings
+   */
+  autoGenerate?: boolean | Partial<AutoGenerateConfig>;
 };
 
 const defaultOptions: SwaggerOptions = {

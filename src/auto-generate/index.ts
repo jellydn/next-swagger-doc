@@ -10,6 +10,7 @@ import type { RouteInfo, AutoGenerateConfig } from './types';
 import { inferRoutePathFromFile } from './path-inference';
 import { detectHttpMethods, isValidApiRoute } from './method-detection';
 import { normalizeConfig } from './config';
+import { extractSchemas } from './schema-extractor';
 
 /**
  * Discovers and generates documentation for all API routes in a folder
@@ -20,20 +21,21 @@ import { normalizeConfig } from './config';
  *
  * @example
  * ```typescript
- * const routes = autoGenerateRoutes('pages/api', {
+ * const routes = await autoGenerateRoutes('pages/api', {
  *   enabled: true,
  *   routerTypes: ['pages', 'app']
  * });
  * ```
  */
-export function autoGenerateRoutes(
+export async function autoGenerateRoutes(
   apiFolder: string,
   config: Partial<AutoGenerateConfig>,
-): RouteInfo[] {
+): Promise<RouteInfo[]> {
   const normalizedConfig = normalizeConfig(config);
 
   // If auto-generation is disabled, return empty array
   if (!normalizedConfig.enabled) {
+    console.warn('[next-swagger-doc] Auto-generation is disabled (enabled: false)');
     return [];
   }
 
@@ -45,7 +47,7 @@ export function autoGenerateRoutes(
 
   for (const filePath of routeFiles) {
     try {
-      const routeInfos = processRouteFile(filePath, normalizedConfig);
+      const routeInfos = await processRouteFile(filePath, normalizedConfig);
       routes.push(...routeInfos);
     } catch (error) {
       // Log error but continue processing other files
@@ -128,10 +130,10 @@ function shouldExclude(filePath: string, patterns: string[]): boolean {
  * @param config - Configuration options
  * @returns Array of RouteInfo objects
  */
-function processRouteFile(
+async function processRouteFile(
   filePath: string,
   config: AutoGenerateConfig,
-): RouteInfo[] {
+): Promise<RouteInfo[]> {
   // Step 1: Infer route path from file structure
   const pathInfo = inferRoutePathFromFile(filePath);
 
@@ -159,7 +161,17 @@ function processRouteFile(
   const routes: RouteInfo[] = [];
 
   for (const method of methodInfo.methods) {
-    // Create basic RouteInfo (schemas will be added in US2)
+    // Step 3a: Extract schemas from handler (US2)
+    let schemas;
+    if (config.includeTypeScript) {
+      try {
+        schemas = await extractSchemas(filePath, method.handler);
+      } catch (error) {
+        console.warn(`Failed to extract schemas for ${filePath}:${method.method}`, error);
+      }
+    }
+
+    // Create RouteInfo with schema information
     const routeInfo: RouteInfo = {
       filePath,
       routePath: pathInfo.routePath,
@@ -167,13 +179,20 @@ function processRouteFile(
       routerType: pathInfo.routerType,
       handler: method.handler,
       parameters: pathInfo.parameters,
-      // Default responses (US1 MVP - basic structure)
-      responses: {
-        200: {
-          description: method.jsdocSummary || `Successful ${method.method} response`,
-        },
-      },
+      // Responses from schema extraction or default
+      responses: schemas?.responses && Object.keys(schemas.responses).length > 0
+        ? schemas.responses
+        : {
+            200: {
+              description: method.jsdocSummary || `Successful ${method.method} response`,
+            },
+          },
     };
+
+    // Add request body schema if extracted
+    if (schemas?.requestBody) {
+      routeInfo.requestBody = schemas.requestBody;
+    }
 
     // Add summary and description from JSDoc if available
     if (method.jsdocSummary) {

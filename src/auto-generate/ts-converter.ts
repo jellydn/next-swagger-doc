@@ -298,12 +298,17 @@ export function extractReturnTypeSchema(
 
   // Try to infer from return statements
   // This is more complex and requires type checker
-  const typeChecker = program.getTypeChecker();
-  const signature = typeChecker.getSignatureFromDeclaration(functionDeclaration as any);
+  try {
+    const typeChecker = program.getTypeChecker();
+    const signature = typeChecker.getSignatureFromDeclaration(functionDeclaration as any);
 
-  if (signature) {
-    const returnType = typeChecker.getReturnTypeOfSignature(signature);
-    return typeToOpenAPISchema(returnType, typeChecker);
+    if (signature) {
+      const returnType = typeChecker.getReturnTypeOfSignature(signature);
+      return typeToOpenAPISchema(returnType, typeChecker);
+    }
+  } catch (error) {
+    // Type checking failed, return undefined
+    // This can happen with arrow functions or functions without proper context
   }
 
   return undefined;

@@ -71,13 +71,13 @@ export async function POST(request: Request) {
     rmSync(TEST_PROJECT_DIR, { recursive: true, force: true });
   });
 
-  it('should generate spec with auto-generation enabled', () => {
+  it('should generate spec with auto-generation enabled', async () => {
     // Change working directory for this test
     const originalCwd = process.cwd();
     process.chdir(TEST_PROJECT_DIR);
 
     try {
-      const spec = createSwaggerSpec({
+      const spec = await createSwaggerSpec({
         apiFolder: 'pages/api',
         definition: {
           openapi: '3.0.0',
@@ -118,12 +118,12 @@ export async function POST(request: Request) {
     }
   });
 
-  it('should generate spec for both router types when configured', () => {
+  it('should generate spec for both router types when configured', async () => {
     const originalCwd = process.cwd();
     process.chdir(TEST_PROJECT_DIR);
 
     try {
-      const spec = createSwaggerSpec({
+      const spec = await createSwaggerSpec({
         apiFolder: 'pages/api',
         definition: {
           openapi: '3.0.0',
@@ -149,12 +149,12 @@ export async function POST(request: Request) {
     }
   });
 
-  it('should not generate paths when auto-generation is disabled', () => {
+  it('should not generate paths when auto-generation is disabled', async () => {
     const originalCwd = process.cwd();
     process.chdir(TEST_PROJECT_DIR);
 
     try {
-      const spec = createSwaggerSpec({
+      const spec = await createSwaggerSpec({
         apiFolder: 'pages/api',
         definition: {
           openapi: '3.0.0',
@@ -178,12 +178,12 @@ export async function POST(request: Request) {
     }
   });
 
-  it('should infer tags from route paths', () => {
+  it('should infer tags from route paths', async () => {
     const originalCwd = process.cwd();
     process.chdir(TEST_PROJECT_DIR);
 
     try {
-      const spec = createSwaggerSpec({
+      const spec = await createSwaggerSpec({
         apiFolder: 'pages/api',
         definition: {
           openapi: '3.0.0',
@@ -205,13 +205,13 @@ export async function POST(request: Request) {
     }
   });
 
-  it('should handle errors gracefully and continue with manual spec', () => {
+  it('should handle errors gracefully and continue with manual spec', async () => {
     const originalCwd = process.cwd();
     process.chdir(TEST_PROJECT_DIR);
 
     try {
       // This should not throw even if auto-generation fails
-      const spec = createSwaggerSpec({
+      const spec = await createSwaggerSpec({
         apiFolder: 'nonexistent/api',
         definition: {
           openapi: '3.0.0',

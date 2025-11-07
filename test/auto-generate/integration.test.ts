@@ -11,12 +11,13 @@ const FIXTURES_DIR = resolve(__dirname, '../fixtures');
 
 describe('auto-generate integration', () => {
   describe('autoGenerateRoutes', () => {
-    it('should discover and process all App Router routes', () => {
+    it('should discover and process all App Router routes', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routes = autoGenerateRoutes(appApiDir, {
+      const routes = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false, // Disable schema extraction for speed
       });
 
       // Should find routes from:
@@ -37,12 +38,13 @@ describe('auto-generate integration', () => {
       }
     });
 
-    it('should discover and process all Pages Router routes', () => {
+    it('should discover and process all Pages Router routes', async () => {
       const pagesApiDir = resolve(FIXTURES_DIR, 'pages/api');
 
-      const routes = autoGenerateRoutes(pagesApiDir, {
+      const routes = await autoGenerateRoutes(pagesApiDir, {
         enabled: true,
         routerTypes: ['pages'],
+        includeTypeScript: false,
       });
 
       // Should find routes from:
@@ -55,12 +57,13 @@ describe('auto-generate integration', () => {
       expect(userRoute?.routerType).toBe('pages');
     });
 
-    it('should process both router types when enabled', () => {
+    it('should process both router types when enabled', async () => {
       const fixturesDir = FIXTURES_DIR;
 
-      const routes = autoGenerateRoutes(fixturesDir, {
+      const routes = await autoGenerateRoutes(fixturesDir, {
         enabled: true,
         routerTypes: ['pages', 'app'],
+        includeTypeScript: false,
       });
 
       const appRoutes = routes.filter(r => r.routerType === 'app');
@@ -70,34 +73,36 @@ describe('auto-generate integration', () => {
       expect(pagesRoutes.length).toBeGreaterThan(0);
     });
 
-    it('should skip disabled router types', () => {
+    it('should skip disabled router types', async () => {
       const fixturesDir = FIXTURES_DIR;
 
-      const routes = autoGenerateRoutes(fixturesDir, {
+      const routes = await autoGenerateRoutes(fixturesDir, {
         enabled: true,
         routerTypes: ['app'], // Only App Router
+        includeTypeScript: false,
       });
 
       const pagesRoutes = routes.filter(r => r.routerType === 'pages');
       expect(pagesRoutes.length).toBe(0);
     });
 
-    it('should return empty array when disabled', () => {
+    it('should return empty array when disabled', async () => {
       const fixturesDir = FIXTURES_DIR;
 
-      const routes = autoGenerateRoutes(fixturesDir, {
+      const routes = await autoGenerateRoutes(fixturesDir, {
         enabled: false,
       });
 
       expect(routes).toEqual([]);
     });
 
-    it('should preserve path parameters', () => {
+    it('should preserve path parameters', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routes = autoGenerateRoutes(appApiDir, {
+      const routes = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false,
       });
 
       // Check that routes with path parameters have them defined
@@ -118,12 +123,13 @@ describe('auto-generate integration', () => {
       }
     });
 
-    it('should extract JSDoc summaries', () => {
+    it('should extract JSDoc summaries', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routes = autoGenerateRoutes(appApiDir, {
+      const routes = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false,
       });
 
       // Find route with JSDoc
@@ -135,12 +141,13 @@ describe('auto-generate integration', () => {
       expect(routeWithJSDoc?.summary).toBe('Simple GET endpoint');
     });
 
-    it('should infer tags from route paths', () => {
+    it('should infer tags from route paths', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routes = autoGenerateRoutes(appApiDir, {
+      const routes = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false,
         inferDescriptions: true,
       });
 
@@ -153,12 +160,13 @@ describe('auto-generate integration', () => {
       expect(rootRoute?.tags).toContain('api');
     });
 
-    it('should handle multiple methods from same file', () => {
+    it('should handle multiple methods from same file', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routes = autoGenerateRoutes(appApiDir, {
+      const routes = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false,
       });
 
       // app/api/route.ts exports GET, POST, DELETE
@@ -178,10 +186,10 @@ describe('auto-generate integration', () => {
       expect(getRoute?.summary).not.toBe(postRoute?.summary);
     });
 
-    it('should handle errors gracefully', () => {
+    it('should handle errors gracefully', async () => {
       const nonExistentDir = '/nonexistent/api';
 
-      const routes = autoGenerateRoutes(nonExistentDir, {
+      const routes = await autoGenerateRoutes(nonExistentDir, {
         enabled: true,
       });
 
@@ -189,12 +197,13 @@ describe('auto-generate integration', () => {
       expect(routes).toEqual([]);
     });
 
-    it('should exclude files matching exclude patterns', () => {
+    it('should exclude files matching exclude patterns', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routesWithExclude = autoGenerateRoutes(appApiDir, {
+      const routesWithExclude = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false,
         excludePatterns: ['arrow'], // Exclude arrow function fixture
       });
 
@@ -204,12 +213,13 @@ describe('auto-generate integration', () => {
   });
 
   describe('RouteInfo structure', () => {
-    it('should generate valid RouteInfo objects', () => {
+    it('should generate valid RouteInfo objects', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routes = autoGenerateRoutes(appApiDir, {
+      const routes = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false,
       });
 
       expect(routes.length).toBeGreaterThan(0);
@@ -239,16 +249,17 @@ describe('auto-generate integration', () => {
       expect(route.responses[200].description).toBeDefined();
     });
 
-    it('should create separate RouteInfo for each method', () => {
+    it('should create separate RouteInfo for each method', async () => {
       const appApiDir = resolve(FIXTURES_DIR, 'app/api');
 
-      const routes = autoGenerateRoutes(appApiDir, {
+      const routes = await autoGenerateRoutes(appApiDir, {
         enabled: true,
         routerTypes: ['app'],
+        includeTypeScript: false,
       });
 
       // Group by file path
-      const routesByFile = new Map<string, RouteInfo[]>();
+      const routesByFile = new Map<string, typeof routes>();
       for (const route of routes) {
         const existing = routesByFile.get(route.filePath) || [];
         existing.push(route);

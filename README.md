@@ -39,6 +39,176 @@ This package reads your JSDoc-annotated source code on [NextJS API route](https:
 yarn add next-swagger-doc
 ```
 
+## ✨ New: Auto-Generation Feature
+
+**Reduce JSDoc boilerplate by 60%+** with automatic OpenAPI documentation generation!
+
+Starting from v0.4.0, `next-swagger-doc` can automatically generate OpenAPI documentation from your Next.js API routes with minimal or no JSDoc annotations. The library intelligently infers paths, methods, parameters, and response types from your code structure.
+
+### Quick Start: Auto-Generation
+
+```typescript
+import { createSwaggerSpec } from "next-swagger-doc";
+
+export const getApiDocs = async () => {
+  const spec = await createSwaggerSpec({
+    apiFolder: "app/api",
+    definition: {
+      openapi: "3.0.0",
+      info: {
+        title: "My API",
+        version: "1.0",
+      },
+    },
+    autoGenerate: true, // 🎉 Enable auto-generation
+  });
+  return spec;
+};
+```
+
+**That's it!** Your API routes are now documented automatically:
+
+- ✅ Paths inferred from file structure (`/api/users`, `/api/users/{id}`)
+- ✅ Methods detected from exports (`GET`, `POST`, `PUT`, `DELETE`, etc.)
+- ✅ Path parameters extracted from dynamic routes (`[id]`, `[...slug]`)
+- ✅ Response schemas inferred from TypeScript types and Zod schemas
+- ✅ JSDoc summaries and descriptions preserved when present
+
+### Auto-Generation Modes
+
+#### 1. Minimal JSDoc Mode (Default)
+
+Write minimal JSDoc and let auto-generation fill in the rest:
+
+```typescript
+// app/api/users/[id]/route.ts
+
+/**
+ * Get user by ID
+ */
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  const user = await db.users.findById(params.id);
+  return Response.json(user);
+}
+```
+
+**Generated OpenAPI:**
+- ✅ Path: `/api/users/{id}`
+- ✅ Method: `GET`
+- ✅ Summary: "Get user by ID" (from JSDoc)
+- ✅ Path parameter: `id` (string, required)
+- ✅ 200 response with inferred schema
+
+#### 2. Schema Inference Mode
+
+Enable TypeScript and Zod schema extraction:
+
+```typescript
+const spec = await createSwaggerSpec({
+  apiFolder: "app/api",
+  definition: { /* ... */ },
+  autoGenerate: {
+    enabled: true,
+    includeTypeScript: true, // Extract TypeScript types
+    zodSchemaFolders: ["models"], // Scan for Zod schemas
+  },
+});
+```
+
+Now response types are automatically converted to OpenAPI schemas:
+
+```typescript
+import { z } from "zod";
+
+const UserSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
+});
+
+/**
+ * Get all users
+ */
+export async function GET(): Promise<z.infer<typeof UserSchema>[]> {
+  // Schema automatically extracted from return type!
+  return db.users.findAll();
+}
+```
+
+#### 3. Hybrid Mode (Best of Both Worlds)
+
+Mix auto-generation with explicit JSDoc for full control:
+
+```typescript
+/**
+ * Get all users with pagination
+ * @swagger
+ * /api/users:
+ *   get:
+ *     tags: [users, admin]
+ *     parameters:
+ *       - name: page
+ *         in: query
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       401:
+ *         description: Unauthorized
+ *     security:
+ *       - bearerAuth: []
+ */
+export async function GET(request: Request) {
+  // Your implementation
+}
+```
+
+**Hybrid mode merges**:
+- JSDoc provides: tags, query parameters, detailed responses, security
+- Auto-gen provides: path inference, method detection, path parameters
+- **JSDoc always takes precedence** when both are present
+
+### Configuration Options
+
+```typescript
+interface AutoGenerateConfig {
+  enabled: boolean;                    // Enable/disable auto-generation
+  includeTypeScript?: boolean;         // Extract TypeScript types (default: true)
+  zodSchemaFolders?: string[];         // Folders to scan for Zod schemas
+  routerTypes?: ('pages' | 'app')[];   // Router types to process (default: both)
+  inferDescriptions?: boolean;         // Auto-generate descriptions from paths (default: true)
+  componentReuse?: boolean;            // Reuse schema components (default: true)
+  defaultResponses?: boolean;          // Add default error responses (default: false)
+  excludePatterns?: string[];          // File patterns to exclude
+}
+```
+
+### Migration Note
+
+**Breaking Change**: `createSwaggerSpec` is now async to support schema extraction. Update your code:
+
+```typescript
+// Before (v0.3.x)
+const spec = createSwaggerSpec({ /* ... */ });
+
+// After (v0.4.x)
+const spec = await createSwaggerSpec({ /* ... */ });
+```
+
+---
+
 ## Usage #1: next-swagger-doc with Next.js 13
 
 To incorporate `next-swagger-doc` with your Next.js 13 project, follow these steps. This setup will generate Swagger documentation for your API based on your code and provide a built-in Swagger UI for viewing the documentation.
@@ -51,7 +221,7 @@ Next, create a new file `lib/swagger.ts`. This file uses the `next-swagger-doc` 
 import { createSwaggerSpec } from "next-swagger-doc";
 
 export const getApiDocs = async () => {
-  const spec = createSwaggerSpec({
+  const spec = await createSwaggerSpec({
     apiFolder: "app/api", // define api folder under app folder
     definition: {
       openapi: "3.0.0",
@@ -167,7 +337,7 @@ function ApiDoc({ spec }: InferGetStaticPropsType<typeof getStaticProps>) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const spec: Record<string, any> = createSwaggerSpec({
+  const spec: Record<string, any> = await createSwaggerSpec({
     apiFolder: 'pages/api' // or 'src/pages/api',
     definition: {
       openapi: '3.0.0',

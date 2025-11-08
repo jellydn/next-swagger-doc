@@ -1,0 +1,30 @@
+{
+  "name": "next14-auto-generate-example",
+  "version": "1.0.0",
+  "description": "Next.js 14 example demonstrating next-swagger-doc auto-generation feature",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "next-swagger-doc": "workspace:*",
+    "swagger-ui-react": "^5.11.0",
+    "zod": "^3.22.4",
+    "@asteasolutions/zod-to-openapi": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.3.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  }
+}

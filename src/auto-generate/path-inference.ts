@@ -3,7 +3,7 @@
  * @module auto-generate/path-inference
  */
 
-import type { RoutePathInfo, RouteParameter, OpenAPISchema } from './types';
+import type { OpenAPISchema, RouteParameter, RoutePathInfo } from './types';
 
 /**
  * Converts a Next.js dynamic segment to OpenAPI path parameter
@@ -145,7 +145,10 @@ export function convertOptionalCatchAll(paramName: string): {
  * // → ['products']
  * ```
  */
-export function extractPathSegments(filePath: string, routerType: 'pages' | 'app'): string[] {
+export function extractPathSegments(
+  filePath: string,
+  routerType: 'pages' | 'app'
+): string[] {
   // Normalize path separators to forward slash
   const normalizedPath = filePath.replace(/\\/g, '/');
 
@@ -177,7 +180,10 @@ export function extractPathSegments(filePath: string, routerType: 'pages' | 'app
       }
       // Otherwise remove the file extension
       else {
-        segments[segments.length - 1] = lastSegment.replace(/\.(ts|tsx|js|jsx)$/, '');
+        segments[segments.length - 1] = lastSegment.replace(
+          /\.(ts|tsx|js|jsx)$/,
+          ''
+        );
       }
     }
   }
@@ -275,7 +281,10 @@ export function inferRoutePathFromFile(filePath: string): RoutePathInfo {
   }
 
   // Additional validation for App Router - must be route.* file
-  if (routerType === 'app' && !/\/route\.(ts|tsx|js|jsx)$/.test(normalizedPath)) {
+  if (
+    routerType === 'app' &&
+    !/\/route\.(ts|tsx|js|jsx)$/.test(normalizedPath)
+  ) {
     return {
       routePath: '',
       parameters: [],
@@ -301,7 +310,9 @@ export function inferRoutePathFromFile(filePath: string): RoutePathInfo {
   }
 
   // Build final OpenAPI path
-  const routePath = '/api' + (convertedSegments.length > 0 ? '/' + convertedSegments.join('/') : '');
+  const routePath =
+    '/api' +
+    (convertedSegments.length > 0 ? '/' + convertedSegments.join('/') : '');
 
   return {
     routePath,

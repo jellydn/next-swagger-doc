@@ -4,17 +4,20 @@
  * @module auto-generate/schema-extractor
  */
 
-import ts from 'typescript';
 import { readFileSync } from 'node:fs';
+import ts from 'typescript';
+import {
+  convertTypeScriptToOpenAPI,
+  extractReturnTypeSchema,
+} from './ts-converter';
 import type {
+  ExtractedSchemas,
   HandlerInfo,
   SchemaInfo,
-  ExtractedSchemas,
-  ZodSchemaReference,
   TypeReference,
+  ZodSchemaReference,
 } from './types';
 import { convertZodToOpenAPI, isZodSchema } from './zod-converter';
-import { convertTypeScriptToOpenAPI, extractReturnTypeSchema } from './ts-converter';
 
 /**
  * Extracts schemas from a route handler
@@ -62,8 +65,16 @@ export async function extractSchemas(
     }
 
     // Extract schemas from the handler
-    const requestBody = await extractRequestBodySchema(handlerNode, sourceFile, program);
-    const responseSchemas = await extractResponseSchemas(handlerNode, sourceFile, program);
+    const requestBody = await extractRequestBodySchema(
+      handlerNode,
+      sourceFile,
+      program
+    );
+    const responseSchemas = await extractResponseSchemas(
+      handlerNode,
+      sourceFile,
+      program
+    );
 
     return {
       hasSchemas: !!requestBody || Object.keys(responseSchemas).length > 0,
@@ -82,10 +93,17 @@ export async function extractSchemas(
 function findHandlerNode(
   sourceFile: ts.SourceFile,
   functionName: string
-): ts.FunctionDeclaration | ts.ArrowFunction | ts.FunctionExpression | undefined {
+):
+  | ts.FunctionDeclaration
+  | ts.ArrowFunction
+  | ts.FunctionExpression
+  | undefined {
   for (const statement of sourceFile.statements) {
     // Function declaration: export function GET() {}
-    if (ts.isFunctionDeclaration(statement) && statement.name?.text === functionName) {
+    if (
+      ts.isFunctionDeclaration(statement) &&
+      statement.name?.text === functionName
+    ) {
       return statement;
     }
 
@@ -97,7 +115,8 @@ function findHandlerNode(
         ts.isIdentifier(declaration.name) &&
         declaration.name.text === functionName &&
         declaration.initializer &&
-        (ts.isArrowFunction(declaration.initializer) || ts.isFunctionExpression(declaration.initializer))
+        (ts.isArrowFunction(declaration.initializer) ||
+          ts.isFunctionExpression(declaration.initializer))
       ) {
         return declaration.initializer;
       }
@@ -105,7 +124,10 @@ function findHandlerNode(
 
     // Default export
     if (ts.isExportAssignment(statement) && !statement.isExportEquals) {
-      if (ts.isFunctionExpression(statement.expression) || ts.isArrowFunction(statement.expression)) {
+      if (
+        ts.isFunctionExpression(statement.expression) ||
+        ts.isArrowFunction(statement.expression)
+      ) {
         return statement.expression;
       }
     }
@@ -119,7 +141,10 @@ function findHandlerNode(
  * Looks for request.json(), Zod parsing, or type annotations
  */
 async function extractRequestBodySchema(
-  handlerNode: ts.FunctionDeclaration | ts.ArrowFunction | ts.FunctionExpression,
+  handlerNode:
+    | ts.FunctionDeclaration
+    | ts.ArrowFunction
+    | ts.FunctionExpression,
   sourceFile: ts.SourceFile,
   program: ts.Program
 ): Promise<SchemaInfo | undefined> {
@@ -134,7 +159,10 @@ async function extractRequestBodySchema(
     // Look for generic type like Request<BodyType>
     if (ts.isTypeReferenceNode(requestParam.type)) {
       const typeName = requestParam.type.typeName.getText();
-      if ((typeName === 'Request' || typeName === 'NextApiRequest') && requestParam.type.typeArguments) {
+      if (
+        (typeName === 'Request' || typeName === 'NextApiRequest') &&
+        requestParam.type.typeArguments
+      ) {
         const bodyType = requestParam.type.typeArguments[0];
         const schema = convertTypeScriptToOpenAPI(
           { typeNode: bodyType, isExported: false },
@@ -168,8 +196,11 @@ async function extractRequestBodySchema(
  * Analyzes return statements and Response.json() calls
  */
 async function extractResponseSchemas(
-  handlerNode: ts.FunctionDeclaration | ts.ArrowFunction | ts.FunctionExpression,
-  sourceFile: ts.SourceFile,
+  handlerNode:
+    | ts.FunctionDeclaration
+    | ts.ArrowFunction
+    | ts.FunctionExpression,
+  _sourceFile: ts.SourceFile,
   program: ts.Program
 ): Promise<Record<number, SchemaInfo>> {
   const responses: Record<number, SchemaInfo> = {};
@@ -189,10 +220,15 @@ async function extractResponseSchemas(
   const returnStatements = findReturnStatements(handlerNode);
 
   for (const returnStmt of returnStatements) {
-    if (!returnStmt.expression) continue;
+    if (!returnStmt.expression) {
+      continue;
+    }
 
     // Check for Response.json(data) or res.json(data)
-    const responseInfo = analyzeResponseExpression(returnStmt.expression, program);
+    const responseInfo = analyzeResponseExpression(
+      returnStmt.expression,
+      program
+    );
     if (responseInfo) {
       const statusCode = responseInfo.statusCode || 200;
       responses[statusCode] = responseInfo.schema;
@@ -238,7 +274,10 @@ function analyzeResponseExpression(
     const expression = expr.expression;
 
     // Check for Response.json() or res.json()
-    if (ts.isPropertyAccessExpression(expression) && expression.name.text === 'json') {
+    if (
+      ts.isPropertyAccessExpression(expression) &&
+      expression.name.text === 'json'
+    ) {
       const dataArg = expr.arguments[0];
       const optionsArg = expr.arguments[1];
 
@@ -278,9 +317,10 @@ function analyzeResponseExpression(
       expression.expression.name.text === 'status'
     ) {
       const statusArg = expression.arguments[0];
-      const statusCode = statusArg && ts.isNumericLiteral(statusArg)
-        ? parseInt(statusArg.text, 10)
-        : 200;
+      const statusCode =
+        statusArg && ts.isNumericLiteral(statusArg)
+          ? parseInt(statusArg.text, 10)
+          : 200;
 
       const dataArg = expr.arguments[0];
       if (dataArg) {
@@ -302,7 +342,10 @@ function analyzeResponseExpression(
 /**
  * Extracts schema from an expression (object literal, variable, etc.)
  */
-function extractSchemaFromExpression(expr: ts.Expression, program: ts.Program): Partial<SchemaInfo> {
+function extractSchemaFromExpression(
+  expr: ts.Expression,
+  program: ts.Program
+): Partial<SchemaInfo> {
   // Object literal: { users: [] }
   if (ts.isObjectLiteralExpression(expr)) {
     return inferSchemaFromObjectLiteral(expr, program);
@@ -380,7 +423,10 @@ function inferSchemaFromObjectLiteral(
 /**
  * Finds Zod schema references in a node
  */
-function findZodSchemasInNode(node: ts.Node, sourceFile: ts.SourceFile): ZodSchemaReference[] {
+function findZodSchemasInNode(
+  node: ts.Node,
+  _sourceFile: ts.SourceFile
+): ZodSchemaReference[] {
   const schemas: ZodSchemaReference[] = [];
 
   function visit(n: ts.Node) {
@@ -389,7 +435,8 @@ function findZodSchemasInNode(node: ts.Node, sourceFile: ts.SourceFile): ZodSche
       const expression = n.expression;
       if (
         ts.isPropertyAccessExpression(expression) &&
-        (expression.name.text === 'parse' || expression.name.text === 'safeParse')
+        (expression.name.text === 'parse' ||
+          expression.name.text === 'safeParse')
       ) {
         // Get the schema object (left side of .parse())
         const schemaExpr = expression.expression;
@@ -416,7 +463,10 @@ export function fileImportsZod(sourceFile: ts.SourceFile): boolean {
   for (const statement of sourceFile.statements) {
     if (ts.isImportDeclaration(statement)) {
       const moduleSpecifier = statement.moduleSpecifier;
-      if (ts.isStringLiteral(moduleSpecifier) && moduleSpecifier.text === 'zod') {
+      if (
+        ts.isStringLiteral(moduleSpecifier) &&
+        moduleSpecifier.text === 'zod'
+      ) {
         return true;
       }
     }

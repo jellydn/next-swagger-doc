@@ -3,9 +3,14 @@
  * @module auto-generate/method-detection
  */
 
-import ts from 'typescript';
 import { readFileSync } from 'node:fs';
-import type { HttpMethod, HttpMethodInfo, MethodDetectionResult, HandlerInfo } from './types';
+import ts from 'typescript';
+import type {
+  HandlerInfo,
+  HttpMethod,
+  HttpMethodInfo,
+  MethodDetectionResult,
+} from './types';
 
 /**
  * Valid HTTP method names for App Router
@@ -56,7 +61,10 @@ export function detectHttpMethods(filePath: string): MethodDetectionResult {
   }
 
   // Check for middleware files (should be skipped)
-  if (normalizedPath.includes('middleware.ts') || normalizedPath.includes('_middleware.ts')) {
+  if (
+    normalizedPath.includes('middleware.ts') ||
+    normalizedPath.includes('_middleware.ts')
+  ) {
     return {
       methods: [],
       routerType,
@@ -71,7 +79,7 @@ export function detectHttpMethods(filePath: string): MethodDetectionResult {
       filePath,
       sourceCode,
       ts.ScriptTarget.Latest,
-      true,
+      true
     );
 
     const methods: HttpMethodInfo[] = [];
@@ -118,7 +126,10 @@ function detectAppRouterMethods(sourceFile: ts.SourceFile): HttpMethodInfo[] {
 
     // Check for exported variable declarations (const GET = async () => {})
     if (ts.isVariableStatement(statement)) {
-      const methodInfo = extractAppRouterMethodFromVariable(statement, sourceFile);
+      const methodInfo = extractAppRouterMethodFromVariable(
+        statement,
+        sourceFile
+      );
       if (methodInfo) {
         methods.push(methodInfo);
       }
@@ -137,11 +148,11 @@ function detectAppRouterMethods(sourceFile: ts.SourceFile): HttpMethodInfo[] {
  */
 function extractAppRouterMethod(
   node: ts.FunctionDeclaration,
-  sourceFile: ts.SourceFile,
+  sourceFile: ts.SourceFile
 ): HttpMethodInfo | undefined {
   // Must have export modifier
   const hasExport = node.modifiers?.some(
-    (mod) => mod.kind === ts.SyntaxKind.ExportKeyword,
+    (mod) => mod.kind === ts.SyntaxKind.ExportKeyword
   );
   if (!hasExport) {
     return undefined;
@@ -180,11 +191,11 @@ function extractAppRouterMethod(
  */
 function extractAppRouterMethodFromVariable(
   node: ts.VariableStatement,
-  sourceFile: ts.SourceFile,
+  sourceFile: ts.SourceFile
 ): HttpMethodInfo | undefined {
   // Must have export modifier
   const hasExport = node.modifiers?.some(
-    (mod) => mod.kind === ts.SyntaxKind.ExportKeyword,
+    (mod) => mod.kind === ts.SyntaxKind.ExportKeyword
   );
   if (!hasExport) {
     return undefined;
@@ -211,7 +222,7 @@ function extractAppRouterMethodFromVariable(
   const handler = extractHandlerInfoFromExpression(
     declaration.initializer,
     methodName,
-    sourceFile,
+    sourceFile
   );
   const jsdoc = extractJSDocSummary(node);
 
@@ -237,7 +248,7 @@ function detectPagesRouterMethods(sourceFile: ts.SourceFile): HttpMethodInfo[] {
     // export default function handler() {}
     if (ts.isFunctionDeclaration(statement)) {
       const isDefault = statement.modifiers?.some(
-        (mod) => mod.kind === ts.SyntaxKind.DefaultKeyword,
+        (mod) => mod.kind === ts.SyntaxKind.DefaultKeyword
       );
       if (isDefault) {
         const handler = extractHandlerInfo(statement, 'handler', sourceFile);
@@ -261,7 +272,7 @@ function detectPagesRouterMethods(sourceFile: ts.SourceFile): HttpMethodInfo[] {
       const handler = extractHandlerInfoFromExpression(
         statement.expression,
         'handler',
-        sourceFile,
+        sourceFile
       );
       const jsdoc = extractJSDocSummary(statement);
       const method = extractMethodFromJSDoc(jsdoc) || 'GET';
@@ -290,16 +301,22 @@ function detectPagesRouterMethods(sourceFile: ts.SourceFile): HttpMethodInfo[] {
 function extractHandlerInfo(
   node: ts.FunctionDeclaration,
   functionName: string,
-  sourceFile: ts.SourceFile,
+  sourceFile: ts.SourceFile
 ): HandlerInfo {
-  const { line, character } = sourceFile.getLineAndCharacterOfPosition(node.getStart());
+  const { line, character } = sourceFile.getLineAndCharacterOfPosition(
+    node.getStart()
+  );
 
   return {
-    exportType: node.modifiers?.some((mod) => mod.kind === ts.SyntaxKind.DefaultKeyword)
+    exportType: node.modifiers?.some(
+      (mod) => mod.kind === ts.SyntaxKind.DefaultKeyword
+    )
       ? 'default'
       : 'named',
     functionName,
-    isAsync: node.modifiers?.some((mod) => mod.kind === ts.SyntaxKind.AsyncKeyword) ?? false,
+    isAsync:
+      node.modifiers?.some((mod) => mod.kind === ts.SyntaxKind.AsyncKeyword) ??
+      false,
     sourceLocation: {
       line: line + 1, // Convert to 1-indexed
       column: character,
@@ -320,14 +337,18 @@ function extractHandlerInfo(
 function extractHandlerInfoFromExpression(
   node: ts.Expression,
   functionName: string,
-  sourceFile: ts.SourceFile,
+  sourceFile: ts.SourceFile
 ): HandlerInfo {
-  const { line, character } = sourceFile.getLineAndCharacterOfPosition(node.getStart());
+  const { line, character } = sourceFile.getLineAndCharacterOfPosition(
+    node.getStart()
+  );
 
   let isAsync = false;
 
   if (ts.isFunctionExpression(node) || ts.isArrowFunction(node)) {
-    isAsync = node.modifiers?.some((mod) => mod.kind === ts.SyntaxKind.AsyncKeyword) ?? false;
+    isAsync =
+      node.modifiers?.some((mod) => mod.kind === ts.SyntaxKind.AsyncKeyword) ??
+      false;
   }
 
   return {
@@ -383,19 +404,23 @@ function extractJSDocSummary(node: ts.Node): string | undefined {
  * @param jsdoc - JSDoc summary text
  * @returns HTTP method if found in JSDoc, undefined otherwise
  */
-function extractMethodFromJSDoc(jsdoc: string | undefined): HttpMethod | undefined {
+function extractMethodFromJSDoc(
+  jsdoc: string | undefined
+): HttpMethod | undefined {
   if (!jsdoc) {
     return undefined;
   }
 
   // Look for @method GET or similar
-  const methodMatch = /@method\s+(GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)/i.exec(jsdoc);
+  const methodMatch =
+    /@method\s+(GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)/i.exec(jsdoc);
   if (methodMatch) {
     return methodMatch[1].toUpperCase() as HttpMethod;
   }
 
   // Look for @swagger with method specification
-  const swaggerMatch = /@swagger.*\n.*\s+(get|post|put|delete|patch|options|head):/i.exec(jsdoc);
+  const swaggerMatch =
+    /@swagger.*\n.*\s+(get|post|put|delete|patch|options|head):/i.exec(jsdoc);
   if (swaggerMatch) {
     return swaggerMatch[1].toUpperCase() as HttpMethod;
   }
@@ -418,12 +443,18 @@ export function isValidApiRoute(filePath: string): boolean {
   }
 
   // Must be in pages or app directory
-  if (!normalizedPath.includes('/pages/api/') && !normalizedPath.includes('/app/api/')) {
+  if (
+    !normalizedPath.includes('/pages/api/') &&
+    !normalizedPath.includes('/app/api/')
+  ) {
     return false;
   }
 
   // Exclude middleware files
-  if (normalizedPath.includes('middleware.ts') || normalizedPath.includes('_middleware.ts')) {
+  if (
+    normalizedPath.includes('middleware.ts') ||
+    normalizedPath.includes('_middleware.ts')
+  ) {
     return false;
   }
 

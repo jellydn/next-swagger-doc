@@ -20,7 +20,7 @@ async function ensureZodToOpenAPI() {
     try {
       zodToOpenAPIModule = await import('@asteasolutions/zod-to-openapi');
       OpenAPIRegistry = zodToOpenAPIModule.OpenAPIRegistry;
-    } catch (error) {
+    } catch (_error) {
       throw new Error(
         'Failed to load @asteasolutions/zod-to-openapi. Please install zod and @asteasolutions/zod-to-openapi: npm install zod @asteasolutions/zod-to-openapi'
       );
@@ -89,10 +89,12 @@ export async function convertZodToOpenAPI(
  */
 export function convertZodSchemaToOpenAPI(
   zodSchema: ZodSchema,
-  registry?: any
+  _registry?: any
 ): SchemaDefinition {
   if (!zodToOpenAPIModule) {
-    throw new Error('zod-to-openapi module not initialized. Call ensureZodToOpenAPI() first.');
+    throw new Error(
+      'zod-to-openapi module not initialized. Call ensureZodToOpenAPI() first.'
+    );
   }
 
   try {
@@ -190,7 +192,9 @@ export function getZodSchemaName(zodSchema: ZodSchema): string | undefined {
  */
 export function createZodRegistry(): any {
   if (!OpenAPIRegistry) {
-    throw new Error('OpenAPIRegistry not available. Install @asteasolutions/zod-to-openapi');
+    throw new Error(
+      'OpenAPIRegistry not available. Install @asteasolutions/zod-to-openapi'
+    );
   }
 
   return new OpenAPIRegistry();

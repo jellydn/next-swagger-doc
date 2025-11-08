@@ -114,7 +114,9 @@ function mergeResponses(
 ): RouteInfo['responses'] {
   const merged = { ...autoGenResponses };
 
-  for (const [statusCode, explicitResponse] of Object.entries(explicitResponses)) {
+  for (const [statusCode, explicitResponse] of Object.entries(
+    explicitResponses
+  )) {
     const code = Number(statusCode);
 
     if (merged[code]) {
@@ -155,7 +157,9 @@ function mergeResponses(
  * @param routes - Array of route info objects (ordered by precedence, last wins)
  * @returns Single merged route info
  */
-export function mergeMultipleRoutes(...routes: Array<Partial<RouteInfo>>): RouteInfo | null {
+export function mergeMultipleRoutes(
+  ...routes: Partial<RouteInfo>[]
+): RouteInfo | null {
   if (routes.length === 0) {
     return null;
   }
@@ -208,10 +212,14 @@ export function validateMergedRoute(route: RouteInfo): {
   const pathParams = route.routePath.match(/\{([^}]+)\}/g) || [];
   for (const paramMatch of pathParams) {
     const paramName = paramMatch.slice(1, -1);
-    const param = route.parameters.find((p) => p.name === paramName && p.in === 'path');
+    const param = route.parameters.find(
+      (p) => p.name === paramName && p.in === 'path'
+    );
 
     if (!param) {
-      errors.push(`Path parameter {${paramName}} is not defined in parameters array`);
+      errors.push(
+        `Path parameter {${paramName}} is not defined in parameters array`
+      );
     }
   }
 
@@ -292,7 +300,9 @@ export function isSameEndpoint(
   route1: Pick<RouteInfo, 'routePath' | 'method'>,
   route2: Pick<RouteInfo, 'routePath' | 'method'>
 ): boolean {
-  return route1.routePath === route2.routePath && route1.method === route2.method;
+  return (
+    route1.routePath === route2.routePath && route1.method === route2.method
+  );
 }
 
 /**

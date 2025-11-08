@@ -6,7 +6,14 @@
 /**
  * HTTP methods supported by Next.js API routes
  */
-export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'OPTIONS' | 'HEAD';
+export type HttpMethod =
+  | 'GET'
+  | 'POST'
+  | 'PUT'
+  | 'DELETE'
+  | 'PATCH'
+  | 'OPTIONS'
+  | 'HEAD';
 
 /**
  * Source location in a TypeScript file

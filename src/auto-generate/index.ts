@@ -6,11 +6,11 @@
 
 import { readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import type { RouteInfo, AutoGenerateConfig } from './types';
-import { inferRoutePathFromFile } from './path-inference';
-import { detectHttpMethods, isValidApiRoute } from './method-detection';
 import { normalizeConfig } from './config';
+import { detectHttpMethods, isValidApiRoute } from './method-detection';
+import { inferRoutePathFromFile } from './path-inference';
 import { extractSchemas } from './schema-extractor';
+import type { AutoGenerateConfig, RouteInfo } from './types';
 
 /**
  * Discovers and generates documentation for all API routes in a folder
@@ -29,13 +29,15 @@ import { extractSchemas } from './schema-extractor';
  */
 export async function autoGenerateRoutes(
   apiFolder: string,
-  config: Partial<AutoGenerateConfig>,
+  config: Partial<AutoGenerateConfig>
 ): Promise<RouteInfo[]> {
   const normalizedConfig = normalizeConfig(config);
 
   // If auto-generation is disabled, return empty array
   if (!normalizedConfig.enabled) {
-    console.warn('[next-swagger-doc] Auto-generation is disabled (enabled: false)');
+    console.warn(
+      '[next-swagger-doc] Auto-generation is disabled (enabled: false)'
+    );
     return [];
   }
 
@@ -67,7 +69,7 @@ export async function autoGenerateRoutes(
  */
 function discoverRouteFiles(
   folderPath: string,
-  config: AutoGenerateConfig,
+  config: AutoGenerateConfig
 ): string[] {
   const files: string[] = [];
 
@@ -78,7 +80,10 @@ function discoverRouteFiles(
       const fullPath = join(folderPath, entry.name);
 
       // Skip if matches exclude pattern
-      if (config.excludePatterns && shouldExclude(fullPath, config.excludePatterns)) {
+      if (
+        config.excludePatterns &&
+        shouldExclude(fullPath, config.excludePatterns)
+      ) {
         continue;
       }
 
@@ -132,7 +137,7 @@ function shouldExclude(filePath: string, patterns: string[]): boolean {
  */
 async function processRouteFile(
   filePath: string,
-  config: AutoGenerateConfig,
+  config: AutoGenerateConfig
 ): Promise<RouteInfo[]> {
   // Step 1: Infer route path from file structure
   const pathInfo = inferRoutePathFromFile(filePath);
@@ -167,7 +172,10 @@ async function processRouteFile(
       try {
         schemas = await extractSchemas(filePath, method.handler);
       } catch (error) {
-        console.warn(`Failed to extract schemas for ${filePath}:${method.method}`, error);
+        console.warn(
+          `Failed to extract schemas for ${filePath}:${method.method}`,
+          error
+        );
       }
     }
 
@@ -180,13 +188,15 @@ async function processRouteFile(
       handler: method.handler,
       parameters: pathInfo.parameters,
       // Responses from schema extraction or default
-      responses: schemas?.responses && Object.keys(schemas.responses).length > 0
-        ? schemas.responses
-        : {
-            200: {
-              description: method.jsdocSummary || `Successful ${method.method} response`,
+      responses:
+        schemas?.responses && Object.keys(schemas.responses).length > 0
+          ? schemas.responses
+          : {
+              200: {
+                description:
+                  method.jsdocSummary || `Successful ${method.method} response`,
+              },
             },
-          },
     };
 
     // Add request body schema if extracted

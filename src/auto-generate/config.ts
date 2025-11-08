@@ -119,7 +119,10 @@ export function validateAutoGenerateConfig(
     errors.push('performance.maxFileSize must be > 0');
   }
 
-  if (normalized.performance.timeoutPerFile <= 0 || normalized.performance.timeoutPerFile > 30000) {
+  if (
+    normalized.performance.timeoutPerFile <= 0 ||
+    normalized.performance.timeoutPerFile > 30000
+  ) {
     errors.push('performance.timeoutPerFile must be between 1 and 30000ms');
   }
 
@@ -191,7 +194,9 @@ export function normalizeConfig(
   const result = validateAutoGenerateConfig(partialConfig);
 
   if (result.errors.length > 0) {
-    throw new Error(`Invalid auto-generation config: ${result.errors.join(', ')}`);
+    throw new Error(
+      `Invalid auto-generation config: ${result.errors.join(', ')}`
+    );
   }
 
   // Log warnings if present

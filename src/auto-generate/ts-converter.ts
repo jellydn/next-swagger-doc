@@ -76,7 +76,10 @@ export function convertTypeNodeToOpenAPI(
 /**
  * Internal conversion from TypeNode to OpenAPI schema object
  */
-function typeNodeToOpenAPISchema(typeNode: ts.TypeNode, program: ts.Program): any {
+function typeNodeToOpenAPISchema(
+  typeNode: ts.TypeNode,
+  program: ts.Program
+): any {
   // Handle primitive types
   if (ts.isToken(typeNode)) {
     switch (typeNode.kind) {
@@ -110,7 +113,9 @@ function typeNodeToOpenAPISchema(typeNode: ts.TypeNode, program: ts.Program): an
     return {
       type: 'array',
       items: {
-        oneOf: typeNode.elements.map((el) => typeNodeToOpenAPISchema(el, program)),
+        oneOf: typeNode.elements.map((el) =>
+          typeNodeToOpenAPISchema(el, program)
+        ),
       },
     };
   }
@@ -124,14 +129,22 @@ function typeNodeToOpenAPISchema(typeNode: ts.TypeNode, program: ts.Program): an
     if (ts.isNumericLiteral(literal)) {
       return { type: 'number', enum: [Number(literal.text)] };
     }
-    if (literal.kind === ts.SyntaxKind.TrueKeyword || literal.kind === ts.SyntaxKind.FalseKeyword) {
-      return { type: 'boolean', enum: [literal.kind === ts.SyntaxKind.TrueKeyword] };
+    if (
+      literal.kind === ts.SyntaxKind.TrueKeyword ||
+      literal.kind === ts.SyntaxKind.FalseKeyword
+    ) {
+      return {
+        type: 'boolean',
+        enum: [literal.kind === ts.SyntaxKind.TrueKeyword],
+      };
     }
   }
 
   // Handle union types
   if (ts.isUnionTypeNode(typeNode)) {
-    const types = typeNode.types.map((t) => typeNodeToOpenAPISchema(t, program));
+    const types = typeNode.types.map((t) =>
+      typeNodeToOpenAPISchema(t, program)
+    );
 
     // Check if it's a nullable type (Type | null | undefined)
     const nonNullTypes = types.filter((t) => t.type !== 'null');
@@ -144,7 +157,9 @@ function typeNodeToOpenAPISchema(typeNode: ts.TypeNode, program: ts.Program): an
 
   // Handle intersection types
   if (ts.isIntersectionTypeNode(typeNode)) {
-    const types = typeNode.types.map((t) => typeNodeToOpenAPISchema(t, program));
+    const types = typeNode.types.map((t) =>
+      typeNodeToOpenAPISchema(t, program)
+    );
     return { allOf: types };
   }
 
@@ -165,18 +180,32 @@ function typeNodeToOpenAPISchema(typeNode: ts.TypeNode, program: ts.Program): an
       return { type: 'string', format: 'date-time' };
     }
 
-    if (typeName === 'Record' && typeNode.typeArguments && typeNode.typeArguments.length === 2) {
+    if (
+      typeName === 'Record' &&
+      typeNode.typeArguments &&
+      typeNode.typeArguments.length === 2
+    ) {
       return {
         type: 'object',
-        additionalProperties: typeNodeToOpenAPISchema(typeNode.typeArguments[1], program),
+        additionalProperties: typeNodeToOpenAPISchema(
+          typeNode.typeArguments[1],
+          program
+        ),
       };
     }
 
-    if (typeName === 'Partial' && typeNode.typeArguments && typeNode.typeArguments.length === 1) {
-      const innerSchema = typeNodeToOpenAPISchema(typeNode.typeArguments[0], program);
+    if (
+      typeName === 'Partial' &&
+      typeNode.typeArguments &&
+      typeNode.typeArguments.length === 1
+    ) {
+      const innerSchema = typeNodeToOpenAPISchema(
+        typeNode.typeArguments[0],
+        program
+      );
       // Mark all properties as optional
       if (innerSchema.properties) {
-        const required = innerSchema.required || [];
+        const _required = innerSchema.required || [];
         return {
           ...innerSchema,
           required: [],
@@ -213,7 +242,10 @@ function typeNodeToOpenAPISchema(typeNode: ts.TypeNode, program: ts.Program): an
  * Converts a type literal to OpenAPI schema
  * Handles object types like { name: string; age: number }
  */
-function typeLiteralToOpenAPISchema(typeNode: ts.TypeLiteralNode, program: ts.Program): any {
+function typeLiteralToOpenAPISchema(
+  typeNode: ts.TypeLiteralNode,
+  program: ts.Program
+): any {
   const properties: Record<string, any> = {};
   const required: string[] = [];
 
@@ -223,7 +255,10 @@ function typeLiteralToOpenAPISchema(typeNode: ts.TypeLiteralNode, program: ts.Pr
       const isOptional = !!member.questionToken;
 
       if (member.type) {
-        properties[propertyName] = typeNodeToOpenAPISchema(member.type, program);
+        properties[propertyName] = typeNodeToOpenAPISchema(
+          member.type,
+          program
+        );
 
         // Extract JSDoc description if available
         const jsDocComment = getJSDocDescription(member);
@@ -239,7 +274,9 @@ function typeLiteralToOpenAPISchema(typeNode: ts.TypeLiteralNode, program: ts.Pr
 
     // Handle index signatures [key: string]: Type
     if (ts.isIndexSignatureDeclaration(member)) {
-      const valueType = member.type ? typeNodeToOpenAPISchema(member.type, program) : { type: 'object' };
+      const valueType = member.type
+        ? typeNodeToOpenAPISchema(member.type, program)
+        : { type: 'object' };
       return {
         type: 'object',
         additionalProperties: valueType,
@@ -288,7 +325,10 @@ function getJSDocDescription(node: ts.Node): string | undefined {
  * @returns OpenAPI schema definition for return type
  */
 export function extractReturnTypeSchema(
-  functionDeclaration: ts.FunctionDeclaration | ts.ArrowFunction | ts.FunctionExpression,
+  functionDeclaration:
+    | ts.FunctionDeclaration
+    | ts.ArrowFunction
+    | ts.FunctionExpression,
   program: ts.Program
 ): SchemaDefinition | undefined {
   // Get explicit return type annotation
@@ -300,13 +340,15 @@ export function extractReturnTypeSchema(
   // This is more complex and requires type checker
   try {
     const typeChecker = program.getTypeChecker();
-    const signature = typeChecker.getSignatureFromDeclaration(functionDeclaration as any);
+    const signature = typeChecker.getSignatureFromDeclaration(
+      functionDeclaration as any
+    );
 
     if (signature) {
       const returnType = typeChecker.getReturnTypeOfSignature(signature);
       return typeToOpenAPISchema(returnType, typeChecker);
     }
-  } catch (error) {
+  } catch (_error) {
     // Type checking failed, return undefined
     // This can happen with arrow functions or functions without proper context
   }
@@ -317,7 +359,10 @@ export function extractReturnTypeSchema(
 /**
  * Converts a TypeScript Type to OpenAPI schema using type checker
  */
-function typeToOpenAPISchema(type: ts.Type, typeChecker: ts.TypeChecker): SchemaDefinition {
+function typeToOpenAPISchema(
+  type: ts.Type,
+  typeChecker: ts.TypeChecker
+): SchemaDefinition {
   // Handle primitive types
   if (type.flags & ts.TypeFlags.String) {
     return { type: 'inline', schema: { type: 'string' } };
@@ -328,7 +373,11 @@ function typeToOpenAPISchema(type: ts.Type, typeChecker: ts.TypeChecker): Schema
   if (type.flags & ts.TypeFlags.Boolean) {
     return { type: 'inline', schema: { type: 'boolean' } };
   }
-  if (type.flags & ts.TypeFlags.Null || type.flags & ts.TypeFlags.Undefined || type.flags & ts.TypeFlags.Void) {
+  if (
+    type.flags & ts.TypeFlags.Null ||
+    type.flags & ts.TypeFlags.Undefined ||
+    type.flags & ts.TypeFlags.Void
+  ) {
     return { type: 'inline', schema: { type: 'null' } };
   }
 
@@ -338,7 +387,9 @@ function typeToOpenAPISchema(type: ts.Type, typeChecker: ts.TypeChecker): Schema
 
     // Check if it's an array
     if (typeChecker.isArrayType(objectType)) {
-      const typeArgs = typeChecker.getTypeArguments(objectType as ts.TypeReference);
+      const typeArgs = typeChecker.getTypeArguments(
+        objectType as ts.TypeReference
+      );
       if (typeArgs.length > 0) {
         const itemSchema = typeToOpenAPISchema(typeArgs[0], typeChecker);
         return {
@@ -357,7 +408,10 @@ function typeToOpenAPISchema(type: ts.Type, typeChecker: ts.TypeChecker): Schema
 
     const props = typeChecker.getPropertiesOfType(type);
     for (const prop of props) {
-      const propType = typeChecker.getTypeOfSymbolAtLocation(prop, prop.valueDeclaration!);
+      const propType = typeChecker.getTypeOfSymbolAtLocation(
+        prop,
+        prop.valueDeclaration!
+      );
       const propSchema = typeToOpenAPISchema(propType, typeChecker);
 
       properties[prop.name] = propSchema.schema;
@@ -386,12 +440,19 @@ function typeToOpenAPISchema(type: ts.Type, typeChecker: ts.TypeChecker): Schema
 /**
  * Checks if a TypeScript type is a Response type (Next.js Response or standard Response)
  */
-export function isResponseType(type: ts.Type, typeChecker: ts.TypeChecker): boolean {
+export function isResponseType(
+  type: ts.Type,
+  _typeChecker: ts.TypeChecker
+): boolean {
   const symbol = type.getSymbol();
-  if (!symbol) return false;
+  if (!symbol) {
+    return false;
+  }
 
   const name = symbol.getName();
-  return name === 'Response' || name === 'NextResponse' || name === 'NextApiResponse';
+  return (
+    name === 'Response' || name === 'NextResponse' || name === 'NextApiResponse'
+  );
 }
 
 /**

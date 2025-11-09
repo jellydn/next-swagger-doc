@@ -3,7 +3,7 @@ import { createSwaggerSpec } from 'next-swagger-doc';
 import 'server-only';
 
 export const getApiDocs = async () => {
-  const spec = createSwaggerSpec({
+  const spec = await createSwaggerSpec({
     apiFolder: 'app/api',
     definition: {
       openapi: '3.0.0',

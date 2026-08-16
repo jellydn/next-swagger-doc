@@ -124,18 +124,7 @@ function getExportedMethods(source: string): string[] {
     .filter(Boolean)
     .join(' ');
   const methods = new Set<string>();
-  const methodPattern = HTTP_METHODS.join('|');
-  const directExportPattern = new RegExp(
-    `\bexport\s+(?:async\s+)?(?:function|const|let|var)\s+(${methodPattern})\b`,
-    'g'
-  );
-  const specifierExportPattern = /\bexport\s*{([^}]*)}/g;
 
-  let match = directExportPattern.exec(code);
-  while (match) {
-    methods.add(match[1] ?? '');
-    match = directExportPattern.exec(code);
-  }
   for (const method of HTTP_METHODS) {
     if (
       [
@@ -149,23 +138,6 @@ function getExportedMethods(source: string): string[] {
       methods.add(method);
     }
   }
-  match = specifierExportPattern.exec(code);
-  while (match) {
-    for (const specifier of match[1].split(',')) {
-      const exportedName = specifier
-        .trim()
-        .split(/\s+as\s+/)
-        .at(-1);
-      if (
-        exportedName &&
-        HTTP_METHODS.includes(exportedName as (typeof HTTP_METHODS)[number])
-      ) {
-        methods.add(exportedName);
-      }
-    }
-    match = specifierExportPattern.exec(code);
-  }
-
   let exportStart = code.indexOf('export {');
   while (exportStart !== -1) {
     const specifiersStart = exportStart + 'export {'.length;

@@ -124,7 +124,12 @@ export function withSwagger({
       });
       res.status(200).send(swaggerSpec);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).json({
+        error:
+          error instanceof Error
+            ? error.message
+            : 'Failed to create Swagger spec',
+      });
     }
   };
 }

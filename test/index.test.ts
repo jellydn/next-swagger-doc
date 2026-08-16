@@ -97,6 +97,7 @@ describe('withSwagger', () => {
       { path: '/api/users/{id}', methods: ['patch', 'delete'] },
       { path: '/blog', methods: ['get'] },
       { path: '/blog/{slug}', methods: ['get'] },
+      { path: '/commented', methods: ['get'] },
       { path: '/users', methods: ['get', 'post'] },
     ]);
   });

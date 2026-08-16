@@ -99,7 +99,7 @@ function sanitizeSource(source: string): string {
       code += '\n';
     } else if (character === '/' && nextCharacter === '*') {
       const commentEnd = source.indexOf('*/', index + 2);
-      index = commentEnd === -1 ? source.length : commentEnd + 2;
+      index = commentEnd === -1 ? source.length : commentEnd + 1;
     } else if (character === "'" || character === '"' || character === '`') {
       const quote = character;
       index += 1;
@@ -117,7 +117,12 @@ function sanitizeSource(source: string): string {
 
 function getExportedMethods(source: string): string[] {
   const code = sanitizeSource(source);
-  const normalizedCode = code.replaceAll('\n', ' ').replaceAll('\t', ' ');
+  const normalizedCode = Array.from(code)
+    .map((character) => (character <= ' ' ? ' ' : character))
+    .join('')
+    .split(' ')
+    .filter(Boolean)
+    .join(' ');
   const methods = new Set<string>();
   const methodPattern = HTTP_METHODS.join('|');
   const directExportPattern = new RegExp(

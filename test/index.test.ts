@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { createSwaggerSpec } from '../src';
+import { createSwaggerSpec, extractApiInfo } from '../src';
 
 describe('withSwagger', () => {
   it('should create default swagger json option', () => {
@@ -88,5 +88,72 @@ describe('withSwagger', () => {
         apiFolder: 'pages/api',
       })
     ).toMatchSnapshot();
+  });
+
+  it('extracts App Router paths and exported HTTP methods', () => {
+    expect(extractApiInfo('test/fixtures/app')).toEqual([
+      { path: '/api/health', methods: ['get', 'head'] },
+      { path: '/api/manual', methods: ['get'] },
+      { path: '/api/users/{id}', methods: ['patch', 'delete'] },
+      { path: '/blog', methods: ['get'] },
+      { path: '/blog/{slug}', methods: ['get'] },
+      { path: '/users', methods: ['get', 'post'] },
+    ]);
+  });
+
+  it('extracts compiled routes when source files are unavailable', () => {
+    expect(extractApiInfo('app/only-compiled', 'test/fixtures')).toEqual([
+      { path: '/only-compiled/compiled', methods: ['options'] },
+    ]);
+  });
+
+  it('generates basic documentation without replacing manual operations', () => {
+    const spec = createSwaggerSpec({
+      apiFolder: 'test/fixtures/app/api',
+      autoDoc: true,
+      definition: {
+        openapi: '3.0.0',
+        info: { title: 'Auto docs', version: '1.0.0' },
+      },
+    });
+
+    expect(spec.paths).toMatchObject({
+      '/api/health': {
+        get: { responses: { 200: { description: 'Successful response' } } },
+        head: { responses: { 200: { description: 'Successful response' } } },
+      },
+      '/api/manual': {
+        get: {
+          summary: 'Manual documentation',
+          responses: { 204: { description: 'No content' } },
+        },
+      },
+      '/api/users/{id}': {
+        patch: {
+          parameters: [
+            {
+              name: 'id',
+              in: 'path',
+              required: true,
+              schema: { type: 'string' },
+            },
+          ],
+          responses: { 200: { description: 'Successful response' } },
+        },
+        delete: { responses: { 200: { description: 'Successful response' } } },
+      },
+    });
+  });
+
+  it('extracts a narrowed API folder', () => {
+    expect(extractApiInfo('test/fixtures/app/api')).toEqual([
+      { path: '/api/health', methods: ['get', 'head'] },
+      { path: '/api/manual', methods: ['get'] },
+      { path: '/api/users/{id}', methods: ['patch', 'delete'] },
+    ]);
+  });
+
+  it('ignores a missing App Router directory', () => {
+    expect(extractApiInfo('test/fixtures/missing')).toEqual([]);
   });
 });

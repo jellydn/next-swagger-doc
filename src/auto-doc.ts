@@ -99,7 +99,12 @@ function sanitizeSource(source: string): string {
       code += '\n';
     } else if (character === '/' && nextCharacter === '*') {
       const commentEnd = source.indexOf('*/', index + 2);
-      index = commentEnd === -1 ? source.length : commentEnd + 1;
+      if (commentEnd === -1) {
+        break;
+      }
+      code += ' ';
+      index = commentEnd + 2;
+      continue;
     } else if (character === "'" || character === '"' || character === '`') {
       const quote = character;
       index += 1;
@@ -193,6 +198,7 @@ export function extractApiInfo(
   }
 
   return Array.from(apiInfos.entries())
+    .sort(([firstPath], [secondPath]) => firstPath.localeCompare(secondPath))
     .map(([path, methods]) => ({
       path,
       methods: HTTP_METHODS.filter((method) =>

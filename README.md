@@ -140,6 +140,26 @@ export async function GET(_request: Request) {
 }
 ```
 
+### Automatic App Router Documentation
+
+Set `autoDoc: true` to generate basic operations for App Router `route.ts` files.
+The path is derived from the route directory, dynamic segments such as `[id]`
+become `{id}`, and exported HTTP handlers such as `GET` and `POST` become
+operations. Generated operations include a default successful response; use a
+manual `@swagger` block when an endpoint needs request, response, or other
+operation metadata. Manual operations take precedence over generated ones.
+
+```javascript
+const spec = createSwaggerSpec({
+  apiFolder: 'app/api',
+  autoDoc: true,
+  definition: {
+    openapi: '3.0.0',
+    info: { title: 'My API', version: '1.0.0' },
+  },
+});
+```
+
 Now, navigate to `localhost:3000/api-doc` (or wherever you host your Next.js application), and you should see the swagger UI.
 
 ![https://gyazo.com/6bfa919c4969b000615df6bb9cabcd02.gif](https://gyazo.com/6bfa919c4969b000615df6bb9cabcd02.gif)

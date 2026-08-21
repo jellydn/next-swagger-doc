@@ -1,12 +1,19 @@
 import { join } from 'node:path';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
+import { extractApiInfo, generateAutoDoc } from './auto-doc';
+
+export type AutoDocOptions = {
+  enabled?: boolean;
+};
 
 export type SwaggerOptions = Options & {
   apiFolder?: string;
   schemaFolders?: string[];
   definition: OAS3Definition;
   outputFile?: string;
+  /** Generate basic OpenAPI operations from App Router route files. */
+  autoDoc?: boolean | AutoDocOptions;
 };
 
 const defaultOptions: SwaggerOptions = {
@@ -33,6 +40,7 @@ const defaultOptions: SwaggerOptions = {
 export function createSwaggerSpec({
   apiFolder = 'pages/api',
   schemaFolders = [],
+  autoDoc = false,
   ...swaggerOptions
 }: SwaggerOptions = defaultOptions) {
   const scanFolders = [apiFolder, ...schemaFolders];
@@ -74,7 +82,19 @@ export function createSwaggerSpec({
     ...swaggerOptions,
     definition,
   };
-  const spec = swaggerJsdoc(options);
+  const spec = swaggerJsdoc(options) as OAS3Definition;
+
+  if (autoDoc === true || (typeof autoDoc === 'object' && autoDoc.enabled)) {
+    const autoPaths = generateAutoDoc(extractApiInfo(apiFolder));
+    spec.paths = Object.fromEntries(
+      Object.entries({ ...autoPaths, ...spec.paths }).map(
+        ([path, operations]) => {
+          const generatedOperations = autoPaths[path] ?? {};
+          return [path, { ...generatedOperations, ...operations }];
+        }
+      )
+    );
+  }
 
   return spec;
 }
@@ -91,6 +111,7 @@ export function createSwaggerSpec({
 export function withSwagger({
   apiFolder = 'pages/api',
   schemaFolders = [],
+  autoDoc = false,
   ...swaggerOptions
 }: SwaggerOptions = defaultOptions) {
   return () => (_req: NextApiRequest, res: NextApiResponse) => {
@@ -98,11 +119,17 @@ export function withSwagger({
       const swaggerSpec = createSwaggerSpec({
         apiFolder,
         schemaFolders,
+        autoDoc,
         ...swaggerOptions,
       });
       res.status(200).send(swaggerSpec);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).json({
+        error:
+          error instanceof Error
+            ? error.message
+            : 'Failed to create Swagger spec',
+      });
     }
   };
 }

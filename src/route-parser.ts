@@ -20,9 +20,9 @@ initSync();
  * strings, and regex literals are handled correctly without sanitisation.
  */
 export function getExportedMethods(source: string): string[] {
-  let exports: readonly ExportSpecifier[] = [];
+  let exportSpecifiers: readonly ExportSpecifier[] = [];
   try {
-    [, exports] = parse(source);
+    [, exportSpecifiers] = parse(source);
   } catch (error) {
     console.warn(
       'next-swagger-doc: failed to parse route source, skipping file',
@@ -30,13 +30,8 @@ export function getExportedMethods(source: string): string[] {
     );
     return [];
   }
-  const methods = new Set<string>();
-  for (const { n } of exports) {
-    if (HTTP_METHODS.includes(n as (typeof HTTP_METHODS)[number])) {
-      methods.add(n);
-    }
-  }
-  return HTTP_METHODS.filter((method) => methods.has(method)).map((method) =>
-    method.toLowerCase()
+  const exportedNames = new Set(exportSpecifiers.map(({ n }) => n));
+  return HTTP_METHODS.filter((method) => exportedNames.has(method)).map(
+    (method) => method.toLowerCase()
   );
 }

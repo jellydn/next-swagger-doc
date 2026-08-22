@@ -35,19 +35,6 @@ function getApiSegments(apiFolder: string): string[] {
     : normalizedFolder.slice(routeRootIndex + 1);
 }
 
-function toOpenApiSegment(segment: string): string {
-  if (segment.startsWith('[[...') && segment.endsWith(']]')) {
-    return `{${segment.slice(5, -2)}}`;
-  }
-  if (segment.startsWith('[...') && segment.endsWith(']')) {
-    return `{${segment.slice(4, -1)}}`;
-  }
-  if (segment.startsWith('[') && segment.endsWith(']')) {
-    return `{${segment.slice(1, -1)}}`;
-  }
-  return segment;
-}
-
 function toOpenApiPaths(segments: string[]): string[] {
   const isOptionalCatchAll = (segment: string) =>
     segment.startsWith('[[...') && segment.endsWith(']]');
@@ -73,7 +60,7 @@ function toOpenApiPaths(segments: string[]): string[] {
     )
   );
 
-  return paths.map((path) => `/${path.map(toOpenApiSegment).join('/')}`);
+  return paths.map((path) => `/${path.join('/')}`);
 }
 
 /** Extract App Router API paths and exported HTTP methods from route files. */
@@ -86,6 +73,7 @@ export function extractApiInfo(
     join(cwd, '.next/server', apiFolder),
   ].filter(existsSync);
   const apiInfos = new Map<string, Set<string>>();
+  const apiSegments = getApiSegments(apiFolder);
 
   for (const apiDirectory of directories) {
     for (const file of getRouteFiles(apiDirectory)) {
@@ -93,10 +81,7 @@ export function extractApiInfo(
         .split(sep)
         .slice(0, -1);
       const methods = getExportedMethods(readFileSync(file, 'utf8'));
-      for (const path of toOpenApiPaths([
-        ...getApiSegments(apiFolder),
-        ...routeSegments,
-      ])) {
+      for (const path of toOpenApiPaths([...apiSegments, ...routeSegments])) {
         const pathMethods = apiInfos.get(path) ?? new Set<string>();
         methods.forEach((method) => pathMethods.add(method));
         apiInfos.set(path, pathMethods);

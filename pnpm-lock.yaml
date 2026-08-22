@@ -15,7 +15,7 @@ importers:
         specifier: 1.3.4
         version: 1.3.4
       es-module-lexer:
-        specifier: ^2.3.2
+        specifier: 2.3.2
         version: 2.3.2
       isarray:
         specifier: 2.0.5

@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
@@ -14,7 +15,50 @@ export type SwaggerOptions = Options & {
   outputFile?: string;
   /** Generate basic OpenAPI operations from App Router route files. */
   autoDoc?: boolean | AutoDocOptions;
+  /**
+   * Glob compiled files under `.next/server`.
+   * Default: only when the source API folder is missing and Next.js is not
+   * currently compiling (standalone / runtime fallback).
+   */
+  scanBuildOutput?: boolean;
 };
+
+/** Next.js phases that rewrite `.next` and must not be globbed. */
+const NEXT_BUILD_PHASES = new Set([
+  'phase-production-build',
+  'phase-production-compile',
+  'phase-export',
+]);
+
+/**
+ * Whether compiled files under `.next/server` should be globbed.
+ *
+ * Globbing `.next` while Next.js is compiling can fail Vercel builds with
+ * `ENOENT: .../.next/export-detail.json`. Prefer source files; scan compiled
+ * output only as a runtime fallback when the source folder is gone.
+ */
+export function shouldScanBuildDirectory({
+  sourceDirectory,
+  buildDirectory,
+  scanBuildOutput,
+  nextPhase = process.env.NEXT_PHASE,
+}: {
+  sourceDirectory: string;
+  buildDirectory: string;
+  scanBuildOutput?: boolean;
+  nextPhase?: string;
+}): boolean {
+  if (!existsSync(buildDirectory) || scanBuildOutput === false) {
+    return false;
+  }
+  if (scanBuildOutput === true) {
+    return true;
+  }
+  if (nextPhase && NEXT_BUILD_PHASES.has(nextPhase)) {
+    return false;
+  }
+  return !existsSync(sourceDirectory);
+}
 
 const defaultOptions: SwaggerOptions = {
   apiFolder: 'pages/api',
@@ -41,6 +85,7 @@ export function createSwaggerSpec({
   apiFolder = 'pages/api',
   schemaFolders = [],
   autoDoc = false,
+  scanBuildOutput,
   ...swaggerOptions
 }: SwaggerOptions = defaultOptions) {
   const scanFolders = [apiFolder, ...schemaFolders];
@@ -49,17 +94,27 @@ export function createSwaggerSpec({
     const apiDirectory = join(process.cwd(), folder);
     const publicDirectory = join(process.cwd(), 'public');
     const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'json', 'swagger.yaml'];
-    return [
+    const paths = [
       ...fileTypes.map((fileType) => `${apiDirectory}/**/*.${fileType}`),
-      // Only scan build directory for *.swagger.yaml and *.js files
-      ...['js', 'swagger.yaml', 'json'].map(
-        (fileType) => `${buildApiDirectory}/**/*.${fileType}`
-      ),
       // Support load static files from public directory
       ...['swagger.yaml', 'json'].map(
         (fileType) => `${publicDirectory}/**/*.${fileType}`
       ),
     ];
+    if (
+      shouldScanBuildDirectory({
+        sourceDirectory: apiDirectory,
+        buildDirectory: buildApiDirectory,
+        scanBuildOutput,
+      })
+    ) {
+      paths.push(
+        ...['js', 'swagger.yaml', 'json'].map(
+          (fileType) => `${buildApiDirectory}/**/*.${fileType}`
+        )
+      );
+    }
+    return paths;
   });
 
   // Append base path server element to server array

@@ -54,7 +54,7 @@ Do not edit `dist/`; pkgroll writes it from `src/`.
 
 - `apiFolder` defaults to `pages/api`. App Router apps typically pass `app/api`.
 - `autoDoc: true` fills in operations from `route` files. Manual `@swagger` JSDoc wins on conflict.
-- `createSwaggerSpec` globs the source API folder, `public` OpenAPI files, and `.next/server` compiled output. Prefer source files when they exist.
+- Do not glob `.next` while Next.js is compiling (`NEXT_PHASE` production build/export). That walk can fail Vercel builds with a missing `export-detail.json`. Scan compiled output only when the source folder is missing, or set `scanBuildOutput: true`.
 
 ## Examples
 

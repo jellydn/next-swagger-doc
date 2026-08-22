@@ -164,6 +164,10 @@ Now, navigate to `localhost:3000/api-doc` (or wherever you host your Next.js app
 
 ![https://gyazo.com/6bfa919c4969b000615df6bb9cabcd02.gif](https://gyazo.com/6bfa919c4969b000615df6bb9cabcd02.gif)
 
+### Vercel builds
+
+`createSwaggerSpec` does not glob `.next` during `next build`. Walking that folder while Next.js is compiling it can fail Vercel with `ENOENT: .next/export-detail.json`. Source API files and `public` OpenAPI files are scanned instead. Set `scanBuildOutput: true` only when you intentionally want compiled `.next/server` files included.
+
 ## Usage #2: Create an single API document
 
 ```sh

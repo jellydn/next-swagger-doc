@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
+import { mkdirSync, mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
-import { createSwaggerSpec, extractApiInfo } from '../src';
+import {
+  createSwaggerSpec,
+  extractApiInfo,
+  shouldScanBuildDirectory,
+} from '../src';
 
 describe('withSwagger', () => {
   it('should create default swagger json option', () => {
@@ -156,5 +163,78 @@ describe('withSwagger', () => {
 
   it('ignores a missing App Router directory', () => {
     expect(extractApiInfo('test/fixtures/missing')).toEqual([]);
+  });
+});
+
+describe('shouldScanBuildDirectory', () => {
+  it('skips missing build directories', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-scan-'));
+    try {
+      expect(
+        shouldScanBuildDirectory({
+          sourceDirectory: join(root, 'app/api'),
+          buildDirectory: join(root, '.next/server/app/api'),
+        })
+      ).toBe(false);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('skips .next during Next.js production builds', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-scan-'));
+    try {
+      mkdirSync(join(root, 'app/api'), { recursive: true });
+      mkdirSync(join(root, '.next/server/app/api'), { recursive: true });
+      expect(
+        shouldScanBuildDirectory({
+          sourceDirectory: join(root, 'app/api'),
+          buildDirectory: join(root, '.next/server/app/api'),
+          nextPhase: 'phase-production-build',
+        })
+      ).toBe(false);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('scans compiled output when the source folder is missing', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-scan-'));
+    try {
+      mkdirSync(join(root, '.next/server/app/api'), { recursive: true });
+      expect(
+        shouldScanBuildDirectory({
+          sourceDirectory: join(root, 'app/api'),
+          buildDirectory: join(root, '.next/server/app/api'),
+        })
+      ).toBe(true);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('honors an explicit scanBuildOutput flag', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-scan-'));
+    try {
+      mkdirSync(join(root, 'app/api'), { recursive: true });
+      mkdirSync(join(root, '.next/server/app/api'), { recursive: true });
+      expect(
+        shouldScanBuildDirectory({
+          sourceDirectory: join(root, 'app/api'),
+          buildDirectory: join(root, '.next/server/app/api'),
+          scanBuildOutput: true,
+          nextPhase: 'phase-production-build',
+        })
+      ).toBe(true);
+      expect(
+        shouldScanBuildDirectory({
+          sourceDirectory: join(root, 'missing'),
+          buildDirectory: join(root, '.next/server/app/api'),
+          scanBuildOutput: false,
+        })
+      ).toBe(false);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 });

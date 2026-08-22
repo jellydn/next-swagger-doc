@@ -56,6 +56,7 @@ Do not edit `dist/`; pkgroll writes it from `src/`.
 - `autoDoc: true` fills in operations from `route` files. Manual `@swagger` JSDoc wins on conflict.
 - Do not glob `.next` while Next.js is compiling (`NEXT_PHASE` production build/export). That walk can fail Vercel builds with a missing `export-detail.json`. Scan compiled output only when the source folder is missing, or set `scanBuildOutput: true`.
 - For `output: 'standalone'`, generate a spec at build time (`specFile` / CLI `outputFile`) or rely on `autoDoc` so compiled routes still document. `autoDoc` falls back on automatically when the source API folder is missing unless it is set to `false`.
+- `UNSAFE_componentWillReceiveProps` warnings for `ExamplesSelect` / `ParameterRow` come from `swagger-ui-react`, not this library. Keep examples on `next/dynamic` with `ssr: false`, or point users at Scalar / Stoplight Elements.
 
 ## Examples
 

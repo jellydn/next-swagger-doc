@@ -1,15 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
-const HTTP_METHODS = [
-  'GET',
-  'POST',
-  'PUT',
-  'PATCH',
-  'DELETE',
-  'HEAD',
-  'OPTIONS',
-] as const;
+import { HTTP_METHODS, getExportedMethods } from './route-parser';
 
 export type ApiInfo = {
   path: string;
@@ -82,91 +74,6 @@ function toOpenApiPaths(segments: string[]): string[] {
   );
 
   return paths.map((path) => `/${path.map(toOpenApiSegment).join('/')}`);
-}
-
-function sanitizeSource(source: string): string {
-  let code = '';
-  let index = 0;
-
-  while (index < source.length) {
-    const character = source[index];
-    const nextCharacter = source[index + 1];
-    if (character === '/' && nextCharacter === '/') {
-      index = source.indexOf('\n', index);
-      if (index === -1) {
-        break;
-      }
-      code += '\n';
-    } else if (character === '/' && nextCharacter === '*') {
-      const commentEnd = source.indexOf('*/', index + 2);
-      if (commentEnd === -1) {
-        break;
-      }
-      code += ' ';
-      index = commentEnd + 2;
-      continue;
-    } else if (character === "'" || character === '"' || character === '`') {
-      const quote = character;
-      index += 1;
-      while (index < source.length && source[index] !== quote) {
-        index += source[index] === '\\' ? 2 : 1;
-      }
-    } else {
-      code += character;
-    }
-    index += 1;
-  }
-
-  return code;
-}
-
-function getExportedMethods(source: string): string[] {
-  const code = sanitizeSource(source);
-  const normalizedCode = Array.from(code)
-    .map((character) => (character <= ' ' ? ' ' : character))
-    .join('')
-    .split(' ')
-    .filter(Boolean)
-    .join(' ');
-  const methods = new Set<string>();
-
-  for (const method of HTTP_METHODS) {
-    if (
-      [
-        `export function ${method}`,
-        `export async function ${method}`,
-        `export const ${method}`,
-        `export let ${method}`,
-        `export var ${method}`,
-      ].some((declaration) => normalizedCode.includes(declaration))
-    ) {
-      methods.add(method);
-    }
-  }
-  let exportStart = code.indexOf('export {');
-  while (exportStart !== -1) {
-    const specifiersStart = exportStart + 'export {'.length;
-    const specifiersEnd = code.indexOf('}', specifiersStart);
-    if (specifiersEnd === -1) {
-      break;
-    }
-    for (const specifier of code
-      .slice(specifiersStart, specifiersEnd)
-      .split(',')) {
-      const exportedName = specifier.trim().split(' as ').at(-1);
-      if (
-        exportedName &&
-        HTTP_METHODS.includes(exportedName as (typeof HTTP_METHODS)[number])
-      ) {
-        methods.add(exportedName);
-      }
-    }
-    exportStart = code.indexOf('export {', specifiersEnd);
-  }
-
-  return HTTP_METHODS.filter((method) => methods.has(method)).map((method) =>
-    method.toLowerCase()
-  );
 }
 
 /** Extract App Router API paths and exported HTTP methods from route files. */

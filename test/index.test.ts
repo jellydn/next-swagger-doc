@@ -108,11 +108,18 @@ describe('withSwagger', () => {
     expect(extractApiInfo('test/fixtures/app')).toEqual([
       { path: '/api/health', methods: ['get', 'head'] },
       { path: '/api/manual', methods: ['get'] },
+      { path: '/api/regex', methods: ['get'] },
       { path: '/api/users/{id}', methods: ['patch', 'delete'] },
       { path: '/blog', methods: ['get'] },
       { path: '/blog/{slug}', methods: ['get'] },
       { path: '/commented', methods: ['get'] },
       { path: '/users', methods: ['get', 'post'] },
+    ]);
+  });
+
+  it('detects handlers despite regex literals containing comment-like sequences', () => {
+    expect(extractApiInfo('test/fixtures/app/api/regex')).toEqual([
+      { path: '/api/regex', methods: ['get'] },
     ]);
   });
 
@@ -164,6 +171,7 @@ describe('withSwagger', () => {
     expect(extractApiInfo('test/fixtures/app/api')).toEqual([
       { path: '/api/health', methods: ['get', 'head'] },
       { path: '/api/manual', methods: ['get'] },
+      { path: '/api/regex', methods: ['get'] },
       { path: '/api/users/{id}', methods: ['patch', 'delete'] },
     ]);
   });

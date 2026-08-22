@@ -3,6 +3,8 @@ import { dirname, isAbsolute, join } from 'node:path';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
 import { extractApiInfo, generateAutoDoc } from './auto-doc';
+import { mergeAutoDoc } from './merge-auto-doc';
+import { discoverSpecLocations } from './spec-source';
 
 export type AutoDocOptions = {
   enabled?: boolean;
@@ -143,33 +145,33 @@ export function createSwaggerSpec({
   }
 
   const scanFolders = [apiFolder, ...schemaFolders];
-  const apis = scanFolders.flatMap((folder) => {
-    const buildApiDirectory = join(process.cwd(), '.next/server', folder);
-    const apiDirectory = join(process.cwd(), folder);
-    const publicDirectory = join(process.cwd(), 'public');
-    const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'json', 'swagger.yaml'];
-    const paths = [
-      ...fileTypes.map((fileType) => `${apiDirectory}/**/*.${fileType}`),
-      // Support load static files from public directory
-      ...['swagger.yaml', 'json'].map(
-        (fileType) => `${publicDirectory}/**/*.${fileType}`
-      ),
-    ];
-    if (
-      shouldScanBuildDirectory({
-        sourceDirectory: apiDirectory,
-        buildDirectory: buildApiDirectory,
-        scanBuildOutput,
-      })
-    ) {
-      paths.push(
-        ...['js', 'swagger.yaml', 'json'].map(
-          (fileType) => `${buildApiDirectory}/**/*.${fileType}`
-        )
+  const { sourceDirs, buildDirs, publicDir } =
+    discoverSpecLocations(scanFolders);
+  const fileTypes = ['ts', 'tsx', 'jsx', 'js', 'json', 'swagger.yaml'];
+  const apis = [
+    ...sourceDirs.flatMap((dir) =>
+      fileTypes.map((fileType) => `${dir}/**/*.${fileType}`)
+    ),
+    ...['swagger.yaml', 'json'].map(
+      (fileType) => `${publicDir}/**/*.${fileType}`
+    ),
+    ...sourceDirs.flatMap((sourceDirectory, index) => {
+      const buildDirectory = buildDirs[index];
+      if (
+        !buildDirectory ||
+        !shouldScanBuildDirectory({
+          sourceDirectory,
+          buildDirectory,
+          scanBuildOutput,
+        })
+      ) {
+        return [];
+      }
+      return ['js', 'swagger.yaml', 'json'].map(
+        (fileType) => `${buildDirectory}/**/*.${fileType}`
       );
-    }
-    return paths;
-  });
+    }),
+  ];
 
   // Append base path server element to server array
   // Conditions: basePath is specified. Server array is not defined.
@@ -196,14 +198,7 @@ export function createSwaggerSpec({
 
   if (isAutoDocEnabled(autoDoc, !existsSync(sourceDirectory))) {
     const autoPaths = generateAutoDoc(extractApiInfo(apiFolder));
-    spec.paths = Object.fromEntries(
-      Object.entries({ ...autoPaths, ...spec.paths }).map(
-        ([path, operations]) => {
-          const generatedOperations = autoPaths[path] ?? {};
-          return [path, { ...generatedOperations, ...operations }];
-        }
-      )
-    );
+    spec.paths = mergeAutoDoc(autoPaths, spec.paths ?? {}) as OAS3Definition['paths'];
   }
 
   if (outputFile) {

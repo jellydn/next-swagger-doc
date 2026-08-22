@@ -19,13 +19,17 @@ initSync();
  * Uses es-module-lexer instead of hand-rolled string matching, so comments,
  * strings, and regex literals are handled correctly without sanitisation.
  */
-export function getExportedMethods(source: string): string[] {
+export function getExportedMethods(
+  source: string,
+  sourceName?: string
+): string[] {
   let exportSpecifiers: readonly ExportSpecifier[] = [];
   try {
     [, exportSpecifiers] = parse(source);
   } catch (error) {
+    const location = sourceName ? ` (${sourceName})` : '';
     console.warn(
-      'next-swagger-doc: failed to parse route source, skipping file',
+      `next-swagger-doc: failed to parse route source${location}, skipping file`,
       error
     );
     return [];

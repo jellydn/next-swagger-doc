@@ -15,6 +15,9 @@ import {
   isAutoDocEnabled,
   shouldScanBuildDirectory,
 } from '../src';
+import { mergeAutoDoc } from '../src/merge-auto-doc';
+import { routeToOpenApiPaths } from '../src/route-path';
+import { discoverSpecLocations } from '../src/spec-source';
 
 describe('withSwagger', () => {
   it('should create default swagger json option', () => {
@@ -320,5 +323,102 @@ describe('standalone spec files', () => {
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
+  });
+});
+
+describe('routeToOpenApiPaths', () => {
+  it('derives the api base path from the api folder', () => {
+    expect(routeToOpenApiPaths('app/api', [])).toEqual(['/api']);
+    expect(routeToOpenApiPaths('src/app/api', ['users'])).toEqual([
+      '/api/users',
+    ]);
+    expect(routeToOpenApiPaths('pages/api', ['hello'])).toEqual([
+      '/api/hello',
+    ]);
+  });
+
+  it('translates dynamic and catch-all segments', () => {
+    expect(routeToOpenApiPaths('app/api', ['users', '[id]'])).toEqual([
+      '/api/users/{id}',
+    ]);
+    expect(routeToOpenApiPaths('app/api', ['blog', '[...slug]'])).toEqual([
+      '/api/blog/{slug}',
+    ]);
+  });
+
+  it('expands optional catch-alls into two paths', () => {
+    expect(routeToOpenApiPaths('app/api', ['blog', '[[...slug]]'])).toEqual([
+      '/api/blog',
+      '/api/blog/{slug}',
+    ]);
+  });
+
+  it('drops route groups and parallel route segments', () => {
+    expect(routeToOpenApiPaths('app/api', ['(admin)', 'users'])).toEqual([
+      '/api/users',
+    ]);
+    expect(routeToOpenApiPaths('app/api', ['@modal', 'users'])).toEqual([
+      '/api/users',
+    ]);
+  });
+});
+
+describe('discoverSpecLocations', () => {
+  it('maps folders to source and build directories plus public', () => {
+    const cwd = join('app');
+    expect(discoverSpecLocations(['api', 'models'], cwd)).toEqual({
+      sourceDirs: [join('app', 'api'), join('app', 'models')],
+      buildDirs: [
+        join('app', '.next', 'server', 'api'),
+        join('app', '.next', 'server', 'models'),
+      ],
+      publicDir: join('app', 'public'),
+    });
+  });
+});
+
+describe('mergeAutoDoc', () => {
+  it('keeps manual and auto-only paths and lets manual win per method', () => {
+    const autoPaths = {
+      '/api/health': { get: { summary: 'GET /api/health' } },
+      '/api/users/{id}': { delete: { summary: 'DELETE /api/users/{id}' } },
+    };
+    const manualPaths = {
+      '/api/health': {
+        get: {
+          summary: 'Manual health',
+          responses: { 200: { description: 'OK' } },
+        },
+      },
+      '/api/manual': { get: { summary: 'Manual only' } },
+    };
+    expect(mergeAutoDoc(autoPaths, manualPaths)).toEqual({
+      '/api/health': {
+        get: {
+          summary: 'Manual health',
+          responses: { 200: { description: 'OK' } },
+        },
+      },
+      '/api/manual': { get: { summary: 'Manual only' } },
+      '/api/users/{id}': { delete: { summary: 'DELETE /api/users/{id}' } },
+    });
+  });
+
+  it('merges different methods on the same path', () => {
+    const autoPaths = { '/api/x': { get: { summary: 'auto get' } } };
+    const manualPaths = { '/api/x': { post: { summary: 'manual post' } } };
+    expect(mergeAutoDoc(autoPaths, manualPaths)).toEqual({
+      '/api/x': {
+        get: { summary: 'auto get' },
+        post: { summary: 'manual post' },
+      },
+    });
+  });
+
+  it('returns manual paths unchanged when auto is empty and vice versa', () => {
+    const manual = { '/api/m': { get: { summary: 'm' } } };
+    expect(mergeAutoDoc({}, manual)).toEqual(manual);
+    const auto = { '/api/a': { get: { summary: 'a' } } };
+    expect(mergeAutoDoc(auto, {})).toEqual(auto);
   });
 });

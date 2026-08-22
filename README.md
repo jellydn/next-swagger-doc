@@ -168,6 +168,30 @@ Now, navigate to `localhost:3000/api-doc` (or wherever you host your Next.js app
 
 `createSwaggerSpec` does not glob `.next` during `next build`. Walking that folder while Next.js is compiling it can fail Vercel with `ENOENT: .next/export-detail.json`. Source API files and `public` OpenAPI files are scanned instead. Set `scanBuildOutput: true` only when you intentionally want compiled `.next/server` files included.
 
+### Next.js standalone output
+
+`output: 'standalone'` copies a minimal server. Source `app/api` files are not included, so scanning routes at runtime yields an empty spec.
+
+Generate the document at build time and load it from `public/` (copied into the standalone output):
+
+```sh
+npx next-swagger-doc-cli next-swagger-doc.json --output public/swagger.json
+```
+
+```javascript
+const spec = createSwaggerSpec({
+  specFile: 'public/swagger.json',
+  apiFolder: 'app/api',
+  autoDoc: true,
+  definition: {
+    openapi: '3.0.0',
+    info: { title: 'Next Swagger API Example', version: '1.0' },
+  },
+});
+```
+
+If `specFile` is missing at runtime, `autoDoc` still documents compiled `route.js` handlers under `.next/server` (paths and methods only; JSDoc comments are stripped from compiled output). You can also set `outputFile` to write the spec when source files are present.
+
 ## Usage #2: Create an single API document
 
 ```sh

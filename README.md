@@ -283,11 +283,18 @@ yarn next-swagger-doc-cli next-swagger-doc.json
 
 ## Run example app
 
+Versioned sample apps live under `examples/`:
+
+- `examples/next13-simple` — Next.js 13 (Pages Router)
+- `examples/next14-app` — Next.js 14 (App Router)
+- `examples/next15-app` — Next.js 15 (App Router)
+- `examples/next16-app` — Next.js 16 (App Router)
+
 ```sh
 gh repo clone jellydn/next-swagger-doc
-cd examples/next14-app
+cd examples/next16-app
 pnpm install
-pnm run dev
+pnpm dev
 ```
 
 Then open http://localhost:3000/api-doc or http://localhost:3000/ on your browser

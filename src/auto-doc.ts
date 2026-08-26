@@ -3,7 +3,10 @@ import { join, relative, sep } from 'node:path';
 
 import { HTTP_METHODS, getExportedMethods } from './route-parser';
 import { routeToOpenApiPaths } from './route-path';
-import { discoverSpecLocations } from './spec-source';
+import {
+  discoverSpecLocations,
+  shouldScanBuildDirectory,
+} from './spec-source';
 
 export type ApiInfo = {
   path: string;
@@ -29,10 +32,32 @@ function getRouteFiles(directory: string): string[] {
 /** Extract App Router API paths and exported HTTP methods from route files. */
 export function extractApiInfo(
   apiFolder: string,
-  cwd = process.cwd()
+  cwd = process.cwd(),
+  options?: { scanBuildOutput?: boolean; nextPhase?: string }
 ): ApiInfo[] {
   const { sourceDirs, buildDirs } = discoverSpecLocations([apiFolder], cwd);
-  const directories = [...sourceDirs, ...buildDirs].filter(existsSync);
+  const directories: string[] = [];
+  for (let index = 0; index < sourceDirs.length; index += 1) {
+    const sourceDirectory = sourceDirs[index];
+    if (!sourceDirectory) {
+      continue;
+    }
+    if (existsSync(sourceDirectory)) {
+      directories.push(sourceDirectory);
+    }
+    const buildDirectory = buildDirs[index];
+    if (
+      buildDirectory &&
+      shouldScanBuildDirectory({
+        sourceDirectory,
+        buildDirectory,
+        scanBuildOutput: options?.scanBuildOutput,
+        nextPhase: options?.nextPhase,
+      })
+    ) {
+      directories.push(buildDirectory);
+    }
+  }
   const apiInfos = new Map<string, Set<string>>();
 
   for (const apiDirectory of directories) {

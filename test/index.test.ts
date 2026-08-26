@@ -257,6 +257,97 @@ describe('shouldScanBuildDirectory', () => {
   });
 });
 
+describe('extractApiInfo scan gate', () => {
+  const writeRoute = (file: string, method: string) => {
+    mkdirSync(join(file, '..'), { recursive: true });
+    writeFileSync(file, `export function ${method}() {}\n`);
+  };
+
+  it('ignores compiled methods when source files exist', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-extract-'));
+    try {
+      writeRoute(join(root, 'app/api/hello/route.ts'), 'GET');
+      writeRoute(
+        join(root, '.next/server/app/api/hello/route.js'),
+        'OPTIONS'
+      );
+      expect(extractApiInfo('app/api', root)).toEqual([
+        { path: '/api/hello', methods: ['get'] },
+      ]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('extracts compiled routes when source files are missing', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-extract-'));
+    try {
+      writeRoute(
+        join(root, '.next/server/app/api/hello/route.js'),
+        'OPTIONS'
+      );
+      expect(extractApiInfo('app/api', root)).toEqual([
+        { path: '/api/hello', methods: ['options'] },
+      ]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('unions compiled methods when scanBuildOutput is true', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-extract-'));
+    try {
+      writeRoute(join(root, 'app/api/hello/route.ts'), 'GET');
+      writeRoute(
+        join(root, '.next/server/app/api/hello/route.js'),
+        'OPTIONS'
+      );
+      expect(
+        extractApiInfo('app/api', root, { scanBuildOutput: true })
+      ).toEqual([{ path: '/api/hello', methods: ['get', 'options'] }]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('skips compiled methods during a production build phase', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-extract-'));
+    try {
+      writeRoute(join(root, 'app/api/hello/route.ts'), 'GET');
+      writeRoute(
+        join(root, '.next/server/app/api/hello/route.js'),
+        'OPTIONS'
+      );
+      expect(
+        extractApiInfo('app/api', root, {
+          nextPhase: 'phase-production-build',
+        })
+      ).toEqual([{ path: '/api/hello', methods: ['get'] }]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('lets scanBuildOutput override a production build phase', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-extract-'));
+    try {
+      writeRoute(join(root, 'app/api/hello/route.ts'), 'GET');
+      writeRoute(
+        join(root, '.next/server/app/api/hello/route.js'),
+        'OPTIONS'
+      );
+      expect(
+        extractApiInfo('app/api', root, {
+          scanBuildOutput: true,
+          nextPhase: 'phase-production-build',
+        })
+      ).toEqual([{ path: '/api/hello', methods: ['get', 'options'] }]);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+});
+
 describe('isAutoDocEnabled', () => {
   it('keeps autoDoc off when source files exist', () => {
     expect(isAutoDocEnabled(undefined, false)).toBe(false);

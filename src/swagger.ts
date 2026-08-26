@@ -4,7 +4,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
 import { extractApiInfo, generateAutoDoc } from './auto-doc';
 import { mergeAutoDoc } from './merge-auto-doc';
-import { discoverSpecLocations } from './spec-source';
+import {
+  discoverSpecLocations,
+  shouldScanBuildDirectory,
+} from './spec-source';
+
+export { shouldScanBuildDirectory };
 
 export type AutoDocOptions = {
   enabled?: boolean;
@@ -31,43 +36,6 @@ export type SwaggerOptions = Options & {
    */
   scanBuildOutput?: boolean;
 };
-
-/** Next.js phases that rewrite `.next` and must not be globbed. */
-const NEXT_BUILD_PHASES = new Set([
-  'phase-production-build',
-  'phase-production-compile',
-  'phase-export',
-]);
-
-/**
- * Whether compiled files under `.next/server` should be globbed.
- *
- * Globbing `.next` while Next.js is compiling can fail Vercel builds with
- * `ENOENT: .../.next/export-detail.json`. Prefer source files; scan compiled
- * output only as a runtime fallback when the source folder is gone.
- */
-export function shouldScanBuildDirectory({
-  sourceDirectory,
-  buildDirectory,
-  scanBuildOutput,
-  nextPhase = process.env.NEXT_PHASE,
-}: {
-  sourceDirectory: string;
-  buildDirectory: string;
-  scanBuildOutput?: boolean;
-  nextPhase?: string;
-}): boolean {
-  if (!existsSync(buildDirectory) || scanBuildOutput === false) {
-    return false;
-  }
-  if (scanBuildOutput === true) {
-    return true;
-  }
-  if (nextPhase && NEXT_BUILD_PHASES.has(nextPhase)) {
-    return false;
-  }
-  return !existsSync(sourceDirectory);
-}
 
 /** Resolve a user-supplied path against the process working directory. */
 function resolveUserPath(file: string, cwd = process.cwd()): string {
@@ -197,7 +165,9 @@ export function createSwaggerSpec({
   const sourceDirectory = join(process.cwd(), apiFolder);
 
   if (isAutoDocEnabled(autoDoc, !existsSync(sourceDirectory))) {
-    const autoPaths = generateAutoDoc(extractApiInfo(apiFolder));
+    const autoPaths = generateAutoDoc(
+      extractApiInfo(apiFolder, process.cwd(), { scanBuildOutput })
+    );
     spec.paths = mergeAutoDoc(autoPaths, spec.paths ?? {}) as OAS3Definition['paths'];
   }
 

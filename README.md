@@ -170,7 +170,7 @@ Now, navigate to `localhost:3000/api-doc` (or wherever you host your Next.js app
 
 ### Vercel builds
 
-`createSwaggerSpec` does not glob `.next` during `next build`. Walking that folder while Next.js is compiling it can fail Vercel with `ENOENT: .next/export-detail.json`. Source API files and `public` OpenAPI files are scanned instead. `autoDoc` / `extractApiInfo` use the same `shouldScanBuildDirectory` gate, so compiled `route.js` handlers are not merged while a production build is rewriting `.next`. Set `scanBuildOutput: true` only when you intentionally want compiled `.next/server` files included.
+`createSwaggerSpec` does not glob `.next` during `next build`. Walking that folder while Next.js is compiling it can fail Vercel with `ENOENT: .next/export-detail.json`. Source API files and `public/*.swagger.yaml` / `public/*.swagger.json` fragments are scanned instead. A complete spec should be loaded with `specFile`. `autoDoc` / `extractApiInfo` use the same `shouldScanBuildDirectory` gate, so compiled `route.js` handlers are not merged while a production build is rewriting `.next`. Set `scanBuildOutput: true` only when you intentionally want compiled `.next/server` files included.
 
 ### Next.js standalone output
 

@@ -112,6 +112,7 @@ work).
 - `src/cli-write.ts` (create — extracted function so tests can import it
   without running cleye)
 - `test/index.test.ts`
+- `plans/README.md` (status bookkeeping only)
 
 **Out of scope**:
 - `src/swagger.ts` `outputFile` behavior for library callers (already mkdirs)
@@ -144,21 +145,16 @@ Behavior:
    raw parse message if it is huge; the path is enough.
 3. If the parsed value is not a non-null object (or is an array), throw
    `Error('Config file must contain a JSON object')`.
-4. Omit `outputFile` from the object passed to `createSwaggerSpec` so the
-   library does not also write `SwaggerOptions.outputFile`. CLI `--output`
-   is the only write. Example:
+4. Pass the CLI output path to `createSwaggerSpec`, overriding any configured
+   `outputFile`. This keeps path resolution, directory creation, and JSON
+   serialization in their canonical implementation:
 
    ```typescript
-   const { outputFile: _ignored, ...swaggerOptions } = parsed as SwaggerOptions;
-   const spec = createSwaggerSpec(swaggerOptions);
+   createSwaggerSpec({ ...(parsed as SwaggerOptions), outputFile });
    ```
 
-5. `mkdirSync(dirname(resolve(outputFile)), { recursive: true })` then
-   `writeFileSync(outputFile, JSON.stringify(spec, null, 2))`.
-   Use `node:fs` and `node:path` (`dirname`, `isAbsolute`/`resolve` as needed).
-   Relative `outputFile` is resolved against `process.cwd()`.
-
-Keep `createSwaggerSpec` as the generator — do not reimplement scanning.
+Do not duplicate `createSwaggerSpec`'s `mkdirSync`, path resolution, or
+`writeFileSync` behavior in the CLI helper.
 
 **Verify**: `pnpm exec tsc --noEmit` → exit 0.
 
@@ -205,8 +201,10 @@ Cases:
    true and parsed JSON has `info.title === 'CLI'`.
 2. **Invalid JSON config** — write `not-json` to the config file.
    `expect(() => writeCliSpec(configPath, outputPath)).toThrow(/Invalid JSON/)`.
-3. **Missing config file** — `expect(() => writeCliSpec(join(temp, 'missing.json'), outputPath)).toThrow()`.
-4. **Config `outputFile` does not double-write** — config includes
+3. **Invalid config shape** — cover `null`, a primitive, and an array;
+   each must throw `Config file must contain a JSON object`.
+4. **Missing config file** — `expect(() => writeCliSpec(join(temp, 'missing.json'), outputPath)).toThrow()`.
+5. **Config `outputFile` does not double-write** — config includes
    `outputFile: join(temp, 'from-config.json')` and CLI output is
    `join(temp, 'from-flag.json')`. After the call, `from-flag.json` exists
    and `from-config.json` does **not**.
@@ -216,7 +214,9 @@ Cases:
 ### Step 4: Build the bin
 
 `pnpm build` so `dist/cli.js` still exists as the published bin. Do not
-hand-edit `dist/`.
+hand-edit `dist/`. After building, run the bin once with an invalid temporary
+config and verify it exits non-zero, writes the concise `Invalid JSON` message
+to stderr, and does not print the raw config contents.
 
 **Verify**: `pnpm build` → exit 0. `pnpm exec tsc --noEmit` → exit 0.
 
@@ -224,20 +224,20 @@ hand-edit `dist/`.
 
 - New tests in `test/index.test.ts` as listed in Step 3.
 - Pattern: `describe('standalone spec files')` temp-file tests.
-- Do not spawn `dist/cli.js` in this plan (cleye + process exit is harder
-  than testing `writeCliSpec`). If you want a spawn smoke test, STOP and
-  report rather than adding flaky PATH/bin tests.
-- Verification: `pnpm test` → all pass including 4 new tests.
+- Keep the automated unit tests on `writeCliSpec`; use the focused built-bin
+  command in Step 4 to verify cleye wiring and process exit behavior.
+- Verification: `pnpm test` → all pass including 5 new tests.
 
 ## Done criteria
 
 - [ ] `pnpm exec tsc --noEmit` exits 0
 - [ ] `pnpm lint` exits 0
-- [ ] `pnpm test` exits 0; four `writeCliSpec` tests exist and pass
+- [ ] `pnpm test` exits 0; five `writeCliSpec` tests exist and pass
 - [ ] `pnpm build` exits 0
+- [ ] Built CLI exits non-zero with concise stderr for invalid JSON
 - [ ] `rg "writeFileSync" src/cli.ts` — `cli.ts` no longer writes the spec
-      itself (write lives in `cli-write.ts`)
-- [ ] `rg "mkdirSync" src/cli-write.ts` matches
+      itself (writing remains in `createSwaggerSpec`)
+- [ ] `rg "mkdirSync|writeFileSync" src/cli-write.ts` has no matches
 - [ ] No files outside the in-scope list are modified (`git status`)
 - [ ] `plans/README.md` status row for 002 updated
 

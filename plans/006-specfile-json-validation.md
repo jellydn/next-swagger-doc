@@ -28,9 +28,8 @@
 exists, `createSwaggerSpec` returns it and skips scanning
 (`src/swagger.ts:140-145`). Today it is a bare `JSON.parse` plus
 `as OAS3Definition`. Truncated JSON throws `SyntaxError`. A JSON array or
-empty `{}` is returned as a "spec", which Swagger UI cannot render (issues
-#1163 / #1164). Missing files must still return `undefined` so callers fall
-back to scanning.
+empty `{}` is returned as a "spec", which Swagger UI cannot render. Missing
+files must still return `undefined` so callers fall back to scanning.
 
 ## Current state
 
@@ -79,6 +78,7 @@ Conventions: optional `cwd` last arg; temp-dir tests; no `any` (use
 **In scope**:
 - `src/swagger.ts` (`loadSpecFile` only)
 - `test/index.test.ts`
+- `plans/README.md` (status bookkeeping only)
 
 **Out of scope**:
 - `withSwagger` status codes (plan 003)
@@ -99,9 +99,10 @@ Conventions: optional `cwd` last arg; temp-dir tests; no `any` (use
 Replace the parse/return with:
 
 ```typescript
+  const contents = readFileSync(specPath, 'utf8');
   let parsed: unknown;
   try {
-    parsed = JSON.parse(readFileSync(specPath, 'utf8'));
+    parsed = JSON.parse(contents);
   } catch {
     throw new Error(`Invalid JSON in specFile ${specPath}`);
   }
@@ -123,6 +124,9 @@ Replace the parse/return with:
 ```
 
 Keep the `existsSync` → `undefined` branch unchanged.
+Read the file before the parse `try` so permission errors, directory paths,
+and read races retain their filesystem error instead of being mislabeled as
+invalid JSON.
 
 **Verify**: `pnpm exec tsc --noEmit` → exit 0.
 
@@ -139,6 +143,8 @@ In `describe('standalone spec files')` (`test/index.test.ts:273`), add:
    `spec.paths` to include `/api/health` (fallback). Or call `loadSpecFile`
    directly and expect `undefined`. Direct `loadSpecFile` is simpler —
    import it from `../src`.
+5. **Read errors stay read errors** — pass an existing directory as
+   `specFile`; it must throw a filesystem error, not `Invalid JSON`.
 
 Keep the existing valid specFile test as-is (it already has `openapi` and
 `info`).
@@ -159,7 +165,7 @@ Keep the existing valid specFile test as-is (it already has `openapi` and
 
 - [ ] `pnpm exec tsc --noEmit` exits 0
 - [ ] `pnpm lint` exits 0
-- [ ] `pnpm test` exits 0; invalid JSON / `{}` / `[]` / missing-file cases exist
+- [ ] `pnpm test` exits 0; invalid JSON / `{}` / `[]` / missing-file and read-error cases exist
 - [ ] `loadSpecFile` still returns `undefined` when the file is missing
 - [ ] Valid specFile test still passes
 - [ ] No files outside the in-scope list are modified (`git status`)

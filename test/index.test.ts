@@ -16,6 +16,7 @@ import {
   createSwaggerSpec,
   extractApiInfo,
   isAutoDocEnabled,
+  loadSpecFile,
   shouldScanBuildDirectory,
   withSwagger,
 } from '../src';
@@ -416,6 +417,72 @@ describe('standalone spec files', () => {
       };
       expect(saved.info.title).toBe('Written');
       expect(spec.info.title).toBe('Written');
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when specFile is invalid JSON', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-spec-'));
+    const specFile = join(root, 'swagger.json');
+    try {
+      writeFileSync(specFile, 'not-json');
+      expect(() =>
+        createSwaggerSpec({
+          specFile,
+          definition: {
+            openapi: '3.0.0',
+            info: { title: 'x', version: '1' },
+          },
+        })
+      ).toThrow(/Invalid JSON/);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when specFile is an empty object', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-spec-'));
+    const specFile = join(root, 'swagger.json');
+    try {
+      writeFileSync(specFile, '{}');
+      expect(() =>
+        createSwaggerSpec({
+          specFile,
+          definition: {
+            openapi: '3.0.0',
+            info: { title: 'x', version: '1' },
+          },
+        })
+      ).toThrow(/not an OpenAPI object/);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when specFile is a JSON array', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-spec-'));
+    const specFile = join(root, 'swagger.json');
+    try {
+      writeFileSync(specFile, '[]');
+      expect(() =>
+        createSwaggerSpec({
+          specFile,
+          definition: {
+            openapi: '3.0.0',
+            info: { title: 'x', version: '1' },
+          },
+        })
+      ).toThrow(/not an OpenAPI object/);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('returns undefined when specFile is missing', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-spec-'));
+    try {
+      expect(loadSpecFile(join(root, 'missing.json'), root)).toBeUndefined();
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

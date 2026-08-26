@@ -51,17 +51,14 @@ export function loadSpecFile(
   if (!existsSync(specPath)) {
     return undefined;
   }
+  const contents = readFileSync(specPath, 'utf8');
   let parsed: unknown;
   try {
-    parsed = JSON.parse(readFileSync(specPath, 'utf8'));
+    parsed = JSON.parse(contents);
   } catch {
     throw new Error(`Invalid JSON in specFile ${specPath}`);
   }
-  if (
-    parsed === null ||
-    typeof parsed !== 'object' ||
-    Array.isArray(parsed)
-  ) {
+  if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
     throw new Error(`specFile is not an OpenAPI object: ${specPath}`);
   }
   const document = parsed as Record<string, unknown>;

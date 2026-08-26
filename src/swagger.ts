@@ -95,16 +95,12 @@ export function isAutoDocEnabled(
   autoDoc: boolean | AutoDocOptions | undefined,
   sourceMissing: boolean
 ): boolean {
-  if (autoDoc === false) {
+  const enabled = typeof autoDoc === 'object' ? autoDoc.enabled : autoDoc;
+  if (enabled === false) {
     return false;
   }
-  if (autoDoc === true) {
+  if (enabled === true) {
     return true;
-  }
-  if (typeof autoDoc === 'object') {
-    return (
-      autoDoc.enabled !== false && Boolean(autoDoc.enabled || sourceMissing)
-    );
   }
   return sourceMissing;
 }

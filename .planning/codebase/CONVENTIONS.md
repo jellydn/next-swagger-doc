@@ -32,9 +32,9 @@
 ## Code Style
 
 **Formatting:**
-- Tool: Biome (`@biomejs/biome` 1.9.4), invoked as `pnpm format` → `biome format src` in `package.json`.
+- Tool: Biome (`@biomejs/biome` 2.5.10), invoked as `pnpm format` → `biome format src` in `package.json`.
 - Settings from `biome.json`: 2-space indent, LF line endings, 80-column `lineWidth`, single quotes (`quoteStyle: "single"`), always semicolons, ES5 trailing commas, `arrowParentheses: "always"`, `bracketSpacing: true`.
-- `organizeImports.enabled: true` in `biome.json`; format/lint scripts scope to `src/` only (tests are not formatted by the package scripts).
+- Import organization is enabled through `assist.actions.source.organizeImports` in `biome.json`; format/lint scripts scope to `src/` only (tests are not formatted by the package scripts).
 - TypeScript in `tsconfig.json`: `"strict": true`, `noImplicitReturns`, `noFallthroughCasesInSwitch`, `noUnusedLocals`, `noUnusedParameters`, `forceConsistentCasingInFileNames`, ESM (`"type": "module"` in `package.json`, `"module": "esnext"`).
 
 **Linting:**

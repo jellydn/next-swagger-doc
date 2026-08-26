@@ -71,7 +71,7 @@
   "peerDependencies": {
     "next": ">=9"
   },
-  "packageManager": "pnpm@10.34.5",
+  "packageManager": "pnpm@11.24.0",
   "engines": {
     "node": ">=18"
   },

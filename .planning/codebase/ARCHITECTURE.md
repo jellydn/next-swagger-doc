@@ -30,12 +30,15 @@ Plus a newer **App Router auto-doc** feature that derives basic operations from 
 
 ### `src/swagger.ts` — public API
 
-- **`SwaggerOptions`** = swagger-jsdoc `Options` + `apiFolder` (default `'pages/api'`), `schemaFolders` (default `[]`), `definition` (required `OAS3Definition`), `outputFile`, `autoDoc` (`boolean | AutoDocOptions`)
+- **`SwaggerOptions`** = swagger-jsdoc `Options` + `apiFolder` (default `'pages/api'`), `schemaFolders` (default `[]`), `definition` (required `OAS3Definition`), `outputFile`, `specFile`, `scanBuildOutput`, `autoDoc` (`boolean | AutoDocOptions`)
 - **`createSwaggerSpec()`**
-  1. Builds a glob list of `apis` from `apiFolder` + `schemaFolders`, scanning three locations: source dir (`**/*.{ts,tsx,jsx,js,json,swagger.yaml}`), `.next/server` build dir (js/swagger.yaml/json only), and `public/` (swagger.yaml/json)
-  2. Injects a `servers` entry from `process.env.__NEXT_ROUTER_BASEPATH` if a base path is set and no `servers` are defined
-  3. Delegates to `swaggerJsdoc(options)` for the base spec
-  4. If `autoDoc` is enabled, merges generated paths from `generateAutoDoc(extractApiInfo(apiFolder))` into `spec.paths` — **manual `@swagger` operations win** over generated ones
+  1. If `specFile` exists, returns that JSON document (standalone build-time path)
+  2. Builds a glob list of `apis` from `apiFolder` + `schemaFolders`: source dir (`**/*.{ts,tsx,jsx,js,json,swagger.yaml}`), `public/` (swagger.yaml/json), and `.next/server` only when `shouldScanBuildDirectory` says so
+  3. Injects a `servers` entry from `process.env.__NEXT_ROUTER_BASEPATH` if a base path is set and no `servers` are defined
+  4. Delegates to `swaggerJsdoc(options)` for the base spec
+  5. If `isAutoDocEnabled` (explicit on, or source folder missing unless `autoDoc: false`), merges generated paths — **manual `@swagger` operations win**
+  6. Optionally writes `outputFile`
+- **`shouldScanBuildDirectory()`** — skips `.next` while `NEXT_PHASE` is a production build/export (Vercel `export-detail.json` ENOENT). Compiled output is a runtime fallback when source is gone, or when `scanBuildOutput: true`.
 - **`withSwagger()`** — returns a Next.js API handler; wraps `createSwaggerSpec` in try/catch, sends `200` + spec or `400` + `{ error }`
 
 ### `src/auto-doc.ts` — App Router scanner (newest feature)
@@ -80,6 +83,6 @@ createSwaggerSpec ──► withSwagger handler ──► GET /api/doc → JSON 
 ## Key Design Decisions
 
 - **Real lexer over string matching** — auto-doc extracts exported handlers with es-module-lexer (a real ESM lexer) instead of the previous hand-rolled string scanner; comments, strings, and regex literals no longer cause false positives or misses
-- **Dual source + build-dir scanning** — supports both dev (source) and production (`.next/server` compiled) scenarios
+- **Source first, compiled fallback** — do not glob `.next` during `next build`; scan compiled output only when the source folder is missing or `scanBuildOutput` is true
 - **Manual-over-generated precedence** — `{ ...generatedOperations, ...operations }` merge ensures hand-written docs are never clobbered
 - **Dual ESM/CJS output** via pkgroll with a single `src/` source of truth

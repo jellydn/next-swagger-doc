@@ -10,11 +10,14 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 import {
   createSwaggerSpec,
   extractApiInfo,
   isAutoDocEnabled,
   shouldScanBuildDirectory,
+  withSwagger,
 } from '../src';
 import { mergeAutoDoc } from '../src/merge-auto-doc';
 import { routeToOpenApiPaths } from '../src/route-path';
@@ -513,6 +516,67 @@ describe('mergeAutoDoc', () => {
     expect(mergeAutoDoc({}, manual)).toEqual(manual);
     const auto = { '/api/a': { get: { summary: 'a' } } };
     expect(mergeAutoDoc(auto, {})).toEqual(auto);
+  });
+});
+
+describe('withSwagger handler', () => {
+  function fakeRes() {
+    const res = {
+      statusCode: 0,
+      body: undefined as unknown,
+      status(code: number) {
+        this.statusCode = code;
+        return this;
+      },
+      send(body: unknown) {
+        this.body = body;
+        return this;
+      },
+      json(body: unknown) {
+        this.body = body;
+        return this;
+      },
+    };
+    return res;
+  }
+
+  it('sends the spec with HTTP 200', () => {
+    const res = fakeRes();
+    withSwagger({
+      apiFolder: 'test/fixtures/app/api',
+      autoDoc: true,
+      definition: {
+        openapi: '3.0.0',
+        info: { title: 'H', version: '1' },
+      },
+    })()({} as NextApiRequest, res as unknown as NextApiResponse);
+    expect(res.statusCode).toBe(200);
+    expect(
+      (res.body as { info: { title: string } }).info.title
+    ).toBe('H');
+  });
+
+  it('returns HTTP 500 without leaking the error message', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-handler-'));
+    const specFile = join(root, 'broken.json');
+    const res = fakeRes();
+    try {
+      writeFileSync(specFile, 'not-json');
+      withSwagger({
+        specFile,
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'H', version: '1' },
+        },
+      })()({} as NextApiRequest, res as unknown as NextApiResponse);
+      expect(res.statusCode).toBe(500);
+      expect(res.body).toEqual({
+        error: 'Failed to create Swagger spec',
+      });
+      expect(JSON.stringify(res.body)).not.toContain(specFile);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 });
 

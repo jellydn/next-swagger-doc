@@ -81,16 +81,20 @@ Generate a new file named `app/api-doc/react-swagger.tsx`. In this file, create 
 
 For demonstration purposes, here is an example using [swagger-ui-react](https://www.npmjs.com/package/swagger-ui-react)
 
-Feel free to employ any alternative swagger UI library, such as [stoplightio/elements](https://github.com/stoplightio/elements). I have added an [example ](https://github.com/jellydn/next-swagger-doc/blob/main/examples/next13-simple/pages/playground.tsx)using this library in the `example` folder.
+Feel free to employ any alternative swagger UI library, such as [stoplightio/elements](https://github.com/stoplightio/elements) or [Scalar](https://github.com/scalar/scalar). I have added an [example](https://github.com/jellydn/next-swagger-doc/blob/main/examples/next13-simple/pages/playground.tsx) using Stoplight Elements in the `example` folder.
+
+Load `swagger-ui-react` on the client only. Next.js enables React Strict Mode by default, and `swagger-ui-react` still uses `UNSAFE_componentWillReceiveProps` in components such as `ExamplesSelect` and `ParameterRow`. That warning comes from Swagger UI, not this library.
 
 ```javascript
 'use client';
 
-import SwaggerUI from 'swagger-ui-react';
+import dynamic from 'next/dynamic';
 import 'swagger-ui-react/swagger-ui.css';
 
+const SwaggerUI = dynamic(() => import('swagger-ui-react'), { ssr: false });
+
 type Props = {
-  spec: Record<string, any>,
+  spec: Record<string, unknown>,
 };
 
 function ReactSwagger({ spec }: Props) {
@@ -191,6 +195,16 @@ const spec = createSwaggerSpec({
 ```
 
 If `specFile` is missing at runtime, `autoDoc` still documents compiled `route.js` handlers under `.next/server` (paths and methods only; JSDoc comments are stripped from compiled output). You can also set `outputFile` to write the spec when source files are present.
+
+### swagger-ui-react Strict Mode warning
+
+React may log `UNSAFE_componentWillReceiveProps` for `ExamplesSelect` and `ParameterRow`. Those components live in `swagger-ui-react`, which this package does not depend on. Next.js turns Strict Mode on by default.
+
+Workarounds:
+
+- Render Swagger UI with `next/dynamic(..., { ssr: false })` as shown in Usage #1
+- Switch the viewer to [Scalar](https://github.com/scalar/scalar) or [Stoplight Elements](https://github.com/stoplightio/elements)
+- Ignore the warning until Swagger UI drops the unsafe lifecycles
 
 ## Usage #2: Create an single API document
 

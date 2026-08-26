@@ -1,11 +1,6 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, isAbsolute, join } from 'node:path';
+import { readFileSync } from 'node:fs';
 
 import { type SwaggerOptions, createSwaggerSpec } from './swagger';
-
-function resolveOutputPath(outputFile: string, cwd = process.cwd()): string {
-  return isAbsolute(outputFile) ? outputFile : join(cwd, outputFile);
-}
 
 /** Generate a spec from a JSON config file and write it to `outputFile`. */
 export function writeCliSpec(configFile: string, outputFile: string): void {
@@ -19,10 +14,5 @@ export function writeCliSpec(configFile: string, outputFile: string): void {
   if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
     throw new Error('Config file must contain a JSON object');
   }
-  const { outputFile: _ignored, ...swaggerOptions } =
-    parsed as SwaggerOptions;
-  const spec = createSwaggerSpec(swaggerOptions);
-  const outputPath = resolveOutputPath(outputFile);
-  mkdirSync(dirname(outputPath), { recursive: true });
-  writeFileSync(outputPath, JSON.stringify(spec, null, 2));
+  createSwaggerSpec({ ...(parsed as SwaggerOptions), outputFile });
 }

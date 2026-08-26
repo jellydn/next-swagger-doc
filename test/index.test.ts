@@ -647,6 +647,70 @@ describe('withSwagger handler', () => {
   });
 });
 
+describe('public spec fragments', () => {
+  it('does not merge arbitrary public JSON into the spec', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-public-'));
+    const previousCwd = process.cwd();
+    try {
+      mkdirSync(join(root, 'pages/api'), { recursive: true });
+      mkdirSync(join(root, 'public'), { recursive: true });
+      writeFileSync(join(root, 'pages/api', 'ignored.ts'), 'export {}\n');
+      writeFileSync(
+        join(root, 'public', 'secrets.json'),
+        JSON.stringify({
+          leaked: true,
+          paths: { '/leaked': { get: {} } },
+        })
+      );
+      process.chdir(root);
+      const spec = createSwaggerSpec({
+        apiFolder: 'pages/api',
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'Public glob', version: '1.0.0' },
+        },
+      });
+      expect(spec.paths?.['/leaked']).toBeUndefined();
+    } finally {
+      process.chdir(previousCwd);
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('still merges public/*.swagger.yaml fragments', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-public-'));
+    const previousCwd = process.cwd();
+    try {
+      mkdirSync(join(root, 'pages/api'), { recursive: true });
+      mkdirSync(join(root, 'public'), { recursive: true });
+      writeFileSync(join(root, 'pages/api', 'ignored.ts'), 'export {}\n');
+      writeFileSync(
+        join(root, 'public', 'extra.swagger.yaml'),
+        [
+          '/from-public:',
+          '  get:',
+          '    responses:',
+          "      '200':",
+          '        description: ok',
+          '',
+        ].join('\n')
+      );
+      process.chdir(root);
+      const spec = createSwaggerSpec({
+        apiFolder: 'pages/api',
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'Public glob', version: '1.0.0' },
+        },
+      });
+      expect(spec.paths?.['/from-public']).toBeDefined();
+    } finally {
+      process.chdir(previousCwd);
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+});
+
 describe('writeCliSpec', () => {
   const writeConfig = (file: string, value: unknown) => {
     writeFileSync(file, JSON.stringify(value));

@@ -54,7 +54,27 @@ export function loadSpecFile(
   if (!existsSync(specPath)) {
     return undefined;
   }
-  return JSON.parse(readFileSync(specPath, 'utf8')) as OAS3Definition;
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(readFileSync(specPath, 'utf8'));
+  } catch {
+    throw new Error(`Invalid JSON in specFile ${specPath}`);
+  }
+  if (
+    parsed === null ||
+    typeof parsed !== 'object' ||
+    Array.isArray(parsed)
+  ) {
+    throw new Error(`specFile is not an OpenAPI object: ${specPath}`);
+  }
+  const document = parsed as Record<string, unknown>;
+  if (
+    typeof document.openapi !== 'string' &&
+    typeof document.swagger !== 'string'
+  ) {
+    throw new Error(`specFile is not an OpenAPI object: ${specPath}`);
+  }
+  return parsed as OAS3Definition;
 }
 
 /**

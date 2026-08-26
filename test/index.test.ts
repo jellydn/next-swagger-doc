@@ -1,11 +1,18 @@
-import { describe, expect, it } from 'vitest';
-import { mkdirSync, mkdtempSync, rmSync } from 'node:fs';
+import {
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { describe, expect, it } from 'vitest';
 
 import {
   createSwaggerSpec,
   extractApiInfo,
+  isAutoDocEnabled,
   shouldScanBuildDirectory,
 } from '../src';
 
@@ -233,6 +240,75 @@ describe('shouldScanBuildDirectory', () => {
           scanBuildOutput: false,
         })
       ).toBe(false);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+});
+
+describe('isAutoDocEnabled', () => {
+  it('keeps autoDoc off when source files exist', () => {
+    expect(isAutoDocEnabled(undefined, false)).toBe(false);
+    expect(isAutoDocEnabled(false, true)).toBe(false);
+  });
+
+  it('falls back to autoDoc when the source folder is missing', () => {
+    expect(isAutoDocEnabled(undefined, true)).toBe(true);
+    expect(isAutoDocEnabled(true, false)).toBe(true);
+    expect(isAutoDocEnabled({ enabled: true }, false)).toBe(true);
+  });
+});
+
+describe('standalone spec files', () => {
+  it('returns a prebuilt specFile without scanning routes', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-spec-'));
+    const specFile = join(root, 'swagger.json');
+    try {
+      writeFileSync(
+        specFile,
+        JSON.stringify({
+          openapi: '3.0.0',
+          info: { title: 'Standalone', version: '1.0.0' },
+          paths: {
+            '/api/hello': {
+              get: { responses: { 200: { description: 'ok' } } },
+            },
+          },
+        })
+      );
+      const spec = createSwaggerSpec({
+        specFile,
+        apiFolder: join(root, 'missing-api'),
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'Ignored', version: '0' },
+        },
+      });
+      expect(spec.info.title).toBe('Standalone');
+      expect(spec.paths?.['/api/hello']).toBeDefined();
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('writes the generated spec to outputFile', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-out-'));
+    const outputFile = join(root, 'public/swagger.json');
+    try {
+      const spec = createSwaggerSpec({
+        apiFolder: 'test/fixtures/app/api',
+        autoDoc: true,
+        outputFile,
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'Written', version: '1.0.0' },
+        },
+      });
+      const saved = JSON.parse(readFileSync(outputFile, 'utf8')) as {
+        info: { title: string };
+      };
+      expect(saved.info.title).toBe('Written');
+      expect(spec.info.title).toBe('Written');
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

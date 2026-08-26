@@ -1,5 +1,5 @@
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, isAbsolute, join } from 'node:path';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
 import { extractApiInfo, generateAutoDoc } from './auto-doc';
@@ -12,7 +12,14 @@ export type SwaggerOptions = Options & {
   apiFolder?: string;
   schemaFolders?: string[];
   definition: OAS3Definition;
+  /** Write the generated spec to this JSON file. */
   outputFile?: string;
+  /**
+   * Load a prebuilt OpenAPI JSON file (for example `public/swagger.json`).
+   * When the file exists it is returned as-is, which is the standalone-output
+   * path: generate at build time, serve the file at runtime.
+   */
+  specFile?: string;
   /** Generate basic OpenAPI operations from App Router route files. */
   autoDoc?: boolean | AutoDocOptions;
   /**
@@ -60,6 +67,44 @@ export function shouldScanBuildDirectory({
   return !existsSync(sourceDirectory);
 }
 
+/** Resolve a user-supplied path against the process working directory. */
+function resolveUserPath(file: string, cwd = process.cwd()): string {
+  return isAbsolute(file) ? file : join(cwd, file);
+}
+
+/**
+ * Read a prebuilt OpenAPI document. Returns `undefined` when the file is
+ * missing so callers can fall back to scanning source or compiled routes.
+ */
+export function loadSpecFile(
+  specFile: string,
+  cwd = process.cwd()
+): OAS3Definition | undefined {
+  const specPath = resolveUserPath(specFile, cwd);
+  if (!existsSync(specPath)) {
+    return undefined;
+  }
+  return JSON.parse(readFileSync(specPath, 'utf8')) as OAS3Definition;
+}
+
+/**
+ * Auto-doc is on when requested, and also as a standalone fallback when the
+ * source API folder is missing (compiled `route.js` files may still exist).
+ */
+export function isAutoDocEnabled(
+  autoDoc: boolean | AutoDocOptions | undefined,
+  sourceMissing: boolean
+): boolean {
+  const enabled = typeof autoDoc === 'object' ? autoDoc.enabled : autoDoc;
+  if (enabled === false) {
+    return false;
+  }
+  if (enabled === true) {
+    return true;
+  }
+  return sourceMissing;
+}
+
 const defaultOptions: SwaggerOptions = {
   apiFolder: 'pages/api',
   schemaFolders: [],
@@ -84,10 +129,19 @@ const defaultOptions: SwaggerOptions = {
 export function createSwaggerSpec({
   apiFolder = 'pages/api',
   schemaFolders = [],
-  autoDoc = false,
+  autoDoc,
   scanBuildOutput,
+  specFile,
+  outputFile,
   ...swaggerOptions
 }: SwaggerOptions = defaultOptions) {
+  if (specFile) {
+    const saved = loadSpecFile(specFile);
+    if (saved) {
+      return saved;
+    }
+  }
+
   const scanFolders = [apiFolder, ...schemaFolders];
   const apis = scanFolders.flatMap((folder) => {
     const buildApiDirectory = join(process.cwd(), '.next/server', folder);
@@ -138,8 +192,9 @@ export function createSwaggerSpec({
     definition,
   };
   const spec = swaggerJsdoc(options) as OAS3Definition;
+  const sourceDirectory = join(process.cwd(), apiFolder);
 
-  if (autoDoc === true || (typeof autoDoc === 'object' && autoDoc.enabled)) {
+  if (isAutoDocEnabled(autoDoc, !existsSync(sourceDirectory))) {
     const autoPaths = generateAutoDoc(extractApiInfo(apiFolder));
     spec.paths = Object.fromEntries(
       Object.entries({ ...autoPaths, ...spec.paths }).map(
@@ -149,6 +204,12 @@ export function createSwaggerSpec({
         }
       )
     );
+  }
+
+  if (outputFile) {
+    const outputPath = resolveUserPath(outputFile);
+    mkdirSync(dirname(outputPath), { recursive: true });
+    writeFileSync(outputPath, JSON.stringify(spec, null, 2));
   }
 
   return spec;
@@ -166,7 +227,7 @@ export function createSwaggerSpec({
 export function withSwagger({
   apiFolder = 'pages/api',
   schemaFolders = [],
-  autoDoc = false,
+  autoDoc,
   ...swaggerOptions
 }: SwaggerOptions = defaultOptions) {
   return () => (_req: NextApiRequest, res: NextApiResponse) => {

@@ -1,4 +1,5 @@
 import {
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -17,6 +18,7 @@ import {
 } from '../src';
 import { mergeAutoDoc } from '../src/merge-auto-doc';
 import { routeToOpenApiPaths } from '../src/route-path';
+import { writeCliSpec } from '../src/cli-write';
 import { discoverSpecLocations } from '../src/spec-source';
 
 describe('withSwagger', () => {
@@ -511,5 +513,81 @@ describe('mergeAutoDoc', () => {
     expect(mergeAutoDoc({}, manual)).toEqual(manual);
     const auto = { '/api/a': { get: { summary: 'a' } } };
     expect(mergeAutoDoc(auto, {})).toEqual(auto);
+  });
+});
+
+describe('writeCliSpec', () => {
+  const writeConfig = (file: string, value: unknown) => {
+    writeFileSync(file, JSON.stringify(value));
+  };
+
+  it('creates nested output directories', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-cli-'));
+    const outputFile = join(root, 'public/swagger.json');
+    const configFile = join(root, 'next-swagger-doc.json');
+    try {
+      writeConfig(configFile, {
+        apiFolder: 'test/fixtures/app/api',
+        autoDoc: true,
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'CLI', version: '1.0.0' },
+        },
+      });
+      writeCliSpec(configFile, outputFile);
+      const saved = JSON.parse(readFileSync(outputFile, 'utf8')) as {
+        info: { title: string };
+      };
+      expect(saved.info.title).toBe('CLI');
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('throws on invalid JSON config', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-cli-'));
+    const configFile = join(root, 'next-swagger-doc.json');
+    try {
+      writeFileSync(configFile, 'not-json');
+      expect(() =>
+        writeCliSpec(configFile, join(root, 'out.json'))
+      ).toThrow(/Invalid JSON/);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when the config file is missing', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-cli-'));
+    try {
+      expect(() =>
+        writeCliSpec(join(root, 'missing.json'), join(root, 'out.json'))
+      ).toThrow();
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('does not write config outputFile when CLI output is set', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-cli-'));
+    const configFile = join(root, 'next-swagger-doc.json');
+    const fromConfig = join(root, 'from-config.json');
+    const fromFlag = join(root, 'from-flag.json');
+    try {
+      writeConfig(configFile, {
+        apiFolder: 'test/fixtures/app/api',
+        autoDoc: true,
+        outputFile: fromConfig,
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'CLI', version: '1.0.0' },
+        },
+      });
+      writeCliSpec(configFile, fromFlag);
+      expect(existsSync(fromFlag)).toBe(true);
+      expect(existsSync(fromConfig)).toBe(false);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 });

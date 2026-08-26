@@ -54,9 +54,10 @@ export function loadSpecFile(
   if (!existsSync(specPath)) {
     return undefined;
   }
+  const contents = readFileSync(specPath, 'utf8');
   let parsed: unknown;
   try {
-    parsed = JSON.parse(readFileSync(specPath, 'utf8'));
+    parsed = JSON.parse(contents);
   } catch {
     throw new Error(`Invalid JSON in specFile ${specPath}`);
   }

@@ -64,7 +64,7 @@
     "sort-package-json": "4.0.0",
     "tslib": "2.8.1",
     "typedoc": "0.28.20",
-    "typescript": "5.9.3",
+    "typescript": "7.0.2",
     "vite": "8.2.2",
     "vitest": "4.1.11"
   },

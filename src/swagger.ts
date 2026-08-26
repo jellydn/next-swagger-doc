@@ -140,9 +140,8 @@ export function createSwaggerSpec({
     ...sourceDirs.flatMap((dir) =>
       fileTypes.map((fileType) => `${dir}/**/*.${fileType}`)
     ),
-    ...['swagger.yaml', 'json'].map(
-      (fileType) => `${publicDir}/**/*.${fileType}`
-    ),
+    `${publicDir}/**/*.swagger.yaml`,
+    `${publicDir}/**/*.swagger.json`,
     ...sourceDirs.flatMap((sourceDirectory, index) => {
       const buildDirectory = buildDirs[index];
       if (

@@ -101,6 +101,7 @@ This repo has no root `typecheck` script. Lint is `biome lint src` (not `test/`)
 - `test/index.test.ts`
 - `README.md` (one sentence if the Vercel/standalone section still implies
   autoDoc never walks `.next` during build)
+- `plans/README.md` (status bookkeeping only)
 
 **Out of scope**:
 - `src/cli.ts`, `src/route-parser.ts`, `src/route-path.ts`

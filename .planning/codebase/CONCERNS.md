@@ -29,7 +29,7 @@
 - Fix approach: Replace the security template with a reporting contact and actual supported versions; backfill changelog from GitHub releases.
 
 **Idle tooling and config drift:**
-- Issue: DevDependencies `c8`, `size-limit`, and `@skypack/package-check` have no scripts. `biome.json` `$schema` is `1.7.0` while Biome is `1.9.4`, and `linter.rules.recommended` is `false`. `tsconfig.json` `include`s `"types"` but no `types/` directory exists; `moduleResolution` is legacy `"node"` despite `"type": "module"`. Example `packageManager` is `pnpm@10.8.0` vs root `pnpm@10.34.5`. Tests under `describe('withSwagger')` call `createSwaggerSpec`, not `withSwagger`. CLI comment says `._.filePath` but the parameter is `configFile`.
+- Issue: DevDependencies `c8`, `size-limit`, and `@skypack/package-check` have no scripts. `biome.json` and the installed Biome are 2.5.10, but `.pre-commit-config.yaml` still installs Biome 1.7.0. `tsconfig.json` `include`s `"types"` but no `types/` directory exists; `moduleResolution` is legacy `"node"` despite `"type": "module"`. Example `packageManager` is `pnpm@10.8.0` vs root `pnpm@11.24.0`; `AGENTS.md` also still documents pnpm 10.34.5. Tests under `describe('withSwagger')` call `createSwaggerSpec`, not `withSwagger`. CLI comment says `._.filePath` but the parameter is `configFile`.
 - Files: `package.json`, `biome.json`, `tsconfig.json`, `test/index.test.ts`, `src/cli.ts`, `examples/*/package.json`
 - Impact: Dead tooling in every install; weaker lint than Biome recommended; contributors copy the wrong test name when extending the handler API.
 - Fix approach: Drop unused devDeps, align Biome schema, fix tsconfig `include`, rename the snapshot describe block, fix the CLI comment.
@@ -176,8 +176,8 @@ This library is a build/runtime doc generator, not an auth system. No credential
 - Impact: Strict Mode warnings and occasional bundler failures in *consumer* apps that copy the example. This package does not depend on swagger-ui-react.
 - Migration plan: Keep examples on `next/dynamic(..., { ssr: false })`; point README at Scalar / Stoplight (next13 `pages/playground.tsx` already uses Elements). Never pin `latest`.
 
-**`cleye@1.3.4`:**
-- Risk: Small CLI parser, last-line 1.x. CLI itself is untested (see Test Coverage).
+**`cleye@2.6.0`:**
+- Risk: Small CLI parser. CLI itself is untested (see Test Coverage).
 - Impact: Flag/argv regressions ship unnoticed.
 - Migration plan: Add a CLI test (spawn `dist/cli.js`) before changing parsers.
 

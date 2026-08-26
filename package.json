@@ -50,7 +50,7 @@
     "swagger-jsdoc": "6.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.5.10",
     "@skypack/package-check": "0.2.2",
     "@types/node": "24.13.3",
     "@vitest/coverage-v8": "4.1.11",

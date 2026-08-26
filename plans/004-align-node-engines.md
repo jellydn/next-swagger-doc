@@ -16,7 +16,7 @@
 
 - **Priority**: P2
 - **Effort**: S
-- **Risk**: LOW
+- **Risk**: MED
 - **Depends on**: none
 - **Category**: migration
 - **Planned at**: commit `b87cecb`, 2026-08-26
@@ -84,15 +84,16 @@ lockfile unless `package.json` engines somehow invalidate it (it should not).
 - `package.json` (`engines` only)
 - `README.md` (badge + Prerequisites)
 - `AGENTS.md` (Runtime bullet only)
+- `.agents/setup` (runtime guard and error messages only)
+- `plans/README.md` (status bookkeeping only)
 
 **Out of scope**:
 - `peerDependencies.next`
 - Example `package.json` / lockfiles
 - CI workflow files (`.github/workflows` is CodeQL/CodeSee only; do not
   add a Node matrix in this plan)
-- Dropping Node 18 in a major version bump / changelog `BREAKING` essay
-  beyond a one-line CHANGELOG note if you already edit CHANGELOG — prefer
-  **not** editing `CHANGELOG.md` here (no `changie` setup in this plan)
+- Running a release, choosing the next version, or editing published entries
+  in `CHANGELOG.md`
 
 ## Git workflow
 
@@ -139,7 +140,19 @@ Replace the Runtime bullet with:
 
 **Verify**: `rg "Node.js >= 18" AGENTS.md` → no matches.
 
-### Step 4: Tests still run
+### Step 4: Orb setup guard
+
+Update `.agents/setup` so both the numeric guard and its error messages
+require Node.js 20. Verify the script with `bash -n .agents/setup`.
+
+### Step 5: Record compatibility impact
+
+Changing the advertised Node floor is a compatibility change even though the
+existing direct dependency already requires Node 20. Mark that explicitly in
+the PR body and ensure the next release's Changie entry records Node 18
+support as removed. Do not select or publish a release version in this plan.
+
+### Step 6: Tests still run
 
 **Verify**: `pnpm test` → all pass. `pnpm lint` → exit 0.
 
@@ -154,6 +167,8 @@ Replace the Runtime bullet with:
 - [ ] `package.json` `engines.node` is `>=20`
 - [ ] README badge and Prerequisites say Node >= 20
 - [ ] `AGENTS.md` Runtime line says Node.js >= 20
+- [ ] `.agents/setup` rejects Node.js below 20 and passes `bash -n`
+- [ ] PR/release notes identify removal of advertised Node 18 support
 - [ ] `rg "engines" package.json` does not contain `>=18`
 - [ ] `pnpm test` exits 0
 - [ ] `pnpm lint` exits 0

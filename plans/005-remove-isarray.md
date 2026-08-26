@@ -28,9 +28,10 @@
 surface and audit noise. Remove it from the published package.
 
 `AGENTS.md` says example apps depend on published `next-swagger-doc` and
-library work should not rewrite example lockfiles. This plan **does** remove
-the leftover `isarray` line from `examples/next13-simple/package.json` but
-**must not** regenerate `examples/next13-simple/pnpm-lock.yaml`.
+library work normally should not rewrite example lockfiles. This task changes
+an example manifest, so its matching importer entry must be removed from
+`examples/next13-simple/pnpm-lock.yaml` to keep frozen installs valid. Leave
+transitive `isarray` entries intact.
 
 ## Current state
 
@@ -66,9 +67,11 @@ with pnpm.
 - `package.json` (root)
 - `pnpm-lock.yaml` (root only)
 - `examples/next13-simple/package.json` (the `"isarray"` line only)
+- `examples/next13-simple/pnpm-lock.yaml` (root importer entry only)
+- `plans/README.md` (status bookkeeping only)
 
 **Out of scope**:
-- `examples/next13-simple/pnpm-lock.yaml` and other example lockfiles
+- Other example lockfiles
 - Other unused devDependencies (`c8`, `size-limit`, `@skypack/package-check`)
 - `cspell-tool.txt` / `next-swagger-doc.txt` (generated word lists; do not
   hand-edit unless `pnpm` scripts regenerate them — they should not)
@@ -104,14 +107,18 @@ transitive dep of something else, that is fine; it must not appear under
 the root `next-swagger-doc` dependencies importer. `rg "isarray" package.json`
 is the hard check.
 
-### Step 3: Example package.json only
+### Step 3: Keep the example manifest and lockfile consistent
 
 Delete the `"isarray": "2.0.5"` line from
 `examples/next13-simple/package.json`. Keep valid JSON (commas).
 
-Do **not** run `pnpm install` inside `examples/next13-simple`.
+Remove the matching `isarray` entry from the lockfile's root importer. Keep
+the package and snapshot entries because other dependencies still use
+`isarray` transitively. Do not regenerate unrelated lockfile content.
 
 **Verify**: `rg isarray examples/next13-simple/package.json` → no matches.
+Run `corepack pnpm@10.8.0 install --frozen-lockfile --ignore-scripts` inside
+`examples/next13-simple`; it must accept the lockfile.
 
 ### Step 4: Library still builds and tests
 
@@ -127,7 +134,8 @@ exit 0.
 
 - [ ] `isarray` is absent from root `package.json` dependencies
 - [ ] `isarray` is absent from `examples/next13-simple/package.json`
-- [ ] `examples/next13-simple/pnpm-lock.yaml` is **not** in `git status`
+- [ ] The example lockfile root importer no longer declares `isarray`
+- [ ] The example's frozen install accepts its lockfile
 - [ ] `pnpm test` exits 0
 - [ ] `pnpm lint` exits 0
 - [ ] `pnpm build` exits 0
@@ -142,9 +150,8 @@ Stop and report back (do not improvise) if:
 - `pnpm remove isarray` wants to upgrade unrelated dependencies — STOP and
   report the extra lockfile diff; do not take drive-by upgrades.
 - Removing it breaks `pnpm build` or tests (then it was not unused).
-- You think you must refresh the example lockfile for pnpm to be happy —
-  leave the example `package.json` change and report; do not rewrite the
-  example lockfile.
+- Updating the example importer requires unrelated lockfile churn — STOP and
+  report rather than accepting those unrelated updates.
 
 ## Maintenance notes
 

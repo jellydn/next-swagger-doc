@@ -87,6 +87,7 @@ App Router helper (direction, issue #1190).
 **In scope**:
 - `src/swagger.ts` (`withSwagger` only)
 - `test/index.test.ts`
+- `plans/README.md` (status bookkeeping only)
 
 **Out of scope**:
 - `loadSpecFile` validation (plan 006)
@@ -158,7 +159,12 @@ function fakeRes() {
 
 Cases:
 
-1. **200** — `withSwagger({ definition: { openapi: '3.0.0', info: { title: 'H', version: '1' } }, apiFolder: 'test/fixtures/app/api', autoDoc: true })()({} as NextApiRequest, res)`.
+The response helper intentionally implements only the methods this handler
+uses, so pass it through an explicit test-boundary cast:
+`res as unknown as NextApiResponse`. Do not weaken production types or add
+unused response methods solely to satisfy the full Next.js interface.
+
+1. **200** — `withSwagger({ definition: { openapi: '3.0.0', info: { title: 'H', version: '1' } }, apiFolder: 'test/fixtures/app/api', autoDoc: true })()({} as NextApiRequest, res as unknown as NextApiResponse)`.
    Expect `res.statusCode === 200` and `res.body` to be an object with
    `info.title === 'H'` (or `'Auto docs'` if you reuse that definition).
    Cast `_req` as needed; the handler ignores it.

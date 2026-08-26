@@ -5,7 +5,7 @@
 ## Languages
 
 **Primary:**
-- TypeScript 5.9.3 (`package.json` `devDependencies.typescript`, `tsconfig.json`) - library source under `src/` (`src/swagger.ts`, `src/auto-doc.ts`, `src/cli.ts`, `src/index.ts`, `src/merge-auto-doc.ts`, `src/route-parser.ts`, `src/route-path.ts`, `src/spec-source.ts`) and tests in `test/index.test.ts`. Strict ESM (`package.json` `"type": "module"`). Compiler is strict with `noImplicitReturns`, `noUnusedLocals`, `noUnusedParameters` (`tsconfig.json`).
+- TypeScript 7.0.2 (`package.json` `devDependencies.typescript`, `tsconfig.json`) - library source under `src/` (`src/swagger.ts`, `src/auto-doc.ts`, `src/cli.ts`, `src/index.ts`, `src/merge-auto-doc.ts`, `src/route-parser.ts`, `src/route-path.ts`, `src/spec-source.ts`) and tests in `test/index.test.ts`. Strict ESM (`package.json` `"type": "module"`). Compiler is strict with `noImplicitReturns`, `noUnusedLocals`, `noUnusedParameters` (`tsconfig.json`).
 - TypeScript 5.8.3 (`examples/next13-simple/package.json`, `examples/next14-app/package.json`, `examples/next15-app/package.json`, `examples/next16-app/package.json`) - versioned Next.js demo apps.
 
 **Secondary:**
@@ -22,7 +22,7 @@
 - Dual publish: ESM `dist/index.js` + CJS `dist/index.cjs` with types `dist/index.d.ts` (`package.json` `exports` / `main` / `module` / `types`). CLI bin `next-swagger-doc-cli` → `dist/cli.js` (`package.json` `bin`).
 
 **Package Manager:**
-- pnpm 10.34.5 via Corepack (`package.json` `packageManager`, `AGENTS.md`).
+- pnpm 11.24.0 via Corepack (`package.json` `packageManager`). `AGENTS.md` still documents pnpm 10.34.5.
 - Lockfile: present — root `pnpm-lock.yaml` (`lockfileVersion: '9.0'`). Example apps have separate lockfiles (`examples/next13-simple/pnpm-lock.yaml`, `examples/next14-app/pnpm-lock.yaml`, `examples/next15-app/pnpm-lock.yaml`, `examples/next16-app/pnpm-lock.yaml`) and pin `pnpm@10.8.0` (`examples/next13-simple/package.json`, `examples/next14-app/package.json`, `examples/next15-app/package.json`, `examples/next16-app/package.json`).
 - `pnpm.onlyBuiltDependencies`: `@biomejs/biome`, `esbuild`, `sharp` (`package.json`).
 
@@ -35,15 +35,15 @@
 - OpenAPI 3.0.0 (`src/swagger.ts` `defaultOptions.definition`, `README.md`) — output spec format, not a runtime framework.
 
 **Testing:**
-- Vitest 3.2.7 (`package.json` `scripts.test` = `vitest run`, `vitest.config.ts` `test.globals: true`). Tests live in `test/index.test.ts` with snapshots in `test/__snapshots__/index.test.ts.snap` and fixtures under `test/fixtures/` (`AGENTS.md`).
-- @vitest/coverage-v8 3.2.7 (`package.json` `scripts.coverage` = `vitest run --coverage`).
-- @vitest/ui 3.2.7 (`package.json` `scripts.test:ui`).
+- Vitest 4.1.11 (`package.json` `scripts.test` = `vitest run`, `vitest.config.ts` `test.globals: true`). Tests live in `test/index.test.ts` with snapshots in `test/__snapshots__/index.test.ts.snap` and fixtures under `test/fixtures/` (`AGENTS.md`).
+- @vitest/coverage-v8 4.1.11 (`package.json` `scripts.coverage` = `vitest run --coverage`).
+- @vitest/ui 4.1.11 (`package.json` `scripts.test:ui`).
 - c8 10.1.3 (`package.json`) — listed but coverage is wired through Vitest V8, not a separate `c8` script.
 
 **Build/Dev:**
 - pkgroll 2.27.1 (`package.json` `scripts.build` / `prepare` / `start`) — bundles `src/` to `dist/` (do not edit `dist/`; `AGENTS.md`).
-- TypeScript 5.9.3 (`package.json`, `tsconfig.json`) — `noEmit: true`; emit is pkgroll’s job.
-- Biome 1.9.4 (`package.json` `scripts.lint` / `format`, `biome.json`) — 2-space indent, 80-column width, single quotes, lint+format `src` (`AGENTS.md`).
+- TypeScript 7.0.2 (`package.json`, `tsconfig.json`) — `noEmit: true`; emit is pkgroll’s job.
+- Biome 2.5.10 (`package.json` `scripts.lint` / `format`, `biome.json`) — 2-space indent, 80-column width, single quotes, lint+format `src` (`AGENTS.md`).
 - Vite 6.4.3 (`package.json`) — Vitest runner.
 - pre-commit (`README.md`, `.pre-commit-config.yaml`) — Prettier for HTML/CSS/Markdown; Biome check with `@biomejs/biome@1.7.0`.
 - cspell (`cspell.json`, `cspell-tool.txt`) — English spellcheck dictionary.
@@ -63,7 +63,7 @@
 - swagger-jsdoc 6.3.0 (`package.json`, `src/swagger.ts`) — core JSDoc `@swagger` → OpenAPI conversion used by `createSwaggerSpec`.
 - @types/swagger-jsdoc 6.0.4 (`package.json`) — `OAS3Definition` / `Options` types in `src/swagger.ts`.
 - es-module-lexer 2.3.2 (`package.json`, `src/route-parser.ts`) — WASM lexer extracts exported HTTP handlers (`GET`/`POST`/…) from `route.ts` without regex sanitisation; `initSync()` at module load.
-- cleye 1.3.4 (`package.json`, `src/cli.ts`) — CLI argv for `next-swagger-doc-cli` (`<config file>`, `--output`).
+- cleye 2.6.0 (`package.json`, `src/cli.ts`) — CLI argv for `next-swagger-doc-cli` (`<config file>`, `--output`).
 - next >= 9 (peer) (`package.json`, `src/swagger.ts`) — `withSwagger` Pages Router handler types; App Router support is filesystem-based, not a Next.js plugin.
 - isarray 2.0.5 (`package.json`) — declared runtime dependency; no import in `src/` (also listed in `examples/next13-simple/package.json`).
 - Node built-ins `node:fs` / `node:path` (`src/swagger.ts`, `src/auto-doc.ts`, `src/spec-source.ts`, `src/cli.ts`) — scan API folders, `.next/server`, and `public/`; write `outputFile`.
@@ -98,7 +98,7 @@
 ## Platform Requirements
 
 **Development:**
-- Node.js >= 18; Corepack + `pnpm@10.34.5 install --frozen-lockfile` (`AGENTS.md`, `package.json`). Next.js 16 example: Node.js >= 20.9 (`examples/next16-app/package.json`).
+- Node.js >= 18. `package.json` pins pnpm 11.24.0 while `AGENTS.md` still documents `pnpm@10.34.5 install --frozen-lockfile`. Next.js 16 example: Node.js >= 20.9 (`examples/next16-app/package.json`).
 - Commands: `pnpm test`, `pnpm coverage`, `pnpm lint`, `pnpm format`, `pnpm build` (`AGENTS.md`, `package.json`).
 - Optional: `pre-commit install` (`README.md`).
 - No extra services (databases, queues, local docker) — `AGENTS.md` states `.agents/setup` is install-only.

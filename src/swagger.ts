@@ -198,7 +198,10 @@ export function createSwaggerSpec({
 
   if (isAutoDocEnabled(autoDoc, !existsSync(sourceDirectory))) {
     const autoPaths = generateAutoDoc(extractApiInfo(apiFolder));
-    spec.paths = mergeAutoDoc(autoPaths, spec.paths ?? {}) as OAS3Definition['paths'];
+    spec.paths = mergeAutoDoc(
+      autoPaths,
+      spec.paths ?? {}
+    ) as OAS3Definition['paths'];
   }
 
   if (outputFile) {

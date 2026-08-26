@@ -5,7 +5,7 @@
 ## Test Framework
 
 **Runner:**
-- Vitest 3.2.7 (`vitest` / `@vitest/ui` / `@vitest/coverage-v8` in `package.json`)
+- Vitest 4.1.11 (`vitest` / `@vitest/ui` / `@vitest/coverage-v8` in `package.json`)
 - Config: `vitest.config.ts` (`test.globals: true` only — no custom environment, include, or coverage block)
 
 **Assertion Library:**
@@ -157,7 +157,7 @@ const autoPaths = {
 
 ## Coverage
 
-**Requirements:** None enforced. `vitest.config.ts` has no `coverage.thresholds`. `@vitest/coverage-v8` 3.2.7 is a devDependency; `c8` is listed but unused by scripts. Coverage output dir `coverage/` is gitignored in `.gitignore`.
+**Requirements:** None enforced. `vitest.config.ts` has no `coverage.thresholds`. `@vitest/coverage-v8` 4.1.11 is a devDependency; `c8` is listed but unused by scripts. Coverage output dir `coverage/` is gitignored in `.gitignore`.
 
 **View Coverage:**
 ```bash

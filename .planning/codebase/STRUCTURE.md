@@ -36,7 +36,7 @@ codemap/  # next-swagger-doc — OpenAPI spec generator for Next.js API routes
 ├── cspell-tool.txt  # Project dictionary
 ├── LICENSE  # MIT
 ├── package.json  # Library package, scripts, exports, bin
-├── pnpm-lock.yaml  # Root lockfile (pnpm 10.34.5)
+├── pnpm-lock.yaml  # Root lockfile (pnpm 11.24.0)
 ├── README.md  # Usage (App Router, Pages, API route, CLI)
 ├── renovate.json  # Dependency update policy
 ├── SECURITY.md  # Vulnerability reporting
@@ -96,7 +96,7 @@ codemap/  # next-swagger-doc — OpenAPI spec generator for Next.js API routes
 - `package.json`: Dual ESM/CJS `exports`, `main`/`module`/`types` pointing at `dist/`, `files: ["dist", "src"]`.
 
 **Configuration:**
-- `package.json`: Scripts (`build` pkgroll, `test` vitest, `lint`/`format` biome), engines `node >= 18`, peer `next >= 9`, packageManager `pnpm@10.34.5`.
+- `package.json`: Scripts (`build` pkgroll, `test` vitest, `lint`/`format` biome), engines `node >= 18`, peer `next >= 9`, packageManager `pnpm@11.24.0`.
 - `tsconfig.json`: `include: ["src", "types"]`, `strict`, `noEmit`, `rootDir: ./src`, `module: esnext`.
 - `vitest.config.ts`: `{ test: { globals: true } }`.
 - `biome.json`: Formatter (2-space, 80-col, single quotes for JS) and lint rules scoped to `src`; ignores `dist`.

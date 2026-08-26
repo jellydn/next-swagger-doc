@@ -1,4 +1,4 @@
-# Plan 007: Stop globbing all `public/**/*.json` as OpenAPI fragments
+# Plan 007: Stop scanning arbitrary `public/**/*.json` files
 
 > **Executor instructions**: Follow this plan step by step. Run every
 > verification command and confirm the expected result before moving to the
@@ -20,23 +20,21 @@
 - **Depends on**: none (touches the `apis` glob list in `createSwaggerSpec`;
   plan 001 also edits `createSwaggerSpec` but the autoDoc call, not this
   array — rebase if both land)
-- **Category**: security
+- **Category**: correctness
 - **Planned at**: commit `b87cecb`, 2026-08-26
 
 ## Why this matters
 
 `createSwaggerSpec` passes swagger-jsdoc globs for `public/**/*.swagger.yaml`
-**and** `public/**/*.json`. Any JSON file under `public/` is treated as an
-OpenAPI fragment and merged into the served spec. A data dump or secrets JSON
-accidentally placed in `public/` is published as API documentation. The
-intended fragment format in this repo is `*.swagger.yaml` (next13 example
-copies `models/**/*.swagger.yaml` to `public/openapi`). A full prebuilt spec
-belongs in `specFile` (e.g. `public/swagger.json`), which short-circuits
-scanning when the file exists — it does not need to be globbed as a fragment.
+and `public/**/*.json`. swagger-jsdoc 6.3.0 parses YAML files as sidecar
+documents, but treats every other extension as source text containing JSDoc
+comments. It does not parse JSON objects as OpenAPI fragments, so the broad
+JSON glob is ineffective and unnecessarily scans unrelated public assets.
 
-This is a **behavior change**: apps that relied on arbitrary
-`public/*.json` fragments must rename them to `*.swagger.json` or
-`*.swagger.yaml`, or use `specFile`.
+The supported fragment format in this repo is `*.swagger.yaml` (the next13
+example copies `models/**/*.swagger.yaml` to `public/openapi`). A full
+prebuilt JSON spec belongs in `specFile` (for example,
+`public/swagger.json`), which short-circuits scanning when the file exists.
 
 ## Current state
 
@@ -61,8 +59,8 @@ This is a **behavior change**: apps that relied on arbitrary
 only the `publicDir` entries.
 
 `README.md` ~171-173 says source API files and `public` OpenAPI files are
-scanned. Update that sentence so it names `*.swagger.yaml` /
-`*.swagger.json`, not all JSON.
+scanned. Update that sentence so it names `*.swagger.yaml`. Document
+`specFile` as the way to load a complete JSON spec.
 
 `createSwaggerSpec` uses `process.cwd()` for `discoverSpecLocations` (no
 `cwd` option). Tests that need a fake `public/` should `process.chdir` into
@@ -92,6 +90,7 @@ change of existing scanning, not a new option).
   `createSwaggerSpec` or `SwaggerOptions` if public files are described)
 - `test/index.test.ts`
 - `README.md` (Vercel / scanning paragraph only)
+- `plans/README.md` (status bookkeeping only)
 
 **Out of scope**:
 - Source `fileTypes` JSON (`app/api/**/*.json`)
@@ -121,23 +120,22 @@ with:
 
 ```typescript
     `${publicDir}/**/*.swagger.yaml`,
-    `${publicDir}/**/*.swagger.json`,
 ```
 
 Do not glob `${publicDir}/**/*.json`.
 
 **Verify**: `rg "publicDir}\\/\\*\\*\\/\\*\\.json" src/swagger.ts` → no
-match. `rg "\\*\\*\\/\\*\\.swagger.json" src/swagger.ts` matches.
+match.
 
 ### Step 2: README
 
 In the “Vercel builds” paragraph (`README.md` ~171-173), state that `public/`
-is scanned for `*.swagger.yaml` and `*.swagger.json` only. A complete spec
-should use `specFile` (already documented just below for standalone).
+is scanned for `*.swagger.yaml` fragments. A complete JSON spec should use
+`specFile` (already documented just below for standalone).
 
 **Verify**: `rg "public/\\*\\*\\/\\*\\.json" README.md` → no matches.
 
-### Step 3: Tests with a trap JSON file
+### Step 3: Tests for public scanning
 
 Add `describe('public spec fragments', () => { ... })` in
 `test/index.test.ts`.
@@ -176,31 +174,17 @@ describe('public spec fragments', () => {
     }
   });
 
-  it('still merges public/*.swagger.json fragments', () => {
-    // same chdir pattern; write public/extra.swagger.json with a paths entry
+  it('still merges public/*.swagger.yaml fragments', () => {
+    // same chdir pattern; write public/extra.swagger.yaml with a path entry
     // expect that path to exist on spec.paths
   });
 });
 ```
 
-For the second test, the swagger-jsdoc fragment format is a JSON object with
-`paths` (same as YAML `@swagger` / sidecar files). Use a minimal:
-
-```json
-{
-  "paths": {
-    "/from-public": {
-      "get": {
-        "responses": { "200": { "description": "ok" } }
-      }
-    }
-  }
-}
-```
-
-If swagger-jsdoc ignores that shape, STOP and report the actual merged
-document rather than inventing a different glob. The first test (trap
-`secrets.json` must not appear) is the load-bearing security check.
+The YAML sidecar should contain the path item directly, matching the existing
+swagger-jsdoc sidecar format. The negative JSON test documents that unrelated
+public assets are not scanned; the positive YAML test is the load-bearing
+compatibility check.
 
 **Verify**: `pnpm test` → both tests pass. Cwd after the describe equals
 the original (the `finally` must always `chdir` back even on assertion
@@ -221,8 +205,7 @@ failure).
 - [ ] `pnpm exec tsc --noEmit` exits 0
 - [ ] `pnpm lint` exits 0
 - [ ] `pnpm test` exits 0; public glob tests exist and pass
-- [ ] `rg "publicDir.*json" src/swagger.ts` does not glob `**/*.json` (only
-      `**/*.swagger.json` is allowed)
+- [ ] `rg "publicDir.*json" src/swagger.ts` has no matches
 - [ ] README no longer implies all public JSON is scanned
 - [ ] Source `fileTypes` still includes `'json'` for API folders
 - [ ] No files outside the in-scope list are modified (`git status`)
@@ -232,9 +215,8 @@ failure).
 
 Stop and report back (do not improvise) if:
 
-- swagger-jsdoc requires a different sidecar filename than `*.swagger.json`
-  and the positive test cannot be made to pass without globbing `*.json`
-  again — keep the negative `secrets.json` test and report.
+- The existing `*.swagger.yaml` sidecar fixture cannot be parsed after the
+  glob change.
 - `process.chdir` appears to flake because Vitest parallelizes this file
   (it should not). If it flakes twice, STOP rather than adding cwd to
   `createSwaggerSpec` (API change; would need its own plan).
@@ -244,9 +226,9 @@ Stop and report back (do not improvise) if:
 
 ## Maintenance notes
 
-- Breaking change for consumers who dropped raw OpenAPI JSON in `public/`.
-  Mention in the PR body; this plan does not bump the package version.
-- Reviewer: trap file `secrets.json` / `leaked` path absent; source JSON
-  globs untouched; no example lockfile edits.
+- This removes an ineffective broad glob; swagger-jsdoc did not parse raw JSON
+  objects as sidecar documents before this change.
+- Reviewer: trap file `secrets.json` / `leaked` path absent, YAML fragment
+  still merged, source JSON globs untouched, and no example lockfile edits.
 - `specFile: 'public/swagger.json'` remains the way to load a full spec
   (plan 006 validates that file).

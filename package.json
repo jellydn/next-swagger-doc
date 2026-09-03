@@ -50,16 +50,16 @@
     "swagger-jsdoc": "6.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.10",
+    "@biomejs/biome": "2.5.12",
     "@skypack/package-check": "0.2.2",
     "@types/node": "24.13.3",
     "@vitest/coverage-v8": "4.1.11",
     "@vitest/ui": "4.1.11",
     "all-contributors-cli": "6.26.1",
-    "bumpp": "12.2.2",
+    "bumpp": "12.3.0",
     "c8": "12.0.0",
-    "next": "16.3.3",
-    "pkgroll": "2.27.1",
+    "next": "16.3.4",
+    "pkgroll": "2.28.1",
     "size-limit": "13.0.3",
     "sort-package-json": "4.0.0",
     "tslib": "2.8.1",
@@ -71,7 +71,7 @@
   "peerDependencies": {
     "next": ">=9"
   },
-  "packageManager": "pnpm@11.24.0",
+  "packageManager": "pnpm@11.25.0",
   "engines": {
     "node": ">=18"
   },

@@ -45,7 +45,7 @@
   "dependencies": {
     "@types/swagger-jsdoc": "6.0.4",
     "cleye": "2.6.0",
-    "es-module-lexer": "2.3.2",
+    "es-module-lexer": "3.0.2",
     "isarray": "2.0.5",
     "swagger-jsdoc": "6.3.0"
   },

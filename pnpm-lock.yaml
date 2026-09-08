@@ -15,8 +15,8 @@ importers:
         specifier: 2.6.0
         version: 2.6.0
       es-module-lexer:
-        specifier: 2.3.2
-        version: 2.3.2
+        specifier: 3.0.2
+        version: 3.0.2
       isarray:
         specifier: 2.0.5
         version: 2.0.5
@@ -1318,6 +1318,9 @@ packages:
 
   es-module-lexer@2.3.2:
     resolution: {integrity: sha512-poHGpORABojJJucnV9KbOavETW8lBVnphkW77ER5/BQ5Fz7oXSoCNek7IH3vR5nRjdsEz926ibFYX8KtLQmdyw==}
+
+  es-module-lexer@3.0.2:
+    resolution: {integrity: sha512-BuIB67FngDSyQ/dpQNOZybwdEBDUGJQvOqwWr4ha/ufYiqzuEwPkKO2zLhRAgay28tStRIHUeWmszZAJo3GCOg==}
 
   esbuild@0.26.0:
     resolution: {integrity: sha512-3Hq7jri+tRrVWha+ZeIVhl4qJRha/XjRNSopvTsOaCvfPHrflTYTcUFcEjMKdxofsXXsdc4zjg5NOTnL4Gl57Q==}
@@ -3125,6 +3128,8 @@ snapshots:
   es-errors@1.3.0: {}
 
   es-module-lexer@2.3.2: {}
+
+  es-module-lexer@3.0.2: {}
 
   esbuild@0.26.0:
     optionalDependencies:

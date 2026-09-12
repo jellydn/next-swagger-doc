@@ -14,7 +14,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "0.487.0",
-    "next": "^15.3.0",
+    "next": "^15.5.24",
     "next-swagger-doc": "github:jellydn/next-swagger-doc#v0.4.2-beta.0",
     "next-themes": "^0.4.6",
     "openapi-types": "^12.1.3",

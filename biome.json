@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.7.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.10/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -15,17 +15,14 @@
     "lineWidth": 80,
     "attributePosition": "auto"
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": false,
+      "preset": "none",
       "complexity": {
         "noBannedTypes": "error",
         "noExtraBooleanCast": "error",
-        "noMultipleSpacesInRegularExpressionLiterals": "error",
         "noStaticOnlyClass": "error",
         "noUselessCatch": "error",
         "noUselessConstructor": "error",
@@ -37,11 +34,14 @@
         "noUselessThisAlias": "error",
         "noUselessTypeConstraint": "error",
         "noVoid": "error",
-        "noWith": "error",
         "useArrowFunction": "error",
         "useLiteralKeys": "error",
         "useOptionalChain": "error",
-        "useRegexLiterals": "error"
+        "useRegexLiterals": "error",
+        "noAdjacentSpacesInRegex": "error",
+        "noArguments": "error",
+        "noCommaOperator": "error",
+        "useNumericLiterals": "error"
       },
       "correctness": {
         "noConstAssign": "error",
@@ -52,7 +52,6 @@
         "noGlobalObjectCalls": "error",
         "noInnerDeclarations": "error",
         "noInvalidConstructorSuper": "error",
-        "noInvalidNewBuiltin": "error",
         "noNonoctalDecimalEscape": "error",
         "noPrecisionLoss": "error",
         "noSelfAssign": "error",
@@ -67,14 +66,14 @@
         "noUnusedVariables": "error",
         "useIsNan": "error",
         "useValidForDirection": "error",
-        "useYield": "error"
+        "useYield": "error",
+        "noInvalidBuiltinInstantiation": "error",
+        "useValidTypeof": "error"
       },
       "security": {
         "noGlobalEval": "error"
       },
       "style": {
-        "noArguments": "error",
-        "noCommaOperator": "error",
         "noInferrableTypes": "error",
         "noNamespace": "error",
         "noNegationElse": "error",
@@ -82,11 +81,14 @@
         "noRestrictedGlobals": {
           "level": "error",
           "options": {
-            "deniedGlobals": ["event", "atob", "btoa"]
+            "deniedGlobals": {
+              "event": "TODO: Add a custom message here.",
+              "atob": "TODO: Add a custom message here.",
+              "btoa": "TODO: Add a custom message here."
+            }
           }
         },
         "noUselessElse": "error",
-        "noVar": "error",
         "useAsConstAssertion": "error",
         "useBlockStatements": "error",
         "useCollapsedElseIf": "error",
@@ -109,7 +111,6 @@
             "strictCase": false
           }
         },
-        "useNumericLiterals": "error",
         "useShorthandAssign": "error",
         "useShorthandFunctionType": "error",
         "useSingleVarDeclarator": "error"
@@ -147,16 +148,17 @@
         "useDefaultSwitchClauseLast": "error",
         "useGetterReturn": "error",
         "useNamespaceKeyword": "error",
-        "useValidTypeof": "error"
+        "noWith": "error",
+        "noVar": "error"
       }
     },
-    "ignore": ["dist", ".eslintrc.cjs", "vite.config.ts"]
+    "includes": ["**", "!**/dist", "!**/.eslintrc.cjs", "!**/vite.config.ts"]
   },
   "javascript": {
     "formatter": {
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
-      "trailingComma": "es5",
+      "trailingCommas": "es5",
       "semicolons": "always",
       "arrowParentheses": "always",
       "bracketSpacing": true,
@@ -167,7 +169,7 @@
   },
   "overrides": [
     {
-      "include": ["**/*.d.ts"],
+      "includes": ["**/*.d.ts"],
       "linter": {
         "rules": {
           "correctness": {
@@ -177,13 +179,13 @@
       }
     },
     {
-      "include": ["**/*.test-d.ts"],
+      "includes": ["**/*.test-d.ts"],
       "linter": {
         "rules": {}
       }
     },
     {
-      "include": ["**/*.tsx"],
+      "includes": ["**/*.tsx"],
       "linter": {
         "rules": {
           "style": {

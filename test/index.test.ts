@@ -652,6 +652,33 @@ describe('writeCliSpec', () => {
     writeFileSync(file, JSON.stringify(value));
   };
 
+  it('writes a prebuilt spec to the CLI output without regenerating it', () => {
+    const root = mkdtempSync(join(tmpdir(), 'swagger-cli-'));
+    const configFile = join(root, 'config.json');
+    const specFile = join(root, 'prebuilt.json');
+    const outputFile = join(root, 'nested', 'copied.json');
+    const spec = {
+      openapi: '3.0.0',
+      info: { title: 'Prebuilt', version: '2.0.0' },
+      paths: { '/prebuilt': { get: { responses: {} } } },
+    };
+    try {
+      writeConfig(specFile, spec);
+      writeConfig(configFile, {
+        specFile,
+        definition: {
+          openapi: '3.0.0',
+          info: { title: 'Must not regenerate', version: '1.0.0' },
+        },
+      });
+      writeCliSpec(configFile, outputFile);
+      expect(JSON.parse(readFileSync(outputFile, 'utf8'))).toEqual(spec);
+      expect(JSON.parse(readFileSync(specFile, 'utf8'))).toEqual(spec);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
   it('creates nested output directories', () => {
     const root = mkdtempSync(join(tmpdir(), 'swagger-cli-'));
     const outputFile = join(root, 'public/swagger.json');

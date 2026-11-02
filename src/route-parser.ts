@@ -1,4 +1,4 @@
-import { initSync, parse, type ExportSpecifier } from 'es-module-lexer';
+import { type ExportSpecifier, parse } from 'es-module-lexer/minimal';
 
 export const HTTP_METHODS = [
   'GET',
@@ -9,9 +9,6 @@ export const HTTP_METHODS = [
   'HEAD',
   'OPTIONS',
 ] as const;
-
-// es-module-lexer needs its WASM engine ready before parse() can run.
-initSync();
 
 /**
  * Extract the exported HTTP method handler names from a route module's source.
@@ -25,6 +22,7 @@ export function getExportedMethods(
 ): string[] {
   let exportSpecifiers: readonly ExportSpecifier[] = [];
   try {
+    // The v3 minimal build retains v2 export records and initializes on parse.
     [, exportSpecifiers] = parse(source);
   } catch (error) {
     const location = sourceName ? ` (${sourceName})` : '';

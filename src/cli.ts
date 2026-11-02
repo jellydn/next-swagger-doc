@@ -1,22 +1,16 @@
-import { readFileSync, writeFileSync } from 'fs';
 import { cli } from 'cleye';
 
-import { type SwaggerOptions, createSwaggerSpec } from './swagger';
+import { writeCliSpec } from './cli-write';
 
-// Parse argv
 const argv = cli({
   name: 'next-swagger-doc-cli',
 
-  // Define parameters
-  // Becomes available in ._.filePath
+  // Becomes available in ._.configFile
   parameters: [
     '<config file>', // Next swagger config file is required
   ],
 
-  // Define flags/options
-  // Becomes available in .flags
   flags: {
-    // Parses `--output` as a string
     output: {
       type: String,
       description: 'Output file path',
@@ -25,14 +19,12 @@ const argv = cli({
   },
 });
 
-const config = readFileSync(argv._.configFile);
-
-const spec = createSwaggerSpec(
-  JSON.parse(config.toString()) as unknown as SwaggerOptions
-);
-
-console.log(
-  `Generating swagger spec to ${argv.flags.output} with config`,
-  config.toString()
-);
-writeFileSync(argv.flags.output, JSON.stringify(spec, null, 2));
+try {
+  writeCliSpec(argv._.configFile, argv.flags.output);
+  console.log(`Generating swagger spec to ${argv.flags.output}`);
+} catch (error) {
+  const message =
+    error instanceof Error ? error.message : 'Failed to generate swagger spec';
+  console.error(message);
+  process.exitCode = 1;
+}

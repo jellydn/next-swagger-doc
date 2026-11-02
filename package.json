@@ -40,7 +40,7 @@
     "start": "pkgroll --watch",
     "test": "vitest run",
     "test:ui": "vitest --ui",
-    "vercel-build": "npx typedoc src/index.ts"
+    "vercel-build": "npm exec --yes --package=typedoc@0.28.20 --package=typescript@6.0.2 -- typedoc src/index.ts"
   },
   "dependencies": {
     "@types/swagger-jsdoc": "6.0.4",
@@ -63,7 +63,6 @@
     "size-limit": "13.1.1",
     "sort-package-json": "4.0.0",
     "tslib": "2.8.1",
-    "typedoc": "0.28.20",
     "typescript": "7.0.2",
     "vite": "8.3.1",
     "vitest": "4.1.11"

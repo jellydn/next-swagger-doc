@@ -33,6 +33,9 @@ importers:
       '@types/node':
         specifier: 24.19.0
         version: 24.19.0
+      '@typescript/typescript6':
+        specifier: ^6.0.2
+        version: 6.0.2
       '@vitest/coverage-v8':
         specifier: 4.1.11
         version: 4.1.11(vitest@4.1.11)
@@ -53,7 +56,7 @@ importers:
         version: 16.3.6(@types/node@24.19.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       pkgroll:
         specifier: 2.28.1
-        version: 2.28.1(typescript@7.0.2)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0))
+        version: 2.28.1(@typescript/typescript6@6.0.2)(typescript@7.0.2)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0))
       size-limit:
         specifier: 13.1.1
         version: 13.1.1
@@ -1070,6 +1073,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@typescript/typescript6@6.0.2':
+    resolution: {integrity: sha512-mbCddXd+jm7hfx7w2YU64/Av4/NqqeG3GoRZgxPcgoTxYjhrcfJRw9ULch71SS4G+Q3bOXFhRvPqjguN0Hyp5w==}
+    hasBin: true
+
   '@vitest/coverage-v8@4.1.11':
     resolution: {integrity: sha512-8MVGEFnJIcdGjcbfKmeq8z0pZHH0JlVtoVZH9Q/qwUp6wyFnEJUBMrw9DCaj+ra3vShGmhavjalMIhPNxZAUcw==}
     peerDependencies:
@@ -2082,6 +2089,11 @@ packages:
     peerDependencies:
       typescript: 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x || 5.7.x || 5.8.x || 5.9.x || 6.0.x
 
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
     engines: {node: '>=16.20.0'}
@@ -2887,6 +2899,10 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
+  '@typescript/typescript6@6.0.2':
+    dependencies:
+      '@typescript/old': typescript@6.0.3
+
   '@vitest/coverage-v8@4.1.11(vitest@4.1.11)':
     dependencies:
       '@bcoe/v8-coverage': 1.0.2
@@ -3572,7 +3588,7 @@ snapshots:
 
   pify@5.0.0: {}
 
-  pkgroll@2.28.1(typescript@7.0.2)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0)):
+  pkgroll@2.28.1(@typescript/typescript6@6.0.2)(typescript@7.0.2)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@rollup/plugin-alias': 6.0.0(rollup@4.63.0)
       '@rollup/plugin-commonjs': 29.0.3(rollup@4.63.0)
@@ -3588,6 +3604,7 @@ snapshots:
       signal-exit: 4.1.0
       yaml: 2.9.0
     optionalDependencies:
+      '@typescript/typescript6': 6.0.2
       typescript: 7.0.2
     transitivePeerDependencies:
       - vite
@@ -3892,6 +3909,8 @@ snapshots:
       minimatch: 10.2.6
       typescript: 7.0.2
       yaml: 2.9.0
+
+  typescript@6.0.3: {}
 
   typescript@7.0.2:
     optionalDependencies:

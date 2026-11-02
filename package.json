@@ -46,13 +46,13 @@
     "@types/swagger-jsdoc": "6.0.4",
     "cleye": "2.7.0",
     "es-module-lexer": "2.3.2",
-    "isarray": "2.0.5",
     "swagger-jsdoc": "6.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
     "@skypack/package-check": "0.2.2",
     "@types/node": "24.19.0",
+    "@typescript/typescript6": "^6.0.2",
     "@vitest/coverage-v8": "4.1.11",
     "@vitest/ui": "4.1.11",
     "all-contributors-cli": "6.26.1",
@@ -73,13 +73,6 @@
   },
   "packageManager": "pnpm@12.16.1",
   "engines": {
-    "node": ">=18"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "esbuild",
-      "sharp"
-    ]
+    "node": ">=20"
   }
 }

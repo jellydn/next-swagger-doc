@@ -4,7 +4,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import swaggerJsdoc, { type OAS3Definition, type Options } from 'swagger-jsdoc';
 import { extractApiInfo, generateAutoDoc } from './auto-doc';
 import { mergeAutoDoc } from './merge-auto-doc';
-import { discoverSpecLocations } from './spec-source';
+import { discoverSpecLocations, shouldScanBuildDirectory } from './spec-source';
+
+export { shouldScanBuildDirectory };
 
 export type AutoDocOptions = {
   enabled?: boolean;
@@ -32,46 +34,16 @@ export type SwaggerOptions = Options & {
   scanBuildOutput?: boolean;
 };
 
-/** Next.js phases that rewrite `.next` and must not be globbed. */
-const NEXT_BUILD_PHASES = new Set([
-  'phase-production-build',
-  'phase-production-compile',
-  'phase-export',
-]);
-
-/**
- * Whether compiled files under `.next/server` should be globbed.
- *
- * Globbing `.next` while Next.js is compiling can fail Vercel builds with
- * `ENOENT: .../.next/export-detail.json`. Prefer source files; scan compiled
- * output only as a runtime fallback when the source folder is gone.
- */
-export function shouldScanBuildDirectory({
-  sourceDirectory,
-  buildDirectory,
-  scanBuildOutput,
-  nextPhase = process.env.NEXT_PHASE,
-}: {
-  sourceDirectory: string;
-  buildDirectory: string;
-  scanBuildOutput?: boolean;
-  nextPhase?: string;
-}): boolean {
-  if (!existsSync(buildDirectory) || scanBuildOutput === false) {
-    return false;
-  }
-  if (scanBuildOutput === true) {
-    return true;
-  }
-  if (nextPhase && NEXT_BUILD_PHASES.has(nextPhase)) {
-    return false;
-  }
-  return !existsSync(sourceDirectory);
-}
-
 /** Resolve a user-supplied path against the process working directory. */
 function resolveUserPath(file: string, cwd = process.cwd()): string {
   return isAbsolute(file) ? file : join(cwd, file);
+}
+
+/** Persist generated and prebuilt specs with the same output path policy. */
+function writeSpecFile(spec: OAS3Definition, outputFile: string): void {
+  const outputPath = resolveUserPath(outputFile);
+  mkdirSync(dirname(outputPath), { recursive: true });
+  writeFileSync(outputPath, JSON.stringify(spec, null, 2));
 }
 
 /**
@@ -86,7 +58,24 @@ export function loadSpecFile(
   if (!existsSync(specPath)) {
     return undefined;
   }
-  return JSON.parse(readFileSync(specPath, 'utf8')) as OAS3Definition;
+  const contents = readFileSync(specPath, 'utf8');
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(contents);
+  } catch {
+    throw new Error(`Invalid JSON in specFile ${specPath}`);
+  }
+  if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error(`specFile is not an OpenAPI object: ${specPath}`);
+  }
+  const document = parsed as Record<string, unknown>;
+  if (
+    typeof document.openapi !== 'string' &&
+    typeof document.swagger !== 'string'
+  ) {
+    throw new Error(`specFile is not an OpenAPI object: ${specPath}`);
+  }
+  return parsed as OAS3Definition;
 }
 
 /**
@@ -140,6 +129,9 @@ export function createSwaggerSpec({
   if (specFile) {
     const saved = loadSpecFile(specFile);
     if (saved) {
+      if (outputFile) {
+        writeSpecFile(saved, outputFile);
+      }
       return saved;
     }
   }
@@ -152,9 +144,7 @@ export function createSwaggerSpec({
     ...sourceDirs.flatMap((dir) =>
       fileTypes.map((fileType) => `${dir}/**/*.${fileType}`)
     ),
-    ...['swagger.yaml', 'json'].map(
-      (fileType) => `${publicDir}/**/*.${fileType}`
-    ),
+    `${publicDir}/**/*.swagger.yaml`,
     ...sourceDirs.flatMap((sourceDirectory, index) => {
       const buildDirectory = buildDirs[index];
       if (
@@ -197,7 +187,9 @@ export function createSwaggerSpec({
   const sourceDirectory = join(process.cwd(), apiFolder);
 
   if (isAutoDocEnabled(autoDoc, !existsSync(sourceDirectory))) {
-    const autoPaths = generateAutoDoc(extractApiInfo(apiFolder));
+    const autoPaths = generateAutoDoc(
+      extractApiInfo(apiFolder, process.cwd(), { scanBuildOutput })
+    );
     spec.paths = mergeAutoDoc(
       autoPaths,
       spec.paths ?? {}
@@ -205,9 +197,7 @@ export function createSwaggerSpec({
   }
 
   if (outputFile) {
-    const outputPath = resolveUserPath(outputFile);
-    mkdirSync(dirname(outputPath), { recursive: true });
-    writeFileSync(outputPath, JSON.stringify(spec, null, 2));
+    writeSpecFile(spec, outputFile);
   }
 
   return spec;
@@ -237,12 +227,9 @@ export function withSwagger({
         ...swaggerOptions,
       });
       res.status(200).send(swaggerSpec);
-    } catch (error) {
-      res.status(400).json({
-        error:
-          error instanceof Error
-            ? error.message
-            : 'Failed to create Swagger spec',
+    } catch {
+      res.status(500).json({
+        error: 'Failed to create Swagger spec',
       });
     }
   };

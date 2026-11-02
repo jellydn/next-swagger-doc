@@ -2,7 +2,3 @@ allowBuilds:
   '@biomejs/biome': true
   esbuild: true
   sharp: true
-
-# TypeDoc needs the compiler API; the project itself still uses TypeScript 7.
-overrides:
-  'typedoc>typescript': 6.0.2

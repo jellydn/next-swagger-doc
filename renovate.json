@@ -4,6 +4,7 @@
     "group:allNonMajor",
     ":pinAllExceptPeerDependencies"
   ],
+  "minimumReleaseAge": "1 day",
   "lockFileMaintenance": {
     "enabled": true
   },

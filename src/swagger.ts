@@ -39,6 +39,13 @@ function resolveUserPath(file: string, cwd = process.cwd()): string {
   return isAbsolute(file) ? file : join(cwd, file);
 }
 
+/** Persist generated and prebuilt specs with the same output path policy. */
+function writeSpecFile(spec: OAS3Definition, outputFile: string): void {
+  const outputPath = resolveUserPath(outputFile);
+  mkdirSync(dirname(outputPath), { recursive: true });
+  writeFileSync(outputPath, JSON.stringify(spec, null, 2));
+}
+
 /**
  * Read a prebuilt OpenAPI document. Returns `undefined` when the file is
  * missing so callers can fall back to scanning source or compiled routes.
@@ -105,6 +112,9 @@ export function createSwaggerSpec({
   if (specFile) {
     const saved = loadSpecFile(specFile);
     if (saved) {
+      if (outputFile) {
+        writeSpecFile(saved, outputFile);
+      }
       return saved;
     }
   }
@@ -172,9 +182,7 @@ export function createSwaggerSpec({
   }
 
   if (outputFile) {
-    const outputPath = resolveUserPath(outputFile);
-    mkdirSync(dirname(outputPath), { recursive: true });
-    writeFileSync(outputPath, JSON.stringify(spec, null, 2));
+    writeSpecFile(spec, outputFile);
   }
 
   return spec;

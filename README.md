@@ -8,7 +8,7 @@
 
 [![Version](https://img.shields.io/npm/v/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
 [![Downloads/week](https://img.shields.io/npm/dw/next-swagger-doc.svg)](https://npmjs.org/package/next-swagger-doc)
-![Prerequisite](https://img.shields.io/badge/node-%3E%3D18-blue.svg)
+![Prerequisite](https://img.shields.io/badge/node-%3E%3D20-blue.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](http://next-swagger-doc.productsway.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: jellydn](https://img.shields.io/twitter/follow/jellydn.svg?style=social)](https://twitter.com/jellydn)
@@ -24,7 +24,7 @@
 ## Prerequisites
 
 - Nextjs >= 9
-- Node >= 18
+- Node >= 20
 
 ## Motivation
 
@@ -170,7 +170,7 @@ Now, navigate to `localhost:3000/api-doc` (or wherever you host your Next.js app
 
 ### Vercel builds
 
-`createSwaggerSpec` does not glob `.next` during `next build`. Walking that folder while Next.js is compiling it can fail Vercel with `ENOENT: .next/export-detail.json`. Source API files and `public` OpenAPI files are scanned instead. Set `scanBuildOutput: true` only when you intentionally want compiled `.next/server` files included.
+`createSwaggerSpec` does not glob `.next` during `next build`. Walking that folder while Next.js is compiling it can fail Vercel with `ENOENT: .next/export-detail.json`. Source API files and `public/*.swagger.yaml` fragments are scanned instead. A complete JSON spec should be loaded with `specFile`. `autoDoc` / `extractApiInfo` use the same `shouldScanBuildDirectory` gate, so compiled `route.js` handlers are not merged while a production build is rewriting `.next`. Set `scanBuildOutput: true` only when you intentionally want compiled `.next/server` files included.
 
 ### Next.js standalone output
 

@@ -6,7 +6,7 @@ Instructions for AI coding agents working on `next-swagger-doc`.
 
 Generate an OpenAPI (Swagger) spec from Next.js API routes. JSDoc `@swagger` blocks are parsed by `swagger-jsdoc`. App Router `route.ts` files can also get basic operations from folder paths and exported HTTP handlers when `autoDoc` is enabled.
 
-- Runtime: Node.js >= 18 (Next.js 16 example apps need Node.js >= 20.9)
+- Runtime: Node.js >= 20 (Next.js 16 example apps need Node.js >= 20.9)
 - Package manager: pnpm 10.34.5 (Corepack)
 - Language: TypeScript (strict, ESM)
 

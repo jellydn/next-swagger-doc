@@ -13,7 +13,6 @@
     "@stoplight/elements": "9.0.1",
     "@xstyled/styled-components": "4.0.0",
     "@xstyled/system": "3.8.1",
-    "isarray": "2.0.5",
     "next": "13.5.6",
     "next-swagger-doc": "github:jellydn/next-swagger-doc#v0.4.2-beta.0",
     "react": "18.3.1",

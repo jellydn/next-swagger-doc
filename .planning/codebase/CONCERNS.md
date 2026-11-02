@@ -76,10 +76,10 @@ No `TODO` / `FIXME` / `HACK` / `XXX` markers were found under `src/`, `test/`, o
 - Current mitigation: None beyond MIT LICENSE.
 - Recommendations: Name a contact (GitHub Security Advisories / email), list actually supported npm versions (`0.5.x`), and drop the template table.
 
-**Runtime spec generation reads the whole API tree and can ingest `public/**/*.json`:**
-- Risk: `createSwaggerSpec` globs `public/**/*.json` and `public/**/*.swagger.yaml` into swagger-jsdoc. Any JSON under `public/` is treated as an OpenAPI fragment. A large data dump or a secrets JSON accidentally placed in `public/` is merged into the served spec. `withSwagger` also returns raw `error.message` to the client (see Known Bugs).
+**Runtime spec generation unnecessarily scans `public/**/*.json`:**
+- Risk: `createSwaggerSpec` globs `public/**/*.json` and `public/**/*.swagger.yaml` into swagger-jsdoc. swagger-jsdoc 6.3.0 treats non-YAML files as source text containing JSDoc, not as JSON OpenAPI fragments. Ordinary JSON objects are not merged, but scanning unrelated public assets adds unnecessary work. `withSwagger` also returns raw `error.message` to the client (see Known Bugs).
 - Files: `src/swagger.ts`, `src/cli.ts`
-- Current mitigation: Intended for committed OpenAPI YAML/JSON (the next13 example uses `models/**/*.swagger.yaml` copied to `public/openapi`). Missing `specFile` is skipped.
+- Current mitigation: Use `*.swagger.yaml` sidecars for fragments (the next13 example copies them to `public/openapi`). Use `specFile` for a complete JSON document. Missing `specFile` is skipped.
 - Recommendations: Restrict public globs to `*.swagger.yaml` / a configured spec path; never glob all `*.json`; return 500 without `error.message` from `withSwagger`.
 
 **CLI writes whatever `--output` path the user passes:**

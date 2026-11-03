@@ -7,17 +7,20 @@ Instructions for AI coding agents working on `next-swagger-doc`.
 Generate an OpenAPI (Swagger) spec from Next.js API routes. JSDoc `@swagger` blocks are parsed by `swagger-jsdoc`. App Router `route.ts` files can also get basic operations from folder paths and exported HTTP handlers when `autoDoc` is enabled.
 
 - Runtime: Node.js >= 20 (Next.js 16 example apps need Node.js >= 20.9)
-- Package manager: pnpm 10.34.5 (Corepack)
+- Contributor tools: Node.js 22.22+, 24.5+, or 26+; `.nvmrc` selects Node.js 22
+- Package manager: pnpm 12.16.1 (`packageManager` in `package.json`)
 - Language: TypeScript (strict, ESM)
 
 ## Setup
 
 ```sh
-corepack enable
-corepack pnpm@10.34.5 install --frozen-lockfile
+npm exec --yes --package=pnpm@12.16.1 -- pnpm install --frozen-lockfile
 ```
 
 `.agents/setup` runs the same install. No extra services need to be started.
+Use `npm exec --yes --package=pnpm@12.16.1 -- pnpm <command>` if the installed
+Corepack does not support pnpm 12. The contributor tooling requirement does not
+raise the published library's Node.js 20 runtime floor.
 
 ## Commands
 

@@ -15,20 +15,26 @@ run_step() {
 }
 
 if ! command -v node >/dev/null; then
-  echo "Node.js 20 or newer is required." >&2
+  echo "Contributor tools require Node.js 22.22+, 24.5+, or 26+." >&2
   exit 1
 fi
 
-node_major="$(node -p 'process.versions.node.split(".")[0]')"
-if (( node_major < 20 )); then
-  echo "Node.js 20 or newer is required; found $(node --version)." >&2
+if ! node -e '
+  const [major, minor] = process.versions.node.split(".").map(Number);
+  process.exit((major === 22 && minor >= 22) ||
+    (major === 24 && minor >= 5) || major >= 26 ? 0 : 1);
+'; then
+  echo "Contributor tools require Node.js 22.22+, 24.5+, or 26+; found $(node --version)." >&2
   exit 1
 fi
 
-if ! command -v corepack >/dev/null; then
-  echo "Corepack is required to activate pnpm 10.9.0." >&2
+if ! command -v npm >/dev/null; then
+  echo "npm is required to run the pinned pnpm version." >&2
   exit 1
 fi
 
-run_step "Activating pnpm 10.9.0" corepack enable
-run_step "Installing dependencies" corepack pnpm@10.9.0 install --frozen-lockfile
+package_manager="$(node -p 'require("./package.json").packageManager')"
+# npm exec also works with pnpm 12 on machines with an older Corepack shim.
+run_step "Installing dependencies with $package_manager" \
+  env CI=true npm exec --yes --package="$package_manager" -- \
+  pnpm install --frozen-lockfile

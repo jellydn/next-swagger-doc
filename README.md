@@ -26,6 +26,10 @@
 - Nextjs >= 9
 - Node >= 20
 
+Contributors need Node.js 22.22+, 24.5+, or 26+ for development tools. The
+published library still supports Node.js 20. Use the pnpm version pinned in
+`package.json`; see [AGENTS.md](AGENTS.md#setup) for the install command.
+
 ## Motivation
 
 This package reads your JSDoc-annotated source code on [NextJS API route](https://nextjs.org/docs/api-routes/api-middlewares) and generates an OpenAPI (Swagger) specification.

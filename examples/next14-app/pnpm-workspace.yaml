@@ -1,0 +1,9 @@
+allowBuilds:
+  '@scarf/scarf': false
+  '@tree-sitter-grammars/tree-sitter-yaml': false
+  core-js-pure: false
+  # This pinned Git release needs prepare to build the library.
+  'next-swagger-doc@https://codeload.github.com/jellydn/next-swagger-doc/tar.gz/e44f7f563b51e99491568ceeb7e9e2f360e3f846': true
+  sharp: true
+  tree-sitter: false
+  tree-sitter-json: false

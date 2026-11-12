@@ -51,7 +51,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
     "@skypack/package-check": "0.2.2",
-    "@types/node": "24.19.0",
+    "@types/node": "26.6.6",
     "@typescript/typescript6": "6.0.2",
     "@vitest/coverage-v8": "4.1.11",
     "@vitest/ui": "4.1.11",
